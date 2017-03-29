@@ -11,26 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app.home');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/preview', function () {
-    return view('app.preview');
-});
+Route::get('/preview', 'HomeController@preview');
 
-Route::get('/delivery', function () {
-    return view('app.delivery');
-});
+Route::get('/delivery', 'HomeController@delivery');
 
-Route::get('/about', function () {
-    return view('app.about');
-});
+Route::get('/about', 'HomeController@about');
 
-Route::get('/contact', function () {
-    return view('app.contact');
-});
+Route::get('/contact', 'HomeController@contact');
 
-Route::get('/news', function () {
-    return view('app.news');
-});
+Route::get('/news', 'HomeController@news');
+
+Route::get('/login', 'AuthController@login');
+
+Route::get('/register', 'AuthController@register');
