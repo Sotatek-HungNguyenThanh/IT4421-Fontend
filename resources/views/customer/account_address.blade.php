@@ -57,7 +57,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-9">
                                         <p>
                                             <span id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_lb_Fullname" style="font-weight:bold;">Nguyen Hung</span>
-                                            - <a href="/customer/account?action=edit">Sửa</a>
+                                            - <a href="{{url('/account')}}">Sửa</a>
                                         </p>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                         <p>Điện thoại <span class="require">*</span></p>
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Mobile" type="text" value="0973241196" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Mobile" class="required" placeholder="Di động">
+                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Mobile" type="text" value="0973241196" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Mobile" class="required" placeholder="Di động" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -74,7 +74,7 @@
                                         <p>Địa chỉ <span class="require">*</span></p>
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Address" type="text" value="Số 4 Ngõ 9 Đường Trường Chinh" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Address" class="required">
+                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Address" type="text" value="Số 4 Ngõ 9 Đường Trường Chinh" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Address" class="required" required>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
                                         <p>
-                                            <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Fullname" type="text" value="Nguyen Hung" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Fullname" class="required">
+                                            <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Fullname" type="text" value="Nguyen Hung" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Fullname" class="required" required>
                                         </p>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                         <p>Điện thoại <span class="require">*</span></p>
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Mobile" type="text" value="0973241196" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Mobile" class="required" placeholder="Di động">
+                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Mobile" type="text" value="0973241196" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Mobile" class="required" placeholder="Di động" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -113,7 +113,7 @@
                                         <p>Địa chỉ <span class="require">*</span></p>
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Addr" type="text" value="Số 4 Ngõ 9 Đường Trường Chinh" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Addr" class="required">
+                                        <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_Receiver_Addr" type="text" value="Số 4 Ngõ 9 Đường Trường Chinh" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Addr" class="required" required>
                                     </div>
                                 </div>
                                 <div class="row">

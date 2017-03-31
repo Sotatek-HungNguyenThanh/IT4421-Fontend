@@ -31,7 +31,10 @@
 .no-iconic-input {
     margin-bottom: 15px;
 }
-input[type="text"], input[type="password"], select{
+
+input[type="text"],
+input[type="email"],
+input[type="password"], select{
     width: 100%;
     background: #f7f7f7;
     font-size: 14px;

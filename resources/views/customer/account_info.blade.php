@@ -59,14 +59,7 @@
                                         <p>Họ và tên <span class="require">*</span></p>
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_FirstName" type="text" value="Nguyen" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_FirstName" placeholder="Họ...">
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <input name="ctl00$ctl00$Home_ContentPlaceHolder$UACMaster_ControlPlaceHolder$tb_LastName" type="text" value="Hung" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_LastName" placeholder="Tên...">
-                                            </div>
-                                        </div>
+                                        <input type="text" value="Nguyen Hung" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_FirstName" placeholder="Họ Tên..." required>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -21,12 +21,12 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="iconic-input">
-                                    <input type="text" id="Home_ContentPlaceHolder_tb_Email" placeholder="E-mail">
+                                    <input type="email" id="Home_ContentPlaceHolder_tb_Email" placeholder="E-mail" required>
                                     <i class="icons icon-user-3"></i>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="iconic-input">
-                                    <input type="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu">
+                                    <input type="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required>
                                     <i class="icons icon-lock"></i>
                                 </div>
                             </div>

@@ -41,6 +41,7 @@
 .align-right {
     text-align: right!important;
 }
+.page-content input[type="email"],
 .page-content input[type="text"]{
     width: 100%;
     background: #f7f7f7;
