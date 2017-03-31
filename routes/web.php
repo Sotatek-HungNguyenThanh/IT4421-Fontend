@@ -26,3 +26,8 @@ Route::get('/news', 'HomeController@news');
 Route::get('/login', 'AuthController@login');
 
 Route::get('/register', 'AuthController@register');
+
+Route::get('/account', 'CustomerController@index');
+
+Route::get('/account-address', 'CustomerController@getAddress');
+
