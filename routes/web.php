@@ -26,3 +26,8 @@ Route::get('/news', 'HomeController@news');
 Route::get('/login', 'AuthController@login');
 
 Route::get('/register', 'AuthController@register');
+
+
+Route::get('/test', 'TestController@test');
+Route::get('/login', 'TestController@login');
+Route::get('/logout', 'TestController@logout');
