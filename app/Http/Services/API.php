@@ -14,13 +14,12 @@ class API
         $this->client = new Client(['base_uri' => Consts::HOST]);
     }
 
-    public function send($path, $params = null, $method = 'POST', $email = null, $token = null){
-        $headers = $this->buildHeaders($email, $token);
-        $response = $this->sendResquest($path, $headers, $params, $method);
+    public function send($path, $headers, $params = null, $method = 'POST'){
+        $response = $this->sendRequest($path, $headers, $params, $method);
         return $response;
     }
 
-    private function sendResquest($path, $headers, $params, $method){
+    private function sendRequest($path, $headers, $params, $method){
         $response = $this->client->request($method, $path, [
             'headers' => $headers,
             'form_params' => $params
@@ -28,7 +27,7 @@ class API
         return $response->getBody();
     }
 
-    private function buildHeaders($email = null, $token = null){
+    public function buildHeaders($email = null, $token = null){
         if($token){
             $headers = [
                 'Content-Type' => 'application/x-www-form-urlencoded',

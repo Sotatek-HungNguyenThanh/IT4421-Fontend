@@ -25,12 +25,14 @@ class TestController extends Controller
             "email" => "test213@gmail.com",
             "password" => "hung123456"
         ];
-        $response = API::send('login', $params);
+        $headers = API::buildHeaders();
+        $response = API::send('login', $headers, $params);
         return $response;
     }
 
     public function logout(){
-        $response = API::send('logout', null, 'POST', "test213@gmail.com", '8c3ff71a28bb599d831fc7efda8c2c36');
+        $headers = API::buildHeaders("test213@gmail.com", '6f19ba042bccce04478e8dc72f075d2a');
+        $response = API::send('logout', $headers);
         return $response;
     }
 }
