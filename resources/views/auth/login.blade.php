@@ -34,7 +34,7 @@
                         <br>
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 align-left">
-                                <input type="submit" value="Đăng nhập" id="Home_ContentPlaceHolder_bt_Submit" class="orange" ng-click="accountSettingController.login()">
+                                <input type="submit" value="Đăng nhập" id="Home_ContentPlaceHolder_bt_Submit" class="orange">
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 align-right">
                                 <a class="align-right" href="/forget-password">Bạn quên mật khẩu?</a>

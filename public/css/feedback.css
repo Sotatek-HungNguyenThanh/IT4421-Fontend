@@ -24,7 +24,7 @@
     border-top: 3px solid #aaa;
 }
 .input-feedback {
-	width: 500px;
+	width: 100%;
     border-radius: 5px;
 }
 .footer-feedback {
@@ -36,10 +36,10 @@
     position: relative;
     background-color: #2ecc71;
     border: none;
-    font-size: 20px;
+    font-size: 18px;
     color: #FFFFFF;
-    padding: 20px;
-    width: 200px;
+    padding: 17px;
+    width: 180px;
     text-align: center;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -54,8 +54,11 @@
 .green {
     color: #2ecc71;
 }
+.red{
+    color: #B81D22;
+}
 .green .carousel-heading {
-    background: #2ecc71;
+    background: #FF6600;
     color: #fff;
     text-transform: uppercase;
     overflow: hidden;
@@ -149,7 +152,7 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 }
 .carousel-heading {
     color: #fff;
-    background: #34495e;
+    background: #880000;
     text-transform: uppercase;
     margin-bottom: 5px;
     overflow: hidden;
@@ -165,6 +168,9 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 }
 .action-button.blue {
     background-color: #3498db;
+}
+.action-button.black {
+    background-color: #34495e;
 }
 .action-button {
     width: 100%;
