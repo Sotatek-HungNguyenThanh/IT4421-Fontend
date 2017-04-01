@@ -51,3 +51,4 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/change-password-account', 'CustomerController@changePasswordAccount');
 });
+Route::post('/feedback', 'AuthController@addFeedback');

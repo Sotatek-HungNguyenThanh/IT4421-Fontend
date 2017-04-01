@@ -144,4 +144,31 @@ class AuthController extends Controller
         $user->save();
         return $user;
     }
+
+    public function addFeedback(Request $request){
+        $params = $request->all();
+        $validator = Validator::make($params, [
+            'email' => 'required | email',
+            'feedback' => 'required'
+        ]);
+
+        $data = [
+            "email" => $params['email'],
+            "feedback" => $params['feedback']
+        ];
+
+        try {
+            $headers = API::buildHeaders();
+            $response = API::send('feedback', $headers, $data);
+            $request->session()->flash('alert-success', 'Send feedback success!');
+            return redirect('/feedback');
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+            $messageError = \GuzzleHttp\json_decode($e->getResponse()->getBody(true));
+            $validator->errors()->add('message', $messageError->message);
+            return redirect('feedback')
+                ->withErrors($validator)
+                ->withInput();
+        }
+    }
 }
