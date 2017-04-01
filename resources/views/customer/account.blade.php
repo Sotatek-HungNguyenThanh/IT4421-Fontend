@@ -45,8 +45,9 @@
                                     <p>Điện thoại <span class="require">*</span></p>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-9">
-                                    <input name="phone_number" type="text" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Mobile"
+                                    <input name="phone_number" type="text"
                                            class="required"
+                                           id="account_phone_number"
                                            placeholder="Di động"
                                            ng-model="controller.phone_number"
                                            minlength="10"
@@ -81,4 +82,16 @@
             </div>
         </form>
     </section>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("account_phone_number").onchange = function () {
+                var phone = document.getElementById("account_phone_number").value;
+                if(!/^([0-9]){10,11}$/.test(phone)){
+                    document.getElementById("account_phone_number").setCustomValidity("Invalid Phone Number");
+                }else {
+                    document.getElementById("account_phone_number").setCustomValidity("");
+                }
+            };
+        }
+    </script>
 @endsection

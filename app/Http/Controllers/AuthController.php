@@ -24,7 +24,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $params = $request->all();
-        $validator = $this->validatorRegister();
+        $validator = $this->validatorRegister($params);
         $data = [
             "fullname" => $params['fullname'],
             "email" => $params['email'],

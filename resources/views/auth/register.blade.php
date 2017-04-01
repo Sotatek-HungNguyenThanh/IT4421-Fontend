@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="no-iconic-input">
-                                    <input type="text" name="phone_number" placeholder="Telephone" required minlength="10" maxlength="11">
+                                    <input type="text" name="phone_number" id="phone_number" placeholder="Telephone" required minlength="10" maxlength="11">
                                 </div>
                             </div>
                         </div>
@@ -120,14 +120,23 @@
         window.onload = function () {
             document.getElementById("Home_ContentPlaceHolder_tb_Pasw").onchange = validatePassword;
             document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").onchange = validatePassword;
+            document.getElementById("phone_number").onchange = validatePhoneNumber;
         }
         function validatePassword(){
-            var pass2=document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").value;
-            var pass1=document.getElementById("Home_ContentPlaceHolder_tb_Pasw").value;
+            var pass2 = document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").value;
+            var pass1 = document.getElementById("Home_ContentPlaceHolder_tb_Pasw").value;
             if(pass1 != pass2)
                 document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").setCustomValidity("Passwords Don't Match");
             else
                 document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").setCustomValidity('');
+        }
+        function validatePhoneNumber() {
+            var phone = document.getElementById("phone_number").value;
+            if(!/^([0-9]){10,11}$/.test(phone)){
+                document.getElementById("phone_number").setCustomValidity("Invalid Phone Number");
+            }else {
+                document.getElementById("phone_number").setCustomValidity("");
+            }
         }
     </script>
 @endsection
