@@ -26,6 +26,7 @@
 .input-feedback {
 	width: 100%;
     border-radius: 5px;
+    padding-top: 20px;
 }
 .footer-feedback {
 	margin-top: 30px;
@@ -36,10 +37,10 @@
     position: relative;
     background-color: #2ecc71;
     border: none;
-    font-size: 18px;
+    font-size: 15px;
     color: #FFFFFF;
-    padding: 17px;
-    width: 180px;
+    padding: 10px;
+    width: 135px;
     text-align: center;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -50,6 +51,9 @@
 }
 .content-feedback{
     margin-top: 30px;
+}
+.input-feedback .form-control{
+    height: 200px;
 }
 .green {
     color: #2ecc71;
