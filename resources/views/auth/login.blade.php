@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="content-login">
+    <div class="content-login" ng-controller="AccountSettingController as accountSettingController">
     <section class="col-lg-6 col-md-6 col-sm-6">
         <form method="post" action="{{url('login')}}">
             {{ csrf_field() }}
@@ -34,14 +34,12 @@
                                     <input type="email" name="email" id="Home_ContentPlaceHolder_tb_Email" placeholder="E-mail" required>
                                     <i class="icons icon-user-3"></i>
                                 </div>
-                                <div class="clearfix"></div>
                                 <div class="iconic-input">
                                     <input type="password" name="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required>
                                     <i class="icons icon-lock"></i>
                                 </div>
                             </div>
                         </div>
-
                         <br>
                         <br>
                         <div class="row">

@@ -27,16 +27,16 @@ Route::get('/login', 'AuthController@showLogin')->name('login');
 
 Route::get('/register', 'AuthController@showRegister');
 
+Route::get('/account', 'CustomerController@index');
+
 Route::post('/register', 'AuthController@register');
 
 Route::post('/login', 'AuthController@login');
 
-
-Route::get('/test', 'TestController@test');
-Route::get('/test/login', 'TestController@login');
-Route::get('/test/logout', 'TestController@logout');
+Route::get('/feedback', 'AuthController@feedback');
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::get('/account', 'CustomerController@index');
 
     Route::get('/change-password', 'CustomerController@showChangePassword');
@@ -51,3 +51,4 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/change-password-account', 'CustomerController@changePasswordAccount');
 });
+Route::post('/feedback', 'AuthController@addFeedback');

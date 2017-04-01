@@ -5,6 +5,7 @@
         </div>
         <div class="account_desc">
             <ul>
+                <li><a href="#">Feedback</a></li>
                 <li><a href="#">Delivery</a></li>
                 <li><a href="#">Checkout</a></li>
                 @if(!Auth::check())
