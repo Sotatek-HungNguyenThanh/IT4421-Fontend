@@ -5,11 +5,16 @@
         </div>
         <div class="account_desc">
             <ul>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
                 <li><a href="#">Feedback</a></li>
+                <li><a href="#">Delivery</a></li>
                 <li><a href="#">Checkout</a></li>
-                <li><a href="#">My Account</a></li>
+                @if(!Auth::check())
+                    <li><a href="{{url('/register')}}">Register</a></li>
+                    <li><a href="{{url('/login')}}">Login</a></li>
+                @else
+                    <li><a href="{{url('/account')}}">Account</a></li>
+                    <li><a href="{{url('/logout')}}">Logout</a></li>
+                @endif
             </ul>
         </div>
         <div class="clear"></div>
@@ -24,34 +29,6 @@
                     <li>you have no items in your Shopping cart</li>
                 </ul></div></p>
         </div>
-        <script type="text/javascript">
-            function DropDown(el) {
-                this.dd = el;
-                this.initEvents();
-            }
-            DropDown.prototype = {
-                initEvents : function() {
-                    var obj = this;
-
-                    obj.dd.on('click', function(event){
-                        $(this).toggleClass('active');
-                        event.stopPropagation();
-                    });
-                }
-            }
-
-            $(function() {
-
-                var dd = new DropDown( $('#dd') );
-
-                $(document).click(function() {
-                    // all dropdowns
-                    $('.wrapper-dropdown-2').removeClass('active');
-                });
-
-            });
-
-        </script>
         <div class="clear"></div>
     </div>
     <div class="header_bottom">

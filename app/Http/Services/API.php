@@ -16,7 +16,7 @@ class API
 
     public function send($path, $headers, $params = null, $method = 'POST'){
         $response = $this->sendRequest($path, $headers, $params, $method);
-        return $response;
+        return json_decode($response);
     }
 
     private function sendRequest($path, $headers, $params, $method){
