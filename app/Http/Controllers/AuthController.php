@@ -15,4 +15,12 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
+    public function feedback()
+    {
+    	return view('auth.feedback');
+    }
+    public function account()
+    {
+        return view('auth.account');
+    }
 }

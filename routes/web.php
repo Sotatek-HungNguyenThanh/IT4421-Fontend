@@ -27,11 +27,15 @@ Route::get('/login', 'AuthController@login');
 
 Route::get('/register', 'AuthController@register');
 
-
 Route::get('/account', 'CustomerController@index');
 
 Route::get('/account-address', 'CustomerController@getAddress');
 
 Route::get('/test', 'TestController@test');
+
 Route::get('/test/login', 'TestController@login');
+
 Route::get('/test/logout', 'TestController@logout');
+
+Route::get('/feedback', 'AuthController@feedback');
+

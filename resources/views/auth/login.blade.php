@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="content-login">
+    <div class="content-login" ng-controller="AccountSettingController as accountSettingController">
     <section class="col-lg-6 col-md-6 col-sm-6">
         <form method="post" action="{{url('login')}}">
             <div class="row">
@@ -24,19 +24,17 @@
                                     <input type="email" id="Home_ContentPlaceHolder_tb_Email" placeholder="E-mail" required>
                                     <i class="icons icon-user-3"></i>
                                 </div>
-                                <div class="clearfix"></div>
                                 <div class="iconic-input">
                                     <input type="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required>
                                     <i class="icons icon-lock"></i>
                                 </div>
                             </div>
                         </div>
-
                         <br>
                         <br>
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 align-left">
-                                <input type="submit" value="Đăng nhập" id="Home_ContentPlaceHolder_bt_Submit" class="orange">
+                                <input type="submit" value="Đăng nhập" id="Home_ContentPlaceHolder_bt_Submit" class="orange" ng-click="accountSettingController.login()">
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 align-right">
                                 <a class="align-right" href="/forget-password">Bạn quên mật khẩu?</a>

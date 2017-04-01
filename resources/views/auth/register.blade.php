@@ -37,7 +37,6 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="no-iconic-input">
-
                                     <input type="password" id="Home_ContentPlaceHolder_tb_ConfirmPasw" placeholder="Nhập lại mật khẩu" required>
                                 </div>
                             </div>
