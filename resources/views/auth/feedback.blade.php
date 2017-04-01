@@ -36,43 +36,39 @@
         </section>
         <aside class="sidebar right-sidebar col-lg-4 col-md-4 col-sm-4">
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 register-account">
-                    <div class="blue">
-                        <div class="carousel-heading no-margin">
-                            <h4>Đăng nhập tài khoản</h4>
+                <div class="page-content">
+                    <div class="row-login">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="carousel-heading no-margin">
+                                <h4>Đăng nhập tài khoản</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <p>Nếu bạn đã có tài khoản</p>
+                            <div class="product-actions-single">
+                                <a href="/login" class="action-button black">
+                                    <span class="add-to-cart">
+                                        <span class="action-name">Đăng nhập ngay</span>
+                                        <span class="action-note">(Để hưởng nhiều ưu đãi cho thành viên)</span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="page-content">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <p>Nếu bạn đã có tài khoản</p>
-                                <div class="product-actions-single">
-                                    <a href="/login" class="action-button black">
-                                        <span class="add-to-cart">
-                                            <span class="action-name">Đăng nhập ngay</span>
-                                            <span class="action-note">(Để hưởng nhiều ưu đãi cho thành viên)</span>
-                                        </span>
-                                    </a>
-                                </div>
+                    <div class="row-register">
+                         <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 70px;">
+                            <div class="carousel-heading no-margin">
+                                <h4>Đăng ký tài khoản</h4>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="blue">
-                                <div class="carousel-heading no-margin">
-                                    <h4>Đăng ký tài khoản</h4>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <p>Nếu bạn chưa có tài khoản</p>
-                                <div class="product-actions-single">
-                                    <a href="/register" class="action-button blue">
-                                        <span class="add-to-cart">
-                                            <span class="action-name">Đăng ký</span>
-                                            <span class="action-note">(Hãy đăng ký để trở thành thành viên)</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p>Nếu bạn chưa có tài khoản</p>
+                        <div class="product-actions-single">
+                            <a href="/register" class="action-button blue">
+                                <span class="add-to-cart">
+                                    <span class="action-name">Đăng ký</span>
+                                    <span class="action-note">(Hãy đăng ký để trở thành thành viên)</span>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>

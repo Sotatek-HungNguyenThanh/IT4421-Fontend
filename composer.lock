@@ -147,7 +147,6 @@
                 "parser"
             ],
             "time": "2017-03-29T16:04:15+00:00"
-<<<<<<< Updated upstream
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -326,8 +325,6 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
-=======
->>>>>>> Stashed changes
         },
         {
             "name": "jakub-onderka/php-console-color",

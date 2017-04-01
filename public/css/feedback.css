@@ -74,13 +74,18 @@
     padding: 12px 20px;
 }
 .page-content {
-    padding: 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
     background: #fff;
     margin-bottom: 10px;
 }
 .row {
     margin-right: -15px;
     margin-left: -15px;
+}
+.row-login p,
+.row-register p{
+    padding-top: 10px;
+    text-align: center;
 }
 .register-account p {
     margin: 5px 0 25px;
