@@ -14,8 +14,18 @@
                             <h4>Đăng ký thành viên</h4>
                         </div>
                     </div>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="page-content">
-                        <form method="post" action="{{url('register')}}">
+                        <form method="post" action="{{url('register')}}" name="register_account">
+                            {{ csrf_field() }}
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <p><strong>Thông tin đăng nhập</strong></p>
@@ -24,7 +34,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="no-iconic-input required-input">
-                                    <input type="email" id="Home_ContentPlaceHolder_tb_Email" placeholder="Địa chỉ e-mail" required>
+                                    <input type="email" name="email" id="Home_ContentPlaceHolder_tb_Email" placeholder="Địa chỉ e-mail" required>
                                 </div>
                             </div>
                         </div>
@@ -32,13 +42,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="no-iconic-input">
 
-                                    <input type="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required>
+                                    <input type="password" name="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required minlength="8">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="no-iconic-input">
-
-                                    <input type="password" id="Home_ContentPlaceHolder_tb_ConfirmPasw" placeholder="Nhập lại mật khẩu" required>
+                                    <input type="password" name="password_confirmation" id="Home_ContentPlaceHolder_tb_ConfirmPasw" placeholder="Nhập lại mật khẩu" required minlength="8">
                                 </div>
                             </div>
                         </div>
@@ -50,21 +59,21 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="no-iconic-input required-input">
-                                    <input type="text" id="Home_ContentPlaceHolder_tb_FirstName" placeholder="Họ Tên" required>
+                                    <input type="text" name="fullname" id="Home_ContentPlaceHolder_tb_FirstName" placeholder="Họ Tên" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="no-iconic-input">
-                                    <input type="text" placeholder="Telephone" required>
+                                    <input type="text" name="phone_number" placeholder="Telephone" required minlength="10" maxlength="11">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="no-iconic-input">
-                                    <input type="text"  placeholder="Address" required>
+                                    <input type="text" name="address"  placeholder="Address" required>
                                 </div>
                             </div>
                         </div>
