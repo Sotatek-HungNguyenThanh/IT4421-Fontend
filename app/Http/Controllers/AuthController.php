@@ -34,6 +34,13 @@ class AuthController extends Controller
     {
         $params = $request->all();
         $validator = $this->validatorRegister($params);
+
+        if ($validator->fails()) {
+            return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = [
             "fullname" => $params['fullname'],
             "email" => $params['email'],
@@ -54,7 +61,6 @@ class AuthController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        return redirect('/register');
     }
 
     private function create(array $params)
@@ -74,6 +80,12 @@ class AuthController extends Controller
     {
         $params = $request->all();
         $validator = $this->validatorLogin($params);
+
+        if ($validator->fails()) {
+            return redirect('login')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $data = [
             "email" => $params['email'],
@@ -152,6 +164,12 @@ class AuthController extends Controller
             'feedback' => 'required'
         ]);
 
+        if ($validator->fails()) {
+            return redirect('feedback')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = [
             "email" => $params['email'],
             "feedback" => $params['feedback']
@@ -159,7 +177,7 @@ class AuthController extends Controller
 
         try {
             $headers = API::buildHeaders();
-            $response = API::send('feedback', $headers, $data);
+            API::send('feedback', $headers, $data);
             $request->session()->flash('alert-success', 'Send feedback success!');
             return redirect('/feedback');
         }catch (\Exception $e){

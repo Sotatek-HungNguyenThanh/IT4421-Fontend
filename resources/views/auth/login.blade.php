@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="content-login" ng-controller="AccountSettingController as accountSettingController">
+    <div class="content-login">
     <section class="col-lg-6 col-md-6 col-sm-6">
         <form method="post" action="{{url('login')}}">
             {{ csrf_field() }}
@@ -35,7 +35,7 @@
                                     <i class="icons icon-user-3"></i>
                                 </div>
                                 <div class="iconic-input">
-                                    <input type="password" name="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required>
+                                    <input type="password" name="password" id="Home_ContentPlaceHolder_tb_Pasw" placeholder="Mật khẩu" required minlength="8">
                                     <i class="icons icon-lock"></i>
                                 </div>
                             </div>
