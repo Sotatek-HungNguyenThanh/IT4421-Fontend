@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\API;
@@ -9,7 +10,7 @@ use Log;
 use App\User;
 use Validator;
 
-class CustomerController extends Controller
+class HomeController extends Controller
 {
     public function index(){
         return view('customer.account');
@@ -46,6 +47,7 @@ class CustomerController extends Controller
             $user->phone_number = $response->customer->phone_number;
             $user->status = $response->customer->status;
             $user->save();
+
             $request->session()->flash('alert-success', 'Password change success!');
             return redirect()->back();
         }catch (\Exception $e){

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -13,21 +14,21 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
-        return view('auth.login');
+        return view('customer.login');
     }
 
     public function showRegister()
     {
-        return view('auth.register');
+        return view('customer.register');
     }
 
     public function feedback()
     {
-    	return view('auth.feedback');
+    	return view('customer.feedback');
     }
     public function account()
     {
-        return view('auth.account');
+        return view('customer.account');
     }
 
     public function register(Request $request)
