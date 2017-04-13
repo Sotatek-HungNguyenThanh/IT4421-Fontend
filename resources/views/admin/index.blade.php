@@ -33,8 +33,8 @@
                                 <div class="profile-data-name">Admin</div>
                             </div>
                             <div class="profile-controls">
-                                <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="#" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+                                {{--<a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>--}}
+                                {{--<a href="#" class="profile-control-right"><span class="fa fa-envelope"></span></a>--}}
                             </div>
                         </div>                                                                        
                     </li>
