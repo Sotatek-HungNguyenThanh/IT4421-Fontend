@@ -54,3 +54,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/change-password-account', 'Customer\HomeController@changePasswordAccount');
 });
 
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
+
+});
+Route::get('admin/login', 'Admin\AuthController@showLogin');
+
+Route::post('admin/login', 'Admin\AuthController@login');
+
+Route::get('/admin', 'Admin\AuthController@index');
+
+Route::get('/manage-suppliers', function(){
+	return view('admin.manage_suppliers');
+});
+

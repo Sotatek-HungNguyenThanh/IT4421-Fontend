@@ -138,5 +138,4 @@
                 document.getElementById("phone_number").setCustomValidity("");
             }
         }
-    </script>
-@endsection
+    </scripts@endsection
