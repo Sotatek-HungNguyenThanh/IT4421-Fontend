@@ -5,11 +5,11 @@
     </li>
     <li class="xn-profile">
         <a href="#" class="profile-mini">
-            <img src="images/no-image.jpg"/>
+            <img src="/images/no-image.jpg"/>
         </a>
         <div class="profile">
             <div class="profile-image">
-                <img src="images/no-image.jpg"/>
+                <img src="/images/no-image.jpg"/>
             </div>
             <div class="profile-data">
                 <div class="profile-data-name">Admin</div>

@@ -11,15 +11,16 @@
     <!-- END META SECTION -->
 
     <!-- CSS INCLUDE -->
-    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/theme-default.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/theme-blue.css"/>
     <!-- EOF CSS INCLUDE -->
-
+    @yield("css");
     <script type="text/javascript" src="{{url('/js/jquery/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/jquery/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/bootstrap/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/jquery/jquery.mCustomScrollbar.min.js')}}"></script>
     <script type="text/javascript" src="{{url('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{url('js/actions.js')}}"></script>
+    @yield("script");
 </head>
 <body>
     <div class="page-container">
