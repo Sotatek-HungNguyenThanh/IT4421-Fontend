@@ -107,6 +107,7 @@ class AuthController extends Controller
             'name' => 'required',
             'address' => 'required',
             'phone' => 'required | number',
+            'status' => 'required',
             'discription' => 'required'
         ]);
 
@@ -120,6 +121,7 @@ class AuthController extends Controller
             "name" => $params['name'],
             "address" => $params['address'],
             "phone" => $params['phone'],
+            "status" => $params['status'],
             "discription" => $params['discription']
         ];
 
