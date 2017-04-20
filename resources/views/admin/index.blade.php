@@ -6,7 +6,7 @@
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-        <link rel="stylesheet" type="text/css" id="theme" href="css/admin/theme-default.css"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="css/admin/theme-blue.css"/>
         <!-- EOF CSS INCLUDE -->                                    
     </head>
     <body class="page-container-boxed">

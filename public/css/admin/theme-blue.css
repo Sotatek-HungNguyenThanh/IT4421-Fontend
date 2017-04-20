@@ -120,7 +120,7 @@ body {
   float: left;
   width: 100%;
   position: relative;
-  background: #f5f5f5 url('../img/bg.png') left top repeat;
+  background-color: white;
 }
 .page-container .page-content .content-frame .content-frame-top {
   float: left;
@@ -3869,7 +3869,7 @@ td.dataTables_empty {
   float: left;
   width: 100%;
   min-height: 100%;
-  background: url("../img/bg.png") left top repeat #33414e;
+  background-color: white;
 }
 .login-container .login-box {
   width: 400px;
