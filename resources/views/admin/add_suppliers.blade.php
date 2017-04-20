@@ -10,6 +10,9 @@
 	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-file-input.js')}}"></script>
 	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
 	<script type="text/javascript" src="{{url('/js/plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
+	<script type="text/javascript" src="{{url('js/angular/core/BaseClass.js')}}"></script>
+	<script type="text/javascript" src="{{url('js/angular/core/BaseController.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/admin/SupplierController.js')}}"></script>
 @endsection
 
 @section('page_title')
@@ -17,6 +20,7 @@
 @endsection
 
 @section('page_content')
+<div ng-controller="SupplierController as supplier">
     <div class="row">
         <div class="col-md-12">            
             <form class="form-horizontal">
@@ -69,11 +73,12 @@
 				        </div>
 				    </div>
 				    <div class="panel-footer">
-				        <button class="btn btn-default">Clear Form</button>                         
+				        <button class="btn btn-default">Clear Form</button>               
 				        <button class="btn btn-primary pull-right">Submit</button>
 				    </div>
 				</div>
 			</form>
 		</div>
 	</div>
+</div>
 @endsection
