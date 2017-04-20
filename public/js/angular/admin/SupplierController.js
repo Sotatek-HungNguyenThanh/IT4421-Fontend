@@ -5,4 +5,4 @@ var SupplierController = BaseController.extend({
     }
     
 }, ['BaseService']);
-myApp.controller('SupplierController', SupplierController);
+adminApp.controller('SupplierController', SupplierController);
