@@ -1,5 +1,5 @@
 var SupplierController = BaseController.extend({
-status: 'Active',
+    status: 'active',
 
     addSupplier:function () {
         var url = '/admin/add-new-supplier';
@@ -19,5 +19,5 @@ status: 'Active',
     	}
     }
     
-}, ['SupplierService'], '$scope');
+}, ['BaseService'], '$scope');
 adminApp.controller('SupplierController', SupplierController);

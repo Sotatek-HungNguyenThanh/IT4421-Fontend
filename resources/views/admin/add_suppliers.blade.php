@@ -10,8 +10,6 @@
 	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-file-input.js')}}"></script>
 	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
 	<script type="text/javascript" src="{{url('/js/plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('js/angular/core/BaseClass.js')}}"></script>
-	<script type="text/javascript" src="{{url('js/angular/core/BaseController.js')}}"></script>
     <script type="text/javascript" src="{{url('js/angular/admin/SupplierController.js')}}"></script>
 @endsection
 
