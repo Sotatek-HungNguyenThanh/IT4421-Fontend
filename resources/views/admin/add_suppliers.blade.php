@@ -18,7 +18,7 @@
 @endsection
 
 @section('page_content')
-	<div ng-controller="SupplierController as supplier">
+	<div ng-controller="SupplierController as controller">
 	    <div class="row">
 	        <div class="col-md-12">        
 	            <form class="form-horizontal">
@@ -85,8 +85,8 @@
 					        </div>
 					    </div>
 					    <div class="panel-footer">
-					        <button class="btn btn-default" ng-click="supplier.clearForm()">Clear Form</button>               
-					        <button class="btn btn-primary pull-right" id="Home_ContentPlaceHolder_bt_Submit" ng-click="supplier.addSupplier()">Submit</button>
+					        <button class="btn btn-default" ng-click="controller.clearForm()">Clear Form</button>               
+					        <button class="btn btn-primary pull-right" id="Home_ContentPlaceHolder_bt_Submit" ng-click="controller.addSupplier()">Submit</button>
 					    </div>
 					</div>
 				</form>
