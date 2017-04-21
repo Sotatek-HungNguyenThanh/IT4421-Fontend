@@ -65,3 +65,5 @@ Route::get('/admin', 'Admin\AuthController@index');
 
 Route::get('/admin/add-new-supplier', 'Admin\AuthController@addSuppliers');
 
+Route::get('/admin/list-suppliers', 'Admin\AuthController@listSuppliers');
+

@@ -100,4 +100,8 @@ class AuthController extends Controller
     {
         return view('admin.add_suppliers');
     }
+    public function listSuppliers()
+    {
+        return view('admin.list_supplier');
+    }
 }
