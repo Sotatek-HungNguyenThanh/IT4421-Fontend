@@ -53,10 +53,11 @@
             <div class="page-content-wrap">
 
                 @yield('page_content')
-
+                <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
+                <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
             </div>
         </div>
     </div>
 
-    @include('admin.popup_logout')
+    @include('admin.logout')
 </body>

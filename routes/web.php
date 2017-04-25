@@ -54,16 +54,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/change-password-account', 'Customer\HomeController@changePasswordAccount');
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
+    Route::get('/', 'Admin\AuthController@index');
+
+    Route::get('/logout', 'Admin\AuthController@logout');
 
 });
-Route::get('admin/login', 'Admin\AuthController@showLogin');
+Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
 Route::post('admin/login', 'Admin\AuthController@login');
-
-Route::get('/admin', 'Admin\AuthController@index');
-
-Route::get('/admin/add-new-supplier', 'Admin\SupplierController@viewAddSupplier');
-
-Route::post('/admin/add-new-supplier', 'Admin\SupplierController@addSuppliers');
 

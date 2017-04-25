@@ -15,16 +15,11 @@ class API
     }
 
     public function send($path, $headers, $params = null, $method = 'POST'){
-        $response = $this->sendRequest($path, $headers, $params, $method);
-        return json_decode($response);
-    }
-
-    private function sendRequest($path, $headers, $params, $method){
         $response = $this->client->request($method, $path, [
             'headers' => $headers,
             'form_params' => $params
         ]);
-        return $response->getBody();
+        return json_decode($response->getBody());
     }
 
     public function buildHeaders($email = null, $token = null){
