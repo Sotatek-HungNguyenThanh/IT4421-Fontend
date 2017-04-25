@@ -48,7 +48,7 @@
             <!-- END BREADCRUMB -->
 
             <div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span> @yield('page_title')</h2>
+                <h2>@yield('page_title')</h2>
             </div>
 
             <div class="page-content-wrap">
@@ -61,5 +61,4 @@
     </div>
 
     @include('admin.logout')
-    @include('admin.create_supplier')
 </body>

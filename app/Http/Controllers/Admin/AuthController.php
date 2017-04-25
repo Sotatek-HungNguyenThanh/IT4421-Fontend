@@ -15,7 +15,7 @@ use API;
 class AuthController extends Controller
 {
     use AuthenticatesUsers;
-    protected $redirectTo = 'admin/change-password';
+    protected $redirectTo = 'admin/home';
     protected $guard = 'admin';
 
     public function showLoginForm()

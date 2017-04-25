@@ -1,4 +1,4 @@
-<div id="create-supplier" class="modal fade" role="dialog">
+<div id="update-supplier" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-header">
             <h4 class="modal-title">Create Supplier</h4>
@@ -48,7 +48,7 @@
                         </dd>
                         <div style="margin: 10px 0px">
                             <button class="btn btn-primary pull-right"
-                                    ng-click="controller.createSupplier()">Submit
+                                    ng-click="controller.updateSupplier()">Submit
                             </button>
                             <button class="btn btn-primary pull-right" data-dismiss="modal"
                                     style="margin-right: 5px"
