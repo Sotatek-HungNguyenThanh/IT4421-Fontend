@@ -33,12 +33,9 @@
     <li>
         <a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">List Customers</span></a>
     </li>
-    <li>
-        <a href="#"><span class="glyphicon glyphicon-search"></span><span class="xn-text">Search Customers</span></a>
-    </li>
     <li class="xn-title">Suppliers</li>
     <li>
-        <a href="/manage-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Suppliers</span></a>
+        <a href="/admin/manage-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Suppliers</span></a>
     </li>
     <li class="xn-title">Products</li>
     <li>

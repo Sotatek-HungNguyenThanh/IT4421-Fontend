@@ -61,9 +61,4 @@ Route::get('admin/login', 'Admin\AuthController@showLogin');
 
 Route::post('admin/login', 'Admin\AuthController@login');
 
-Route::get('/admin', 'Admin\AuthController@index');
-
-Route::get('/manage-suppliers', function(){
-	return view('admin.manage_suppliers');
-});
-
+Route::get('admin/manage-suppliers', 'Admin\AuthController@showManageSuppliers');
