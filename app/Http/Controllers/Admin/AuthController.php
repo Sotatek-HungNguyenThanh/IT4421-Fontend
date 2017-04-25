@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use App\Units;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +14,8 @@ use API;
 
 class AuthController extends Controller
 {
+    use AuthenticatesUsers;
+    protected $redirectTo = 'admin/change-password';
     protected $guard = 'admin';
 
     public function showManageSuppliers()
@@ -56,7 +59,7 @@ class AuthController extends Controller
             $admin->password = bcrypt($params['password']);
             $admin->save();
             $this->guard()->login($admin);
-            return redirect()->back();
+            return redirect()->intended($this->redirectPath());
         }catch (\Exception $e){
             Log::error($e->getMessage());
             $messageError = json_decode($e->getResponse()->getBody(true));
