@@ -12,17 +12,28 @@
 
     <!-- CSS INCLUDE -->
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/theme-default.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/theme-blue.css"/>
     <!-- EOF CSS INCLUDE -->
-
+    @yield("css");
     <script type="text/javascript" src="{{url('/js/jquery/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/jquery/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/bootstrap/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/jquery/jquery.mCustomScrollbar.min.js')}}"></script>
     <script type="text/javascript" src="{{url('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{url('js/actions.js')}}"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/BaseClass.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/BaseFilter.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/BaseService.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/component.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/BaseController.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/core/underscore-min.js')}}"></script>
+    @yield("script");
 </head>
 <body>
-    <div class="page-container">
+    <div class="page-container" ng-app="adminApp">
         <div class="page-sidebar">
             <!-- START X-NAVIGATION -->
            @include('admin.sidebar')
@@ -42,10 +53,11 @@
             <div class="page-content-wrap">
 
                 @yield('page_content')
-
+                <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
+                <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
             </div>
         </div>
     </div>
 
-    @include('admin.popup_logout')
+    @include('admin.logout')
 </body>

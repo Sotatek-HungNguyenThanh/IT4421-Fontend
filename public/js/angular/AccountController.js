@@ -17,5 +17,6 @@ var AccountController = BaseController.extend({
         this.phone_number = data.phone_number;
         this.address = data.address;
     }
+
 }, ['BaseService']);
 myApp.controller('AccountController', AccountController);

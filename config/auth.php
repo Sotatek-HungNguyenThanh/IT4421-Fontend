@@ -79,10 +79,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
     ],
 
     /*
@@ -109,7 +106,6 @@ return [
 
         'admins' => [
             'provider' => 'admins',
-            'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -1,4 +1,4 @@
-<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+<div class="message-box animated fadeIn" data-sound="alert" id="admin-mb-signout">
     <div class="mb-container">
         <div class="mb-middle">
             <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
@@ -8,7 +8,7 @@
             </div>
             <div class="mb-footer">
                 <div class="pull-right">
-                    <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                    <a href="/admin/logout" class="btn btn-success btn-lg">Yes</a>
                     <button class="btn btn-default btn-lg mb-control-close">No</button>
                 </div>
             </div>

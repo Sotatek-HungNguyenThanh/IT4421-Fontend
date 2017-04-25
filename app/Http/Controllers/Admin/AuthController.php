@@ -4,23 +4,31 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Validator;
 use API;
-use Log;
 
 class AuthController extends Controller
 {
     protected $guard = 'admin';
 
+<<<<<<< HEAD
     public function showManageSuppliers()
     {
         return view('admin.manage_suppliers');
     }
+=======
+>>>>>>> develop
     public function showLoginForm()
     {
         return view('admin.login');
+    }
+
+    public function showChangePasswordPage(){
+        return view('admin.change_password');
     }
 
     public function login(Request $request)
@@ -39,14 +47,21 @@ class AuthController extends Controller
             "password" => $params['password']
         ];
         try {
-            $headers = API::buildHeaders();
-            $response = API::send('login', $headers, $data);
-            $user = $this->updateAccountInfo($params, $response->token_key);
-            Auth::guard()->login($user);
-            return "admin login";
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ];
+            $response = Units::send('admins/login', $headers, $data);
+            $user = $response->admin;
+            $admin = Admin::firstOrNew(['email' => $user->email]);
+            $admin->token = $response->token_key;
+            $admin->status = $user->status;
+            $admin->password = bcrypt($params['password']);
+            $admin->save();
+            $this->guard()->login($admin);
+            return redirect()->back();
         }catch (\Exception $e){
             Log::error($e->getMessage());
-            $messageError = \GuzzleHttp\json_decode($e->getResponse()->getBody(true));
+            $messageError = json_decode($e->getResponse()->getBody(true));
             $validator->errors()->add('message', $messageError->message);
             return redirect('admin/login')
                 ->withErrors($validator)
@@ -54,15 +69,22 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         try {
-            $token = Auth::user()->token;
-            $email = Auth::user()->email;
-            $headers = API::buildHeaders($email, $token);
-            API::send('logout', $headers);
-            Auth::logout();
-            return redirect('/');
+            $token = $this->guard()->user()->token;
+            $email = $this->guard()->user()->email;
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Authorization' => $email,
+                'Tokenkey' => $token
+            ];
+            Units::send('admins/logout', $headers);
+
+            $this->guard()->logout();
+            $request->session()->flush();
+            $request->session()->regenerate();
+            return redirect('admin/login');
         }catch (\Exception $e){
             Log::error($e->getMessage());
         }
@@ -100,5 +122,4 @@ class AuthController extends Controller
     {
         return view('admin.change_password');
     }
-    
 }
