@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Validator;
 use API;
-use Log;
 
 class AuthController extends Controller
 {
@@ -18,6 +18,10 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         return view('admin.login');
+    }
+
+    public function showChangePasswordPage(){
+        return view('admin.change_password');
     }
 
     public function login(Request $request)
@@ -47,7 +51,7 @@ class AuthController extends Controller
             $admin->password = bcrypt($params['password']);
             $admin->save();
             $this->guard()->login($admin);
-            return view('admin.change_password');
+            return redirect()->back();
         }catch (\Exception $e){
             Log::error($e->getMessage());
             $messageError = json_decode($e->getResponse()->getBody(true));
@@ -63,18 +67,17 @@ class AuthController extends Controller
         try {
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
-            return $token;
-//            $headers = [
-//                'Content-Type' => 'application/x-www-form-urlencoded',
-//                'Authorization' => $email,
-//                'Tokenkey' => $token
-//            ];
-//            Units::send('admins/logout', $headers);
-//
-//            $this->guard()->logout();
-//            $request->session()->flush();
-//            $request->session()->regenerate();
-            return redirect('/admin/login');
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Authorization' => $email,
+                'Tokenkey' => $token
+            ];
+            Units::send('admins/logout', $headers);
+
+            $this->guard()->logout();
+            $request->session()->flush();
+            $request->session()->regenerate();
+            return redirect('admin/login');
         }catch (\Exception $e){
             Log::error($e->getMessage());
         }

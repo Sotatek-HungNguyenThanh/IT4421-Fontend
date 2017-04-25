@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::get('/logout', 'Admin\AuthController@logout');
 
+    Route::get('/change-password', 'Admin\AuthController@showChangePasswordPage');
+
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
