@@ -18,11 +18,6 @@ class AuthController extends Controller
     protected $redirectTo = 'admin/change-password';
     protected $guard = 'admin';
 
-    public function showManageSuppliers()
-    {
-        return view('admin.manage_suppliers');
-    }
-
     public function showLoginForm()
     {
         return view('admin.login');

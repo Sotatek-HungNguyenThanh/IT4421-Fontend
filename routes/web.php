@@ -61,7 +61,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::get('/change-password', 'Admin\AuthController@showChangePasswordPage');
 
-    Route::get('/manage-suppliers', 'Admin\AuthController@showManageSuppliers');
+    Route::get('/manage-suppliers', 'Admin\SupplierController@showManageSuppliersPage');
+
+    Route::get('/manage-products', 'Admin\ProductController@showManageProductsPage');
 
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
