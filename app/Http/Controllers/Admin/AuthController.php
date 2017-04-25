@@ -96,8 +96,4 @@ class AuthController extends Controller
     {
         return view('admin.change_password');
     }
-    public function addSuppliers()
-    {
-        return view('admin.add_suppliers');
-    }
 }
