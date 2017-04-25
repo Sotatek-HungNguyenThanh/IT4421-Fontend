@@ -30,15 +30,15 @@
     </li>
     <li class="xn-title">Customers</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Customers</span></a>
+        <a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">List Customers</span></a>
     </li>
     <li class="xn-title">Suppliers</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Suppliers</span></a>
+        <a href="/admin/manage-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Suppliers</span></a>
     </li>
     <li class="xn-title">Products</li>
     <li>
-        <a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Products</span></a>
+        <a href="/admin/manage-products"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Products</span></a>
     </li>
     <li class="xn-title">Orders</li>
     <li>
