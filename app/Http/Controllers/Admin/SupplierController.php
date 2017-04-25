@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 
 class SupplierController extends Controller
 {
+
+    public function showManageSuppliersPage()
+    {
+        return view('admin.manage_suppliers');
+    }
+
     public function viewAddSupplier()
     {
         return view('admin.add_suppliers');
