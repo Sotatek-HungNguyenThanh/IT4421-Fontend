@@ -2,37 +2,93 @@ var SupplierController = BaseController.extend({
 
 	initialize : function($super, service) {
         $super(service);
-         this.getListSuppliers();
     },
 
-    addSupplier:function () {
-        var url = '/admin/create-supplier';
-        if(this.name !=='' && this.address !=='' && this.phone !=='' && this.discription !==''
-        && this.name === 'undefined' && this.address === 'undefined' && this.phone === 'undefined' && this.discription === 'undefined') {
-	        this.service.addSupplier(url, this.name, this.address, this.phone, this.status, this.discription)
-	            .success(this.addSupplier.bind(this))
-	            .error(this.onError.bind(this));
-	    }
+    showPopupUpdateSupplier: function (supplierID) {
+        this.getSupplierByID(supplierID);
     },
 
-    getListSuppliers: function () {
+    getSupplierByID: function (supplierID) {
+	    this.supplierID = supplierID;
 		var self = this;
-		this.service.getListSuppliers()
+		this.service.getSupplierByID(supplierID)
             .success(function (data) {
             	if(self.isNull(data))
             		return;
-				self.listSuppliers = JSON.parse(data);
+				self.name = data.name;
+				self.phone_number = data.phone_number;
+				self.address = data.address;
+				self.description = data.description;
             })
             .error(this.onError.bind(this));
     },
 
-    clearForm: function() {
-    	if(this.name !=='' || this.address !=='' || this.phone !=='' || this.discription !=='') {
-    		this.name = '';
-    		this.address = '';
-    		this.phone = '';
-    		this.discription = '';
-    	}
+    createSupplier: function () {
+        if(this.isNull(this.name)){
+            return;
+        }
+        if(!/^[0-9]{10,11}$/.test(this.phone_number)){
+            return;
+        }
+        if(this.isNull(this.address)){
+            return;
+        }
+        if(this.isNull(this.description)){
+            return;
+        }
+        var params = JSON.stringify({
+			"name" : this.name,
+			"phone_number" : this.phone_number,
+			"address" : this.address,
+			"description" : this.description,
+		});
+        this.service.createSupplier(params)
+            .success(function (data) {
+                location.reload();
+            })
+            .error(this.onError.bind(this));
+    },
+
+    updateSupplier: function () {
+        if(this.isNull(this.name)){
+            return;
+        }
+        if(!/^[0-9]{10,11}$/.test(this.phone_number)){
+            return;
+        }
+        if(this.isNull(this.address)){
+            return;
+        }
+        if(this.isNull(this.description)){
+            return;
+        }
+        var params = JSON.stringify({
+            "supplierID" : this.supplierID,
+            "name" : this.name,
+            "phone_number" : this.phone_number,
+            "address" : this.address,
+            "description" : this.description,
+        });
+        this.service.updateSupplier(params)
+            .success(function (data) {
+                location.reload();
+            })
+            .error(this.onError.bind(this));
+    },
+
+    cancelCreateSupplier: function () {
+		this.name = "";
+		this.phone_number = "";
+		this.address = "";
+		this.description = "";
+    },
+
+    removeSupplier: function (supplierID) {
+        this.service.removeSupplier(supplierID)
+            .success(function (data) {
+                location.reload();
+            })
+            .error(this.onError.bind(this));
     }
     
 }, ['BaseService']);

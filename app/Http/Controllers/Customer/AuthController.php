@@ -183,7 +183,7 @@ class AuthController extends Controller
             return redirect('/feedback');
         }catch (\Exception $e){
             Log::error($e->getMessage());
-            $messageError = \GuzzleHttp\json_decode($e->getResponse()->getBody(true));
+            $messageError = json_decode($e->getResponse()->getBody(true));
             $validator->errors()->add('message', $messageError->message);
             return redirect('feedback')
                 ->withErrors($validator)

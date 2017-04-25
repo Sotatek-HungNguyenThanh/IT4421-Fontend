@@ -11,27 +11,51 @@ angular.module('BaseService', [])
                 });
             },
 
-            addSupplier: function (url, name, address, phone, status, discription) {
-                var postData = {
-                    'name': name,
-                    'address': address,
-                    'phone': phone,
-                    'status': status,
-                    'discription': discription
+            createSupplier: function (params) {
+                var data = {
+                    "data" : params
                 };
                 return $http({
                     method: 'POST',
-                    url: url,
+                    url: '/admin/create-supplier',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    data: $.param(postData)
+                    data: $.param(data)
                 });
             },
 
-            getListSuppliers: function () {
+            updateSupplier: function (params) {
+                var data = {
+                    "data" : params
+                };
                 return $http({
                     method: 'POST',
-                    url: '/admin/get-list-suppliers',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    url: '/admin/update-supplier',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            removeSupplier: function (supplierID) {
+                var data = {
+                    "supplierID" : supplierID
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/admin/delete-supplier',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            getSupplierByID: function (supplierID) {
+                var data = {
+                    "supplierID" : supplierID
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/admin/get-supplier',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
                 });
             }
         }

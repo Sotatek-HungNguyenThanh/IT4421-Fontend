@@ -72,7 +72,11 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/create-supplier', 'Admin\SupplierController@createSupplier');
 
-    Route::post('/get-list-suppliers', 'Admin\SupplierController@getListSuppliers');
+    Route::post('/get-supplier', 'Admin\SupplierController@getSupplier');
+
+    Route::post('/update-supplier', 'Admin\SupplierController@updateSupplier');
+
+    Route::post('/delete-supplier', 'Admin\SupplierController@deleteSupplier');
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
