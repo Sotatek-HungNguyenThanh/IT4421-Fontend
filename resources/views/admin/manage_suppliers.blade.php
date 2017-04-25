@@ -11,13 +11,13 @@
 
 @section('script')
 	<script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script> 
+	<script type="text/javascript" src="/js/angular/admin/SupplierController.js"></script>
 @endsection
 
 @section('page_content')
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="SupplierController as controller">
     <div class="panel-heading">                                
-        <h3 class="panel-title">Default</h3>
-                                     
+        <h3 class="panel-title"></h3>
     </div>
     <div class="panel-body">
         <table class="table datatable">

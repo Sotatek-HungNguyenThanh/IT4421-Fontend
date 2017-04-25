@@ -1,8 +1,12 @@
 var SupplierController = BaseController.extend({
-    status: 'active',
+
+	initialize : function($super, service) {
+        $super(service);
+         this.getListSuppliers();
+    },
 
     addSupplier:function () {
-        var url = '/admin/add-new-supplier';
+        var url = '/admin/create-supplier';
         if(this.name !=='' && this.address !=='' && this.phone !=='' && this.discription !==''
         && this.name === 'undefined' && this.address === 'undefined' && this.phone === 'undefined' && this.discription === 'undefined') {
 	        this.service.addSupplier(url, this.name, this.address, this.phone, this.status, this.discription)
@@ -11,8 +15,18 @@ var SupplierController = BaseController.extend({
 	    }
     },
 
+    getListSuppliers: function () {
+		var self = this;
+		this.service.getListSuppliers()
+            .success(function (data) {
+            	if(self.isNull(data))
+            		return;
+				self.listSuppliers = JSON.parse(data);
+            })
+            .error(this.onError.bind(this));
+    },
+
     clearForm: function() {
-        console.log(this.name);
     	if(this.name !=='' || this.address !=='' || this.phone !=='' || this.discription !=='') {
     		this.name = '';
     		this.address = '';
@@ -21,5 +35,5 @@ var SupplierController = BaseController.extend({
     	}
     }
     
-}, ['BaseService'], '$scope');
+}, ['BaseService']);
 adminApp.controller('SupplierController', SupplierController);

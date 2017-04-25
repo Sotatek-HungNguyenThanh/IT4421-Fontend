@@ -7,4 +7,8 @@ var BaseController = BaseClass.extend({
     onError: function(data) {
 
     },
-}, ['BaseService']);
+    isNull: function (data) {
+        return data == ''
+            || data == null;
+    }
+});

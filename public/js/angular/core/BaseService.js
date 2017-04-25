@@ -26,5 +26,13 @@ angular.module('BaseService', [])
                     data: $.param(postData)
                 });
             },
+
+            getListSuppliers: function () {
+                return $http({
+                    method: 'POST',
+                    url: '/admin/get-list-suppliers',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            }
         }
     });
