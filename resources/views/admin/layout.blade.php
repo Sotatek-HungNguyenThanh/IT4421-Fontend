@@ -61,4 +61,5 @@
     </div>
 
     @include('admin.logout')
+    @include('admin.create_supplier')
 </body>

@@ -23,20 +23,10 @@
 @endsection
 
 @section('page_content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="block">
-                <button type="button" class="btn btn-warning"
-                        data-toggle="modal" data-target="#message-box-update"
-                        data-backdrop="static">Update</button>
-
-            </div>
-        </div>
-    </div>
     <div id="message-box-update" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h4 class="modal-title">Update</h4>
+                <h4 class="modal-title">Create Supplier</h4>
             </div>
             <!-- Modal content-->
             <div class="modal-content">

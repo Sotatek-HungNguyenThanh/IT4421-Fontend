@@ -13,11 +13,21 @@
 	<script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script> 
 @endsection
 
-@section('page_content')
+@section('page_content') 
 <div class="panel panel-default">
-    <div class="panel-heading">                                
-        <h3 class="panel-title">Default</h3>
-                                     
+    <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-10">
+              <h3 class="panel-title">Default</h3>
+          </div>
+          <div class="col-md-2">
+              <div class="block">
+                    <button type="button" class="btn btn-warning"
+                            data-toggle="modal" data-target="#message-box-update"
+                            data-backdrop="static">Create Supplier</button>
+                </div>
+          </div>
+        </div>                           
     </div>
     <div class="panel-body">
         <table class="table datatable">
@@ -490,6 +500,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> 
 </div>
 @endsection
+@include('admin.create_supplier')
