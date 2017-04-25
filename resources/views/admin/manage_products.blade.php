@@ -2,11 +2,11 @@
 
 
 @section('title')
-    Manage Suppliers
+    Manage Products
 @endsection
 
 @section('page_title')
-    Manage Suppliers
+    Manage Products
 @endsection
 
 @section('script')
