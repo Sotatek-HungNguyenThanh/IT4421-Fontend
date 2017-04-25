@@ -15,13 +15,11 @@ class AuthController extends Controller
 {
     protected $guard = 'admin';
 
-<<<<<<< HEAD
     public function showManageSuppliers()
     {
         return view('admin.manage_suppliers');
     }
-=======
->>>>>>> develop
+
     public function showLoginForm()
     {
         return view('admin.login');
