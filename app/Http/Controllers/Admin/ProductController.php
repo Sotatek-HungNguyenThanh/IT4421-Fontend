@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
     public function showManageProductsPage(){
-    	return view('admin.manage_products');
+    	return view('admin.create_product');
     }
 }

@@ -69,7 +69,3 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
 Route::post('admin/login', 'Admin\AuthController@login');
-Route::get('model', function (){
-    return view('admin.model');
-});
-
