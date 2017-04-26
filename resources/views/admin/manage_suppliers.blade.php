@@ -25,7 +25,7 @@
               <div class="block">
                     <button type="button" class="btn btn-warning"
                             data-toggle="modal" data-target="#create-supplier"
-                            data-backdrop="static">Create Supplier</button>
+                            data-backdrop="static">Add a supplier</button>
                 </div>
           </div>
         </div>
