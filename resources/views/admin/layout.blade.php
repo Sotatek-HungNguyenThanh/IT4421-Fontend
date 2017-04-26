@@ -43,19 +43,16 @@
         <div class="page-content">
             <!-- START X-NAVIGATION VERTICAL -->
             @include('admin.header')
-            <ul class="breadcrumb">
-            </ul>
             <!-- END BREADCRUMB -->
-
-            <div class="page-title">
-                <h2>@yield('page_title')</h2>
-            </div>
-
-            <div class="page-content-wrap">
-
-                @yield('page_content')
-                <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
-                <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
+            <div class="body-page">
+                <div class="page-title">
+                    <h2>@yield('page_title')</h2>
+                </div>
+                <div class="page-content-wrap">
+                    @yield('page_content')
+                    <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
+                    <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
+                </div>
             </div>
         </div>
     </div>

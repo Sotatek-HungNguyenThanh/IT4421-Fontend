@@ -23,9 +23,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="block">
-                        <button type="button" class="btn btn-warning"
-                                data-toggle="modal" data-target="#create-supplier"
-                                data-backdrop="static">Add a product</button>
+                        <a style="text-decoration: none; color: white" href="/admin/add-product">
+                            <button type="button" class="btn btn-warning">Add a product</button></a>
                     </div>
                 </div>
             </div>
@@ -34,6 +33,7 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th><input type="checkbox"></th>
                     <th>Image</th>
                     <th>Title</th>
                     <th>Supplier</th>
