@@ -65,6 +65,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Name Supplier</th>
+                    <th>Code Supplier</th>
                     <th>Address</th>
                     <th>Phone Number</th>
                     <th>Description</th>
@@ -76,6 +77,7 @@
                 <tr ng-repeat="row in controller.rows" ng-cloak>
                     <td>@{{ $index + 1}}</td>
                     <td>@{{ row.name }}</td>
+                    <td>@{{ "NCC" + row.id }}</td>
                     <td>@{{ row.address }}</td>
                     <td>@{{ row.phone_number }}</td>
                     <td>@{{ row.description }}</td>
