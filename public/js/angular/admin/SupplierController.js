@@ -13,12 +13,14 @@ var SupplierController = BaseController.extend({
     },
 
     list: function (page) {
+        this.loading(true);
         this.service.list(this.url, page, this.perPage, this.key_word)
             .success(this.onReceiveData.bind(this))
             .error(this.onError.bind(this));
     },
 
     onReceiveData: function (response) {
+        this.loading(false);
         var data = response.data;
         if(!data){
             this.rowNull = this.perPage;
@@ -68,6 +70,7 @@ var SupplierController = BaseController.extend({
 			"address" : this.address,
 			"description" : this.description,
 		});
+        this.loading(true);
         this.service.createSupplier(params)
             .success(function (data) {
                 location.reload();
@@ -95,6 +98,7 @@ var SupplierController = BaseController.extend({
             "address" : this.address,
             "description" : this.description,
         });
+        this.loading(true);
         this.service.updateSupplier(params)
             .success(function (data) {
                location.reload();
@@ -110,6 +114,7 @@ var SupplierController = BaseController.extend({
     },
 
     removeSupplier: function (supplierID) {
+        this.loading(true);
         this.service.removeSupplier(supplierID)
             .success(function (data) {
                 location.reload();
@@ -159,6 +164,7 @@ var SupplierController = BaseController.extend({
     },
 
     search: function () {
+        this.loading(true);
         this.service.list(this.url, null, null, this.key_word)
             .success(this.onReceiveData.bind(this))
             .error(this.onError.bind(this));

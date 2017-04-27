@@ -59,6 +59,6 @@
             </div>
         </div>
     </div>
-
+    @include('admin.loading')
     @include('admin.logout')
 </body>
