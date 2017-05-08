@@ -24,7 +24,8 @@
                 <div class="col-md-2">
                     <div class="block">
                         <a style="text-decoration: none; color: white" href="/admin/add-product">
-                            <button type="button" class="btn btn-warning">Add a product</button></a>
+                            <button type="button" class="btn btn-warning">Add a product</button>
+                        </a>
                     </div>
                 </div>
             </div>
