@@ -26,7 +26,7 @@ var SupplierController = BaseController.extend({
             this.rowNull = this.perPage;
             return;
         }
-        this.pageCount = Math.ceil(response.total_products / this.perPage);
+        this.pageCount = Math.ceil(response.total_suppliers / this.perPage);
         this.row = [];
         this.rows = data;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
