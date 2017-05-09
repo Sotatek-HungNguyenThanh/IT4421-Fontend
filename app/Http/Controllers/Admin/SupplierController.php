@@ -82,7 +82,7 @@ class SupplierController extends Controller
             }
 
             $response = Units::send('admins/suppliers', $headers, $data, 'GET');
-            return array("total_products" => $response->total_products, "data" => $response->suppliers);
+            return array("total_suppliers" => $response->total_suppliers, "data" => $response->suppliers);
         }catch (\Exception $e){
             Log::error($e->getMessage());
             return null;
