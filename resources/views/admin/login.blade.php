@@ -3,13 +3,13 @@
 <head>
     <!-- META SECTION -->
     <title>Admin</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     {{--css--}}
     <link href="{{url('css/app.css')}}" rel="stylesheet" type="text/css" media="all"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <!-- END META SECTION -->
 
     <!-- CSS INCLUDE -->
@@ -42,7 +42,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required minlength="8"/>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required
+                               minlength="8"/>
                     </div>
                 </div>
                 <div class="form-group">
