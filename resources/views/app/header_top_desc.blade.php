@@ -13,34 +13,19 @@
 
                             <li class="menu__lv1">
                                 <a href="javascript:;" class="menu__link"><i class="fa fa-unlock-alt icon"
-                                                                             aria-hidden="true"></i> Đăng nhập <i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="menu__child" style="display: none;">
-                                    <li class="menu__lv2">
-                                        <a href="javascript:;" data-toggle="modal" data-dismis="modal"
-                                           data-target="#LoginPopup" class="menu__link"><i class="fa fa-unlock-alt icon"
-                                                                                           aria-hidden="true"></i> Đăng
-                                            nhập</a>
-                                    </li>
-                                    <li class="menu__lv2">
-                                        <a href="javascript:;" data-toggle="modal" data-dismis="modal"
-                                           data-target="#RegisterPopup" class="menu__link"><i class="fa fa-key icon"
-                                                                                              aria-hidden="true"></i>
-                                            Đăng ký</a>
-                                    </li>
-                                </ul>
+                                                                             aria-hidden="true"></i> Đăng nhập</a>
+                            </li>
+                            <li class="menu__lv1">
+                                <a href="javascript:;" class="menu__link"><i class="fa fa-registered icon"
+                                                                             aria-hidden="true"></i> Đăng ký</a>
+                            </li>
+                            <li class="menu__lv1">
+                                <a href="javascript:;" class="menu__link"><i class="fa fa-comments-o icon"
+                                                                             aria-hidden="true"></i> Feedback</a>
                             </li>
                             <li class="menu__lv1">
                                 <a href="javascript:;" class="menu__link"><i class="fa fa-user icon"
-                                                                             aria-hidden="true"></i> Tài khoản <i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="menu__child text-message" style="display: none;">
-                                    <li class="menu__lv2">
-                                        <p class="menu__message">Bạn chưa đăng nhập. Đăng nhập tại <a
-                                                    href="javascript:;" data-toggle="modal" data-dismis="modal"
-                                                    data-target="#LoginPopup">đây</a></p>
-                                    </li>
-                                </ul>
+                                                                             aria-hidden="true"></i> Tài khoản</a>
                             </li>
 
                         </ul>
