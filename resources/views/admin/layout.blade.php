@@ -90,9 +90,16 @@
             color: #a94442;
             border-radius: 5px;
         }
+        .page-content-admin{
+            min-height: 100%;
+            margin-left: 220px;
+            background: #f5f5f5 left top repeat;
+            position: relative;
+            zoom: 1;
+        }
     </style>
     <style>
-        input.form-control, textarea.form-control {
+        input.form-control, textarea.form-control, select.form-control {
             border-radius: 2px;
             padding: 10px 15px;
             height: auto;
@@ -101,7 +108,7 @@
             border: 1px solid #c8d1d3;
             background-color: transparent;
             box-shadow: none;
-            margin-bottom: 15px;
+            /*margin-bottom: 15px;*/
         }
         .container-content{
             width: 100%;
@@ -160,13 +167,13 @@
     </style>
 </head>
 <body>
-<div class="page-container" ng-app="adminApp">
+<div class="page-container" ng-app="adminApp" ng-cloak>
     <div class="page-sidebar">
         <!-- START X-NAVIGATION -->
     @include('admin.sidebar')
     <!-- END X-NAVIGATION -->
     </div>
-    <div class="page-content">
+    <div class="page-content-admin">
         <!-- START X-NAVIGATION VERTICAL -->
     @include('admin.header')
     <!-- END BREADCRUMB -->

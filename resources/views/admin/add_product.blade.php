@@ -41,7 +41,6 @@
                 return image.name != parent.find(".item-image").attr("name");
             });
             parent.remove();
-            console.log(listImages.length);
             if(listImages.length ==  0){
                 $("#image_default").show();
             }
@@ -104,6 +103,9 @@
                 left: 0
             }
         }
+        .error{
+            color: red;
+        }
     </style>
 @endsection
 
@@ -123,17 +125,18 @@
                                        Cancel
                                     </a>
                                     <button type="button" class="btn btn-twitter" style="color: white; border-color: #A4A4A4; border-radius: 5px;"
-                                            ng-click="controller.saveProduct()">Save product</button>
+                                            ng-click="controller.createProduct()">Create product</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div style="padding: 20px; margin-top: 40px;">
-                    <form>
+                    <form action="test" method="post">
                         {{ csrf_field() }}
                         <dl>
                             <dt>Title</dt>
+                            <span class="error" ng-show="controller.isNull(controller.title) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
                                 <input type="text" class="form-control"
                                        name="title" ng-model="controller.title" required/>
@@ -143,16 +146,24 @@
                             <dt>
                                 Description
                             </dt>
+                            <span class="error" ng-show="(controller.description == '<p><br></p>') && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
-                <textarea class="summernote" name="xxx" ng-model="controller.description">
-                </textarea>
+                                <textarea class="summernote" id="summernote" name="description"></textarea>
                             </dd>
                         </dl>
                         <dl>
                             <dt>Supplier</dt>
+                            <span class="error" ng-show="controller.isNull(controller.supplier) && controller.statusCreateProduct">Please choose supplier</span>
                             <dd>
-                                <input type="text" class="form-control" name="supplier"
-                                       ng-model="controller.supplier" required/>
+                                <select type="text"
+                                        class="form-control" name="supplier"
+                                        ng-model="controller.supplier" required>
+                                    <option value="" selected="selected" disabled>Choose Supplier</option>
+                                    <option value="@{{ supplier}}"
+                                            ng-repeat="supplier in controller.listSupplier track by $index">
+                                        @{{ supplier.name }}
+                                    </option>
+                                </select>
                             </dd>
                         </dl>
                         <dl>
@@ -165,10 +176,11 @@
                                     <span>Upload image</span>
                                 </div>
                                 <div id="list_images" ng-model="controller.image" style="text-align: left">
-                                    {{--<img style="display: block; margin-left: auto; margin-right: auto;" src="/images/upload.png">--}}
                                     <i class="fa fa-picture-o" aria-hidden="true" id="image_default" style="font-size: 140px; height: 185px"></i>
                                 </div>
                             </dd>
+
+                            <span class="error" ng-show="controller.isUpdateImages">Please upload images</span>
                         </dl>
                         <dl>
                             <dd>
@@ -178,21 +190,16 @@
                                         <input type="text" input-number name="original-price"
                                                class="form-control" placeholder="Original Price"
                                                ng-model="controller.originalPrice" required>
+                                        <span class="error" ng-show="controller.isNull(controller.originalPrice) && controller.statusCreateProduct">Please fill out this field</span>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Selling Price</label><br>
                                         <input type="text" input-number name="selling-price"
                                                class="form-control" placeholder="Selling Price"
                                                ng-model="controller.sellingPrice" required>
+                                        <span class="error" ng-show="controller.isNull(controller.sellingPrice) && controller.statusCreateProduct">Please fill out this field</span>
                                     </div>
                                 </div>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>Inventory</dt>
-                            <dd>
-                                <input type="number" class="form-control" name="inventory"
-                                       ng-model="controller.inventory" required/>
                             </dd>
                         </dl>
                         <div class="variant">
@@ -208,8 +215,8 @@
                                     <label ng-show="$index == 0 ">Option name</label><br>
                                     <input type="text" name="option-name" class="form-control"
                                            placeholder="Add..." required
-                                           ng-model="option.name" ng-blur="controller.setValidOption(option)"
-                                        ng-keyup = "$event.keyCode == 13 ? controller.setValidOption(option) : null"}}>
+                                           ng-model="option.name">
+                                    <span class="error" ng-show="$index == 0 && controller.isNull(option.name) &&controller.statusCreateProduct">Please fill out this field</span>
                                 </div>
                                 <div class="col-md-10">
                                     <label ng-show="$index == 0 ">Option Values</label><br>
@@ -232,15 +239,16 @@
                                                style="position: absolute;left: 98%;font-size: 30px;margin-top: 4px;"></i>
                                         </div>
                                     </div>
+                                    <span class="error" ng-show="$index == 0 && (option.variants.length == 0) && (controller.statusCreateProduct)">Please fill out this field</span>
                                 </div>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="visibilityFormAddVariants" ng-model="controller.visibilityFormAddVariants"
-                                       ng-click="controller.showFromAddVariants()"> <label for="visibilityFormAddVariants">This is product has multiple options</label>
                             </div>
                             <div class="row" style="margin-top: 20px; margin-left: 10px;" ng-show="controller.visibilityFormAddVariants">
                                 <button type="button" class="btn btn-default" style="color: #58ACFA; border-color: #A4A4A4; border-radius: 5px;"
                                         ng-click="controller.addRowOption()">Add another Option</button>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="visibilityFormAddVariants" ng-model="controller.visibilityFormAddVariants"
+                                       ng-click="controller.visibilityAddVariants()"> <label for="visibilityFormAddVariants">This is product has multiple options</label>
                             </div>
                         </div>
                     </form>

@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get('/', 'Admin\AuthController@index');
+
     Route::get('/home', function (){
         return view('admin.home');
     });
@@ -78,9 +79,11 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-supplier', 'Admin\SupplierController@deleteSupplier');
 
-    Route::get('/add-product', 'Admin\ProductController@createProduct');
+    Route::get('/add-product', 'Admin\ProductController@showCreateProductPage');
 
     Route::post('/get-list-suppliers', 'Admin\SupplierController@getListSuppliers');
+
+    Route::post('/create-product', 'Admin\ProductController@createProduct');
 
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');

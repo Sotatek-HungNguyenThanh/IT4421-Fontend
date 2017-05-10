@@ -14,21 +14,22 @@ var ProductController = BaseController.extend({
             variants: [],
             input_variant: "",
         });
+
+        this.getListSupplier();
+    },
+
+    getListSupplier: function () {
+        var self = this;
+        this.service.list('/admin/get-list-suppliers', null, null, null)
+            .success(function (data) {
+                self.listSupplier = data.data;
+            })
+            .error(function () {
+
+            });
     },
     cancelAddVariants : function(){
         this.visibilityFormAddVariants = false;
-    },
-    showFromAddVariants: function () {
-
-        // if(this.visibilityFormAddVariants) {
-        //     this.options.push({
-        //         name: "",
-        //         variants: [],
-        //         input_variant: "",
-        //     });
-        // }else {
-        //     this.visibilityFormAddVariants = false;
-        // }
     },
 
     addVariant: function (option) {
@@ -63,8 +64,35 @@ var ProductController = BaseController.extend({
         });
     },
 
-    saveProduct:function(){
+    createProduct:function(){
+        this.description = $('.note-editable').html();
+        console.log("description :" + this.description);
+        console.log(this.supplier);
+        this.statusCreateProduct = true;
+
+        this.isUpdateImages = !((listImages.length != 0 ) && this.statusCreateProduct);
+
         this.createVariants();
+
+        var optionsValid = this.getValidOption();
+        var data = {
+            title: this.title,
+            description: $(".note-editable").html(),
+            images: listImages,
+            supplier: this.supplier,
+            listOption: _.pluck(optionsValid, 'name'),
+            variants: JSON.stringify(this.variants),
+            originalPrice: this.originalPrice,
+            sellingPrice: this.sellingPrice,
+            options: JSON.stringify(optionsValid)
+        };
+        this.service.createProduct(data)
+            .success(function (data) {
+                console.log(data)
+            })
+            .error(function () {
+
+            });
     },
 
     createVariants: function () {
@@ -72,19 +100,22 @@ var ProductController = BaseController.extend({
         self.variants = [];
         var options = self.getValidOption();
         if(options.length == 1){
+            console.log("==1");
             _.each(options[0].variants, function (variant) {
                 self.variants.push({
                     name: variant.name
                 });
             });
         }else {
+            console.log("!=1");
             _.each(options, function (option) {
                 if (!self.isNull(option.name)) {
                     self.getOtherVariantOption(option.name);
                     _.each(option.variants, function (variant) {
                         _.each(self._variants, function (_variant) {
                             self.variants.push({
-                                name: variant.name + " x " + _variant,
+                                name: option.name,
+                                value: variant.name + " x " + _variant,
                             })
                         });
                     });
@@ -128,12 +159,21 @@ var ProductController = BaseController.extend({
             this.options = _.without(this.options, option);
     },
 
-    setValidOption: function (option) {
-        if(_.contains(this.listOption, option.name)){
-            option.name = "";
+    visibilityAddVariants: function () {
+        if(this.visibilityFormAddVariants){
+            this.options.push({
+                name: "",
+                variants : [
+
+                ],
+                input_variant: "",
+            });
         }else {
-            this.listOption.push(option.name);
+            var tmp = _.first(this.options);
+            this.options = [];
+            this.options.push(tmp);
         }
     },
-}, ['BaseService']);
+
+}, ['AdminService']);
 adminApp.controller('ProductController', ProductController);
