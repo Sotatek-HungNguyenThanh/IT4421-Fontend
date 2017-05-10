@@ -164,6 +164,9 @@
             background: #33414e;
             position: fixed !important;
         }
+        .page-container.page-navigation-toggled .page-content-admin {
+            margin-left: 50px;
+        }
     </style>
 </head>
 <body>
