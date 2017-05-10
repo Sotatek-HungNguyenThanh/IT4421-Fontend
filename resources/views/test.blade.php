@@ -11,6 +11,7 @@
     @yield("css")
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/theme-home.css" type="text/css">
     @yield("script")
     <style>
         body {

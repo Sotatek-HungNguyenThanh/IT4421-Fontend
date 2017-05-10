@@ -56,9 +56,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get('/', 'Admin\AuthController@index');
+
+
     Route::get('/home', function (){
         return view('admin.home');
     });
+
 
     Route::get('/logout', 'Admin\AuthController@logout');
 
