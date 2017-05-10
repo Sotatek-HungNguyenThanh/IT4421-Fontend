@@ -6,19 +6,29 @@ var ProductController = BaseController.extend({
         this.listOptionpAproved = [];
         this._variants = [];
         this.variants = [];
+        this.visibilityFormAddVariants = false;
+        this.listOption = [];
+
+        this.options.push({
+            name: "",
+            variants: [],
+            input_variant: "",
+        });
     },
     cancelAddVariants : function(){
         this.visibilityFormAddVariants = false;
     },
     showFromAddVariants: function () {
-        this.visibilityFormAddVariants = true;
-        this.options.push({
-            name: "",
-            variants : [
 
-            ],
-            input_variant: "",
-        });
+        // if(this.visibilityFormAddVariants) {
+        //     this.options.push({
+        //         name: "",
+        //         variants: [],
+        //         input_variant: "",
+        //     });
+        // }else {
+        //     this.visibilityFormAddVariants = false;
+        // }
     },
 
     addVariant: function (option) {
@@ -114,7 +124,16 @@ var ProductController = BaseController.extend({
     },
 
     removeOption: function (option) {
-        this.options = _.without(this.options, option);
+        if(this.visibilityFormAddVariants && this.options.length > 1)
+            this.options = _.without(this.options, option);
+    },
+
+    setValidOption: function (option) {
+        if(_.contains(this.listOption, option.name)){
+            option.name = "";
+        }else {
+            this.listOption.push(option.name);
+        }
     },
 }, ['BaseService']);
 adminApp.controller('ProductController', ProductController);

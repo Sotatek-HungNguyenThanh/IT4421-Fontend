@@ -5,10 +5,18 @@ var BaseController = BaseClass.extend({
     },
 
     onError: function(data) {
-
+        this.loading(false);
     },
     isNull: function (data) {
         return data == ''
             || data == null;
+    },
+
+    loading: function (status) {
+        if(status){
+            $('.area-loading').show();
+        }else {
+            $('.area-loading').hide();
+        }
     }
 });

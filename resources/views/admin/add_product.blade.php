@@ -89,12 +89,21 @@
             max-height: 230px;
             padding-top: 40px;
         }
-        .x-navigation.x-navigation-horizontal {
-            height: 50px;
-            background: #33414e;
-            position: fixed !important;
+        ._header-content{
+            position: fixed;
+            z-index: 2;
+            width: calc(100% - 240px);
+            border-bottom: 1px solid #dfe6e8;
+            background-color: white;
+            top: 51px;
+            left: 230px
         }
-        
+        @media screen and (max-width: 950px) {
+            ._header-content{
+                width: 100%;
+                left: 0
+            }
+        }
     </style>
 @endsection
 
@@ -104,7 +113,7 @@
             <div class="container-content">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
+                        <div class="row _header-content">
                             <div class="col-md-8" style="padding: 15px;font-size: 16px;">
                                 Thêm sản phẩm mới
                             </div>
@@ -121,7 +130,7 @@
                     </div>
                 </div>
                 <div style="padding: 20px; margin-top: 40px;">
-                    <form action="/test" method="post">
+                    <form>
                         {{ csrf_field() }}
                         <dl>
                             <dt>Title</dt>
@@ -187,22 +196,20 @@
                             </dd>
                         </dl>
                         <div class="variant">
-                            <div>
-                                <input type="checkbox" id="visibilityFormAddVariants" ng-model="controller.visibilityFormAddVariants"
-                                       ng-click="controller.showFromAddVariants()"> <label for="visibilityFormAddVariants">This is product has multiple options</label>
-                            </div>
-                            <div class="row" ng-show="controller.visibilityFormAddVariants">
+                            <div class="row">
                                 <div class="col-md-10">
                                     <b style="margin-left: -10px;">Variants</b>
                                     <p>Does this product come in multiple variations like size or color?</p>
                                 </div>
                             </div>
-                            <div class="row" ng-show="controller.visibilityFormAddVariants == true"
+                            <div class="row"
                                  ng-repeat="option in controller.options track by $index">
                                 <div class="col-md-2">
                                     <label ng-show="$index == 0 ">Option name</label><br>
                                     <input type="text" name="option-name" class="form-control"
-                                           placeholder="Add..." required ng-model="option.name">
+                                           placeholder="Add..." required
+                                           ng-model="option.name" ng-blur="controller.setValidOption(option)"
+                                        ng-keyup = "$event.keyCode == 13 ? controller.setValidOption(option) : null"}}>
                                 </div>
                                 <div class="col-md-10">
                                     <label ng-show="$index == 0 ">Option Values</label><br>
@@ -226,6 +233,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="visibilityFormAddVariants" ng-model="controller.visibilityFormAddVariants"
+                                       ng-click="controller.showFromAddVariants()"> <label for="visibilityFormAddVariants">This is product has multiple options</label>
                             </div>
                             <div class="row" style="margin-top: 20px; margin-left: 10px;" ng-show="controller.visibilityFormAddVariants">
                                 <button type="button" class="btn btn-default" style="color: #58ACFA; border-color: #A4A4A4; border-radius: 5px;"

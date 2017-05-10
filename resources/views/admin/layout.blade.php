@@ -27,7 +27,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/AdminFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/AdminService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
@@ -150,6 +152,11 @@
             background-color: #095077;
             box-shadow: 0 2px 3px rgba(9, 80, 119, 0.3);
         }
+        .x-navigation.x-navigation-horizontal {
+            height: 50px;
+            background: #33414e;
+            position: fixed !important;
+        }
     </style>
 </head>
 <body>
@@ -176,6 +183,6 @@
         <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
     </div>
-</div>
-@include('admin.logout')
+    @include('admin.loading')
+    @include('admin.logout')
 </body>

@@ -7,5 +7,14 @@ angular.module('BaseFilter', [])
             return Date.parse(moment(date));
         };
     })
+    .filter('range', function(){
+        return function(n) {
+            var res = [];
+            for (var i = 0; i < n; i++) {
+                res.push(i);
+            }
+            return res;
+        };
+    })
 
 ;

@@ -16,8 +16,7 @@ class SupplierController extends Controller
 
     public function showManageSuppliersPage()
     {
-        $listSuppliers = $this->getListSuppliers();
-        return view('admin.manage_suppliers')->with('listSuppliers', $listSuppliers);
+        return view('admin.manage_suppliers');
     }
 
     public function showCreateSupplierPage()
@@ -61,8 +60,9 @@ class SupplierController extends Controller
         }
     }
 
-    public function getListSuppliers(){
+    public function getListSuppliers(Request $request){
         try {
+            $params = $request->all();
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
@@ -70,9 +70,19 @@ class SupplierController extends Controller
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/suppliers', $headers, null, 'GET');
-            Log::info(json_encode($response));
-            return $response->suppliers;
+            if(isset($params["key_word"]) && $params["key_word"] != ""){
+                $data = [
+                    "key_word" => $params["key_word"],
+                ];
+            }else{
+                $data = [
+                    "page_no" => $params["page_no"],
+                    "per_page" => $params["per_page"],
+                ];
+            }
+
+            $response = Units::send('admins/suppliers', $headers, $data, 'GET');
+            return array("total_suppliers" => $response->total_suppliers, "data" => $response->suppliers);
         }catch (\Exception $e){
             Log::error($e->getMessage());
             return null;
@@ -117,7 +127,6 @@ class SupplierController extends Controller
             "phone_number" => $params['phone_number'],
         ];
         try {
-            $supplierID = $params['supplierID'];
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
@@ -145,6 +154,7 @@ class SupplierController extends Controller
             ];
             $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'DELETE');
             return array('status' => $response->success, 'message' => $response->message);
+
         }catch (\Exception $e){
             Log::error($e->getMessage());
             return null;
