@@ -37,6 +37,14 @@ Route::get('/feedback', 'Customer\AuthController@feedback');
 
 Route::post('/feedback', 'Customer\AuthController@addFeedback');
 
+Route::get('/product', function (){
+    return view('app.product_details');
+});
+
+Route::get('/list-product', function (){
+    return view('app.list_product');
+});
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/account', 'Customer\HomeController@index');
@@ -61,7 +69,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get('/home', function (){
         return view('admin.home');
     });
-
 
     Route::get('/logout', 'Admin\AuthController@logout');
 
