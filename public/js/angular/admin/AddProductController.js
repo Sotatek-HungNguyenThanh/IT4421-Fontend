@@ -1,4 +1,4 @@
-var ProductController = BaseController.extend({
+var AddProductController = BaseController.extend({
 
     initialize : function($super, service) {
         $super(service);
@@ -66,8 +66,6 @@ var ProductController = BaseController.extend({
 
     createProduct:function(){
         this.description = $('.note-editable').html();
-        console.log("description :" + this.description);
-        console.log(this.supplier);
         this.statusCreateProduct = true;
 
         this.isUpdateImages = !((listImages.length != 0 ) && this.statusCreateProduct);
@@ -82,8 +80,8 @@ var ProductController = BaseController.extend({
             supplier: this.supplier,
             listOption: _.pluck(optionsValid, 'name'),
             variants: JSON.stringify(this.variants),
-            originalPrice: this.originalPrice,
-            sellingPrice: this.sellingPrice,
+            originalPrice: this.originalPrice.replace(/,/g, ""),
+            sellingPrice: this.sellingPrice.replace(/,/g, ""),
             options: JSON.stringify(optionsValid)
         };
         this.service.createProduct(data)
@@ -100,23 +98,28 @@ var ProductController = BaseController.extend({
         self.variants = [];
         var options = self.getValidOption();
         if(options.length == 1){
-            console.log("==1");
             _.each(options[0].variants, function (variant) {
-                self.variants.push({
-                    name: variant.name
-                });
+                self.variants.push([{
+                    name: options[0].name,
+                    value: variant.name,
+                }]);
             });
         }else {
-            console.log("!=1");
             _.each(options, function (option) {
                 if (!self.isNull(option.name)) {
                     self.getOtherVariantOption(option.name);
                     _.each(option.variants, function (variant) {
                         _.each(self._variants, function (_variant) {
-                            self.variants.push({
-                                name: option.name,
-                                value: variant.name + " x " + _variant,
-                            })
+                            self.variants.push([
+                                {
+                                    name: option.name,
+                                    value: variant.name,
+                                },
+                                {
+                                    name: _variant.name_option,
+                                    value: _variant.name_variant,
+                                }
+                            ])
                         });
                     });
                 }
@@ -141,7 +144,10 @@ var ProductController = BaseController.extend({
             if(!_.find(self.listOptionpAproved, function(optionAproved){
                 return optionAproved.name == otherOption.name;
             })){
-                self._variants = self._variants.concat(_.pluck(otherOption.variants, 'name'));
+                var _variants = _.pluck(otherOption.variants, 'name');
+                _.each(_variants, function (variant) {
+                    self._variants.push({name_option: otherOption.name, name_variant: variant})
+                });
             }
         });
     },
@@ -176,4 +182,4 @@ var ProductController = BaseController.extend({
     },
 
 }, ['AdminService']);
-adminApp.controller('ProductController', ProductController);
+adminApp.controller('AddProductController', AddProductController);

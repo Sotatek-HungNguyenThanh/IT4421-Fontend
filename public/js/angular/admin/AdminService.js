@@ -93,6 +93,30 @@ angular.module('AdminService', [])
                     headers: {'Content-Type': undefined},
                     data: formData,
                 });
+            },
+
+            removeProduct: function (productID) {
+                var data = {
+                    "productID" : productID
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/admin/delete-product',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            getProductByID: function (id) {
+                var data = {
+                    "productID" : id
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/admin/get-product',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
             }
         }
     });

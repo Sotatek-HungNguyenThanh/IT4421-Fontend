@@ -2,7 +2,7 @@
 
 @section('script')
     <script type="text/javascript" src="/js/plugins/summernote/summernote.js"></script>
-    <script type="text/javascript" src="{{url('js/angular/admin/AddProductController.js')}}"></script>
+    <script type="text/javascript" src="{{url('js/angular/admin/ProductDetailsController.js')}}"></script>
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/add-product.css"/>
     <script>
         $('#summernote').summernote({
@@ -110,7 +110,7 @@
 @endsection
 
 @section('page_content')
-    <div class="row" ng-controller="AddProductController as controller">
+    <div class="row" ng-controller="ProductDetailsController as controller">
         <div class="col-md-12">
             <div class="container-content">
                 <div class="container-header">
@@ -122,7 +122,7 @@
                             <div class="col-md-4">
                                 <div class="block" style="margin-bottom: 0px;">
                                     <a href="/admin/manage-products" style="color: black; border-color: #A4A4A4; border-radius: 5px;margin-right: 12px;border: 1px solid #A4A4A4;padding: 11px 46px; text-decoration: none">
-                                       Cancel
+                                        Cancel
                                     </a>
                                     <button type="button" class="btn btn-twitter" style="color: white; border-color: #A4A4A4; border-radius: 5px;"
                                             ng-click="controller.createProduct()">Create product</button>

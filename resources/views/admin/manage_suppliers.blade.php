@@ -80,7 +80,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td>@{{ $index + 1}}</td>
+                            <td>@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ "NCC" + row.id }}</td>
                             <td>@{{ row.address }}</td>

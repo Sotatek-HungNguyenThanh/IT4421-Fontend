@@ -45,10 +45,50 @@ class ProductController extends Controller
         }
     }
 
-    public function getListSupplier(){
+    public function getListProduct(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->productService->getListSupplier();
+            $result = $this->productService->getListProduct($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
+
+    public function deleteProduct(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->deleteProduct($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
+
+    public function getProduct(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->getProduct($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
