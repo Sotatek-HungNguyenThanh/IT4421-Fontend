@@ -107,16 +107,45 @@ angular.module('AdminService', [])
                 });
             },
 
-            getProductByID: function (id) {
+            getProduct: function (url) {
+                return $http({
+                    method: 'POST',
+                    url: url,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
+            },
+
+            removeVariant: function (variant) {
                 var data = {
-                    "productID" : id
+                    "variant" : variant,
                 };
                 return $http({
                     method: 'POST',
-                    url: '/admin/get-product',
+                    url: "/admin/remove-variant",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(data)
                 });
-            }
+            },
+
+            updateProduct: function (data) {
+                var formData = new FormData();
+                formData.append('id', data.id);
+                formData.append('title', data.title);
+                formData.append('description', data.description);
+                _.each(data.images, function (images) {
+                    formData.append('images[]',images.file);
+                });
+                formData.append('images_old',data.images_old);
+                formData.append('supplier', data.supplier);
+                formData.append('listOption', data.listOption);
+                formData.append('variants', data.variants);
+
+                return $http({
+                    method: 'POST',
+                    url: '/admin/update-product',
+                    headers: {'Content-Type': undefined},
+                    data: formData,
+                });
+            },
         }
     });

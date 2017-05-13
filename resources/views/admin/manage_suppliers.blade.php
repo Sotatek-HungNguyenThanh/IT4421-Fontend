@@ -45,7 +45,7 @@
                     <div class="col-md-12">
                         <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
                             <div class="col-md-10" style="padding: 15px;font-size: 16px;">
-                                Quản lý nhà cung cấp
+                                Danh sách nhà cung cấp
                             </div>
                             <div class="col-md-2">
                                 <div class="block" style="margin-bottom: 0px;">

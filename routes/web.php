@@ -90,11 +90,16 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-product', 'Admin\ProductController@deleteProduct');
 
-    Route::post('/get-product', 'Admin\ProductController@getProduct');
-
-    Route::get('product/product-details', function (){
+    Route::get('product/product-details/{id}', function (){
         return view('admin.product_details');
     });
+
+
+    Route::post('product/product-details/{id}', 'Admin\ProductController@getProduct');
+
+    Route::post('remove-variant', 'Admin\ProductController@removeVariant');
+
+    Route::post('update-product', 'Admin\ProductController@updateProduct');
 
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');

@@ -85,10 +85,50 @@ class ProductController extends Controller
         }
     }
 
-    public function getProduct(Request $request){
+    public function getProduct(Request $request, $id){
         DB::beginTransaction();
         try{
-            $result = $this->productService->getProduct($request->all());
+            $result = $this->productService->getProduct($request->all(), $id);
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
+
+    public function removeVariant(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->removeVariant($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
+
+    public function updateProduct(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->updateProduct($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,

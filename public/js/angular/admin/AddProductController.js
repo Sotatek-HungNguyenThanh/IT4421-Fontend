@@ -86,7 +86,9 @@ var AddProductController = BaseController.extend({
         };
         this.service.createProduct(data)
             .success(function (data) {
-                console.log(data)
+                var response = JSON.parse(data.data);
+                console.log(response);
+                window.location.href = "/admin/product/product-details/" + response.product.id;
             })
             .error(function () {
 

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Exception;
 
 class ProductService
 {
@@ -35,7 +36,7 @@ class ProductService
 
             return json_encode($response);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::error($e->getMessage());
             return null;
         }
@@ -56,8 +57,9 @@ class ProductService
 
             foreach ($images as $key => $image) {
                 if (is_file($image)) {
-                    $fileName[$key] = url('/storage/' . time() . '.' . $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension());
-                    Storage::put($fileName[$key], File::get($image));
+                    $urlFile =  time() . '.' . $image->getClientOriginalName();
+                    $fileName[$key] = url('storage/' . $urlFile);
+                    Storage::disk('public')->put($urlFile, File::get($image));
                 }
             }
         }
@@ -108,6 +110,7 @@ class ProductService
         }
 
         $response = Units::send('admins/products', $headers, $data, 'GET');
+        Log::info(json_encode($response));
         return array("total" => $response->total_products, "data" => $response->products);
     }
 
@@ -124,15 +127,14 @@ class ProductService
             $response = Units::send('admins/products/' . $productID, $headers, null, 'DELETE');
             return array('status' => $response->success, 'message' => $response->message);
 
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
         }
     }
 
-    public function getProduct($params){
+    public function getProduct($params, $productID){
         try {
-            $productID = $params['productID'];
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
@@ -141,10 +143,94 @@ class ProductService
                 'Tokenkey' => $token
             ];
             $response = Units::send('admins/products/' . $productID, $headers, null, 'GET');
+            Log::info(json_encode($response));
             return json_encode($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
         }
+    }
+
+    public function removeVariant($params){
+        try {
+            $variant = $params["variant"];
+            $token = $this->guard()->user()->token;
+            $email = $this->guard()->user()->email;
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Authorization' => $email,
+                'Tokenkey' => $token
+            ];
+            $response = Units::send('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
+            Log::info(json_encode($response));
+            return json_encode($response);
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
+
+    public function updateProduct($params){
+        try {
+            $token = $this->guard()->user()->token;
+            $email = $this->guard()->user()->email;
+            $headers = [
+                'Content-Type' => 'application/json',
+                'Authorization' => $email,
+                'Tokenkey' => $token
+            ];
+            $data = $this->formatDataUpdateProduct($params);
+
+            $response = Units::sendWithDataJson('admins/products/' . $data["id"], $headers, $data, 'PATCH');
+
+            return json_encode($response);
+
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
+
+    public function formatDataUpdateProduct($params)
+    {
+        $fileName = [];
+        $id = $params["id"];
+        $title = $params["title"];
+        $description = $params["description"];
+        $supplier = json_decode($params["supplier"]);
+        $listOption = $params["listOption"];
+        $variants = json_decode($params["variants"], true);
+        if (isset($params["images"])) {
+            $images = $params["images"];
+
+            foreach ($images as $key => $image) {
+                if (is_file($image)) {
+                    $urlFile =  time() . '.' . $image->getClientOriginalName();
+                    $fileName[$key] = url('storage/' . $urlFile);
+                    Storage::disk('public')->put($urlFile, File::get($image));
+                }
+            }
+        }
+        $variants_attributes = [];
+        foreach ($variants as $variant) {
+            $variants_attributes[] = [
+                "id" => $variant["id"],
+                "image_url" => url('/images/pictures_null.png'),
+                "inventory" => $variant["inventory"],
+                "original_price" => $variant["original_price"],
+                "selling_price" => $variant["selling_price"]
+            ];
+        }
+        $imageOld = $params["images_old"] ? explode("," , $params["images_old"] ): 0;
+        $totalImage = array_merge($imageOld, $fileName);
+        return $data = [
+            "id" => $id,
+            "title" => $title,
+            "description" => $description,
+            "images" => $totalImage ? implode("," , $totalImage) : "",
+            "supplier_id" => $supplier->id,
+            "options" => $listOption,
+            "variants_attributes" => $variants_attributes
+        ];
     }
 }

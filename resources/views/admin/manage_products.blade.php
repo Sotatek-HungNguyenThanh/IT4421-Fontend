@@ -45,7 +45,7 @@
                     <div class="col-md-12">
                         <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
                             <div class="col-md-10" style="padding: 15px;font-size: 16px;">
-                                Quản lý nhà cung cấp
+                               Danh sách sản phẩm
                             </div>
                             <div class="col-md-2">
                                 <div class="block" style="margin-bottom: 0px;">
@@ -84,9 +84,8 @@
                             <td>@{{ row.supplier.name }}</td>
                             <td>@{{ row.product.status | is_active }}</td>
                             <td>
-                                <a href="/admin/product/product-details">
-                                <button type="button" class="btn btn-warning"
-                                        ng-click="controller.showProductDetails(row.product.id)">Xem chi tiết</button>
+                                <a href="/admin/product/product-details/@{{ row.product.id }}">
+                                <button type="button" class="btn btn-warning">Xem chi tiết</button>
                                 </a>
                                 <button type="button" ng-show="controller.isActive(row.product.status)" class="btn btn-danger" ng-click="controller.removeProduct(row.product.id)">Block</button>
                                 <button type="button" ng-show="controller.isDestroy(row.product.status)" class="btn btn-danger" ng-click="controller.removeProduct(row.product.id)">Active</button>

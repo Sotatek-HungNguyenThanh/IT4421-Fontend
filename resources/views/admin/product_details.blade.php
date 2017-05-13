@@ -117,7 +117,7 @@
                     <div class="col-md-12">
                         <div class="row _header-content">
                             <div class="col-md-8" style="padding: 15px;font-size: 16px;">
-                                Thêm sản phẩm mới
+                                Thông tin sản phẩm
                             </div>
                             <div class="col-md-4">
                                 <div class="block" style="margin-bottom: 0px;">
@@ -125,7 +125,7 @@
                                         Cancel
                                     </a>
                                     <button type="button" class="btn btn-twitter" style="color: white; border-color: #A4A4A4; border-radius: 5px;"
-                                            ng-click="controller.createProduct()">Create product</button>
+                                            ng-click="controller.updateProduct()">Cập nhật sản phẩm</button>
                                 </div>
                             </div>
                         </div>
@@ -156,10 +156,8 @@
                             <span class="error" ng-show="controller.isNull(controller.supplier) && controller.statusCreateProduct">Please choose supplier</span>
                             <dd>
                                 <select type="text"
-                                        class="form-control" name="supplier"
-                                        ng-model="controller.supplier" required>
-                                    <option value="" selected="selected" disabled>Choose Supplier</option>
-                                    <option value="@{{ supplier}}"
+                                        class="form-control" ng-model="controller.supplier">
+                                    <option value="@{{ supplier }}"
                                             ng-repeat="supplier in controller.listSupplier track by $index">
                                         @{{ supplier.name }}
                                     </option>
@@ -175,80 +173,67 @@
                                 <div class="btn-choose-file" id="btn-choose-file" ng-click="controller.uploadImage()">
                                     <span>Upload image</span>
                                 </div>
-                                <div id="list_images" ng-model="controller.image" style="text-align: left">
-                                    <i class="fa fa-picture-o" aria-hidden="true" id="image_default" style="font-size: 140px; height: 185px"></i>
+                                <div id="list_images" ng-model="controller.image" style="text-align: left;display: inline-flex;">
+                                    {{--<i class="fa fa-picture-o" aria-hidden="true" id="image_default" style="font-size: 140px; height: 185px"></i>--}}
+                                    <div ng-repeat="image in controller.listImages" style="display: block;">
+                                        <div style='position: relative; display: inline-block;margin-right: 10px'>
+                                            <img style='position: absolute; top: -13px; right: -13px;' height='31'
+                                                 src='/images/close_red.png' ng-click="controller.removeImage(image)"/>
+                                            <img class='item-image' src="@{{ image }}" height="100"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </dd>
 
                             <span class="error" ng-show="controller.isUpdateImages">Please upload images</span>
                         </dl>
-                        <dl>
-                            <dd>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Original Price</label><br>
-                                        <input type="text" input-number name="original-price"
-                                               class="form-control" placeholder="Original Price"
-                                               ng-model="controller.originalPrice" required>
-                                        <span class="error" ng-show="controller.isNull(controller.originalPrice) && controller.statusCreateProduct">Please fill out this field</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Selling Price</label><br>
-                                        <input type="text" input-number name="selling-price"
-                                               class="form-control" placeholder="Selling Price"
-                                               ng-model="controller.sellingPrice" required>
-                                        <span class="error" ng-show="controller.isNull(controller.sellingPrice) && controller.statusCreateProduct">Please fill out this field</span>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
                         <div class="variant">
                             <div class="row">
                                 <div class="col-md-10">
                                     <b style="margin-left: -10px;">Variants</b>
-                                    <p>Does this product come in multiple variations like size or color?</p>
                                 </div>
                             </div>
-                            <div class="row"
-                                 ng-repeat="option in controller.options track by $index">
-                                <div class="col-md-2">
-                                    <label ng-show="$index == 0 ">Option name</label><br>
-                                    <input type="text" name="option-name" class="form-control"
-                                           placeholder="Add..." required
-                                           ng-model="option.name">
-                                    <span class="error" ng-show="$index == 0 && controller.isNull(option.name) &&controller.statusCreateProduct">Please fill out this field</span>
-                                </div>
-                                <div class="col-md-10">
-                                    <label ng-show="$index == 0 ">Option Values</label><br>
-                                    <div class="list-value-option">
-                                        <div style="display: inline-flex">
-                                            <div class="value-option">
-                                                <div class="item-option" ng-repeat="variant in option.variants track by $index">
-                                                    @{{ variant.name }}
-                                                    <i class="fa fa-times" aria-hidden="true"
-                                                       style="cursor: pointer" ng-click="controller.removeVariant(option, variant)"></i>
-                                                </div>
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Images</th>
+                                        <th>Variant</th>
+                                        <th>Original Price</th>
+                                        <th>Selling Price</th>
+                                        <th>Inventory</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-repeat="variant in controller.variants">
+                                    <tr>
+                                        <td>
+                                            <img height="20px" src="@{{ variant.image_url }}"/>
+                                        </td>
+                                        <td>
+                                            <div ng-repeat="properties in variant.properties">
+                                                <span style="font-size: 13px;font-weight: 700;">@{{ properties.name }} : @{{properties.value }}</span>
+                                                <span ng-if="!$last">x</span>
                                             </div>
-                                            <input type="text" name="option-value"
-                                                   ng-model="option.input_variant"
-                                                   ng-keyup="$event.keyCode == 13 ? controller.addVariant(option) : null"
-                                                   placeholder="Add..." required
-                                                   ng-disabled="controller.isNull(option.name)">
-                                            <i class="fa fa-trash-o" aria-hidden="true"
-                                               ng-click="controller.removeOption(option)"
-                                               style="position: absolute;left: 98%;font-size: 30px;margin-top: 4px;"></i>
-                                        </div>
-                                    </div>
-                                    <span class="error" ng-show="$index == 0 && (option.variants.length == 0) && (controller.statusCreateProduct)">Please fill out this field</span>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 20px; margin-left: 10px;" ng-show="controller.visibilityFormAddVariants">
-                                <button type="button" class="btn btn-default" style="color: #58ACFA; border-color: #A4A4A4; border-radius: 5px;"
-                                        ng-click="controller.addRowOption()">Add another Option</button>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="visibilityFormAddVariants" ng-model="controller.visibilityFormAddVariants"
-                                       ng-click="controller.visibilityAddVariants()"> <label for="visibilityFormAddVariants">This is product has multiple options</label>
+                                        </td>
+                                        <td><input type="text" input-number ng-model="variant.original_price"></td>
+                                        <td><input type="text" input-number ng-model="variant.selling_price"></td>
+                                        <td><input type="text" input-number ng-model="variant.inventory"></td>
+                                        <td>@{{ variant.status }}</td>
+                                        <td>
+                                            <div >
+                                                <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"
+                                                   ng-click="controller.removeVariant(variant)"
+                                                    ng-show="controller.isDestroy(variant.status)"></i>
+                                                <i class="fa fa-power-off" aria-hidden="true" style="font-size: 20px;"
+                                                   ng-show="controller.isActive(variant.status)"
+                                                   ng-click="controller.removeVariant(variant)"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </form>
