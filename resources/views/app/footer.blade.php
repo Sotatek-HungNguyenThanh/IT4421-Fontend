@@ -1,57 +1,30 @@
-<div class="footer">
-    <div class="wrap">
-        <div class="section group">
-            <div class="col_1_of_4 span_1_of_4">
-                <h4>Information</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Customer Service</a></li>
-                    <li><a href="#">Advanced Search</a></li>
-                    <li><a href="delivery.html">Orders and Returns</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_4 span_1_of_4">
-                <h4>Why buy from us</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Customer Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="contact.html">Site Map</a></li>
-                    <li><a href="#">Search Terms</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_4 span_1_of_4">
-                <h4>My account</h4>
-                <ul>
-                    <li><a href="contact.html">Sign In</a></li>
-                    <li><a href="index.html">View Cart</a></li>
-                    <li><a href="#">My Wishlist</a></li>
-                    <li><a href="#">Track My Order</a></li>
-                    <li><a href="contact.html">Help</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_4 span_1_of_4">
-                <h4>Contact</h4>
-                <ul>
-                    <li><span>+91-123-456789</span></li>
-                    <li><span>+00-123-000000</span></li>
-                </ul>
-                <div class="social-icons">
-                    <h4>Follow Us</h4>
-                    <ul>
-                        <li><a href="#" target="_blank"><img src="{{url('images/facebook.png')}}" alt="" /></a></li>
-                        <li><a href="#" target="_blank"><img src="{{url('images/twitter.png')}}" alt="" /></a></li>
-                        <li><a href="#" target="_blank"><img src="{{url('images/skype.png')}}" alt="" /> </a></li>
-                        <li><a href="#" target="_blank"> <img src="{{url('images/dribbble.png')}}" alt="" /></a></li>
-                        <li><a href="#" target="_blank"> <img src="{{url('images/linkedin.png')}}" alt="" /></a></li>
-                        <div class="clear"></div>
-                    </ul>
-                </div>
+<div>
+    <footer>
+        <div class="hidden-xs footer__menu text-center">
+            <ul class="footer__menu--list">
+
+                <li class="footer__menu--item"><a href="/" class="footer__menu--link">Trang chủ</a></li>
+
+                <li class="footer__menu--item"><a href="/dien-thoai" class="footer__menu--link">Điện thoại</a></li>
+
+                <li class="footer__menu--item"><a href="/may-tinh-bang" class="footer__menu--link">Máy tính bảng</a></li>
+
+                <li class="footer__menu--item"><a href="/laptop" class="footer__menu--link">Laptop</a></li>
+
+                <li class="footer__menu--item"><a href="/may-cu" class="footer__menu--link">Máy cũ</a></li>
+
+                <li class="footer__menu--item"><a href="/phu-kien" class="footer__menu--link">Phụ kiện</a></li>
+
+                <li class="footer__menu--item"><a href="/khuyen-mai" class="footer__menu--link">Khuyến mãi</a></li>
+
+                <li class="footer__menu--item"><a href="/sac-du-phong" class="footer__menu--link">Sạc dự phòng</a></li>
+
+            </ul>
+        </div>
+        <div class="copyright">
+            <div class="container text-center">
+                © Bản quyền thuộc về <a href="javascript:;" rel="nofollow">TT Team</a> - Cung cấp bởi <a href="https://www.bizweb.vn/?utm_source=site-khach-hang&amp;utm_campaign=referral_bizweb&amp;utm_medium=footer&amp;utm_content=cung-cap-boi-bizweb">Bizweb</a>
             </div>
         </div>
-    </div>
-    <div class="copy_right">
-        <p>Company Name © All rights Reseverd | Design by  <a href="http://w3layouts.com">W3Layouts</a> </p>
-    </div>
+    </footer>
 </div>
