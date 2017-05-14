@@ -153,7 +153,8 @@ class SupplierController extends Controller
                 'Tokenkey' => $token
             ];
             $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'DELETE');
-            return json_encode($response);
+            return array('status' => $response->success, 'message' => $response->message);
+
         }catch (\Exception $e){
             Log::error($e->getMessage());
             return null;

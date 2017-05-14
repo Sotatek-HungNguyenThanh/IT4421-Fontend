@@ -9,7 +9,8 @@ var BaseController = BaseClass.extend({
     },
     isNull: function (data) {
         return data == ''
-            || data == null;
+            || data == null
+            || (typeof data == undefined);
     },
 
     loading: function (status) {

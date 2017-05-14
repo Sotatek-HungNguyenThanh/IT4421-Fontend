@@ -57,6 +57,6 @@ angular.module('BaseService', [])
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(data)
                 });
-            }
+            },
         }
     });
