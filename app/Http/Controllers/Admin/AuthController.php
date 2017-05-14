@@ -33,11 +33,10 @@ class AuthController extends Controller
         $validator = $this->validatorLogin($params);
 
         if ($validator->fails()) {
-            return redirect('login')
+            return redirect('/admin/login')
                 ->withErrors($validator)
                 ->withInput();
         }
-
         $data = [
             "email" => $params['email'],
             "password" => $params['password']
@@ -54,7 +53,7 @@ class AuthController extends Controller
             $admin->password = bcrypt($params['password']);
             $admin->save();
             $this->guard()->login($admin);
-            return redirect()->intended($this->redirectPath());
+            return redirect($this->redirectTo);
         }catch (\Exception $e){
             Log::error($e->getMessage());
             $messageError = json_decode($e->getResponse()->getBody(true));

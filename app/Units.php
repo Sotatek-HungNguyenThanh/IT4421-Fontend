@@ -21,4 +21,13 @@ class Units
         ]);
         return json_decode($response->getBody());
     }
+
+    public static function sendWithDataJson($path, $headers, $params = null, $method = 'POST'){
+        $client = new Client(['base_uri' => Consts::HOST]);
+        $response = $client->request($method, $path, [
+            'headers' => $headers,
+            'json' => $params
+        ]);
+        return json_decode($response->getBody());
+    }
 }

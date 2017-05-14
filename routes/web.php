@@ -63,8 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
-    Route::get('/', 'Admin\AuthController@index');
 
+    Route::get('/', 'Admin\AuthController@index');
 
     Route::get('/home', function (){
         return view('admin.home');
@@ -88,7 +88,27 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-supplier', 'Admin\SupplierController@deleteSupplier');
 
+    Route::get('/add-product', 'Admin\ProductController@showCreateProductPage');
+
     Route::post('/get-list-suppliers', 'Admin\SupplierController@getListSuppliers');
+
+    Route::post('/create-product', 'Admin\ProductController@createProduct');
+
+    Route::post('/get-list-product', 'Admin\ProductController@getListProduct');
+
+    Route::post('/delete-product', 'Admin\ProductController@deleteProduct');
+
+    Route::get('product/product-details/{id}', function (){
+        return view('admin.product_details');
+    });
+
+
+    Route::post('product/product-details/{id}', 'Admin\ProductController@getProduct');
+
+    Route::post('remove-variant', 'Admin\ProductController@removeVariant');
+
+    Route::post('update-product', 'Admin\ProductController@updateProduct');
+
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
