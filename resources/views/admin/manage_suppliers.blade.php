@@ -32,7 +32,68 @@
             border-radius: 5px;
             height: 460px;
         }
-
+        .table-supplier{
+            width: 1015px;
+            max-width: 1015px;
+            overflow: hidden;
+        }
+        .table-supplier th, 
+        .table-supplier tbody{
+            text-align: center;
+        }
+        .table-supplier th{
+            background: #00b0f0;
+            font-size: 18px;
+            color: white;
+        }
+        .table-supplier td{
+            height: 40px;
+            text-align: center;
+            background-color: #fff;
+            border: 0px solid #c4c4c4;
+            color: black;
+            font-size: 16px;
+        }
+        .first-column {
+            width: 70px;
+            max-width: 70px;
+            overflow: hidden;
+        }
+        .second-column {
+            width: 150px;
+            max-width: 150px;
+            overflow: hidden;
+        }
+        .thirth-column {
+            width: 100px;
+            max-width: 100px;
+            overflow: hidden;
+        }
+        .fourth-column {
+            width: 150px;
+            max-width: 150px;
+            overflow: hidden;
+        }
+        .fifth-column {
+            width: 160px;
+            max-width: 160px;
+            overflow: hidden;
+        }
+        .six-column {
+            width: 140px;
+            max-width: 140px;
+            overflow: hidden;
+        }
+        .seventh-column{
+            width: 155px;
+            max-width: 155px;
+            overflow: hidden;
+        }
+        .eight-column {
+            width: 90px;
+            max-width: 90px;
+            overflow: hidden;
+        }
         .pagination a:hover:not(.active) {background-color: #ddd;}
     </style>
 @endsection
@@ -65,45 +126,45 @@
                                    ng-keypress="($event.which === 13)?controller.search():0"placeholder="">
                         </label>
                     </div>
-                    <table class="table">
+                    <table class="table-supplier">
                         <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Name Supplier</th>
-                            <th>Code Supplier</th>
-                            <th>Address</th>
-                            <th>Phone Number</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="first-column">No.</th>
+                            <th class="second-column">Name Supplier</th>
+                            <th class="third-column">Code Supplier</th>
+                            <th class="fourth-column">Address</th>
+                            <th class="fifth-column">Phone Number</th>
+                            <th class="sixth-column">Description</th>
+                            <th class="seventh-column">Status</th>
+                            <th class="eighth-column">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td>@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
-                            <td>@{{ row.name }}</td>
-                            <td>@{{ "NCC" + row.id }}</td>
-                            <td>@{{ row.address }}</td>
-                            <td>@{{ row.phone_number }}</td>
-                            <td>@{{ row.description }}</td>
-                            <td>@{{ row.status | is_active}}</td>
+                            <td class="first-column">@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
+                            <td class="second-column">@{{ row.name }}</td>
+                            <td class="third-column">@{{ "NCC" + row.id }}</td>
+                            <td class="fourth-column">@{{ row.address }}</td>
+                            <td class="fifht-column">@{{ row.phone_number }}</td>
+                            <td class="sixth-column">@{{ row.description }}</td>
+                            <td class="seventh-column">@{{ row.status | is_active}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning"
+                                <button type="button" class="button-supplier"
                                         data-toggle="modal" data-target="#update-supplier"
-                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)">Update</button>
-                                <button type="button" ng-show="controller.isActive(row.status)" class="btn btn-danger" ng-click="controller.removeSupplier(row.id)">Block</button>
-                                <button type="button" ng-show="controller.isDestroy(row.status)" class="btn btn-danger" ng-click="controller.removeSupplier(row.id)">Active</button>
+                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-refresh" aria-hidden></i></button>
+                                <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-unlock" aria-hidden></i></button>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
-                            <td><div style="min-height: 34px"></div></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="first-column"><div style="min-height: 34px"></div></td>
+                            <td class="second-column"></td>
+                            <td class="third-column"></td>
+                            <td class="fourth-column"></td>
+                            <td class="fifth-column"></td>
+                            <td class="sixth-column"></td>
+                            <td class="seventh-column"></td>
+                            <td class="eight-column"></td>
                         </tr>
                         </tbody>
                     </table>
