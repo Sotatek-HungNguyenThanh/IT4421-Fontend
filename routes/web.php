@@ -114,15 +114,3 @@ Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
 Route::post('admin/login', 'Admin\AuthController@login');
 
-Route::get('model', function (){
-    return view('admin.model');
-});
-
-Route::get('test', function (){
-    return view('test');
-});
-
-Route::get('test2', function (){
-    return view('test2');
-});
-

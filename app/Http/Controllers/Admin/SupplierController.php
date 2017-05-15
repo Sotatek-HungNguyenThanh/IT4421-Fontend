@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Facades\API;
+use App\Http\Services\SupplierService;
 use App\Units;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,11 @@ use Validator;
 
 class SupplierController extends Controller
 {
+    protected $supplierService;
+    public function __construct()
+    {
+        $this->supplierService = new SupplierService();
+    }
     protected $guard = 'admin';
 
     public function showManageSuppliersPage()
@@ -36,26 +42,16 @@ class SupplierController extends Controller
             return array('status' => 'false', 'message' => $validator->errors());
         }
 
-        $data = [
-            "name" => $params['name'],
-            "description" => $params['description'],
-            "address" => $params['address'],
-            "phone_number" => $params['phone_number'],
-        ];
-
         try {
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            $response = Units::send('admins/suppliers', $headers, $data);
+            $response = $this->supplierService->createSupplier($params);
+
             return array('status' => $response->success, 'message' => $response->message);
+
         }catch (\Exception $e){
             Log::error($e->getMessage());
+
             $messageError = json_decode($e->getResponse()->getBody(true));
+
             return array('status' => 'false', 'message' => $messageError);
         }
     }
@@ -63,25 +59,7 @@ class SupplierController extends Controller
     public function getListSuppliers(Request $request){
         try {
             $params = $request->all();
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            if(isset($params["key_word"]) && $params["key_word"] != ""){
-                $data = [
-                    "key_word" => $params["key_word"],
-                ];
-            }else{
-                $data = [
-                    "page_no" => $params["page_no"],
-                    "per_page" => $params["per_page"],
-                ];
-            }
-
-            $response = Units::send('admins/suppliers', $headers, $data, 'GET');
+            $response = $this->supplierService->getListSuppliers($params);
             return array("total_suppliers" => $response->total_suppliers, "data" => $response->suppliers);
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -91,15 +69,10 @@ class SupplierController extends Controller
 
     public function getSupplier(Request $request){
         try {
-            $supplierID = $request->supplierID;
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'GET');
+            $params = $request->all();
+
+            $response = $this->supplierService->getSupplier($params);
+
             return json_encode($response->supplier);
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -120,21 +93,9 @@ class SupplierController extends Controller
             return array('status' => 'false', 'message' => $validator->errors());
         }
 
-        $data = [
-            "name" => $params['name'],
-            "description" => $params['description'],
-            "address" => $params['address'],
-            "phone_number" => $params['phone_number'],
-        ];
+
         try {
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            $response = Units::send('admins/suppliers/' . $params['supplierID'], $headers, $data, 'PATCH');
+            $response = $this->supplierService->updateSupplier($params);
             return array('status' => $response->success, 'message' => $response->message);
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -144,15 +105,10 @@ class SupplierController extends Controller
 
     public function deleteSupplier(Request $request){
         try {
-            $supplierID = $request->supplierID;
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'DELETE');
+            $params = $request->all();
+
+            $response = $this->supplierService->deleteSupplier($params);
+
             return array('status' => $response->success, 'message' => $response->message);
 
         }catch (\Exception $e){
