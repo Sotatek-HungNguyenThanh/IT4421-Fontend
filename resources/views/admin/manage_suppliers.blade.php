@@ -5,35 +5,12 @@
     Manage Suppliers
 @endsection
 
+@section('css')
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-suppliers.css"/>
+@endsection
+
 @section('script')
 	<script type="text/javascript" src="/js/angular/admin/SupplierController.js"></script>
-    <style>
-        .pagination {
-            display: inline-block;
-        }
-
-        .pagination a {
-            color: black;
-            float: right;
-            padding: 4px 10px;
-            text-decoration: none;
-            transition: background-color .3s;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-        }
-
-        .pagination a.active {
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-        }
-        .modal-content{
-            border-width: 0px;
-            height: 460px;
-        }
-
-        .pagination a:hover:not(.active) {background-color: #ddd;}
-    </style>
 @endsection
 
 @section('page_content')
@@ -42,12 +19,12 @@
             <div class="container-content">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
-                            <div class="col-md-10" style="padding: 15px;font-size: 16px;">
+                        <div class="row content-header-title">
+                            <div class="col-md-10 title">
                                 Danh sách nhà cung cấp
                             </div>
                             <div class="col-md-2">
-                                <div class="block" style="margin-bottom: 0px;">
+                                <div class="block btn-add">
                                     <button type="button" class="btn btn-warning"
                                             data-toggle="modal" data-target="#create-supplier"
                                             data-backdrop="static">Add a supplier</button>
@@ -64,45 +41,45 @@
                                    ng-keypress="($event.which === 13)?controller.search():0"placeholder="">
                         </label>
                     </div>
-                    <table class="table">
+                    <table class="table-supplier">
                         <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Name Supplier</th>
-                            <th>Code Supplier</th>
-                            <th>Address</th>
-                            <th>Phone Number</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th class="first-column">No.</th>
+                            <th class="second-column">Name Supplier</th>
+                            <th class="third-column">Code Supplier</th>
+                            <th class="fourth-column">Address</th>
+                            <th class="fifth-column">Phone Number</th>
+                            <th class="sixth-column">Description</th>
+                            <th class="seventh-column">Status</th>
+                            <th class="eighth-column">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td>@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
-                            <td>@{{ row.name }}</td>
-                            <td>@{{ "NCC" + row.id }}</td>
-                            <td>@{{ row.address }}</td>
-                            <td>@{{ row.phone_number }}</td>
-                            <td>@{{ row.description }}</td>
-                            <td>@{{ row.status | is_active}}</td>
+                            <td class="first-column">@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
+                            <td class="second-column">@{{ row.name }}</td>
+                            <td class="third-column">@{{ "NCC" + row.id }}</td>
+                            <td class="fourth-column">@{{ row.address }}</td>
+                            <td class="fifht-column">@{{ row.phone_number }}</td>
+                            <td class="sixth-column">@{{ row.description }}</td>
+                            <td class="seventh-column">@{{ row.status | is_active}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning"
+                                <button type="button" class="button-supplier"
                                         data-toggle="modal" data-target="#update-supplier"
-                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)">Update</button>
-                                <button type="button" ng-show="controller.isActive(row.status)" class="btn btn-danger" ng-click="controller.removeSupplier(row.id)">Block</button>
-                                <button type="button" ng-show="controller.isDestroy(row.status)" class="btn btn-danger" ng-click="controller.removeSupplier(row.id)">Active</button>
+                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                                <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-unlock" aria-hidden></i></button>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
-                            <td><div style="min-height: 34px"></div></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="first-column"><div style="min-height: 34px"></div></td>
+                            <td class="second-column"></td>
+                            <td class="third-column"></td>
+                            <td class="fourth-column"></td>
+                            <td class="fifth-column"></td>
+                            <td class="sixth-column"></td>
+                            <td class="seventh-column"></td>
+                            <td class="eight-column"></td>
                         </tr>
                         </tbody>
                     </table>
