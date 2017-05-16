@@ -45,6 +45,10 @@ Route::get('/list-product', function (){
     return view('app.list_product');
 });
 
+Route::get('/checkout', function (){
+    return view('app.checkout');
+});
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/account', 'Customer\HomeController@index');
@@ -113,16 +117,4 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 
 Route::post('admin/login', 'Admin\AuthController@login');
-
-Route::get('model', function (){
-    return view('admin.model');
-});
-
-Route::get('test', function (){
-    return view('test');
-});
-
-Route::get('test2', function (){
-    return view('test2');
-});
 

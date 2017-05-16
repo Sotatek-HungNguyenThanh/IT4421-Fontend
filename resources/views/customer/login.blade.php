@@ -1,4 +1,9 @@
-@extends('layout.app')
+@extends('app.layout')
+
+
+@section('title')
+    Login
+@endsection
 
 @section('css')
     <link href="{{url('css/login.css')}}" rel="stylesheet" type="text/css" media="all"/>

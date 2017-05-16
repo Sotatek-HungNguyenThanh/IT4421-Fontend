@@ -10,23 +10,29 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 topbar__right">
                     <div class="topbar__right__menu">
                         <ul class="menu">
-
                             <li class="menu__lv1">
-                                <a href="javascript:;" class="menu__link"><i class="fa fa-unlock-alt icon"
-                                                                             aria-hidden="true"></i> Đăng nhập</a>
+                                <a href="/feedback" class="menu__link"><i class="fa fa-comments-o icon"
+                                                                          aria-hidden="true"></i> Feedback</a>
                             </li>
+                            @if(!Auth::check())
                             <li class="menu__lv1">
-                                <a href="javascript:;" class="menu__link"><i class="fa fa-registered icon"
+                                <a href="/register" class="menu__link"><i class="fa fa-registered icon"
                                                                              aria-hidden="true"></i> Đăng ký</a>
                             </li>
                             <li class="menu__lv1">
-                                <a href="javascript:;" class="menu__link"><i class="fa fa-comments-o icon"
-                                                                             aria-hidden="true"></i> Feedback</a>
+                                <a href="/login" class="menu__link"><i class="fa fa-unlock-alt icon"
+                                                                       aria-hidden="true"></i> Đăng nhập</a>
                             </li>
+                            @else
                             <li class="menu__lv1">
-                                <a href="javascript:;" class="menu__link"><i class="fa fa-user icon"
+                                <a href="/account" class="menu__link"><i class="fa fa-user icon"
                                                                              aria-hidden="true"></i> Tài khoản</a>
                             </li>
+                                <li class="menu__lv1">
+                                    <a href="/logout" class="menu__link"><i class="fa fa-user icon"
+                                                                                       aria-hidden="true"></i>Đăng xuất</a>
+                                </li>
+                            @endif
 
                         </ul>
                     </div>

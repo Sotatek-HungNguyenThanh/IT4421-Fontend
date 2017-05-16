@@ -1,11 +1,11 @@
-@extends('layout.app')
+@extends('app.layout')
 
 @section('css')
     <link href="{{url('css/feedback.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection
 
 @section('content')
-    <div class="content-feedback">
+    <div class="content-feedback col-lg-12 col-md-12 col-sm-12">
         <section class="main-content col-lg-8 col-md-8 col-sm-8">
             <form method="post" action="{{url('feedback')}}">
                 {{ csrf_field() }}

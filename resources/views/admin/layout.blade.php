@@ -76,7 +76,6 @@
         }
         .modal-content{
             border-width: 0px;
-            border-radius: 5px;
         }
         .modal-body.notification{
             min-height: 70px;

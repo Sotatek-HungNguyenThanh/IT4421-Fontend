@@ -1,9 +1,9 @@
 <div>
     <nav id="nav" class="menu">
         <div class="container">
-		<span class="hidden-lg hidden-md hidden-sm header__btn">
-			<a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
-		</span>
+            <span class="hidden-lg hidden-md hidden-sm header__btn">
+                <a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            </span>
             <form action="/search" method="get" class="hidden-lg hidden-md hidden-sm">
                 <label class="hidden" for="search-mobile">Tìm kiếm</label>
                 <input type="text" placeholder="Nhập nội dung tìm kiếm" id="search-mobile" value="" maxlength="70"
@@ -12,8 +12,6 @@
                                                                               aria-hidden="true"></i></button>
             </form>
             <ul class="menu__list hidden-xs">
-
-
                 <li class="menu__item"><a href="/" class="menu__link">Trang chủ</a></li>
 
                 <li class="menu__item menu_parent">
@@ -73,7 +71,7 @@
                 </li>
 
 
-                <li class="menu__item"><a href="/tin-tuc" class="menu__link">Tin tức</a></li>
+                {{--<li class="menu__item"><a href="/tin-tuc" class="menu__link">Tin tức</a></li>--}}
 
             </ul>
             @include('app.menu_cart')

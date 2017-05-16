@@ -85,6 +85,13 @@ var ManageProductController = BaseController.extend({
     showProductDetails: function (id) {
         console.log(id);
         this.$rootScope.$broadcast('showProductDetails', {id : id});
+    },
+
+    search: function () {
+        this.loading(true);
+        this.service.list(this.url, null, null, this.key_word)
+            .success(this.onReceiveData.bind(this))
+            .error(this.onError.bind(this));
     }
 }, ['AdminService', "$rootScope", "$scope"]);
 adminApp.controller('ManageProductController', ManageProductController);
