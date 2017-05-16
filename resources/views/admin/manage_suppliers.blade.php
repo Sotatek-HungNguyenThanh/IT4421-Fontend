@@ -20,14 +20,14 @@
                 <div class="container-header">
                     <div class="col-md-12">
                         <div class="row content-header-title">
-                            <div class="col-md-10 title">
+                            <div class="col-md-9 title">
                                 Danh sách nhà cung cấp
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="block btn-add">
                                     <button type="button" class="btn btn-warning"
                                             data-toggle="modal" data-target="#create-supplier"
-                                            data-backdrop="static">Add a supplier</button>
+                                            data-backdrop="static">Thêm nhà cung cấp</button>
                                 </div>
                             </div>
                         </div>

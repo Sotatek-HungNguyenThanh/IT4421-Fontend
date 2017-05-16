@@ -1,12 +1,12 @@
 <div id="update-supplier" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-header">
-            <h4 class="modal-title">Update Supplier</h4>
+            <h4 class="modal-title">Cập nhật nhà cung cấp</h4>
         </div>
         <!-- Modal content-->
         <div class="modal-content">
             <div class="content-header">
-                <button type="button" class="close" data-dismiss="modal">
+                <button type="button" class="close" data-dismiss="modal" ng-click="controller.cancelCreateSupplier()">
                     <img src="https://nholicham.com/image/close-button.png" alt="">
                 </button>
             </div>
