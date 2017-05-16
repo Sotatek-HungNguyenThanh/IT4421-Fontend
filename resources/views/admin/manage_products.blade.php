@@ -20,13 +20,13 @@
                 <div class="container-header">
                     <div class="col-md-12">
                         <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
-                            <div class="col-md-10" style="padding: 15px;font-size: 16px;">
+                            <div class="col-md-9" style="padding: 15px;font-size: 16px;">
                                Danh sách sản phẩm
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="block" style="margin-bottom: 0px;">
                                     <a style="text-decoration: none; color: white" href="/admin/add-product">
-                                        <button type="button" class="btn btn-warning">Add Product</i></button>
+                                        <button type="button" class="btn btn-warning">Thêm sản phẩm</button>
                                     </a>
                                 </div>
                             </div>
