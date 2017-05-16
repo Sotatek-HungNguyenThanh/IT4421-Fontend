@@ -1,15 +1,15 @@
-@extends('layout.app')
+@extends('app.layout')
 
 @section('css')
     <link href="{{url('css/customer/account.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection
 
-@section('javascript')
-    <script type="text/javascript" src="{{url('js/angular/AccountController.js')}}"></script>
+@section('script')
+    <script type="text/javascript" src="/js/angular/AccountController.js"></script>
 @endsection
 
 @section('content')
-    <div ng-controller="AccountController as controller">
+    <div ng-controller="AccountController as controller" class="col-md-12 col-sm-12 col-xs-12">
         <div class="content-account-page">
             <aside class="sidebar right-sidebar col-md-3 col-sm-4 col-xs-12">
                 <div class="row sidebar-box blue">

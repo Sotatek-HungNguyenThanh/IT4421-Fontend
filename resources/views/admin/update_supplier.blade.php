@@ -1,7 +1,7 @@
 <div id="update-supplier" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-header">
-            <h4 class="modal-title">Create Supplier</h4>
+            <h4 class="modal-title">Update Supplier</h4>
         </div>
         <!-- Modal content-->
         <div class="modal-content">

@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Consts;
 use App\Facades\API;
+use App\Http\Services\SupplierService;
 use App\Units;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Validator;
+use Exception;
 
 class SupplierController extends Controller
 {
+    protected $supplierService;
+    public function __construct()
+    {
+        $this->supplierService = new SupplierService();
+    }
     protected $guard = 'admin';
 
     public function showManageSuppliersPage()
@@ -33,77 +41,71 @@ class SupplierController extends Controller
             'phone_number' => 'required',
         ]);
         if ($validator->fails()) {
-            return array('status' => 'false', 'message' => $validator->errors());
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' =>  $validator->errors()
+            ];
         }
 
-        $data = [
-            "name" => $params['name'],
-            "description" => $params['description'],
-            "address" => $params['address'],
-            "phone_number" => $params['phone_number'],
-        ];
-
         try {
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
+            $response = $this->supplierService->createSupplier($params);
+
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
             ];
-            $response = Units::send('admins/suppliers', $headers, $data);
-            return array('status' => $response->success, 'message' => $response->message);
-        }catch (\Exception $e){
+
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            $messageError = json_decode($e->getResponse()->getBody(true));
-            return array('status' => 'false', 'message' => $messageError);
+
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getResponse()->getBody(true)
+            ];
         }
     }
 
     public function getListSuppliers(Request $request){
         try {
             $params = $request->all();
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
+            $response = $this->supplierService->getListSuppliers($params);
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
             ];
-            if(isset($params["key_word"]) && $params["key_word"] != ""){
-                $data = [
-                    "key_word" => $params["key_word"],
-                ];
-            }else{
-                $data = [
-                    "page_no" => $params["page_no"],
-                    "per_page" => $params["per_page"],
-                ];
-            }
-
-            $response = Units::send('admins/suppliers', $headers, $data, 'GET');
-            return array("total_suppliers" => $response->total_suppliers, "data" => $response->suppliers);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
     public function getSupplier(Request $request){
         try {
-            $supplierID = $request->supplierID;
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
+            $params = $request->all();
+
+            $response = $this->supplierService->getSupplier($params);
+
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
             ];
-            $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'GET');
-            return json_encode($response->supplier);
-        }catch (\Exception $e){
+
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
@@ -117,47 +119,50 @@ class SupplierController extends Controller
             'phone_number' => 'required',
         ]);
         if ($validator->fails()) {
-            return array('status' => 'false', 'message' => $validator->errors());
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $validator->errors()
+            ];
         }
 
-        $data = [
-            "name" => $params['name'],
-            "description" => $params['description'],
-            "address" => $params['address'],
-            "phone_number" => $params['phone_number'],
-        ];
         try {
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
+            $response = $this->supplierService->updateSupplier($params);
+
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
             ];
-            $response = Units::send('admins/suppliers/' . $params['supplierID'], $headers, $data, 'PATCH');
-            return array('status' => $response->success, 'message' => $response->message);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
     public function deleteSupplier(Request $request){
         try {
-            $supplierID = $request->supplierID;
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            $response = Units::send('admins/suppliers/' . $supplierID, $headers, null, 'DELETE');
-            return array('status' => $response->success, 'message' => $response->message);
+            $params = $request->all();
 
-        }catch (\Exception $e){
+            $response = $this->supplierService->deleteSupplier($params);
+
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => $response
+            ];
+
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 

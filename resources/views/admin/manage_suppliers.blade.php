@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
+        @include('admin.create_supplier')
+        @include('admin.update_supplier')
     </div>
-    @include('admin.create_supplier')
-    @include('admin.update_supplier')
 @endsection

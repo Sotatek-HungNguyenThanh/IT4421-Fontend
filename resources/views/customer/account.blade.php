@@ -29,7 +29,8 @@
                                     <p></p>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-9">
-                                    <span id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_lb_Email" style="font-weight:bold;">@{{ controller.email }}</span>
+                                        <span id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_lb_Email"
+                                              style="font-weight:bold;">@{{ controller.email }}</span>
                                 </div>
                             </div>
                             <div class="row">
@@ -37,7 +38,9 @@
                                     <p>Họ và tên <span class="require">*</span></p>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-9">
-                                    <input type="text" name="fullname" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_FirstName" placeholder="Họ Tên..." ng-model="controller.fullname" required>
+                                    <input type="text" name="fullname"
+                                           id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_FirstName"
+                                           placeholder="Họ Tên..." ng-model="controller.fullname" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -59,7 +62,9 @@
                                     <p>Địa chỉ <span class="require">*</span></p>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-9">
-                                    <input name="address" type="text" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Addr" class="required" ng-model="controller.address" required>
+                                    <input name="address" type="text"
+                                           id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_tb_Receiver_Addr"
+                                           class="required" ng-model="controller.address" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -73,7 +78,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <input type="submit" value="Lưu thông tin" id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_bt_SaveInfo" class="button orange">
+                                    <input type="submit" value="Lưu thông tin"
+                                           id="Home_ContentPlaceHolder_UACMaster_ControlPlaceHolder_bt_SaveInfo"
+                                           class="button orange">
                                 </div>
                             </div>
                         </div>
@@ -86,9 +93,9 @@
         window.onload = function () {
             document.getElementById("account_phone_number").onchange = function () {
                 var phone = document.getElementById("account_phone_number").value;
-                if(!/^([0-9]){10,11}$/.test(phone)){
+                if (!/^([0-9]){10,11}$/.test(phone)) {
                     document.getElementById("account_phone_number").setCustomValidity("Invalid Phone Number");
-                }else {
+                } else {
                     document.getElementById("account_phone_number").setCustomValidity("");
                 }
             };

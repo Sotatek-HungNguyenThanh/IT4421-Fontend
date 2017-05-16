@@ -21,34 +21,30 @@ var SupplierController = BaseController.extend({
 
     onReceiveData: function (response) {
         this.loading(false);
-        var data = response.data;
+        var data = JSON.parse(response.data);
         if(!data){
             this.rowNull = this.perPage;
             return;
         }
-        this.pageCount = Math.ceil(response.total_suppliers / this.perPage);
+        this.pageCount = Math.ceil(data.total_suppliers / this.perPage);
         this.row = [];
-        this.rows = data;
+        this.rows = data.suppliers;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
     },
 
     showPopupUpdateSupplier: function (supplierID) {
-        this.getSupplierByID(supplierID);
-    },
-
-    getSupplierByID: function (supplierID) {
-	    this.supplierID = supplierID;
-		var self = this;
-		this.service.getSupplierByID(supplierID)
-            .success(function (data) {
-            	if(self.isNull(data))
-            		return;
-				self.name = data.name;
-				self.phone_number = data.phone_number;
-				self.address = data.address;
-				self.description = data.description;
+        var self = this;
+        this.supplierID = supplierID;
+        this.service.getSupplierByID(supplierID)
+            .success(function (response) {
+                var data = JSON.parse(response.data);
+                var supplier = data.supplier;
+                self.name = supplier.name;
+                self.phone_number = supplier.phone_number;
+                self.address = supplier.address;
+                self.description = supplier.description;
             })
-            .error(this.onError.bind(this));
+            .error(self.onError.bind(this));
     },
 
     createSupplier: function () {

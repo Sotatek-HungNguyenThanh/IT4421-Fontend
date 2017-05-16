@@ -1,11 +1,11 @@
-@extends('layout.app')
+@extends('app.layout')
 
 @section('css')
     <link href="{{url('css/customer/account.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection
 
 @section('content')
-    <div class="content-account-page">
+    <div class="content-account-page col-md-12 col-sm-12 col-xs-12">
         <aside class="sidebar right-sidebar col-md-3 col-sm-4 col-xs-12">
             <div class="row sidebar-box blue">
                 <div class="col-md-12 col-sm-12 col-xs-12">
