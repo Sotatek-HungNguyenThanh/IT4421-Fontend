@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Consts;
 use App\Facades\API;
 use App\Http\Services\SupplierService;
 use App\Units;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Validator;
+use Exception;
 
 class SupplierController extends Controller
 {
@@ -39,20 +41,30 @@ class SupplierController extends Controller
             'phone_number' => 'required',
         ]);
         if ($validator->fails()) {
-            return array('status' => 'false', 'message' => $validator->errors());
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' =>  $validator->errors()
+            ];
         }
 
         try {
             $response = $this->supplierService->createSupplier($params);
 
-            return array('status' => $response->success, 'message' => $response->message);
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
+            ];
 
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
 
-            $messageError = json_decode($e->getResponse()->getBody(true));
-
-            return array('status' => 'false', 'message' => $messageError);
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getResponse()->getBody(true)
+            ];
         }
     }
 
@@ -60,10 +72,18 @@ class SupplierController extends Controller
         try {
             $params = $request->all();
             $response = $this->supplierService->getListSuppliers($params);
-            return array("total_suppliers" => $response->total_suppliers, "data" => $response->suppliers);
-        }catch (\Exception $e){
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
+            ];
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
@@ -73,10 +93,19 @@ class SupplierController extends Controller
 
             $response = $this->supplierService->getSupplier($params);
 
-            return json_encode($response->supplier);
-        }catch (\Exception $e){
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
+            ];
+
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
@@ -90,16 +119,28 @@ class SupplierController extends Controller
             'phone_number' => 'required',
         ]);
         if ($validator->fails()) {
-            return array('status' => 'false', 'message' => $validator->errors());
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $validator->errors()
+            ];
         }
-
 
         try {
             $response = $this->supplierService->updateSupplier($params);
-            return array('status' => $response->success, 'message' => $response->message);
-        }catch (\Exception $e){
+
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => json_encode($response)
+            ];
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
@@ -109,11 +150,19 @@ class SupplierController extends Controller
 
             $response = $this->supplierService->deleteSupplier($params);
 
-            return array('status' => $response->success, 'message' => $response->message);
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> "success",
+                'data' => $response
+            ];
 
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
-            return null;
+            return [
+                'status' => Consts::STATUS_ERROR,
+                'message'=> "false",
+                'data' => $e->getMessage()
+            ];
         }
     }
 
