@@ -1,11 +1,11 @@
-@extends('layout.app')
+@extends('app.layout')
 
 @section('css')
     <link href="{{url('css/register.css')}}" rel="stylesheet" type="text/css" media="all"/>
 @endsection
 
 @section('content')
-    <div class="content-register">
+    <div class="content-register col-lg-12 col-md-12 col-sm-12">
         <section class="main-content col-lg-8 col-md-8 col-sm-8">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 register-account">
@@ -88,8 +88,6 @@
             </div>
         </section>
         <aside class="sidebar right-sidebar col-lg-4 col-md-4 col-sm-4">
-
-
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 register-account">
                     <div class="blue">
@@ -121,7 +119,7 @@
             document.getElementById("Home_ContentPlaceHolder_tb_Pasw").onchange = validatePassword;
             document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").onchange = validatePassword;
             document.getElementById("phone_number").onchange = validatePhoneNumber;
-        }
+        };
         function validatePassword(){
             var pass2 = document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").value;
             var pass1 = document.getElementById("Home_ContentPlaceHolder_tb_Pasw").value;
@@ -129,7 +127,7 @@
                 document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").setCustomValidity("Passwords Don't Match");
             else
                 document.getElementById("Home_ContentPlaceHolder_tb_ConfirmPasw").setCustomValidity('');
-        }
+        };
         function validatePhoneNumber() {
             var phone = document.getElementById("phone_number").value;
             if(!/^([0-9]){10,11}$/.test(phone)){
@@ -137,5 +135,6 @@
             }else {
                 document.getElementById("phone_number").setCustomValidity("");
             }
-        }
-    </scripts@endsection
+        };
+    </script>
+@endsection
