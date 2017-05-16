@@ -5,90 +5,12 @@
     Manage Products
 @endsection
 
+@section('css')
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-product.css"/>
+@endsection
+
 @section('script')
     <script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <style>
-        .pagination {
-            display: inline-block;
-        }
-
-        .pagination a {
-            color: black;
-            float: right;
-            padding: 4px 10px;
-            text-decoration: none;
-            transition: background-color .3s;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-        }
-
-        .pagination a.active {
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-        }
-        .modal-content{
-            border-width: 0px;
-            border-radius: 5px;
-            height: 460px;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ddd;
-        }
-        .table-product{
-            width: 1015px;
-            max-width: 1015px;
-            overflow: hidden;
-        }
-        .table-product th, 
-        .table-product tbody{
-            text-align: center;
-        }
-        .table-product th{
-            background: #00b0f0;
-            font-size: 20px;
-            color: white;
-        }
-        .table-product td{
-            height: 40px;
-            text-align: center;
-            background-color: #fff;
-            border: 0px solid #c4c4c4;
-            color: black;
-            font-size: 18px;
-        }
-        .first-column {
-            width: 90px;
-            max-width: 90px;
-            overflow: hidden;
-        }
-        .second-column {
-            width: 195px;
-            max-width: 195px;
-            overflow: hidden;
-        }
-        .thirth-column {
-            width: 190px;
-            max-width: 190px;
-            overflow: hidden;
-        }
-        .fourth-column {
-            width: 195px;
-            max-width: 195px;
-            overflow: hidden;
-        }
-        .fifth-column {
-            width: 245px;
-            max-width: 245px;
-            overflow: hidden;
-        }
-        .six-column {
-            width: 100px;
-            max-width: 100px;
-            overflow: hidden;
-        }
-    </style>
 @endsection
 
 @section('page_content')
@@ -138,8 +60,10 @@
                             <td class="fourth-column">@{{ row.supplier.name }}</td>
                             <td class="fifth-column">@{{ row.product.status | is_active }}</td>
                             <td class="sixth-column">
-                                <a href="/admin/product/product-details/@{{ row.product.id }}">
-                                <button type="button"><i class="fa fa-pencil-square-o" class="button-product" aria-hidden="true"></i></button>
+                                <a href="/admin/product/product-details/@{{ row.product.id }}" style="text-decoration: none; color: black">
+                                    <button type="button" class="button-product">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
                                 </a>
                                 <button type="button" ng-show="controller.isActive(row.product.status)" class="button-product" ng-click="controller.removeProduct(row.product.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                 <button type="button" class="button-product" ng-show="controller.isDestroy(row.product.status)" ng-click="controller.removeProduct(row.product.id)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>

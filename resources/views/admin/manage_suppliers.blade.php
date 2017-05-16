@@ -5,97 +5,12 @@
     Manage Suppliers
 @endsection
 
+@section('css')
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-suppliers.css"/>
+@endsection
+
 @section('script')
 	<script type="text/javascript" src="/js/angular/admin/SupplierController.js"></script>
-    <style>
-        .pagination {
-            display: inline-block;
-        }
-
-        .pagination a {
-            color: black;
-            float: right;
-            padding: 4px 10px;
-            text-decoration: none;
-            transition: background-color .3s;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-        }
-
-        .pagination a.active {
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-        }
-        .modal-content{
-            border-width: 0px;
-            border-radius: 5px;
-            height: 460px;
-        }
-        .table-supplier{
-            width: 1015px;
-            max-width: 1015px;
-            overflow: hidden;
-        }
-        .table-supplier th, 
-        .table-supplier tbody{
-            text-align: center;
-        }
-        .table-supplier th{
-            background: #00b0f0;
-            font-size: 18px;
-            color: white;
-        }
-        .table-supplier td{
-            height: 40px;
-            text-align: center;
-            background-color: #fff;
-            border: 0px solid #c4c4c4;
-            color: black;
-            font-size: 16px;
-        }
-        .first-column {
-            width: 70px;
-            max-width: 70px;
-            overflow: hidden;
-        }
-        .second-column {
-            width: 150px;
-            max-width: 150px;
-            overflow: hidden;
-        }
-        .thirth-column {
-            width: 100px;
-            max-width: 100px;
-            overflow: hidden;
-        }
-        .fourth-column {
-            width: 150px;
-            max-width: 150px;
-            overflow: hidden;
-        }
-        .fifth-column {
-            width: 160px;
-            max-width: 160px;
-            overflow: hidden;
-        }
-        .six-column {
-            width: 140px;
-            max-width: 140px;
-            overflow: hidden;
-        }
-        .seventh-column{
-            width: 155px;
-            max-width: 155px;
-            overflow: hidden;
-        }
-        .eight-column {
-            width: 90px;
-            max-width: 90px;
-            overflow: hidden;
-        }
-        .pagination a:hover:not(.active) {background-color: #ddd;}
-    </style>
 @endsection
 
 @section('page_content')
@@ -104,12 +19,12 @@
             <div class="container-content">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
-                            <div class="col-md-10" style="padding: 15px;font-size: 16px;">
+                        <div class="row content-header-title">
+                            <div class="col-md-10 title">
                                 Danh sách nhà cung cấp
                             </div>
                             <div class="col-md-2">
-                                <div class="block" style="margin-bottom: 0px;">
+                                <div class="block btn-add">
                                     <button type="button" class="btn btn-warning"
                                             data-toggle="modal" data-target="#create-supplier"
                                             data-backdrop="static">Add a supplier</button>
@@ -151,7 +66,7 @@
                             <td>
                                 <button type="button" class="button-supplier"
                                         data-toggle="modal" data-target="#update-supplier"
-                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-refresh" aria-hidden></i></button>
+                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                 <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
                                 <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-unlock" aria-hidden></i></button>
                             </td>
