@@ -11,6 +11,7 @@
     {{--javascript--}}
     <script type="text/javascript" src="{{url('js/app.js')}}"></script>
     <link rel="stylesheet" href="/css/theme-home.css" type="text/css">
+    {{--<link rel="stylesheet" href="/css/responsive.css" type="text/css">--}}
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>

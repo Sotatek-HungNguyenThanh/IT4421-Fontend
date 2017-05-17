@@ -1,4 +1,4 @@
-<div>
+<div class="homepage-slider">
     <section id="homepage-slider" class="slider theme--color--white">
         <div class="container">
             <div class="bg-slider">

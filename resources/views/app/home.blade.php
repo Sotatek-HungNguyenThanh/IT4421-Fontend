@@ -13,792 +13,9 @@
 @endsection
 @section('content')
     <div ng-controller="HomeController as controller">
-        <div>
-            <section class="three-module">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
-                            <div class="catalog" style="position: relative;top: -22px;">
-                                <div class="catalog__title">
-                                    <h2><i class="fa fa-bars" aria-hidden="true"></i> Danh mục sản phẩm</h2>
-                                </div>
-                                <div class="catalog__bg">
-                                    <ul class="catalog__list">
-                                        <li class="catalog__item">
-                                            <a href="/khuyen-mai" title="Khuyến mãi">
+        @include('app.three_module_header')
 
-                                        <span class="catalog__icon"><img
-                                                    src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-sale.png?1493953410461"
-                                                    alt="Khuyến mãi"></span><span>Khuyến mãi</span>
-
-                                            </a>
-                                        </li>
-                                        <li class="catalog__item">
-                                            <a href="/dien-thoai" title="Điện thoại">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-2.png?1493953410461"
-                             alt="Điện thoại" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover2.png?1493953410461"
-                             alt="Điện thoại" class="icon-even">
-					</span>
-
-                                                <span>Điện thoại</span>
-
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="catalog-sub">
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/iphone" class="catalog-sub__link">iPhone</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/samsung" class="catalog-sub__link">Samsung</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/oppo" class="catalog-sub__link">Oppo</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/huawei" class="catalog-sub__link">Huawei</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/asus" class="catalog-sub__link">Asus</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/acer" class="catalog-sub__link">Acer</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/sony" class="catalog-sub__link">Sony</a>
-                                                </li>
-
-
-                                                <li class="catalog-sub__item">
-                                                    <a href="/khac" class="catalog-sub__link">Khác</a>
-                                                </li>
-
-
-                                            </ul>
-                                        </li>
-
-
-                                        <li class="catalog__item">
-                                            <a href="/may-tinh-bang" title="Máy tính bảng">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-3.png?1493953410461"
-                             alt="Máy tính bảng" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover3.png?1493953410461"
-                             alt="Máy tính bảng" class="icon-even">
-					</span>
-
-                                                <span>Máy tính bảng</span>
-
-                                            </a>
-                                        </li>
-
-
-                                        <li class="catalog__item">
-                                            <a href="/laptop" title="Laptop">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-4.png?1493953410461"
-                             alt="Laptop" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover4.png?1493953410461"
-                             alt="Laptop" class="icon-even">
-					</span>
-
-                                                <span>Laptop</span>
-
-                                            </a>
-                                        </li>
-
-
-                                        <li class="catalog__item">
-                                            <a href="/may-cu" title="Máy cũ">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-5.png?1493953410461"
-                             alt="Máy cũ" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover5.png?1493953410461"
-                             alt="Máy cũ" class="icon-even">
-					</span>
-
-                                                <span>Máy cũ</span>
-
-                                            </a>
-                                        </li>
-
-
-                                        <li class="catalog__item">
-                                            <a href="/phu-kien" title="Phụ kiện">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-6.png?1493953410461"
-                             alt="Phụ kiện" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover6.png?1493953410461"
-                             alt="Phụ kiện" class="icon-even">
-					</span>
-
-                                                <span>Phụ kiện</span>
-
-                                            </a>
-                                        </li>
-
-
-                                        <li class="catalog__item">
-                                            <a href="/sac-du-phong" title="Sạc dự phòng" style="border-bottom: none">
-
-
-					<span class="catalog__icon">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-7.png?1493953410461"
-                             alt="Sạc dự phòng" class="icon-old">
-						<img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-hover7.png?1493953410461"
-                             alt="Sạc dự phòng" class="icon-even">
-					</span>
-
-                                                <span>Sạc dự phòng</span>
-
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
-                            <div class="product-topseller" id="topseller">
-                                <div class="home__title proánduct-topseller__title">
-                                    <h2 style="padding: 0px">Sản phẩm bán chạy</h2>
-                                </div>
-                                <div class="slider-product-list owl-carousel owl-theme"
-                                     style="opacity: 1; display: block;">
-
-
-                                    <div class="owl-wrapper-outer">
-                                        <div class="owl-wrapper" style="width: 3684px; left: 0px; display: block;">
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/dien-thoai-iphone-7-32gbdien-thoai-iphone-7-32gb">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/iphone-78-400x460.png?v=1479171358803"
-                                                                     alt="Điện thoại iPhone 7 32GB">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a
-                                                                        href="/dien-thoai-iphone-7-32gb">Điện
-                                                                    thoại iPhone 7 32GB</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>20.000.000₫</span><span
-                                                                            class="sale-flag">-11%</span>
-                                                                </p>
-                                                                <p class="product-item__price__special">17.790.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4738132"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <button class="button btn-cart"
-                                                                            title="Chọn sản phẩm"
-                                                                            type="button" aria-label="Chọn sản phẩm"
-                                                                            onclick="window.location.href='/dien-thoai-iphone-7-32gb'">
-                                                                        <span>Chọn</span></button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/blackberry-passport">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/blackberrypassportblack15.png?v=1479142099757"
-                                                                     alt="BlackBerry Passport">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a
-                                                                        href="/blackberry-passport">BlackBerry
-                                                                    Passport</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__regular">11.980.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726077"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637601">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/dien-thoai-sony-xperia-z5-dual">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-x-1-400x460.png?v=1479172676383"
-                                                                     alt="Điện thoại Sony Xperia Z5 Dual">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a
-                                                                        href="/dien-thoai-sony-xperia-z5-dual">Điện
-                                                                    thoại Sony
-                                                                    Xperia Z5 Dual</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>13.990.000₫</span><span
-                                                                            class="sale-flag">-14%</span>
-                                                                </p>
-                                                                <p class="product-item__price__special">11.990.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726021"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="9876594">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/dien-thoai-sony-xperia-x">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-z5-dual-400x460.png?v=1479141392427"
-                                                                     alt="Điện thoại Sony Xperia X">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a
-                                                                        href="/dien-thoai-sony-xperia-x">Điện
-                                                                    thoại Sony Xperia X</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>10.990.000₫</span><span
-                                                                            class="sale-flag">-9%</span>
-                                                                </p>
-                                                                <p class="product-item__price__special">9.990.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4725962"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637417">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/htc-one-m9">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/13090htconem9goldonsilver.jpg?v=1479172304403"
-                                                                     alt="HTC One M9">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/htc-one-m9">HTC
-                                                                    One M9</a>
-                                                            </h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__regular">10.990.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726075"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637599">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/lenovo-s8">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/big97572lenovos850lcz3745.png?v=1479172450703"
-                                                                     alt="Lenovo S8">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/lenovo-s8">Lenovo
-                                                                    S8</a>
-                                                            </h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__regular">4.639.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726067"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637591">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/oppo-neo-5">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/135237opponeo51201white1.png?v=1479142113290"
-                                                                     alt="Oppo Neo 5">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/oppo-neo-5">Oppo
-                                                                    Neo 5</a>
-                                                            </h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__regular">3.189.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726076"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637600">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/nokia-x6-8gb">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/0010687nokiax68gb1.png?v=1479141860967"
-                                                                     alt="Nokia X6 8GB">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/nokia-x6-8gb">Nokia
-                                                                    X6
-                                                                    8GB</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>6.600.000₫</span><span
-                                                                            class="sale-flag">-2%</span></p>
-                                                                <p class="product-item__price__special">6.490.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726082"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637606">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/lg-g-pro-lite-dual">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/5341643lggprolitedual011.png?v=1479141824977"
-                                                                     alt="LG G Pro Lite Dual">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a
-                                                                        href="/lg-g-pro-lite-dual">LG G
-                                                                    Pro Lite Dual</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>6.300.000₫</span><span
-                                                                            class="sale-flag">-3%</span></p>
-                                                                <p class="product-item__price__special">6.100.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726083"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637607">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/lg-l70">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/big52005lggpad.png?v=1479141705710"
-                                                                     alt="LG L70">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/lg-l70">LG L70</a>
-                                                            </h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>5.200.000₫</span><span
-                                                                            class="sale-flag">-4%</span></p>
-                                                                <p class="product-item__price__special">5.000.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726084"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637608">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-item" style="width: 307px;">
-                                                <div class="item">
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/iphone-4s-32-gb">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/54115944s1.png?v=1479141894390"
-                                                                     alt="iPhone 4s 32GB">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/iphone-4s-32-gb">iPhone
-                                                                    4s
-                                                                    32GB</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>10.000.000₫</span><span
-                                                                            class="sale-flag">-2%</span>
-                                                                </p>
-                                                                <p class="product-item__price__special">9.790.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726081"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637605">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="product-item__mini clearfix">
-                                                        <div class="product-item__thumb">
-                                                            <a href="/iphone-4-16gb">
-                                                                <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/appleiphone4s2.png?v=1479141442657"
-                                                                     alt="iPhone 4 16GB">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-item__content">
-                                                            <h3 class="product-item__title"><a href="/iphone-4-16gb">iPhone
-                                                                    4
-                                                                    16GB</a></h3>
-
-
-                                                            <div class="product-item__price">
-
-                                                                <p class="product-item__price__old">
-                                                                    <span>6.000.000₫</span><span
-                                                                            class="sale-flag">-0%</span></p>
-                                                                <p class="product-item__price__special">5.990.000₫</p>
-
-                                                            </div>
-
-
-                                                            <div class="product-item__actions">
-
-                                                                <form action="/cart/add" method="post" class="variants"
-                                                                      id="product-actions-4726088"
-                                                                      enctype="multipart/form-data">
-
-
-                                                                    <input type="hidden" name="variantId"
-                                                                           value="7637612">
-                                                                    <button class="button btn-cart add_to_cart"
-                                                                            title="Mua hàng"
-                                                                            aria-label="Mua hàng"><span>Mua hàng</span>
-                                                                    </button>
-
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="owl-controls clickable">
-                                        <div class="owl-buttons">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 hidden-md hidden-sm hidden-xs">
-                            <div class="three-module__banner_right">
-                                <a href="/">
-                                    <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/home-banner-right.jpg?1493953410461"
-                                         alt="Samsung Galaxy S6 EDGE chỉ còn 7.500.000đ">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div>
-            <section class="three-banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="three-banner__list" style="margin-bottom: 50px">
-                                <div class="row">
-                                    <div class="three-banner__item col-md-4 col-sm-4 col-xs-12">
-                                        <a href="/">
-                                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/rhs-banner-1.jpg?1493953410461"
-                                                 alt="iPhone 7">
-                                        </a>
-                                    </div>
-                                    <div class="three-banner__item col-md-4 col-sm-4 col-xs-12 hidden-xs">
-                                        <a href="/">
-                                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/rhs-banner-2.jpg?1493953410461"
-                                                 alt="Galaxy S7 EDGE">
-                                        </a>
-                                    </div>
-                                    <div class="three-banner__item col-md-4 col-sm-4 col-xs-12 hidden-xs">
-                                        <a href="/">
-                                            <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/rhs-banner-3.jpg?1493953410461"
-                                                 alt="Samsung Galaxy Note 6">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+        @include('app.three_banner_advertisement')
 
         <div>
             <section class="product-hot" id="product-hot">
@@ -837,7 +54,7 @@
 
                             <div class="owl-wrapper-outer">
                                 <div class="owl-wrapper" style="width: 4560px; left: 0px; display: block;">
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -930,7 +147,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1026,7 +243,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1113,7 +330,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1203,7 +420,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1295,7 +512,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1388,7 +605,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1481,7 +698,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1577,7 +794,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
@@ -1657,7 +874,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
@@ -1742,7 +959,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 
@@ -1837,7 +1054,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 190px;">
+                                    <div class="owl-item">
                                         <div class="item">
 
 

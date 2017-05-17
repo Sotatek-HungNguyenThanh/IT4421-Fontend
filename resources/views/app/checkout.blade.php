@@ -273,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group clearfix hidden-sm hidden-xs">
+                    <div class="form-group clearfix">
                         <input class="btn btn-primary col-md-12 mt10 btn-checkout" type="button" bind-event-click="paymentCheckout('AIzaSyDWReBlPxFt-i145Gsd502wOqRS0KXFHW4;AIzaSyAbtwApDToQWn7snVio3Y9PWFbcpdnOWdk;AIzaSyA5rJOu8wci0li24bnZ1WogMEH93p-DGlM')" value="ĐẶT HÀNG">
                     </div>
                     <div class="form-group has-error">

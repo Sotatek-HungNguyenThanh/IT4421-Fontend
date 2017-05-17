@@ -13,9 +13,9 @@
                 <div class="col-md-3 col-sm-4 col-xs-6 header__hotline">
                     <div class="header__hotline--bg">
                         <p class="header__hotline--phone"><strong class="hidden-xs">Hotline: </strong><span><a
-                                        href="tel:1900 451 452">1900 451 452</a></span></p>
+                                        href="javascript:void (0)">1900 451 452</a></span></p>
                         <p class="header__hotline--email hidden-xs"><strong class="hidden-xs">Email: </strong><span><a
-                                        href="mailto:support@mobile.com">support@mobile.com</a></span></p>
+                                        href="javascript:void (0)">support@mobile.com</a></span></p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-5 col-xs-12 header__search hidden-xs">
