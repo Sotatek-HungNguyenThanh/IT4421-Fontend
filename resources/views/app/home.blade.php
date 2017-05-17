@@ -691,44 +691,44 @@
         {{--@include('app.news')--}}
         @include('app.preview')
         @include('app.cart_model')
-    </div>
-    <div class="bottomCart" style="">
-        <div class="menu__cart">
-            <a href="/cart">
-                <span class="hidden-xs hidden-sm">Giỏ hàng</span>
-                <span><span class="count">2</span> <span class="hidden-xs  hidden-sm">sản phẩm</span></span>
-            </a>
+        <div class="bottomCart" style="">
+            <div class="menu__cart">
+                <a href="/cart">
+                    <span class="hidden-xs hidden-sm">Giỏ hàng</span>
+                    <span><span class="count">2</span> <span class="hidden-xs  hidden-sm">sản phẩm</span></span>
+                </a>
+            </div>
         </div>
+        <style>
+            .bottomCart{
+                position: fixed;
+                right: 0px;
+                bottom: 0px;
+                margin-bottom: 50px;
+                display: none;
+                z-index: 3;
+            }
+            .bottomCart .menu__cart{
+                display: block;
+                background: url(//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cart.png?1490007774344) no-repeat 20px center #231f20;
+                padding: 11px 24px 11px 60px;
+                color: #fff !important;
+                max-height: 50px;
+                font-size: 12px;
+                font-family: Arial;
+                line-height: normal;
+            }
+            .bottomCart .menu__cart a{
+                color: white;
+            }
+            .bottomCart .menu__cart>a>span:first-child {
+                text-transform: uppercase;
+            }
+            .bottomCart .menu__cart>a>span {
+                display: block;
+            }
+        </style>
     </div>
-    <style>
-        .bottomCart{
-            position: fixed;
-            right: 0px;
-            bottom: 0px;
-            margin-bottom: 50px;
-            display: none;
-            z-index: 3;
-        }
-        .bottomCart .menu__cart{
-            display: block;
-            background: url(//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cart.png?1490007774344) no-repeat 20px center #231f20;
-            padding: 11px 24px 11px 60px;
-            color: #fff !important;
-            max-height: 50px;
-            font-size: 12px;
-            font-family: Arial;
-            line-height: normal;
-        }
-        .bottomCart .menu__cart a{
-            color: white;
-        }
-        .bottomCart .menu__cart>a>span:first-child {
-            text-transform: uppercase;
-        }
-        .bottomCart .menu__cart>a>span {
-            display: block;
-        }
-    </style>
 @endsection
 
 

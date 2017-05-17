@@ -1,7 +1,7 @@
 var SupplierController = BaseController.extend({
     url: '/admin/get-list-suppliers',
     pageNo: 1,
-    perPage: 2,
+    perPage: 10,
     pageCount: 1,
     rowNull: 0,
 

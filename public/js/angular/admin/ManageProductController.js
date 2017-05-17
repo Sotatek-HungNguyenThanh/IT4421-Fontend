@@ -1,7 +1,7 @@
 var ManageProductController = BaseController.extend({
     url: '/admin/get-list-product',
     pageNo: 1,
-    perPage: 2,
+    perPage: 10,
     pageCount: 1,
     rowNull: 0,
     initialize : function($super, service, $rootScope, $scope) {

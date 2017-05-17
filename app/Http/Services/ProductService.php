@@ -67,7 +67,7 @@ class ProductService
         foreach ($variants as $variant) {
             $variants_attributes[] = [
                 "properties" => $variant,
-                "image_url" => url('/images/pictures_null.png'),
+                "image_url" => $fileName[0],
                 "inventory" => 1,
                 "original_price" => $originalPrice,
                 "selling_price" => $sellingPrice
@@ -194,6 +194,7 @@ class ProductService
     public function formatDataUpdateProduct($params)
     {
         $fileName = [];
+        $fileNewVariants = [];
         $id = $params["id"];
         $title = $params["title"];
         $description = $params["description"];
@@ -211,17 +212,30 @@ class ProductService
                 }
             }
         }
+
+        if (isset($params["imagesNewVariants"])) {
+            $imagesNewVariants = $params["imagesNewVariants"];
+
+            foreach ($imagesNewVariants as $key => $image) {
+                if (is_file($image)) {
+                    $urlFile =  time() . '.' . $image->getClientOriginalName();
+                    $fileNewVariants[$key] = url('storage/' . $urlFile);
+                    Storage::disk('public')->put($urlFile, File::get($image));
+                }
+            }
+        }
+
         $variants_attributes = [];
         foreach ($variants as $variant) {
             $variants_attributes[] = [
                 "id" => $variant["id"],
-                "image_url" => url('/images/pictures_null.png'),
+                "image_url" => isset($fileNewVariants[$variant["id"]]) ? $fileNewVariants[$variant["id"]] : $variant["image_url"],
                 "inventory" => $variant["inventory"],
                 "original_price" => $variant["original_price"],
                 "selling_price" => $variant["selling_price"]
             ];
         }
-        $imageOld = $params["images_old"] ? explode("," , $params["images_old"] ): 0;
+        $imageOld = $params["images_old"] ? explode("," , $params["images_old"] ): [];
         $totalImage = array_merge($imageOld, $fileName);
         return $data = [
             "id" => $id,
