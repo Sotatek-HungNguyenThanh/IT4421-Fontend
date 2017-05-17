@@ -9,12 +9,11 @@
 							<div class="product__view__image--list">
 								<div class="bx-wrapper" style="max-width: 100%;">
 									<div class="bx-viewport"
-										 style="width: 100%; overflow: hidden; position: relative; height: 359px;">
-										<ul class="bxslider1"
-											style="width: 315%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+									>
+										<ul class="bxslider1">
 
 
-											<li style="float: left; list-style: none; position: relative; width: 384px;">
+											<li>
 												<img class="cloudzoom" id="zoom1"
 													 data-cloudzoom="zoomSizeMode:'image',zoomPosition:'inside', zoomOffsetX:0"
 													 src="//bizweb.dktcdn.net/100/141/731/products/big97572lenovos850lcz3745.png?v=1479172450703"
@@ -25,29 +24,6 @@
 										</ul>
 									</div>
 								</div>
-								{{--<div style="margin: 0 -7px">--}}
-									{{--<div id="bx-pager1" class="bx-pager owl-carousel owl-theme"--}}
-										 {{--style="opacity: 1; display: block;">--}}
-
-										{{--<div class="owl-wrapper-outer">--}}
-											{{--<div class="owl-wrapper" style="width: 164px; left: 0px; display: block;">--}}
-												{{--<div class="owl-item" style="width: 82px;"><a data-slide-index="0"--}}
-																							  {{--href=""--}}
-																							  {{--class="active">--}}
-														{{--<img src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/big97572lenovos850lcz3745.png?v=1479172450703"--}}
-															 {{--alt="Lenovo S8">--}}
-													{{--</a></div>--}}
-											{{--</div>--}}
-										{{--</div>--}}
-
-										{{--<div class="owl-controls clickable" style="display: none;">--}}
-											{{--<div class="owl-buttons">--}}
-												{{--<div class="owl-prev"></div>--}}
-												{{--<div class="owl-next"></div>--}}
-											{{--</div>--}}
-										{{--</div>--}}
-									{{--</div>--}}
-								{{--</div>--}}
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -359,5 +335,13 @@
 	}
 	.modal-content{
 		padding: 50px 0px;
+	}
+	@media (max-width: 767px){
+		.bx-viewport .bxslider1 li{
+			text-align: center;
+		}
+		.product__view__content--actions .actions-qty .detail-button{
+			display: block;
+		}
 	}
 </style>

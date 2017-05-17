@@ -50,14 +50,10 @@
                     </div>
                     <div class="product-home__slide">
                         <div class="slider-product-list owl-carousel owl-theme" style="opacity: 1; display: block;">
-
-
                             <div class="owl-wrapper-outer">
                                 <div class="owl-wrapper" style="width: 4560px; left: 0px; display: block;">
                                     <div class="owl-item">
                                         <div class="item">
-
-
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
                                                     <a href="/dien-thoai-iphone-7-32gb">
@@ -102,7 +98,6 @@
 
                                                 </div>
                                             </div>
-
 
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
