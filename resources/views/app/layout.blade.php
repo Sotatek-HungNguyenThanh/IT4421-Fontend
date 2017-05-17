@@ -20,6 +20,7 @@
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
+    <script type="text/javascript" src="/js/angular/CartController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
     @yield('script')
 </head>

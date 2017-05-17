@@ -1176,7 +1176,7 @@
 
         {{--@include('app.news')--}}
         @include('app.preview')
-        @include('app.cart')
+        @include('app.cart_model')
     </div>
 @endsection
 

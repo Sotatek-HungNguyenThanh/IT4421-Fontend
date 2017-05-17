@@ -49,6 +49,10 @@ Route::get('/checkout', function (){
     return view('app.checkout');
 });
 
+Route::get('/cart', function (){
+    return view('app.cart');
+});
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/account', 'Customer\HomeController@index');
