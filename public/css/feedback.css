@@ -65,7 +65,7 @@
     color: #B81D22;
 }
 .green .carousel-heading {
-    background: #FF6600;
+    background: #3498db;
     color: #fff;
     text-transform: uppercase;
     overflow: hidden;
@@ -164,7 +164,15 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 }
 .carousel-heading {
     color: #fff;
-    background: #880000;
+    background: #f5791f;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    overflow: hidden;
+    height: 40px;
+}
+.carousel-heading-blue{
+    color: #fff;
+    background: #2ecc71;
     text-transform: uppercase;
     margin-bottom: 5px;
     overflow: hidden;

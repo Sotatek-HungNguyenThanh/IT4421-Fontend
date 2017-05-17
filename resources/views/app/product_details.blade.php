@@ -9,6 +9,7 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/product_details.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 @endsection
 
 @section('content')
@@ -21,17 +22,15 @@
                             <div class="product__view__image col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <div class="product__view__image--list">
                                     <div class="bx-wrapper" style="max-width: 100%;">
-                                        <div class="bx-viewport"
-                                             style="width: 100%; overflow: hidden; position: relative; height: 452px;">
-                                            <ul class="bxslider"
-                                                style="width: 315%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                        <div class="bx-viewport">
+                                            <ul class="bxslider">
 
 
-                                                <li style="float: left; list-style: none; position: relative; width: 458px;">
+                                                <li>
                                                     <img class="cloudzoom" id="zoom1"
                                                          data-cloudzoom="zoomSizeMode:'image',zoomPosition:'inside', zoomOffsetX:0"
                                                          src="//bizweb.dktcdn.net/100/141/731/products/13090htconem9goldonsilver.jpg?v=1479172304403"
-                                                         alt="HTC One M9" style="user-select: none;">
+                                                         alt="HTC One M9">
                                                 </li>
 
 

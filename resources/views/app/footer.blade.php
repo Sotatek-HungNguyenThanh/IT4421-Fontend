@@ -15,8 +15,6 @@
 
                 <li class="footer__menu--item"><a href="/phu-kien" class="footer__menu--link">Phụ kiện</a></li>
 
-                <li class="footer__menu--item"><a href="/khuyen-mai" class="footer__menu--link">Khuyến mãi</a></li>
-
                 <li class="footer__menu--item"><a href="/sac-du-phong" class="footer__menu--link">Sạc dự phòng</a></li>
 
             </ul>
