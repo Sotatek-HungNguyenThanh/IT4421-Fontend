@@ -15,7 +15,6 @@ var ProductDetailsController = BaseController.extend({
                 self.product = data.product;
                 self.supplier = JSON.stringify(data.supplier);
                 self.variants = data.variants;
-                console.log(JSON.stringify(self.variants));
                 self.listImages = self.product.images.split(",");
                 self.description = self.product.description;
                 self.title = self.product.title;

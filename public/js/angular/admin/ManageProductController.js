@@ -73,11 +73,13 @@ var ManageProductController = BaseController.extend({
         return status == "active";
     },
 
-    removeProduct: function (productID) {
+    removeProduct: function (product) {
+        var self = this;
         this.loading(true);
-        this.service.removeProduct(productID)
+        this.service.removeProduct(product.id)
             .success(function (data) {
-                location.reload();
+                self.loading(false);
+                product.status = product.status == "deleted" ? "active" : "deleted";
             })
             .error(this.onError.bind(this));
     },

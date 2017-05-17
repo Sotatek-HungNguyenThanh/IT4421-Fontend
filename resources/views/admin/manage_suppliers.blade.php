@@ -45,13 +45,13 @@
                         <thead>
                         <tr>
                             <th class="first-column">No.</th>
-                            <th class="second-column">Name Supplier</th>
-                            <th class="third-column">Code Supplier</th>
-                            <th class="fourth-column">Address</th>
-                            <th class="fifth-column">Phone Number</th>
-                            <th class="sixth-column">Description</th>
-                            <th class="seventh-column">Status</th>
-                            <th class="eighth-column">Action</th>
+                            <th class="second-column">Tên nhà cung cấp</th>
+                            <th class="third-column">Mã nhà cung cấp</th>
+                            <th class="fourth-column">Địa chỉ</th>
+                            <th class="fifth-column">Số điện thoại</th>
+                            <th class="sixth-column">Ghi chú</th>
+                            <th class="seventh-column">Trạng thái</th>
+                            <th class="eighth-column"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -67,8 +67,8 @@
                                 <button type="button" class="button-supplier"
                                         data-toggle="modal" data-target="#update-supplier"
                                         data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row.id)"><i class="fa fa-unlock" aria-hidden></i></button>
+                                <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                                <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row)"><i class="fa fa-lock" aria-hidden></i></button>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">

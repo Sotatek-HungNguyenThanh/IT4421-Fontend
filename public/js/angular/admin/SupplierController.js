@@ -109,11 +109,13 @@ var SupplierController = BaseController.extend({
 		this.description = "";
     },
 
-    removeSupplier: function (supplierID) {
+    removeSupplier: function (supplier) {
+        var self = this;
         this.loading(true);
-        this.service.removeSupplier(supplierID)
+        this.service.removeSupplier(supplier.id)
             .success(function (data) {
-                location.reload();
+                self.loading(false);
+                supplier.status = supplier.status == "deleted" ? "active" : "deleted";
             })
             .error(this.onError.bind(this));
     },
