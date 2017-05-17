@@ -12,13 +12,12 @@ var ProductDetailsController = BaseController.extend({
         this.service.getProduct(url)
             .success(function (response) {
                 var data = JSON.parse(response.data);
-                console.log(data);
                 self.product = data.product;
                 self.supplier = JSON.stringify(data.supplier);
                 self.variants = data.variants;
                 console.log(JSON.stringify(self.variants));
                 self.listImages = self.product.images.split(",");
-                $(".note-editable").append(self.product.description);
+                self.description = self.product.description;
                 self.title = self.product.title;
                 self.originalPrice = self.product.originalPrice;
                 self.sellingPrice = self.product.sellingPrice;
@@ -31,7 +30,8 @@ var ProductDetailsController = BaseController.extend({
         var self = this;
         this.service.list('/admin/get-list-suppliers', null, null, null)
             .success(function (data) {
-                self.listSupplier = data.data;
+                var listSupplier = JSON.parse(data.data)
+                self.listSupplier = listSupplier.suppliers;
             })
             .error(function () {
 
