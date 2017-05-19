@@ -1,4 +1,4 @@
-<div id="CartDesktop" class="modal fade cart-desktop-popup" role="dialog">
+<div id="CartModel" class="modal fade cart-desktop-popup" role="dialog">
     <div class="modal-dialog">
         <div class="modal-header">
             <button class="button cart-desktop__close" data-dismiss="modal" aria-label="Close">X</button>

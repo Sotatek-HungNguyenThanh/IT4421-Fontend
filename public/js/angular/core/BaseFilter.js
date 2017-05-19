@@ -16,5 +16,12 @@ angular.module('BaseFilter', [])
             return res;
         };
     })
+    .filter('inventory', function(){
+        return function(inventory) {
+            if(inventory > 0)
+                return "Còn hàng";
+            return "Hết hàng";
+        };
+    })
 
 ;

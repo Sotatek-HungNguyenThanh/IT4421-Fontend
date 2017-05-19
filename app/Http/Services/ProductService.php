@@ -199,7 +199,6 @@ class ProductService
         $title = $params["title"];
         $description = $params["description"];
         $supplier = json_decode($params["supplier"]);
-        $listOption = $params["listOption"];
         $variants = json_decode($params["variants"], true);
         if (isset($params["images"])) {
             $images = $params["images"];
@@ -243,8 +242,39 @@ class ProductService
             "description" => $description,
             "images" => $totalImage ? implode("," , $totalImage) : "",
             "supplier_id" => $supplier->id,
-            "options" => $listOption,
             "variants_attributes" => $variants_attributes
         ];
+    }
+
+    function getListNewProduct($params){
+        try {
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ];
+            $data = [
+                "page_no" => 1,
+                "per_page" => $params["quantity"],
+            ];
+            $response = Units::send('products', $headers, $data, 'GET');
+            Log::info(json_encode($response));
+            return $response->products;
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
+
+    function getProductByID($params){
+        try {
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ];
+            $response = Units::send('products/' . $params["id"], $headers, null, 'GET');
+            Log::info(json_encode($response));
+            return ["product" => $response->product, "variants" =>  $response->variants];
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
     }
 }

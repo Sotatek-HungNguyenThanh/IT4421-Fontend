@@ -160,22 +160,20 @@
                              style="opacity: 1; display: block;">
 
                             <div class="owl-wrapper-outer">
-                                <div class="owl-wrapper" style="width: 3684px; left: 0px; display: block;">
-                                    <div class="owl-item" style="width: 307px;">
+                                <div class="owl-wrapper"
+                                     style="width: 3684px; left: 0px; display: inline">
+                                    <div class="owl-item" style="width: 307px;" ng-repeat="product in controller.fourNewProducts track by $index">
                                         <div class="item">
-
-
                                             <div class="product-item__mini clearfix">
                                                 <div class="product-item__thumb">
                                                     <a href="/dien-thoai-iphone-7-32gbdien-thoai-iphone-7-32gb">
-                                                        <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/iphone-78-400x460.png?v=1479171358803"
-                                                             alt="Điện thoại iPhone 7 32GB">
+                                                        <img ng-src="@{{ product.images[0] }}"
+                                                             alt="@{{ product.title }}">
                                                     </a>
                                                 </div>
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title"><a
-                                                                href="/dien-thoai-iphone-7-32gb">Điện
-                                                            thoại iPhone 7 32GB</a></h3>
+                                                                href="/dien-thoai-iphone-7-32gb">@{{ product.title }}</a></h3>
 
 
                                                     <div class="product-item__price">
@@ -203,138 +201,138 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
-                                            <div class="product-item__mini clearfix">
-                                                <div class="product-item__thumb">
-                                                    <a href="/blackberry-passport">
-                                                        <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/blackberrypassportblack15.png?v=1479142099757"
-                                                             alt="BlackBerry Passport">
-                                                    </a>
-                                                </div>
-                                                <div class="product-item__content">
-                                                    <h3 class="product-item__title"><a
-                                                                href="/blackberry-passport">BlackBerry
-                                                            Passport</a></h3>
-
-
-                                                    <div class="product-item__price">
-
-                                                        <p class="product-item__price__regular">11.980.000₫</p>
-
-                                                    </div>
-
-
-                                                    <div class="product-item__actions">
-
-                                                        <form action="/cart/add" method="post" class="variants"
-                                                              id="product-actions-4726077"
-                                                              enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId"
-                                                                   value="7637601">
-                                                            <button class="button btn-cart add_to_cart"
-                                                                    title="Mua hàng"
-                                                                    aria-label="Mua hàng"><span>Mua hàng</span>
-                                                            </button>
-
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
-                                    <div class="owl-item" style="width: 307px;">
-                                        <div class="item">
+                                    {{--<div class="owl-item" style="width: 307px;">--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="product-item__mini clearfix">--}}
+                                                {{--<div class="product-item__thumb">--}}
+                                                    {{--<a href="/blackberry-passport">--}}
+                                                        {{--<img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/blackberrypassportblack15.png?v=1479142099757"--}}
+                                                             {{--alt="BlackBerry Passport">--}}
+                                                    {{--</a>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="product-item__content">--}}
+                                                    {{--<h3 class="product-item__title"><a--}}
+                                                                {{--href="/blackberry-passport">BlackBerry--}}
+                                                            {{--Passport</a></h3>--}}
 
 
-                                            <div class="product-item__mini clearfix">
-                                                <div class="product-item__thumb">
-                                                    <a href="/dien-thoai-sony-xperia-z5-dual">
-                                                        <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-x-1-400x460.png?v=1479172676383"
-                                                             alt="Điện thoại Sony Xperia Z5 Dual">
-                                                    </a>
-                                                </div>
-                                                <div class="product-item__content">
-                                                    <h3 class="product-item__title"><a
-                                                                href="/dien-thoai-sony-xperia-z5-dual">Điện
-                                                            thoại Sony
-                                                            Xperia Z5 Dual</a></h3>
+                                                    {{--<div class="product-item__price">--}}
+
+                                                        {{--<p class="product-item__price__regular">11.980.000₫</p>--}}
+
+                                                    {{--</div>--}}
 
 
-                                                    <div class="product-item__price">
+                                                    {{--<div class="product-item__actions">--}}
 
-                                                        <p class="product-item__price__special">11.990.000₫</p>
-
-                                                    </div>
-
-
-                                                    <div class="product-item__actions">
-
-                                                        <form action="/cart/add" method="post" class="variants"
-                                                              id="product-actions-4726021"
-                                                              enctype="multipart/form-data">
+                                                        {{--<form action="/cart/add" method="post" class="variants"--}}
+                                                              {{--id="product-actions-4726077"--}}
+                                                              {{--enctype="multipart/form-data">--}}
 
 
-                                                            <input type="hidden" name="variantId"
-                                                                   value="9876594">
-                                                            <button class="button btn-cart add_to_cart"
-                                                                    title="Mua hàng"
-                                                                    aria-label="Mua hàng"><span>Mua hàng</span>
-                                                            </button>
+                                                            {{--<input type="hidden" name="variantId"--}}
+                                                                   {{--value="7637601">--}}
+                                                            {{--<button class="button btn-cart add_to_cart"--}}
+                                                                    {{--title="Mua hàng"--}}
+                                                                    {{--aria-label="Mua hàng"><span>Mua hàng</span>--}}
+                                                            {{--</button>--}}
 
-                                                        </form>
+                                                        {{--</form>--}}
 
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="product-item__mini clearfix">
-                                                <div class="product-item__thumb">
-                                                    <a href="/dien-thoai-sony-xperia-x">
-                                                        <img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-z5-dual-400x460.png?v=1479141392427"
-                                                             alt="Điện thoại Sony Xperia X">
-                                                    </a>
-                                                </div>
-                                                <div class="product-item__content">
-                                                    <h3 class="product-item__title"><a
-                                                                href="/dien-thoai-sony-xperia-x">Điện
-                                                            thoại Sony Xperia X</a></h3>
-
-
-                                                    <div class="product-item__price">
-
-                                                        <p class="product-item__price__special">9.990.000₫</p>
-
-                                                    </div>
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="owl-item" style="width: 307px;">--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="product-item__mini clearfix">--}}
+                                                {{--<div class="product-item__thumb">--}}
+                                                    {{--<a href="/dien-thoai-sony-xperia-z5-dual">--}}
+                                                        {{--<img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-x-1-400x460.png?v=1479172676383"--}}
+                                                             {{--alt="Điện thoại Sony Xperia Z5 Dual">--}}
+                                                    {{--</a>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="product-item__content">--}}
+                                                    {{--<h3 class="product-item__title"><a--}}
+                                                                {{--href="/dien-thoai-sony-xperia-z5-dual">Điện--}}
+                                                            {{--thoại Sony--}}
+                                                            {{--Xperia Z5 Dual</a></h3>--}}
 
 
-                                                    <div class="product-item__actions">
+                                                    {{--<div class="product-item__price">--}}
 
-                                                        <form action="/cart/add" method="post" class="variants"
-                                                              id="product-actions-4725962"
-                                                              enctype="multipart/form-data">
+                                                        {{--<p class="product-item__price__special">11.990.000₫</p>--}}
+
+                                                    {{--</div>--}}
 
 
-                                                            <input type="hidden" name="variantId"
-                                                                   value="7637417">
-                                                            <button class="button btn-cart add_to_cart"
-                                                                    title="Mua hàng"
-                                                                    aria-label="Mua hàng"><span>Mua hàng</span>
-                                                            </button>
+                                                    {{--<div class="product-item__actions">--}}
 
-                                                        </form>
+                                                        {{--<form action="/cart/add" method="post" class="variants"--}}
+                                                              {{--id="product-actions-4726021"--}}
+                                                              {{--enctype="multipart/form-data">--}}
 
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                    </div>
+                                                            {{--<input type="hidden" name="variantId"--}}
+                                                                   {{--value="9876594">--}}
+                                                            {{--<button class="button btn-cart add_to_cart"--}}
+                                                                    {{--title="Mua hàng"--}}
+                                                                    {{--aria-label="Mua hàng"><span>Mua hàng</span>--}}
+                                                            {{--</button>--}}
+
+                                                        {{--</form>--}}
+
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="owl-item" style="width: 307px;">--}}
+                                        {{--<div class="item">--}}
+                                            {{--<div class="product-item__mini clearfix">--}}
+                                                {{--<div class="product-item__thumb">--}}
+                                                    {{--<a href="/dien-thoai-sony-xperia-x">--}}
+                                                        {{--<img src="//bizweb.dktcdn.net/thumb/compact/100/141/731/products/sony-xperia-z5-dual-400x460.png?v=1479141392427"--}}
+                                                             {{--alt="Điện thoại Sony Xperia X">--}}
+                                                    {{--</a>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="product-item__content">--}}
+                                                    {{--<h3 class="product-item__title"><a--}}
+                                                                {{--href="/dien-thoai-sony-xperia-x">Điện--}}
+                                                            {{--thoại Sony Xperia X</a></h3>--}}
+
+
+                                                    {{--<div class="product-item__price">--}}
+
+                                                        {{--<p class="product-item__price__special">9.990.000₫</p>--}}
+
+                                                    {{--</div>--}}
+
+
+                                                    {{--<div class="product-item__actions">--}}
+
+                                                        {{--<form action="/cart/add" method="post" class="variants"--}}
+                                                              {{--id="product-actions-4725962"--}}
+                                                              {{--enctype="multipart/form-data">--}}
+
+
+                                                            {{--<input type="hidden" name="variantId"--}}
+                                                                   {{--value="7637417">--}}
+                                                            {{--<button class="button btn-cart add_to_cart"--}}
+                                                                    {{--title="Mua hàng"--}}
+                                                                    {{--aria-label="Mua hàng"><span>Mua hàng</span>--}}
+                                                            {{--</button>--}}
+
+                                                        {{--</form>--}}
+
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
 

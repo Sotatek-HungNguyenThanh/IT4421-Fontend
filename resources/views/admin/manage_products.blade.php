@@ -60,7 +60,7 @@
                             <td class="fourth-column">@{{ row.supplier.name }}</td>
                             <td class="fifth-column">@{{ row.product.status | is_active }}</td>
                             <td class="sixth-column">
-                                <a href="/admin/product/product-details/@{{ row.product.id }}" style="text-decoration: none; color: black">
+                                <a href="/admin/product/@{{ row.product.id }}" style="text-decoration: none; color: black">
                                     <button type="button" class="button-product">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>

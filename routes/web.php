@@ -13,16 +13,6 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/preview', 'HomeController@preview');
-
-Route::get('/delivery', 'HomeController@delivery');
-
-Route::get('/about', 'HomeController@about');
-
-Route::get('/contact', 'HomeController@contact');
-
-Route::get('/news', 'HomeController@news');
-
 Route::get('/login', 'Customer\AuthController@showLogin')->name('login');
 
 Route::get('/register', 'Customer\AuthController@showRegister');
@@ -36,6 +26,16 @@ Route::post('/login', 'Customer\AuthController@login');
 Route::get('/feedback', 'Customer\AuthController@feedback');
 
 Route::post('/feedback', 'Customer\AuthController@addFeedback');
+
+Route::post('get-list-new-product', 'ProductController@getListNewProduct');
+
+Route::post('get-product-by-id', 'ProductController@getProductByID');
+
+Route::post('cart/add', 'CartController@add');
+
+Route::post('cart/get-cart', 'CartController@getCart');
+
+Route::get('cart/create-order', 'CartController@createOrder');
 
 Route::get('/product', function (){
     return view('app.product_details');
@@ -106,12 +106,12 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-product', 'Admin\ProductController@deleteProduct');
 
-    Route::get('product/product-details/{id}', function (){
-        return view('admin.product_details');
+    Route::get('product/{id}', function (){
+        return view('admin.product_preview');
     });
 
 
-    Route::post('product/product-details/{id}', 'Admin\ProductController@getProduct');
+    Route::post('product/{id}', 'Admin\ProductController@getProduct');
 
     Route::post('remove-variant', 'Admin\ProductController@removeVariant');
 

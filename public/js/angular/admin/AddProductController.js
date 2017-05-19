@@ -99,7 +99,7 @@ var AddProductController = BaseController.extend({
         this.service.createProduct(data)
             .success(function (data) {
                 var response = JSON.parse(data.data);
-                window.location.href = "/admin/product/product-details/" + response.product.id;
+                window.location.href = "/admin/product/" + response.product.id;
             })
             .error(function () {
 

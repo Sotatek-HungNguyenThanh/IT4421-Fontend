@@ -216,14 +216,13 @@
                                         </td>
                                         <td>
                                             <div ng-repeat="properties in variant.properties">
-                                                <span style="font-size: 13px;font-weight: 700;">@{{ properties.name }} : @{{properties.value }}</span>
-                                                <span ng-if="!$last">x</span>
+                                                <p style="font-size: 13px;font-weight: 700;">@{{ properties.name }} : @{{properties.value }}</p>
                                             </div>
                                         </td>
                                         <td><input type="text" class="form-control" input-number ng-model="variant.original_price"></td>
                                         <td><input type="text" class="form-control" input-number ng-model="variant.selling_price"></td>
                                         <td><input type="number" class="form-control" ng-model="variant.inventory"></td>
-                                        <td>@{{ variant.status }}</td>
+                                        <td>@{{ variant.status | status_product}}</td>
                                         <td>
                                             <div >
                                                 <i class="fa fa-lock" aria-hidden="true" style="font-size: 20px;"

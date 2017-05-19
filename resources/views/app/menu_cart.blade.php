@@ -1,4 +1,4 @@
-<div class="menu__cart" ng-controller="CartController as controller">
+<div class="menu__cart" ng-controller="CartShortcutController as controller">
     <a href="/cart">
         <span class="hidden-xs hidden-sm">Giỏ hàng</span>
         <span><span class="count">2</span> <span class="hidden-xs  hidden-sm">sản phẩm</span></span>
