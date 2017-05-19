@@ -34,6 +34,31 @@ class CartService
         return "success";
     }
 
+    public function update($params){
+        $product = $params["item"];
+        $cart = Session::get('cart');
+        $variantID = $product["variant_id"];
+        if(isset($cart[$variantID])){
+            $item = $cart[$variantID];
+            $item["quantity"] = $product["quantity"];
+            $item["total"] = $product["total"];
+            $cart[$variantID] = $item;
+            Session::put('cart', $cart);
+            return "success";
+        }
+    }
+
+    public function remove($params){
+        $product = $params["item"];
+        $cart = Session::get('cart');
+        $variantID = $product["variant_id"];
+        if(isset($cart[$variantID])){
+            unset($cart[$variantID]);
+            Session::put('cart', $cart);
+            return "success";
+        }
+    }
+
     public function getCart(){
         return Session::get('cart');
     }

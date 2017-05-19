@@ -12,7 +12,6 @@ var AccountController = BaseController.extend({
     },
 
     onReceiveData: function (data) {
-        console.log(data);
         this.email = data.email;
         this.fullname = data.fullname;
         this.phone_number = data.phone_number;

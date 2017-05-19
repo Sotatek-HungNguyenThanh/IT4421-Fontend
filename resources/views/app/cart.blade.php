@@ -66,13 +66,15 @@
                                                 </span>
                                             </div>
                                             <div class="a-center fourth-column">
-                                                <button class="reduced items-count btn-minus" type="button">
+                                                <button class="reduced items-count btn-minus" type="button"
+                                                        ng-click="controller.minusVariant(variant)">
                                                     –
                                                 </button>
                                                 <input type="text" maxlength="2" min="0"
                                                        class="input-text number-sidebar"
                                                        name="Lines" size="2" value="1" ng-model="variant.quantity">
-                                                <button class="increase items-count btn-plus" type="button">+
+                                                <button class="increase items-count btn-plus" type="button"
+                                                        ng-click="controller.plusVariant(variant)">+
                                                 </button>
                                             </div>
                                             <div class="a-center fifth-column">
@@ -82,7 +84,8 @@
                                             </div>
                                             <div class="sixth-column">
                                                 <a class="button remove-item remove-item-cart"
-                                                                      title="Xóa" href="javascript:void(0);">
+                                                   title="Xóa" href="javascript:void(0);"
+                                                   ng-click="controller.removeVariant(variant)">
                                                     <span>Xóa</span>
                                                 </a>
                                             </div>
@@ -152,7 +155,7 @@
                                     </a>
                                     <div class="detail-item">
                                         <div class="product-details">
-                                            <a href="javascript:void(0);" class="remove-item-cart fa fa-trash-o"></a>
+                                            <a href="javascript:void(0);" class="remove-item-cart fa fa-trash-o" ng-click="controller.removeVariant(variant)"></a>
                                             <p class="product-name">
                                                 <a href="javascript:void(0)">@{{ variant.product.title }}</a>
                                             </p>
@@ -165,11 +168,11 @@
                                         <div class="product-details-bottom">
                                             <span class="price">@{{ variant.total | number }}</span>
                                             <div class="quantity-select">
-                                                <button class="reduced items-count btn-minus" disabled="" type="button">–</button>
+                                                <button class="reduced items-count btn-minus" type="button" ng-click="controller.minusVariant(variant)">–</button>
                                                 <input type="text" maxlength="2" min="0"
                                                        class="input-text number-sidebar"
                                                        name="Lines" size="2" value="1" ng-model="variant.quantity">
-                                                <button class="increase items-count btn-plus" type="button">+</button>
+                                                <button class="increase items-count btn-plus" type="button" ng-click="controller.plusVariant(variant)">+</button>
                                             </div>
                                         </div>
                                     </div>

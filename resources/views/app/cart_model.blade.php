@@ -1,13 +1,21 @@
-<div id="CartModel" class="modal fade cart-desktop-popup" role="dialog">
+<div id="CartModel" class="modal fade cart-desktop-popup" role="dialog" ng-controller="CartModelController as controller">
     <div class="modal-dialog">
         <div class="modal-header">
-            <button class="button cart-desktop__close" data-dismiss="modal" aria-label="Close">X</button>
-            <p class="cart-desktop__title"><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ
-                    hàng của bạn (<span class="cart-popup-count">6</span> sản phẩm)</a></p>
-            <p class="cart-desktop__status"><i class="fa fa-check" aria-hidden="true"></i> Bạn vừa thêm <a
-                        href="/dien-thoai-sony-xperia-z5-dual" class="cart-desktop__status_item">Điện thoại Sony Xperia
-                    Z5 Dual</a> vào giỏ hàng
-            </p></div>
+            <button class="button cart-desktop__close"
+                    data-dismiss="modal" aria-label="Close">X</button>
+            <p class="cart-desktop__title">
+                <a href="/cart">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    Giỏ hàng của bạn (<span class="cart-popup-count">@{{ controller.quantityProduct }}</span> sản phẩm)
+                </a>
+            </p>
+            <p class="cart-desktop__status">
+                <i class="fa fa-check" aria-hidden="true"></i> Bạn vừa thêm
+                <a href="javascript:void(0)" class="cart-desktop__status_item">
+                    @{{ controller.newVariant }}
+                </a> vào giỏ hàng
+            </p>
+        </div>
         <div class="modal-body">
             <div class="cart-desktop__thead">
                 <div class="cart-desktop__col-1">Sản phẩm</div>
@@ -16,148 +24,47 @@
                 <div class="cart-desktop__col-4">Thành tiền</div>
             </div>
             <div class="cart-desktop__tbody">
-                <div class="cart-popup__item productid-7637601">
+                <div class="cart-popup__item" ng-repeat="variant in controller.listVariants">
                     <div class="cart-desktop__col-1">
                         <div class="cart-popup__item-image">
-                            <a href="/blackberry-passport" title="BlackBerry Passport">
-                                <img alt="BlackBerry Passport"
-                                     src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/blackberrypassportblack15.png"
-                                     width="80"></a></div>
-                        <div class="cart-popup__item-info"><p class="cart-popup__item-name"><a
-                                        href="/blackberry-passport" title="BlackBerry Passport">BlackBerry Passport</a>
+                            <a href="javascript:void(0)">
+                                <img ng-src="@{{ variant.image }}" width="80">
+                            </a>
+                        </div>
+                        <div class="cart-popup__item-info">
+                            <p class="cart-popup__item-name">
+                                <a href="javascript:void(0)">@{{ variant.product.title }}</a>
                             </p>
-                            <p class="cart-popup__item-variant__title" style="display: none;">Default Title</p>
-                            <p class="cart-popup__item-remove"><a href="javascript:;"
-                                                                  class="cart-popup__item-remove__button remove-item-cart"
-                                                                  title="Xóa" data-id="7637601"><i
-                                            class="fa fa-trash-o"></i> Bỏ sản phẩm</a></p></div>
+                            <p class="cart-popup__item-remove">
+                                <a href="javascript:void(0)" class="cart-popup__item-remove__button remove-item-cart"
+                                   title="Xóa" ng-click="controller.removeVariant(variant)">
+                                    <i class="fa fa-trash-o"></i> Bỏ sản phẩm
+                                </a>
+                            </p>
+                        </div>
                     </div>
                     <div class="cart-desktop__col-2">
-                        <div class="cart-popup__item-price"><span
-                                    class="cart-popup__item-price__price">11.980.000₫</span></div>
+                        <div class="cart-popup__item-price">
+                            <span class="cart-popup__item-price__price">@{{ variant.price | number }}₫</span>
+                        </div>
                     </div>
-                    <div class="cart-desktop__col-3"><input class="cart-popup__item-variantId variantID" type="hidden"
-                                                            name="variantId" value="7637601">
-                        <button onclick="var result = document.getElementById('qtyItem7637601'); var qtyItem7637601 = result.value; if( !isNaN( qtyItem7637601 ) &amp;&amp; qtyItem7637601 > 1 ) result.value--;return false;"
-                                disabled="" class="reduced items-count btn-minus" type="button">–
-                        </button>
-                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar qtyItem7637601"
-                               id="qtyItem7637601" name="Lines" size="2" value="1">
-                        <button onclick="var result = document.getElementById('qtyItem7637601'); var qtyItem7637601 = result.value; if( !isNaN( qtyItem7637601 )) result.value++;return false;"
-                                class="increase items-count btn-plus" type="button">+
-                        </button>
+                    <div class="cart-desktop__col-3">
+                        <button class="reduced items-count btn-minus" type="button"
+                                ng-click="controller.minusVariant(variant)">–</button>
+                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar" name="Lines" size="2" value="1">
+                        <button class="increase items-count btn-plus" type="button"
+                                ng-click="controller.plusVariant(variant)">+</button>
                     </div>
-                    <div class="cart-desktop__col-4"><span class="cart-popup__item-price"> <span
-                                    class="cart-popup__item-price__price total-price-item">11.980.000₫</span> </span>
-                    </div>
-                </div>
-                <div class="cart-popup__item productid-7637600">
-                    <div class="cart-desktop__col-1">
-                        <div class="cart-popup__item-image"><a href="/oppo-neo-5" title="Oppo Neo 5"><img
-                                        alt="Oppo Neo 5"
-                                        src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/135237opponeo51201white1.png"
-                                        width="80"></a></div>
-                        <div class="cart-popup__item-info"><p class="cart-popup__item-name"><a href="/oppo-neo-5"
-                                                                                               title="Oppo Neo 5">Oppo
-                                    Neo 5</a></p>
-                            <p class="cart-popup__item-variant__title" style="display: none;">Default Title</p>
-                            <p class="cart-popup__item-remove"><a href="javascript:;"
-                                                                  class="cart-popup__item-remove__button remove-item-cart"
-                                                                  title="Xóa" data-id="7637600"><i
-                                            class="fa fa-trash-o"></i> Bỏ sản phẩm</a></p></div>
-                    </div>
-                    <div class="cart-desktop__col-2">
-                        <div class="cart-popup__item-price"><span
-                                    class="cart-popup__item-price__price">3.189.000₫</span></div>
-                    </div>
-                    <div class="cart-desktop__col-3"><input class="cart-popup__item-variantId variantID" type="hidden"
-                                                            name="variantId" value="7637600">
-                        <button onclick="var result = document.getElementById('qtyItem7637600'); var qtyItem7637600 = result.value; if( !isNaN( qtyItem7637600 ) &amp;&amp; qtyItem7637600 > 1 ) result.value--;return false;"
-                                disabled="" class="reduced items-count btn-minus" type="button">–
-                        </button>
-                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar qtyItem7637600"
-                               id="qtyItem7637600" name="Lines" size="2" value="1">
-                        <button onclick="var result = document.getElementById('qtyItem7637600'); var qtyItem7637600 = result.value; if( !isNaN( qtyItem7637600 )) result.value++;return false;"
-                                class="increase items-count btn-plus" type="button">+
-                        </button>
-                    </div>
-                    <div class="cart-desktop__col-4"><span class="cart-popup__item-price"> <span
-                                    class="cart-popup__item-price__price total-price-item">3.189.000₫</span> </span>
-                    </div>
-                </div>
-                <div class="cart-popup__item productid-9876594">
-                    <div class="cart-desktop__col-1">
-                        <div class="cart-popup__item-image"><a href="/dien-thoai-sony-xperia-z5-dual"
-                                                               title="Điện thoại Sony Xperia Z5 Dual"><img
-                                        alt="Điện thoại Sony Xperia Z5 Dual"
-                                        src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/sony-xperia-x-1-400x460.png"
-                                        width="80"></a></div>
-                        <div class="cart-popup__item-info"><p class="cart-popup__item-name"><a
-                                        href="/dien-thoai-sony-xperia-z5-dual" title="Điện thoại Sony Xperia Z5 Dual">Điện
-                                    thoại Sony Xperia Z5 Dual</a></p>
-                            <p class="cart-popup__item-variant__title" style="display: none;">Default Title</p>
-                            <p class="cart-popup__item-remove"><a href="javascript:;"
-                                                                  class="cart-popup__item-remove__button remove-item-cart"
-                                                                  title="Xóa" data-id="9876594"><i
-                                            class="fa fa-trash-o"></i> Bỏ sản phẩm</a></p></div>
-                    </div>
-                    <div class="cart-desktop__col-2">
-                        <div class="cart-popup__item-price"><span
-                                    class="cart-popup__item-price__price">11.990.000₫</span></div>
-                    </div>
-                    <div class="cart-desktop__col-3"><input class="cart-popup__item-variantId variantID" type="hidden"
-                                                            name="variantId" value="9876594">
-                        <button onclick="var result = document.getElementById('qtyItem9876594'); var qtyItem9876594 = result.value; if( !isNaN( qtyItem9876594 ) &amp;&amp; qtyItem9876594 > 1 ) result.value--;return false;"
-                                class="reduced items-count btn-minus" type="button">–
-                        </button>
-                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar qtyItem9876594"
-                               id="qtyItem9876594" name="Lines" size="2" value="3">
-                        <button onclick="var result = document.getElementById('qtyItem9876594'); var qtyItem9876594 = result.value; if( !isNaN( qtyItem9876594 )) result.value++;return false;"
-                                class="increase items-count btn-plus" type="button">+
-                        </button>
-                    </div>
-                    <div class="cart-desktop__col-4"><span class="cart-popup__item-price"> <span
-                                    class="cart-popup__item-price__price total-price-item">35.970.000₫</span> </span>
-                    </div>
-                </div>
-                <div class="cart-popup__item productid-7637599">
-                    <div class="cart-desktop__col-1">
-                        <div class="cart-popup__item-image"><a href="/htc-one-m9" title="HTC One M9"><img
-                                        alt="HTC One M9"
-                                        src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/13090htconem9goldonsilver.jpg"
-                                        width="80"></a></div>
-                        <div class="cart-popup__item-info"><p class="cart-popup__item-name"><a href="/htc-one-m9"
-                                                                                               title="HTC One M9">HTC
-                                    One M9</a></p>
-                            <p class="cart-popup__item-variant__title" style="display: none;">Default Title</p>
-                            <p class="cart-popup__item-remove"><a href="javascript:;"
-                                                                  class="cart-popup__item-remove__button remove-item-cart"
-                                                                  title="Xóa" data-id="7637599"><i
-                                            class="fa fa-trash-o"></i> Bỏ sản phẩm</a></p></div>
-                    </div>
-                    <div class="cart-desktop__col-2">
-                        <div class="cart-popup__item-price"><span
-                                    class="cart-popup__item-price__price">10.990.000₫</span></div>
-                    </div>
-                    <div class="cart-desktop__col-3"><input class="cart-popup__item-variantId variantID" type="hidden"
-                                                            name="variantId" value="7637599">
-                        <button onclick="var result = document.getElementById('qtyItem7637599'); var qtyItem7637599 = result.value; if( !isNaN( qtyItem7637599 ) &amp;&amp; qtyItem7637599 > 1 ) result.value--;return false;"
-                                disabled="" class="reduced items-count btn-minus" type="button">–
-                        </button>
-                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar qtyItem7637599"
-                               id="qtyItem7637599" name="Lines" size="2" value="1">
-                        <button onclick="var result = document.getElementById('qtyItem7637599'); var qtyItem7637599 = result.value; if( !isNaN( qtyItem7637599 )) result.value++;return false;"
-                                class="increase items-count btn-plus" type="button">+
-                        </button>
-                    </div>
-                    <div class="cart-desktop__col-4"><span class="cart-popup__item-price"> <span
-                                    class="cart-popup__item-price__price total-price-item">10.990.000₫</span> </span>
+                    <div class="cart-desktop__col-4">
+                        <span class="cart-popup__item-price">
+                            <span class="cart-popup__item-price__price total-price-item">@{{ variant.total }}₫</span>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="cart-desktop__tfooter">
                 <div class="cart-desktop__tfooter-info clearfix">
-                    <p class="cart-desktop__tfooter-total">Tổng tiền: <span class="total-price">62.129.000₫</span></p>
+                    <p class="cart-desktop__tfooter-total">Tổng tiền: <span class="total-price">@{{ controller.totalPriceOrder }}₫</span></p>
                 </div>
                 <div class="cart-desktop__tfooter-action clearfix">
                     <a class="button cart-desktop__tfooter-continue" title="Tiếp tục mua hàng" data-dismiss="modal"><i

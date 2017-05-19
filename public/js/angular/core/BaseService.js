@@ -101,6 +101,30 @@ angular.module('BaseService', [])
                     url: 'cart/get-cart',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
-            }
+            },
+
+            updateVariant: function (item) {
+                var data = {
+                    "item" : item
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/cart/update',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            removeVariant: function (item) {
+                var data = {
+                    "item" : item
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/cart/remove',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
         }
     });

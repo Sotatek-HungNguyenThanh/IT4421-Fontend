@@ -75,4 +75,44 @@ class CartController extends Controller
             ];
         }
     }
+
+    public function update(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->cartService->update($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
+
+    public function remove(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->cartService->remove($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
 }

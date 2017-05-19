@@ -67,7 +67,7 @@
                                         <div class="item">
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
-                                                    <a href="/dien-thoai-iphone-7-32gb">
+                                                    <a href="javascript:void(0)">
                                                         <img ng-src="@{{ product.images[0]}}"
                                                              alt="@{{ product.title}}">
                                                     </a>
@@ -81,7 +81,8 @@
                                                         <button class="button btn-cart"
                                                                 type="button"
                                                                 data-toggle="modal"
-                                                                data-target="#CartModel">
+                                                                data-target="#CartModel"
+                                                                ng-click="controller.chooseProduct(product)">
                                                             <span>Chọn</span>
                                                         </button>
 
@@ -89,7 +90,7 @@
                                                 </div>
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title">
-                                                        <a href="/dien-thoai-iphone-7-32gb">
+                                                        <a href="javascript:void(0)">
                                                             @{{ product.title}}
                                                         </a>
                                                     </h3>
@@ -132,7 +133,7 @@
             <div class="menu__cart">
                 <a href="/cart">
                     <span class="hidden-xs hidden-sm">Giỏ hàng</span>
-                    <span><span class="count">2</span> <span class="hidden-xs  hidden-sm">sản phẩm</span></span>
+                    <span><span class="count">@{{ controller.quantityProduct }}</span> <span class="hidden-xs  hidden-sm">sản phẩm</span></span>
                 </a>
             </div>
         </div>

@@ -166,14 +166,14 @@
                                         <div class="item">
                                             <div class="product-item__mini clearfix">
                                                 <div class="product-item__thumb">
-                                                    <a href="/dien-thoai-iphone-7-32gbdien-thoai-iphone-7-32gb">
+                                                    <a href="javascript:void(0)">
                                                         <img ng-src="@{{ product.images[0] }}"
                                                              alt="@{{ product.title }}">
                                                     </a>
                                                 </div>
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title"><a
-                                                                href="/dien-thoai-iphone-7-32gb">@{{ product.title }}</a></h3>
+                                                                href="javascript:void(0)">@{{ product.title }}</a></h3>
 
 
                                                     <div class="product-item__price">
@@ -185,7 +185,7 @@
 
                                                     <div class="product-item__actions">
 
-                                                        <form action="/cart/add" method="post" class="variants"
+                                                        <form class="variants"
                                                               id="product-actions-4738132"
                                                               enctype="multipart/form-data">
 
@@ -193,7 +193,9 @@
                                                             <button class="button btn-cart"
                                                                     title="Chọn sản phẩm"
                                                                     type="button" aria-label="Chọn sản phẩm"
-                                                                    onclick="window.location.href='/dien-thoai-iphone-7-32gb'">
+                                                                    data-toggle="modal"
+                                                                    data-target="#CartModel"
+                                                                    ng-click="controller.chooseProduct(product)">
                                                                 <span>Mua hàng</span></button>
 
                                                         </form>

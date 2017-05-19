@@ -1,8 +1,9 @@
 var ProductPreviewController = BaseController.extend({
 
-    initialize : function($super,service, $scope) {
+    initialize : function($super,service, $scope, $rootScope) {
         $super(service);
         this.$scope = $scope;
+        this.$rootScope = $rootScope;
         var self = this;
         $scope.$on('showProductPreview', function (event, args) {
             self.product = args.data.product;
@@ -76,8 +77,11 @@ var ProductPreviewController = BaseController.extend({
             total: this.quantity * this.price,
             image: this.product.images[0]
         };
+        var self = this;
         this.service.addCart(data)
             .success(function (response) {
+                self.$rootScope.$broadcast('loadingCart');
+                self.$rootScope.$broadcast('addVariant', {name: self.product.title});
                 window.location.href = "/cart";
             })
             .error(function (error) {
@@ -85,5 +89,5 @@ var ProductPreviewController = BaseController.extend({
             });
     }
 
-}, ['BaseService', "$scope"]);
+}, ['BaseService', "$scope", "$rootScope"]);
 myApp.controller('ProductPreviewController', ProductPreviewController);

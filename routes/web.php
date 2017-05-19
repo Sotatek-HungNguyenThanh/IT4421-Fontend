@@ -33,6 +33,10 @@ Route::post('get-product-by-id', 'ProductController@getProductByID');
 
 Route::post('cart/add', 'CartController@add');
 
+Route::post('cart/update', 'CartController@update');
+
+Route::post('cart/remove', 'CartController@remove');
+
 Route::post('cart/get-cart', 'CartController@getCart');
 
 Route::get('cart/create-order', 'CartController@createOrder');

@@ -1,15 +1,17 @@
-var CartShortcutController = CartBaseController.extend({
+var CartModelController = CartBaseController.extend({
 
     initialize : function($super,service, $scope, $rootScope) {
         var self = this;
         $super(service);
-        self.getCart();
         this.$rootScope = $rootScope;
         $scope.$on('loadingCart', function (event, args) {
-           self.getCart();
+            self.getCart();
+        });
+        $scope.$on('addVariant', function (event, args) {
+            self.newVariant = args.name;
         });
 
     },
 
 }, ['CartBaseService', "$scope", "$rootScope"]);
-myApp.controller('CartShortcutController', CartShortcutController);
+myApp.controller('CartModelController', CartModelController);

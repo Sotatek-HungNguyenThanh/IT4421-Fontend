@@ -1,10 +1,27 @@
 var HomeController = BaseController.extend({
     quantityNewProduct: 20,
 
-    initialize : function($super,service, $rootScope) {
+    initialize : function($super,service, $rootScope, $scope) {
+        var self = this;
         $super(service);
         this.$rootScope = $rootScope;
         this.getListNewProduct(this.quantityNewProduct);
+        self.getCart();
+        $scope.$on('loadingCart', function (event, args) {
+            self.getCart();
+        });
+    },
+
+    getCart: function () {
+        var self = this;
+        self.service.getCart()
+            .success(function (response) {
+                var listVariants = response.data;
+                self.quantityProduct = _.allKeys(listVariants).length;
+            })
+            .error(function (error) {
+
+            });
     },
 
     getListNewProduct: function(quantity){
@@ -29,8 +46,12 @@ var HomeController = BaseController.extend({
                 self.$rootScope.$broadcast('showProductPreview', {data: data});
             })
             .error(this.onError.bind(this));
+    },
+
+    chooseProduct: function (product) {
+        console.log(product);
     }
 
 
-}, ['BaseService', "$rootScope"]);
+}, ['BaseService', "$rootScope", "$scope"]);
 myApp.controller('HomeController', HomeController);
