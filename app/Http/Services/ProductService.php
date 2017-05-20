@@ -33,8 +33,7 @@ class ProductService
             $data = $this->formatDataCreateProduct($params);
 
             $response = Units::sendWithDataJson('admins/products', $headers, $data, 'POST');
-
-            return json_encode($response);
+            return ["product" => $response->product, "variants" => $response->variants];
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -110,8 +109,7 @@ class ProductService
         }
 
         $response = Units::send('admins/products', $headers, $data, 'GET');
-        Log::info(json_encode($response));
-        return array("total" => $response->total_products, "data" => $response->products);
+        return array("total" => $response->total_products, "products" => $response->products);
     }
 
     public function deleteProduct($params){
@@ -120,12 +118,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $productID, $headers, null, 'DELETE');
-            return array('status' => $response->success, 'message' => $response->message);
+            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'DELETE');
+            return $response->message;
 
         }catch (Exception $e){
             Log::error($e->getMessage());
@@ -138,13 +136,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $productID, $headers, null, 'GET');
-            Log::info(json_encode($response));
-            return json_encode($response);
+            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'GET');
+            return ["product" => $response->product, "supplier" => $response->supplier, "variants" => $response->variants];
         }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
@@ -157,13 +154,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
-            Log::info(json_encode($response));
-            return json_encode($response);
+            $response = Units::sendWithDataJson('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
+            return $response->message;
         }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
@@ -183,7 +179,7 @@ class ProductService
 
             $response = Units::sendWithDataJson('admins/products/' . $data["id"], $headers, $data, 'PATCH');
 
-            return json_encode($response);
+            return ["product" =>$response->product, "variants" => $response->variants];
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -249,14 +245,13 @@ class ProductService
     function getListNewProduct($params){
         try {
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
             ];
             $data = [
                 "page_no" => 1,
                 "per_page" => $params["quantity"],
             ];
-            $response = Units::send('products', $headers, $data, 'GET');
-            Log::info(json_encode($response));
+            $response = Units::sendWithDataJson('products', $headers, $data, 'GET');
             return $response->products;
         }catch (Exception $e){
             Log::error($e->getMessage());
@@ -267,10 +262,9 @@ class ProductService
     function getProductByID($params){
         try {
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
             ];
-            $response = Units::send('products/' . $params["id"], $headers, null, 'GET');
-            Log::info(json_encode($response));
+            $response = Units::sendWithDataJson('products/' . $params["id"], $headers, null, 'GET');
             return ["product" => $response->product, "variants" =>  $response->variants];
         }catch (Exception $e){
             Log::error($e->getMessage());

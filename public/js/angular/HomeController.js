@@ -53,5 +53,5 @@ var HomeController = BaseController.extend({
     }
 
 
-}, ['BaseService', "$rootScope", "$scope"]);
+}, ['CartBaseService', "$rootScope", "$scope"]);
 myApp.controller('HomeController', HomeController);

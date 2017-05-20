@@ -85,8 +85,10 @@ class CartService
                 "variants" => $variants
             ];
             $response = Units::sendWithDataJson('orders', $headers, $data, 'POST');
-            Log::info(json_encode($response));
-            return json_encode($response);
+            if($response->success){
+                Session::forget("cart");
+            }
+            return $response->order;
         }catch (Exception $e){
             Log::error($e->getMessage());
             return null;

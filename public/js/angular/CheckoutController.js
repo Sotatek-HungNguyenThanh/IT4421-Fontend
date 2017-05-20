@@ -12,7 +12,11 @@ var CheckoutController = CartBaseController.extend({
     },
 
     createOrder: function () {
+        var self = this;
         if(!this.$scope.formCheckout.$valid){
+            return;
+        }
+        if(this.listVariants.length == 0){
             return;
         }
         var data = {
@@ -23,7 +27,8 @@ var CheckoutController = CartBaseController.extend({
 
         this.service.createOrder(data)
             .success(function (response) {
-                console.log(response.data);
+                self.$rootScope.$broadcast('loadingCart');
+                self.customer = undefined;
             })
             .error(this.onError.bind(this));
     }

@@ -12,7 +12,7 @@ var ProductDetailsController = BaseController.extend({
         var self = this;
         this.service.getProduct(url)
             .success(function (response) {
-                var data = JSON.parse(response.data);
+                var data = response.data;
                 self.product = data.product;
                 self.supplier = JSON.stringify(data.supplier);
                 self.variants = data.variants;
@@ -30,7 +30,7 @@ var ProductDetailsController = BaseController.extend({
         var self = this;
         this.service.list('/admin/get-list-suppliers', null, null, null)
             .success(function (data) {
-                var listSupplier = JSON.parse(data.data)
+                var listSupplier = JSON.parse(data.data);
                 self.listSupplier = listSupplier.suppliers;
             })
             .error(function () {
@@ -94,8 +94,6 @@ var ProductDetailsController = BaseController.extend({
         this.service.updateProduct(data)
             .success(function (data) {
                 self.loading(false);
-                var response = JSON.parse(data.data);
-                console.log(response);
             })
             .error(function () {
 

@@ -28,7 +28,7 @@ var ManageProductController = BaseController.extend({
         }
         this.pageCount = Math.ceil(data.total / this.perPage);
         this.row = [];
-        this.rows = data.data;
+        this.rows = data.products;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
     },
 
@@ -85,7 +85,6 @@ var ManageProductController = BaseController.extend({
     },
 
     showProductDetails: function (id) {
-        console.log(id);
         this.$rootScope.$broadcast('showProductDetails', {id : id});
     },
 

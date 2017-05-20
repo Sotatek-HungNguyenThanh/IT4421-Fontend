@@ -26,7 +26,7 @@ var SupplierController = BaseController.extend({
             this.rowNull = this.perPage;
             return;
         }
-        this.pageCount = Math.ceil(data.total_suppliers / this.perPage);
+        this.pageCount = Math.ceil(data.total / this.perPage);
         this.row = [];
         this.rows = data.suppliers;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
@@ -37,8 +37,7 @@ var SupplierController = BaseController.extend({
         this.supplierID = supplierID;
         this.service.getSupplierByID(supplierID)
             .success(function (response) {
-                var data = JSON.parse(response.data);
-                var supplier = data.supplier;
+                var supplier = JSON.parse(response.data);
                 self.name = supplier.name;
                 self.phone_number = supplier.phone_number;
                 self.address = supplier.address;

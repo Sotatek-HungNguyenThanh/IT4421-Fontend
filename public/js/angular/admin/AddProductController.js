@@ -22,7 +22,8 @@ var AddProductController = BaseController.extend({
         var self = this;
         this.service.list('/admin/get-list-suppliers', null, null, null)
             .success(function (data) {
-                var listSupplier = JSON.parse(data.data)
+                console.log(data.data);
+                var listSupplier = data.data;
                 self.listSupplier = listSupplier.suppliers;
             })
             .error(function () {
@@ -98,6 +99,7 @@ var AddProductController = BaseController.extend({
         };
         this.service.createProduct(data)
             .success(function (data) {
+                console.log(data.data);
                 var response = JSON.parse(data.data);
                 window.location.href = "/admin/product/" + response.product.id;
             })
