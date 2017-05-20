@@ -19,10 +19,6 @@
                                                                                        aria-hidden="true"></i></a>
                     <ul class="menu-sub">
 
-
-                        <li class="menu-sub__item"><a href="/khuyen-mai" class="menu-sub__link">Khuyến mãi</a></li>
-
-
                         <li class="menu-sub__item">
                             <a href="/dien-thoai" class="menu-sub__link">Điện thoại <i
                                         class="fa fa-angle-right"></i></a>
@@ -60,12 +56,7 @@
 
                         <li class="menu-sub__item"><a href="/phu-kien" class="menu-sub__link">Phụ kiện</a></li>
 
-
-                        <li class="menu-sub__item"><a href="/sac-du-phong" class="menu-sub__link">Sạc dự phòng</a></li>
-
-
-                        <li class="menu-sub__item"><a href="/smartwatch" class="menu-sub__link">SmartWatch</a></li>
-
+                        <li class="menu-sub__item"><a href="/phu-kien" class="menu-sub__link">Sạc dự phòng</a></li>
 
                     </ul>
                 </li>

@@ -135,7 +135,7 @@
                     <form action="test" method="post">
                         {{ csrf_field() }}
                         <dl>
-                            <dt>Title</dt>
+                            <dt>Tên sản phẩm</dt>
                             <span class="error" ng-show="controller.isNull(controller.title) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
                                 <input type="text" class="form-control"
@@ -144,15 +144,15 @@
                         </dl>
                         <dl>
                             <dt>
-                                Description
+                                Miêu tả
                             </dt>
-                            <span class="error" ng-show="(controller.description == '<p><br></p>') && controller.statusCreateProduct">Please fill out this field</span>
+                            <span class="error" ng-show="controller.isNull(controller.description) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
-                                <textarea class="summernote" id="summernote" name="description"></textarea>
+                                <textarea class="form-control" name="description" ng-model="controller.description"></textarea>
                             </dd>
                         </dl>
                         <dl>
-                            <dt>Supplier</dt>
+                            <dt>Nhà cung cấp</dt>
                             <span class="error" ng-show="controller.isNull(controller.supplier) && controller.statusCreateProduct">Please choose supplier</span>
                             <dd>
                                 <select type="text"
@@ -166,12 +166,12 @@
                         </dl>
                         <dl>
                             <dt>
-                                Images
+                                Ảnh
                                 <input type='file' id="imgInp" class="input-choose-file" accept="image/*"/>
                             </dt>
                             <dd>
                                 <div class="btn-choose-file" id="btn-choose-file" ng-click="controller.uploadImage()">
-                                    <span>Upload image</span>
+                                    <span>Tải ảnh</span>
                                 </div>
                                 <div id="list_images" ng-model="controller.image" style="text-align: left;display: inline-flex;">
                                     {{--<i class="fa fa-picture-o" aria-hidden="true" id="image_default" style="font-size: 140px; height: 185px"></i>--}}
@@ -190,43 +190,45 @@
                         <div class="variant">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <b style="margin-left: -10px;">Variants</b>
+                                    <b style="margin-left: -10px;">Biến thể</b>
                                 </div>
                             </div>
                             <div class="row">
+                                <input type='file' id="imageVariant" class="input-choose-file" accept="image/*"/>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Images</th>
-                                        <th>Variant</th>
-                                        <th>Original Price</th>
-                                        <th>Selling Price</th>
-                                        <th>Inventory</th>
-                                        <th>Status</th>
+                                        <th>Ảnh</th>
+                                        <th>Biến thể</th>
+                                        <th>Giá gốc</th>
+                                        <th>Giá bán</th>
+                                        <th>Số lượng</th>
+                                        <th>Trạng thái</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody ng-repeat="variant in controller.variants">
                                     <tr>
                                         <td>
-                                            <img height="20px" src="@{{ variant.image_url }}"/>
+                                            <img height="50px" id="image_variant-@{{ variant.id }}"
+                                                 src="@{{ variant.image_url }}"
+                                                 ng-click="controller.chooseImageVariant(variant, 'image_variant-' + variant.id)"/>
                                         </td>
                                         <td>
                                             <div ng-repeat="properties in variant.properties">
-                                                <span style="font-size: 13px;font-weight: 700;">@{{ properties.name }} : @{{properties.value }}</span>
-                                                <span ng-if="!$last">x</span>
+                                                <p style="font-size: 13px;font-weight: 700;">@{{ properties.name }} : @{{properties.value }}</p>
                                             </div>
                                         </td>
-                                        <td><input type="text" input-number ng-model="variant.original_price"></td>
-                                        <td><input type="text" input-number ng-model="variant.selling_price"></td>
-                                        <td><input type="text" input-number ng-model="variant.inventory"></td>
-                                        <td>@{{ variant.status }}</td>
+                                        <td><input type="text" class="form-control" input-number ng-model="variant.original_price"></td>
+                                        <td><input type="text" class="form-control" input-number ng-model="variant.selling_price"></td>
+                                        <td><input type="number" class="form-control" ng-model="variant.inventory"></td>
+                                        <td>@{{ variant.status | status_product}}</td>
                                         <td>
                                             <div >
-                                                <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"
+                                                <i class="fa fa-lock" aria-hidden="true" style="font-size: 20px;"
                                                    ng-click="controller.removeVariant(variant)"
                                                     ng-show="controller.isDestroy(variant.status)"></i>
-                                                <i class="fa fa-power-off" aria-hidden="true" style="font-size: 20px;"
+                                                <i class="fa fa-unlock-alt" aria-hidden="true" style="font-size: 20px;"
                                                    ng-show="controller.isActive(variant.status)"
                                                    ng-click="controller.removeVariant(variant)"></i>
                                             </div>

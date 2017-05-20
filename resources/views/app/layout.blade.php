@@ -11,14 +11,20 @@
     {{--javascript--}}
     <script type="text/javascript" src="{{url('js/app.js')}}"></script>
     <link rel="stylesheet" href="/css/theme-home.css" type="text/css">
+    {{--<link rel="stylesheet" href="/css/responsive.css" type="text/css">--}}
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
+    <script type="text/javascript" src="/js/angular/CartBaseService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
+    <script type="text/javascript" src="/js/angular/CartBaseController.js"></script>
+    <script type="text/javascript" src="/js/angular/CheckoutController.js"></script>
+    <script type="text/javascript" src="/js/angular/CartShortcutController.js"></script>
+    <script type="text/javascript" src="/js/angular/CartModelController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
     @yield('script')
 </head>

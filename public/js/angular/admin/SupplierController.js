@@ -1,7 +1,7 @@
 var SupplierController = BaseController.extend({
     url: '/admin/get-list-suppliers',
     pageNo: 1,
-    perPage: 2,
+    perPage: 10,
     pageCount: 1,
     rowNull: 0,
 
@@ -26,7 +26,7 @@ var SupplierController = BaseController.extend({
             this.rowNull = this.perPage;
             return;
         }
-        this.pageCount = Math.ceil(data.total_suppliers / this.perPage);
+        this.pageCount = Math.ceil(data.total / this.perPage);
         this.row = [];
         this.rows = data.suppliers;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
@@ -37,8 +37,7 @@ var SupplierController = BaseController.extend({
         this.supplierID = supplierID;
         this.service.getSupplierByID(supplierID)
             .success(function (response) {
-                var data = JSON.parse(response.data);
-                var supplier = data.supplier;
+                var supplier = JSON.parse(response.data);
                 self.name = supplier.name;
                 self.phone_number = supplier.phone_number;
                 self.address = supplier.address;
@@ -109,11 +108,13 @@ var SupplierController = BaseController.extend({
 		this.description = "";
     },
 
-    removeSupplier: function (supplierID) {
+    removeSupplier: function (supplier) {
+        var self = this;
         this.loading(true);
-        this.service.removeSupplier(supplierID)
+        this.service.removeSupplier(supplier.id)
             .success(function (data) {
-                location.reload();
+                self.loading(false);
+                supplier.status = supplier.status == "deleted" ? "active" : "deleted";
             })
             .error(this.onError.bind(this));
     },

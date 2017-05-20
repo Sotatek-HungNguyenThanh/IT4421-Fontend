@@ -139,6 +139,9 @@ angular.module('AdminService', [])
                 formData.append('supplier', data.supplier);
                 formData.append('listOption', data.listOption);
                 formData.append('variants', data.variants);
+                _.each(data.imagesNewVariants, function (image) {
+                    formData.append('imagesNewVariants['+ image.id +']',image.file);
+                });
 
                 return $http({
                     method: 'POST',

@@ -22,7 +22,9 @@ var AddProductController = BaseController.extend({
         var self = this;
         this.service.list('/admin/get-list-suppliers', null, null, null)
             .success(function (data) {
-                self.listSupplier = data.data;
+                console.log(data.data);
+                var listSupplier = data.data;
+                self.listSupplier = listSupplier.suppliers;
             })
             .error(function () {
 
@@ -65,17 +67,28 @@ var AddProductController = BaseController.extend({
     },
 
     createProduct:function(){
-        this.description = $('.note-editable').html();
+
         this.statusCreateProduct = true;
 
         this.isUpdateImages = !((listImages.length != 0 ) && this.statusCreateProduct);
 
+        var optionsValid = this.getValidOption();
+        if(this.isNull(this.title) ||
+            this.isNull(this.description) ||
+            listImages.length == 0 ||
+            this.isNull(this.supplier) ||
+            this.isNull(this.originalPrice) ||
+            this.isNull(this.sellingPrice) ||
+            optionsValid.length == 0
+        ){
+            return;
+        }
         this.createVariants();
 
-        var optionsValid = this.getValidOption();
+
         var data = {
             title: this.title,
-            description: $(".note-editable").html(),
+            description: this.description,
             images: listImages,
             supplier: this.supplier,
             listOption: _.pluck(optionsValid, 'name'),
@@ -86,9 +99,9 @@ var AddProductController = BaseController.extend({
         };
         this.service.createProduct(data)
             .success(function (data) {
+                console.log(data.data);
                 var response = JSON.parse(data.data);
-                console.log(response);
-                window.location.href = "/admin/product/product-details/" + response.product.id;
+                window.location.href = "/admin/product/" + response.product.id;
             })
             .error(function () {
 

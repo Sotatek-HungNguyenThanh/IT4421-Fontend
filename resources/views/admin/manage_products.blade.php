@@ -49,7 +49,7 @@
                             <th class="thirth-column">Mã sản phẩm</th>
                             <th class="fourth-column">Nhà cung cấp</th>
                             <th class="fifth-column">Trạng thái</th>
-                            <th class="sixth-column">Action</th>
+                            <th class="sixth-column"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,13 +60,13 @@
                             <td class="fourth-column">@{{ row.supplier.name }}</td>
                             <td class="fifth-column">@{{ row.product.status | is_active }}</td>
                             <td class="sixth-column">
-                                <a href="/admin/product/product-details/@{{ row.product.id }}" style="text-decoration: none; color: black">
+                                <a href="/admin/product/@{{ row.product.id }}" style="text-decoration: none; color: black">
                                     <button type="button" class="button-product">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>
                                 </a>
-                                <button type="button" ng-show="controller.isActive(row.product.status)" class="button-product" ng-click="controller.removeProduct(row.product.id)"><i class="fa fa-lock" aria-hidden="true"></i></button>
-                                <button type="button" class="button-product" ng-show="controller.isDestroy(row.product.status)" ng-click="controller.removeProduct(row.product.id)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                                <button type="button" ng-show="controller.isActive(row.product.status)" class="button-product" ng-click="controller.removeProduct(row.product)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="button-product" ng-show="controller.isDestroy(row.product.status)" ng-click="controller.removeProduct(row.product)"><i class="fa fa-lock" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">

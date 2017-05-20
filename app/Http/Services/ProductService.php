@@ -33,8 +33,7 @@ class ProductService
             $data = $this->formatDataCreateProduct($params);
 
             $response = Units::sendWithDataJson('admins/products', $headers, $data, 'POST');
-
-            return json_encode($response);
+            return ["product" => $response->product, "variants" => $response->variants];
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -67,7 +66,7 @@ class ProductService
         foreach ($variants as $variant) {
             $variants_attributes[] = [
                 "properties" => $variant,
-                "image_url" => url('/images/pictures_null.png'),
+                "image_url" => $fileName[0],
                 "inventory" => 1,
                 "original_price" => $originalPrice,
                 "selling_price" => $sellingPrice
@@ -110,8 +109,7 @@ class ProductService
         }
 
         $response = Units::send('admins/products', $headers, $data, 'GET');
-        Log::info(json_encode($response));
-        return array("total" => $response->total_products, "data" => $response->products);
+        return array("total" => $response->total_products, "products" => $response->products);
     }
 
     public function deleteProduct($params){
@@ -120,12 +118,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $productID, $headers, null, 'DELETE');
-            return array('status' => $response->success, 'message' => $response->message);
+            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'DELETE');
+            return $response->message;
 
         }catch (Exception $e){
             Log::error($e->getMessage());
@@ -138,13 +136,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $productID, $headers, null, 'GET');
-            Log::info(json_encode($response));
-            return json_encode($response);
+            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'GET');
+            return ["product" => $response->product, "supplier" => $response->supplier, "variants" => $response->variants];
         }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
@@ -157,13 +154,12 @@ class ProductService
             $token = $this->guard()->user()->token;
             $email = $this->guard()->user()->email;
             $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::send('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
-            Log::info(json_encode($response));
-            return json_encode($response);
+            $response = Units::sendWithDataJson('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
+            return $response->message;
         }catch (Exception $e){
             Log::error($e->getMessage());
             return null;
@@ -183,7 +179,7 @@ class ProductService
 
             $response = Units::sendWithDataJson('admins/products/' . $data["id"], $headers, $data, 'PATCH');
 
-            return json_encode($response);
+            return ["product" =>$response->product, "variants" => $response->variants];
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -194,11 +190,11 @@ class ProductService
     public function formatDataUpdateProduct($params)
     {
         $fileName = [];
+        $fileNewVariants = [];
         $id = $params["id"];
         $title = $params["title"];
         $description = $params["description"];
         $supplier = json_decode($params["supplier"]);
-        $listOption = $params["listOption"];
         $variants = json_decode($params["variants"], true);
         if (isset($params["images"])) {
             $images = $params["images"];
@@ -211,17 +207,30 @@ class ProductService
                 }
             }
         }
+
+        if (isset($params["imagesNewVariants"])) {
+            $imagesNewVariants = $params["imagesNewVariants"];
+
+            foreach ($imagesNewVariants as $key => $image) {
+                if (is_file($image)) {
+                    $urlFile =  time() . '.' . $image->getClientOriginalName();
+                    $fileNewVariants[$key] = url('storage/' . $urlFile);
+                    Storage::disk('public')->put($urlFile, File::get($image));
+                }
+            }
+        }
+
         $variants_attributes = [];
         foreach ($variants as $variant) {
             $variants_attributes[] = [
                 "id" => $variant["id"],
-                "image_url" => url('/images/pictures_null.png'),
+                "image_url" => isset($fileNewVariants[$variant["id"]]) ? $fileNewVariants[$variant["id"]] : $variant["image_url"],
                 "inventory" => $variant["inventory"],
                 "original_price" => $variant["original_price"],
                 "selling_price" => $variant["selling_price"]
             ];
         }
-        $imageOld = $params["images_old"] ? explode("," , $params["images_old"] ): 0;
+        $imageOld = $params["images_old"] ? explode("," , $params["images_old"] ): [];
         $totalImage = array_merge($imageOld, $fileName);
         return $data = [
             "id" => $id,
@@ -229,8 +238,49 @@ class ProductService
             "description" => $description,
             "images" => $totalImage ? implode("," , $totalImage) : "",
             "supplier_id" => $supplier->id,
-            "options" => $listOption,
             "variants_attributes" => $variants_attributes
         ];
+    }
+
+    function getListNewProduct($params){
+        try {
+            $headers = [
+                'Content-Type' => 'application/json',
+            ];
+            $data = [
+                "page_no" => 1,
+                "per_page" => $params["quantity"],
+            ];
+            $response = Units::sendWithDataJson('products', $headers, $data, 'GET');
+            return $response->products;
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
+
+    function getProductByID($params){
+        try {
+            $headers = [
+                'Content-Type' => 'application/json',
+            ];
+            $response = Units::sendWithDataJson('products/' . $params["id"], $headers, null, 'GET');
+            return ["product" => $response->product, "variants" =>  $response->variants];
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
+
+    function search($param){
+        $headers = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ];
+        $data = [
+            "key_word" => $param["query"]
+        ];
+
+        $response = Units::send('products', $headers, $data, 'GET');
+        return ["query" => $param["query"], "products" => $response->products];
     }
 }

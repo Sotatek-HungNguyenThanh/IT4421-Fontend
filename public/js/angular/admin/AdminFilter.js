@@ -7,5 +7,13 @@ angular.module('AdminFilter', [])
             return "Ngừng hoạt động";
         };
     })
+    .filter('status_product', function() {
+        return function(status) {
+            if(status == "active") {
+                return 'Còn kinh doanh';
+            }
+            return "Ngừng kinh doanh";
+        };
+    })
 
 ;

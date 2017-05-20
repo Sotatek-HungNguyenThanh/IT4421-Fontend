@@ -74,7 +74,7 @@
                     </div>
                     <div class="row-register">
                          <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 70px;">
-                            <div class="carousel-heading no-margin">
+                            <div class="carousel-heading carousel-heading-blue no-margin">
                                 <h4>Đăng ký tài khoản</h4>
                             </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">

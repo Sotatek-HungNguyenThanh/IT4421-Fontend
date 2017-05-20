@@ -1,6 +1,6 @@
-<div id="myModal" class="modal fade" role="dialog">
+<div id="productPreview" class="modal fade" role="dialog" ng-controller="ProductPreviewController as controller" ng-cloack>
 	<div class="modal-dialog">
-		<button class="product-quickview__close" data-dismiss="modal">X</button>
+		<button class="product-quickview__close" data-dismiss="modal" ng-click="controller.closeModel()">X</button>
 		<div class="modal-content">
 			<section class="product clearfix">
 				<div id="product__view" class="product__view col-xs-12 clearfix">
@@ -8,60 +8,28 @@
 						<div class="product__view__image col-lg-5 col-md-5 col-sm-6 col-xs-12">
 							<div class="product__view__image--list">
 								<div class="bx-wrapper" style="max-width: 100%;">
-									<div class="bx-viewport"
-										 style="width: 100%; overflow: hidden; position: relative; height: 359px;">
-										<ul class="bxslider1"
-											style="width: 315%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+									<div class="bx-viewport">
+										<ul class="bxslider1">
 
-
-											<li style="float: left; list-style: none; position: relative; width: 384px;">
+											<li>
 												<img class="cloudzoom" id="zoom1"
-													 data-cloudzoom="zoomSizeMode:'image',zoomPosition:'inside', zoomOffsetX:0"
-													 src="//bizweb.dktcdn.net/100/141/731/products/big97572lenovos850lcz3745.png?v=1479172450703"
-													 alt="Lenovo S8" style="user-select: none;">
+													 ng-src="@{{ controller.product.images[0] }}"
+													 alt="@{{ controller.product.title }}">
 											</li>
-
 
 										</ul>
 									</div>
 								</div>
-								{{--<div style="margin: 0 -7px">--}}
-									{{--<div id="bx-pager1" class="bx-pager owl-carousel owl-theme"--}}
-										 {{--style="opacity: 1; display: block;">--}}
-
-										{{--<div class="owl-wrapper-outer">--}}
-											{{--<div class="owl-wrapper" style="width: 164px; left: 0px; display: block;">--}}
-												{{--<div class="owl-item" style="width: 82px;"><a data-slide-index="0"--}}
-																							  {{--href=""--}}
-																							  {{--class="active">--}}
-														{{--<img src="//bizweb.dktcdn.net/thumb/small/100/141/731/products/big97572lenovos850lcz3745.png?v=1479172450703"--}}
-															 {{--alt="Lenovo S8">--}}
-													{{--</a></div>--}}
-											{{--</div>--}}
-										{{--</div>--}}
-
-										{{--<div class="owl-controls clickable" style="display: none;">--}}
-											{{--<div class="owl-buttons">--}}
-												{{--<div class="owl-prev"></div>--}}
-												{{--<div class="owl-next"></div>--}}
-											{{--</div>--}}
-										{{--</div>--}}
-									{{--</div>--}}
-								{{--</div>--}}
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="product__view__content col-lg-7 col-md-7 col-sm-6 col-xs-12" itemprop="offers"
-							 itemscope=""
-							 itemtype="http://schema.org/AggregateOffer">
-
-							<link itemprop="availability" href="http://schema.org/InStock">
+						<div class="product__view__content col-lg-7 col-md-7 col-sm-6 col-xs-12" itemprop="offers">
 
 							<meta itemprop="priceCurrency" content="VND">
 							<meta itemprop="price" content="4639000.0000">
 
 							<div class="product__view__name">
-								<h1><a href="/lenovo-s8">Lenovo S8</a></h1>
+								<h1><a href="/lenovo-s8">@{{ controller.product.title }}</a></h1>
 							</div>
 							<div class="product__view__price">
 								<div class="price-box">
@@ -69,46 +37,60 @@
 
 									<p class="product__view__price--special"><span
 												class="price-label">Giá bán </span><span
-												class="price">4.639.000₫</span></p>
+												class="price">@{{ controller.price | number }}₫</span></p>
 
 
 								</div>
 							</div>
 							<div class="product__view__content--short-description">
-								<p>Thương hiệu : <a href="/vendors?query=Lenovo" title="Lenovo">Lenovo</a></p>
-								<p>Mã sản phẩm: <span class="product-sku">S8-LNS8-50LCY</span> | Tình trạng: <span
-											class="product-available">Còn hàng</span></p>
+								<p>Mã sản phẩm: <span class="product-sku">SP@{{ controller.product.id }}</span> | Tình trạng: <span
+											class="product-available">@{{ controller.inventory | inventory }}</span></p>
 							</div>
 
 							<div class="product__view__content--product-description">
 								<h4>Mô tả:</h4>
-								Thiết kế mỏng nhẹ
-
-								Nhìn tổng thể, LENOVO S8-LNS8-50LCY là một chiếc tablet có thiết kế khá mỏng và nhẹ, với
-								bề dày
-								7.9mm và khối lượng khoảng 299 gram. Điểm nhấn của máy là các góc cạnh vuông vức và lớp
-								viền giả kim
-								loại...
+								@{{ controller.product.description }}
 							</div>
 
 							<div class="product__view__content--actions  clearfix">
-								<form action="/cart/add" method="post" enctype="multipart/form-data"
+								<form
 									  id="add-to-cart-form"
 									  class="form-product-quickview">
 
-
-									<input type="hidden" name="variantId" value="7637591">
-
-
 									<div class="actions-qty">
+										<div class="list-variant">
+											<div class="item-variant" ng-repeat="option in controller.listOptions track by $index">
+												<label for="option-@{{ $index }}">@{{ option.name }}</label>
+												<select type="number" class="form-control" id="option-@{{ $index }}"
+														ng-change="controller.chooseVariant(option)" ng-model="option.value">
+													<option value="@{{ value }}"
+															ng-repeat="value in controller.getListValueOfOption(option.name) track by $index">
+														@{{ value }}
+													</option>
+												</select>
+											</div>
+										</div>
 										<label for="qty">Số lượng</label>
-										<input type="number" class="input-text qtyDetail" title="Qty" value="1" min="1"
+										<input type="number" class="input-text qtyDetail" ng-model="controller.quantity" value="1" min="1"
 											   maxlength="12" id="qtyDetail" name="quantity">
-
+										<div>
 										<button class="button btn-cart detail-button add_to_cart_detail_quick_view"
-												data-dismiss="modal" title="Mua ngay" aria-label="Mua ngay"><span><i
-														class="fa fa-shopping-cart"
-														aria-hidden="true"></i> Mua ngay</span></button>
+												data-dismiss="modal" ng-click="controller.addCart()">
+											<span>
+												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+												Mua ngay
+											</span>
+										</button>
+										<button class="hotline detail-hotline"
+												data-dismiss="modal"
+												data-toggle="modal"
+												data-target="#CartModel">
+											<span>
+												<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+												Thêm vào giỏ hàng
+											</span>
+										</button>
+										</div>
 
 									</div>
 
@@ -258,6 +240,7 @@
 		padding: 10px;
 		margin-right: 10px;
 		text-align: center;
+		margin-bottom: 5px;
 	}
 	.product-quickview .product__view__content--actions .actions-qty #qtyDetail {
 		width: 70px;
@@ -284,7 +267,7 @@
 		margin-right: 10px;
 	}
 	.product__view__content--actions .actions-qty .detail-button.btn-cart {
-		width: 262px;
+		width: 170px;
 		padding-left: 45px;
 	}
 	.product-quickview .product__view__content--actions .actions-qty .detail-button {
@@ -355,9 +338,42 @@
 		z-index: 9;
 	}
 	.modal-dialog{
-		width: 1148px;
+		width: 1148px !important;
+		margin-top: 5px !important;
 	}
 	.modal-content{
 		padding: 50px 0px;
+		border-radius: inherit;
+	}
+	@media (max-width: 767px){
+		.bx-viewport .bxslider1 li{
+			text-align: center;
+		}
+		.product__view__content--actions .actions-qty .detail-button{
+			display: block;
+		}
+	}
+	.list-variant .item-variant select{
+		width: 185px;
+		height: 45px;
+		border: 1px solid #ebebeb;
+		color: #363533;
+		font-size: 14px;
+		font-family: Arial;
+		padding: 10px;
+		margin-right: 10px;
+		text-align: center;
+		display: block;
+		margin-bottom: 5px;
+		outline: none;
+	}
+	.list-variant{
+		display: inline-block;
+		width: 100%;
+		left: 0px;
+		float: left;
+	}
+	.list-variant .item-variant{
+		display: inline-block;
 	}
 </style>

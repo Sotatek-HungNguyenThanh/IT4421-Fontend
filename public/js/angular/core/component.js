@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['BaseService','BaseFilter']);
+var myApp = angular.module('myApp', ['BaseService','BaseFilter', 'CartBaseService']);
 var adminApp = angular.module('adminApp', ['BaseService', 'AdminService', 'AdminFilter','BaseFilter']);
 adminApp.directive('inputNumber', ['$filter', function ($filter) {
     return {

@@ -146,9 +146,9 @@
                             <dt>
                                 Description
                             </dt>
-                            <span class="error" ng-show="(controller.description == '<p><br></p>') && controller.statusCreateProduct">Please fill out this field</span>
+                            <span class="error" ng-show="controller.isNull(controller.description) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
-                                <textarea class="summernote" id="summernote" name="description"></textarea>
+                                <textarea name="description" class="form-control" ng-model="controller.description"></textarea>
                             </dd>
                         </dl>
                         <dl>

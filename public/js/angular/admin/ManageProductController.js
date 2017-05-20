@@ -1,7 +1,7 @@
 var ManageProductController = BaseController.extend({
     url: '/admin/get-list-product',
     pageNo: 1,
-    perPage: 2,
+    perPage: 10,
     pageCount: 1,
     rowNull: 0,
     initialize : function($super, service, $rootScope, $scope) {
@@ -28,7 +28,7 @@ var ManageProductController = BaseController.extend({
         }
         this.pageCount = Math.ceil(data.total / this.perPage);
         this.row = [];
-        this.rows = data.data;
+        this.rows = data.products;
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
     },
 
@@ -73,17 +73,18 @@ var ManageProductController = BaseController.extend({
         return status == "active";
     },
 
-    removeProduct: function (productID) {
+    removeProduct: function (product) {
+        var self = this;
         this.loading(true);
-        this.service.removeProduct(productID)
+        this.service.removeProduct(product.id)
             .success(function (data) {
-                location.reload();
+                self.loading(false);
+                product.status = product.status == "deleted" ? "active" : "deleted";
             })
             .error(this.onError.bind(this));
     },
 
     showProductDetails: function (id) {
-        console.log(id);
         this.$rootScope.$broadcast('showProductDetails', {id : id});
     },
 
