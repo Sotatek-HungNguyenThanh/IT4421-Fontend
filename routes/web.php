@@ -41,8 +41,14 @@ Route::post('cart/get-cart', 'CartController@getCart');
 
 Route::post('cart/create-order', 'CartController@createOrder');
 
+Route::post('/search', 'ProductController@search');
+
 Route::get('/product', function (){
     return view('app.product_details');
+});
+
+Route::get('/search', function (){
+    return view('app.search');
 });
 
 Route::get('/list-product', function (){

@@ -55,4 +55,25 @@ class ProductController extends Controller
             ];
         }
     }
+
+
+    public function search(Request $request){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->search($request->all());
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
 }

@@ -271,4 +271,16 @@ class ProductService
             return null;
         }
     }
+
+    function search($param){
+        $headers = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ];
+        $data = [
+            "key_word" => $param["query"]
+        ];
+
+        $response = Units::send('products', $headers, $data, 'GET');
+        return ["query" => $param["query"], "products" => $response->products];
+    }
 }
