@@ -7,6 +7,23 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-suppliers.css"/>
+    <style>
+        @media screen and (max-width: 950px) {
+            .content-header-title{
+                width: 100%;
+                left: 0
+            }
+        }
+        .page-container-wide .content-header-title{
+            width: 100% !important;
+            left: 53px !important;
+            webkit-transition: all 200ms ease;
+            -moz-transition: all 200ms ease;
+            -ms-transition: all 200ms ease;
+            -o-transition: all 200ms ease;
+            transition: all 200ms ease;
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -20,15 +37,8 @@
                 <div class="container-header">
                     <div class="col-md-12">
                         <div class="row content-header-title">
-                            <div class="col-md-9 title">
+                            <div class="col-md-12 title">
                                 Danh sách nhà cung cấp
-                            </div>
-                            <div class="col-md-3">
-                                <div class="block btn-add">
-                                    <button type="button" class="btn btn-warning"
-                                            data-toggle="modal" data-target="#create-supplier"
-                                            data-backdrop="static">Thêm nhà cung cấp</button>
-                                </div>
                             </div>
                         </div>
                     </div>

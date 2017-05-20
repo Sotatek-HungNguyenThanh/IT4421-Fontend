@@ -61,17 +61,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/plugins/summernote/summernote.js"></script>
-<script>
-    $('#summernote').summernote({
-        toolbar: [
-            // [groupName, [list of button]]
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']]
-        ]
-    });
-</script>

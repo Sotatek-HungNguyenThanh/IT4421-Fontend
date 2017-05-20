@@ -1,22 +1,8 @@
 @extends('admin.layout')
 
 @section('script')
-    <script type="text/javascript" src="/js/plugins/summernote/summernote.js"></script>
     <script type="text/javascript" src="{{url('js/angular/admin/AddProductController.js')}}"></script>
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/add-product.css"/>
-    <script>
-        $('#summernote').summernote({
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']]
-            ]
-        });
-    </script>
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -106,6 +92,15 @@
         .error{
             color: red;
         }
+        .page-container-wide .content-header-title{
+            width: 100% !important;
+            left: 53px !important;
+            webkit-transition: all 200ms ease;
+            -moz-transition: all 200ms ease;
+            -ms-transition: all 200ms ease;
+            -o-transition: all 200ms ease;
+            transition: all 200ms ease;
+        }
     </style>
 @endsection
 
@@ -115,12 +110,12 @@
             <div class="container-content">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row _header-content">
+                        <div class="row _header-content content-header-title">
                             <div class="col-md-7" style="padding: 15px;font-size: 16px;">
                                 Thêm sản phẩm mới
                             </div>
                             <div class="col-md-5">
-                                <div class="block" style="margin-bottom: 0px;">
+                                <div class="block" style="margin-bottom: 0px;position: fixed;left: calc(100% - 336px);">
                                     <a href="/admin/manage-products" style="color: black; border-color: #A4A4A4; border-radius: 5px;margin-right: 12px;border: 1px solid #A4A4A4;padding: 11px 46px; text-decoration: none">
                                        Cancel
                                     </a>
@@ -132,10 +127,10 @@
                     </div>
                 </div>
                 <div style="padding: 20px; margin-top: 40px;">
-                    <form action="test" method="post">
+                    <form>
                         {{ csrf_field() }}
                         <dl>
-                            <dt>Title</dt>
+                            <dt>Tên sản phẩm</dt>
                             <span class="error" ng-show="controller.isNull(controller.title) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
                                 <input type="text" class="form-control"
@@ -144,7 +139,7 @@
                         </dl>
                         <dl>
                             <dt>
-                                Description
+                                Miêu tả
                             </dt>
                             <span class="error" ng-show="controller.isNull(controller.description) && controller.statusCreateProduct">Please fill out this field</span>
                             <dd>
@@ -152,7 +147,7 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt>Supplier</dt>
+                            <dt>Nhà cung cấp</dt>
                             <span class="error" ng-show="controller.isNull(controller.supplier) && controller.statusCreateProduct">Please choose supplier</span>
                             <dd>
                                 <select type="text"
@@ -168,12 +163,12 @@
                         </dl>
                         <dl>
                             <dt>
-                                Images
+                                Ảnh
                                 <input type='file' id="imgInp" class="input-choose-file" accept="image/*"/>
                             </dt>
                             <dd>
                                 <div class="btn-choose-file" id="btn-choose-file" ng-click="controller.uploadImage()">
-                                    <span>Upload image</span>
+                                    <span>Tải ảnh</span>
                                 </div>
                                 <div id="list_images" ng-model="controller.image" style="text-align: left">
                                     <i class="fa fa-picture-o" aria-hidden="true" id="image_default" style="font-size: 140px; height: 185px"></i>
@@ -186,14 +181,14 @@
                             <dd>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Original Price</label><br>
+                                        <label>Giá nhập</label><br>
                                         <input type="text" input-number name="original-price"
                                                class="form-control" placeholder="Original Price"
                                                ng-model="controller.originalPrice" required>
                                         <span class="error" ng-show="controller.isNull(controller.originalPrice) && controller.statusCreateProduct">Please fill out this field</span>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Selling Price</label><br>
+                                        <label>Giá bán</label><br>
                                         <input type="text" input-number name="selling-price"
                                                class="form-control" placeholder="Selling Price"
                                                ng-model="controller.sellingPrice" required>
@@ -205,7 +200,7 @@
                         <div class="variant">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <b style="margin-left: -10px;">Variants</b>
+                                    <b style="margin-left: -10px;">Biến thể</b>
                                     <p>Does this product come in multiple variations like size or color?</p>
                                 </div>
                             </div>

@@ -120,7 +120,7 @@
                                 Thông tin sản phẩm
                             </div>
                             <div class="col-md-5">
-                                <div class="block" style="margin-bottom: 0px;">
+                                <div class="block" style="margin-bottom: 0px;position: fixed;left: calc(100% - 336px);">
                                     <a href="/admin/manage-products" style="color: black; border-color: #A4A4A4; border-radius: 5px;margin-right: 12px;border: 1px solid #A4A4A4;padding: 11px 46px; text-decoration: none">
                                         Cancel
                                     </a>

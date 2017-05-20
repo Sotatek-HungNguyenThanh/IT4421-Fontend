@@ -1,95 +1,93 @@
 @extends('admin.layout')
 
 @section('title')
-    Add New Suppliers
+    Add New Supplier
 @endsection
 
 @section('script')
-	<script type="text/javascript" src="{{url('/js/plugins/icheck/icheck.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-datepicker.js')}}"></script>
-	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-file-input.js')}}"></script>
-	<script type="text/javascript" src="{{url('/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
-	<script type="text/javascript" src="{{url('/js/plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
     <script type="text/javascript" src="{{url('js/angular/admin/SupplierController.js')}}"></script>
-@endsection
-
-@section('page_title')
-    Add new suppliers
+	<style>
+		._header-content{
+			position: fixed;
+			z-index: 2;
+			width: calc(100% - 240px);
+			border-bottom: 1px solid #dfe6e8;
+			background-color: white;
+			top: 51px;
+			left: 230px
+		}
+		@media screen and (max-width: 950px) {
+			._header-content{
+				width: 100%;
+				left: 0
+			}
+		}
+		.page-container-wide .content-header-title{
+			width: 100% !important;
+			left: 53px !important;
+			webkit-transition: all 200ms ease;
+			-moz-transition: all 200ms ease;
+			-ms-transition: all 200ms ease;
+			-o-transition: all 200ms ease;
+			transition: all 200ms ease;
+		}
+	</style>
 @endsection
 
 @section('page_content')
 	<div ng-controller="SupplierController as controller">
 	    <div class="row">
-	        <div class="col-md-12">        
-	            <form class="form-horizontal">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-		                    <h3 class="panel-title">Form add a new supplier</h3>
-		                </div>
-		                @if(Session::has('alert-success'))
-                                <div class="alert alert-success">
-                                    <strong>Success!</strong> {{Session::get('alert-success')}}
-                                </div>
-                            @endif
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-						<div class="panel-body">                           
-					        <div class="form-group">
-					            <label class="col-md-3 col-xs-12 control-label">Name</label>
-					            <div class="col-md-6 col-xs-12">                                      
-					                <div class="input-group">
-					                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-					                    <input type="text" name="name" ng-model="supplier.name" class="form-control" placeholder="Supplier's name" required/>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="form-group">                                        
-					            <label class="col-md-3 col-xs-12 control-label">Address</label>
-					            <div class="col-md-6 col-xs-12">
-					                <div class="input-group">
-					                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-					                    <input type="text" name="address" ng-model="supplier.address" class="form-control" placeholder="Supplier's address" required />
-					                </div>
-					            </div>
-					        </div>
-					        <div class="form-group">                                        
-					            <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
-					            <div class="col-md-6 col-xs-12">
-					                <div class="input-group">
-					                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-					                    <input type="text" name="phone" ng-model="supplier.phone" class="form-control" placeholder="Supplier's phone number" required />
-					                </div>
-					            </div>
-					        </div>
-					        <div class="form-group">
-					            <label class="col-md-3 col-xs-12 control-label">Status</label>
-					            <div class="col-md-6 col-xs-12">                                        
-					                <select class="form-control select" ng-model="supplier.status">
-					                    <option value="active">Active</option>
-					                    <option value="inactive">Inactive</option>
-					                </select>
-					            </div>
-					        </div>					        
-					        <div class="form-group">
-					            <label class="col-md-3 col-xs-12 control-label">Discription</label>
-					            <div class="col-md-6 col-xs-12">                                      
-					                <textarea class="form-control" name="discription" rows="5" placeholder="Add Supplier's discription" ng-model="supplier.discription" required></textarea>
-					            </div>
-					        </div>
-					    </div>
-					    <div class="panel-footer">
-					        <button class="btn btn-default" ng-click="controller.clearForm()">Clear Form</button>               
-					        <button class="btn btn-primary pull-right" id="Home_ContentPlaceHolder_bt_Submit" ng-click="controller.addSupplier()">Submit</button>
-					    </div>
+	        <div class="col-md-12">
+				<div class="container-content">
+					<div class="container-header">
+						<div class="col-md-12">
+							<div class="row _header-content content-header-title">
+								<div class="col-md-7" style="padding: 15px;font-size: 16px;">
+									Thêm nhà cung cấp mới
+								</div>
+							</div>
+						</div>
 					</div>
+					<div style="padding: 20px; margin-top: 40px">
+						<form>
+					<dl>
+						<dt>Tên nhà cung cấp</dt>
+						<dd>
+							<input type="text" name="name" ng-model="controller.name" class="form-control" placeholder="Supplier's name" required/>
+						</dd>
+					</dl>
+					<dl>
+						<dt>Số điện thoai</dt>
+						<dd>
+							<input type="text" name="phone_number" ng-model="controller.phone_number" class="form-control" placeholder="Supplier's telephone" required pattern="[0-9]{10,11}" minlength="10" maxlength="11"/>
+						</dd>
+					</dl>
+					<dl>
+						<dt>Địa chỉ</dt>
+						<dd>
+							<input type="text" name="address" ng-model="controller.address" class="form-control" placeholder="Supplier's address" required/>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							Ghi chú
+						</dt>
+						<dd>
+							<textarea name="description" rows="5" class="form-control" ng-model="controller.description" required></textarea>
+						</dd>
+						<div style="margin: 10px 0px">
+							<button class="btn btn-primary pull-right"
+									ng-click="controller.createSupplier()">Submit
+							</button>
+							<button class="btn btn-primary pull-right"
+									style="margin-right: 5px"
+									onclick="window.history.go(-1)">Close
+							</button>
+						</div>
+					</dl>
 				</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
