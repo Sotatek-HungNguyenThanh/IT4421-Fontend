@@ -29,8 +29,16 @@
     {{--<li>--}}
         {{--<a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">List Customers</span></a>--}}
     {{--</li>--}}
+    <li class="xn-title">Quản lý nhà cung cấp</li>
+    <li>
+        <a href="/admin/create-supplier"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm nhà cung cấp</span></a>
+    </li>
     <li>
         <a href="/admin/manage-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách nhà cung cấp</span></a>
+    </li>
+    <li class="xn-title">Quản lý sản phẩm</li>
+    <li>
+        <a href="/admin/add-product"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm sản phẩm</span></a>
     </li>
     <li>
         <a href="/admin/manage-products"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách sản phẩm</span></a>

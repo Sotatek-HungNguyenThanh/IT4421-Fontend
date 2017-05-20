@@ -7,6 +7,23 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-product.css"/>
+    <style>
+        @media screen and (max-width: 950px) {
+            .content-header-title{
+                width: 100%;
+                left: 0 !important;
+            }
+        }
+        .page-container-wide .content-header-title{
+            width: 100% !important;
+            left: 53px !important;
+            webkit-transition: all 200ms ease;
+            -moz-transition: all 200ms ease;
+            -ms-transition: all 200ms ease;
+            -o-transition: all 200ms ease;
+            transition: all 200ms ease;
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -19,16 +36,9 @@
             <div class="manage-product">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
-                            <div class="col-md-9" style="padding: 15px;font-size: 16px;">
+                        <div class="row content-header-title" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
+                            <div class="col-md-12" style="padding: 15px;font-size: 16px;">
                                Danh sách sản phẩm
-                            </div>
-                            <div class="col-md-3">
-                                <div class="block" style="margin-bottom: 0px;">
-                                    <a style="text-decoration: none; color: white" href="/admin/add-product">
-                                        <button type="button" class="btn btn-warning">Thêm sản phẩm</button>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -68,7 +68,7 @@ var SupplierController = BaseController.extend({
         this.loading(true);
         this.service.createSupplier(params)
             .success(function (data) {
-                location.reload();
+                window.location.href = "/admin/manage-suppliers";
             })
             .error(this.onError.bind(this));
     },
