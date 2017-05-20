@@ -6,6 +6,7 @@ var CheckoutController = CartBaseController.extend({
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         self.getCart();
+        self.isCheckout = true;
         $scope.$on('loadingCart', function (event, args) {
             self.getCart();
         });
@@ -27,8 +28,9 @@ var CheckoutController = CartBaseController.extend({
 
         this.service.createOrder(data)
             .success(function (response) {
+                console.log(response);
                 self.$rootScope.$broadcast('loadingCart');
-                self.customer = undefined;
+                self.isCheckout = false;
             })
             .error(this.onError.bind(this));
     }
