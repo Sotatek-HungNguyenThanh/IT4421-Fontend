@@ -5,258 +5,92 @@
 @endsection
 
 @section('script')
-
+    <script src="/js/angular/CheckoutController.js"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/product_details.css">
 @endsection
 
 @section('content')
-    <div class="main container">
+    <div class="main container" ng-controller="CheckoutController as controller">
         <div class="wrap clearfix">
             <div class="row">
-                <div class="col-md-7 col-sm-12 customer-info">
-                    <div class="form-group m0">
-                        <h2>
-                            <label class="control-label">Thông tin mua hàng</label>
-                        </h2>
-                    </div>
-
-                    <div class="form-group">
-                        <a href="/account/register">Đăng ký tài khoản mua hàng</a>
-                        <span style="padding: 0 5px;">/</span>
-                        <a href="/account/login?returnUrl=/checkout">Đăng nhập </a>
-                    </div>
-
-                    <hr class="divider">
-
-
-                    <div class="form-group" bind-class="{'has-error' : invalidEmail}">
-                        <input data-error="Vui lòng nhập email đúng định dạng" required="" name="Email" value="" type="email" class="form-control" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
-                        <div class="help-block with-errors">
+                <form name="formCheckout">
+                    <div class="col-md-7 col-sm-12 customer-info">
+                        <div class="form-group m0">
+                            <h2>
+                                <label class="control-label">Thông tin mua hàng</label>
+                            </h2>
                         </div>
-                    </div>
 
-                    <div class="billing">
+                        <hr class="divider">
+
                         <div class="form-group">
-                            <a class="underline-none open" bind-event-click="billing_expand = !billing_expand" bind-class="{expandable: otherAddress, open: billing_expand}" href="javascript:void(0)">
-                                <span bind-show="!otherAddress">Thông tin thanh toán và nhận hàng</span>
-                                <span bind-show="otherAddress" class="hide">Thông tin thanh toán</span>
-                            </a>
+                            <input required name="Email" ng-model="controller.customer.email" type="email"
+                                   class="form-control" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
+                            <div class="help-block with-errors">
+                            </div>
                         </div>
-                        <div bind-show="billing_expand || !otherAddress">
+
+                        <div class="billing">
                             <div class="form-group">
-                                <input data-error="Vui lòng nhập họ tên" required="" bind="billing_address.full_name" name="BillingAddress.LastName" class="form-control" placeholder="Họ và tên">
-                                <div class="help-block with-errors"></div>
+                                <a class="underline-none open">
+                                    <span >Thông tin thanh toán và nhận hàng</span>
+                                    <span class="hide">Thông tin thanh toán</span>
+                                </a>
                             </div>
+                            <div>
+                                <div class="form-group">
+                                    <input type="text" name="fullname" required class="form-control" placeholder="Họ và tên"
+                                           ng-model="controller.customer.fullname">
+                                </div>
 
-                            <div class="form-group">
-                                <input bind="billing_address.phone" name="BillingAddress.Phone" class="form-control" placeholder="Số điện thoại" data-error="Vui lòng nhập số điện thoại">
-                                <div class="help-block with-errors"></div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <input bind="billing_address.address1" name="BillingAddress.Address1" class="form-control" placeholder="Địa chỉ">
-                                <div class="help-block with-errors"></div>
-                            </div>
-
-
-                            <hr class="divider">
-                        </div>
-                    </div>
-                    <div bind-show="otherAddress" define="{shipping_address: {}, shipping_expand:true,show_district:  true ,show_country:  true }" class="shipping  hide">
-                        <div class="form-group">
-                            <a class="underline-none expandable open" bind-event-click="shipping_expand = !shipping_expand" bind-class="{open: shipping_expand}" href="javascript:void(0)">
-                                Thông tin nhận hàng
-                            </a>
-                        </div>
-                        <div bind-show="shipping_expand || !otherAddress">
-                            <div class="form-group">
-                                <input data-error="Vui lòng nhập họ tên" required="" bind="shipping_address.full_name" name="ShippingAddress.LastName" class="form-control" placeholder="Họ và tên">
-                                <div class="help-block with-errors"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <input bind="shipping_address.phone" name="ShippingAddress.Phone" class="form-control" placeholder="Số điện thoại">
-                                <div class="help-block with-errors"></div>
-                            </div>
+                                <div class="form-group">
+                                    <input name="phone_number"  class="form-control"  type="text"
+                                           placeholder="Số điện thoại" ng-model="controller.customer.phone_number" pattern="^\d{10,11}$" required>
+                                </div>
 
 
-                            <div class="form-group">
-                                <input bind="shipping_address.address1" name="ShippingAddress.Address1" class="form-control" placeholder="Địa chỉ">
-                                <div class="help-block with-errors"></div>
+                                <div class="form-group">
+                                    <input name="address" type="text" class="form-control" placeholder="Địa chỉ" ng-model="controller.customer.address" required>
+                                </div>
+
+
+                                <hr class="divider">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <textarea name="note" value="" rows="5" class="form-control" placeholder="Ghi chú"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-5 col-sm-12 order-info" define="{order_expand: false}">
+                    <div class="col-md-5 col-sm-12 order-info">
                     <div class="order-summary order-summary--custom-background-color ">
                         <div class="order-summary-header summary-header--thin summary-header--border">
                             <h2>
                                 <label class="control-label">Đơn hàng</label>
-                                <label class="control-label">(11)</label>
+                                <label class="control-label">(@{{ controller.quantityProduct }})</label>
                             </h2>
                         </div>
-                        <div class="order-items mobile--is-collapsed" bind-class="{'mobile--is-collapsed': !order_expand}">
+                        <div class="order-items mobile--is-collapsed">
                             <div class="summary-body summary-section summary-product">
                                 <div class="summary-product-list">
                                     <ul class="product-list">
-
-                                        <li class="product product-has-image clearfix">
+                                        <li class="product product-has-image clearfix" ng-repeat="variant in controller.listVariants">
                                             <div class="product-thumbnail pull-left">
                                                 <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/blackberrypassportblack15.png?v=1479142099757" alt="BlackBerry Passport" class="product-thumbnail__image">
-
+                                                    <img ng-src="@{{ variant.image }}" class="product-thumbnail__image">
                                                 </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
+                                                <span class="product-thumbnail__quantity" aria-hidden="true">@{{ variant.quantity }}</span>
                                             </div>
                                             <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>BlackBerry Passport</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                11.980.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/135237opponeo51201white1.png?v=1479142113290" alt="Oppo Neo 5" class="product-thumbnail__image">
-
+                                                <span class="product-info-name">
+                                                    <strong>@{{ variant.product.title }}</strong>
+                                                </span>
+                                                <div class="list-type-variant">
+                                                    <span class="variant-title" ng-repeat="type in variant.properties">
+                                                        @{{ type.name }} : @{{ type.value }}
+                                                    </span>
                                                 </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">2</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>Oppo Neo 5</strong>
-                                                            </span>
-
-
                                             </div>
                                             <strong class="product-price pull-right">
-                                                6.378.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/sony-xperia-x-1-400x460.png?v=1479172676383" alt="Điện thoại Sony Xperia Z5 Dual" class="product-thumbnail__image">
-
-                                                </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">4</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>Điện thoại Sony Xperia Z5 Dual</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                47.960.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/13090htconem9goldonsilver.jpg?v=1479172304403" alt="HTC One M9" class="product-thumbnail__image">
-
-                                                </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>HTC One M9</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                10.990.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/54115944s1.png?v=1479141894390" alt="iPhone 4s 32GB" class="product-thumbnail__image">
-
-                                                </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>iPhone 4s 32GB</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                9.790.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/0010687nokiax68gb1.png?v=1479141860967" alt="Nokia X6 8GB" class="product-thumbnail__image">
-
-                                                </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>Nokia X6 8GB</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                6.490.000₫
-                                            </strong>
-                                        </li>
-
-                                        <li class="product product-has-image clearfix">
-                                            <div class="product-thumbnail pull-left">
-                                                <div class="product-thumbnail__wrapper">
-
-                                                    <img src="//bizweb.dktcdn.net/thumb/thumb/100/141/731/products/big52005lggpad.png?v=1479141705710" alt="LG L70" class="product-thumbnail__image">
-
-                                                </div>
-                                                <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                            </div>
-                                            <div class="product-info pull-left">
-                                                            <span class="product-info-name">
-
-                                                                <strong>LG L70</strong>
-                                                            </span>
-
-
-                                            </div>
-                                            <strong class="product-price pull-right">
-                                                5.000.000₫
+                                                @{{ variant.total | number}}₫
                                             </strong>
                                         </li>
 
@@ -266,15 +100,15 @@
                         </div>
                         <div class="summary-section border-top-none--mobile">
                             <div class="total-line total-line-total clearfix">
-                                        <span class="total-line-name pull-left">
-                                            Tổng cộng
-                                        </span>
-                                <span class="total-line-price pull-right">98.588.000₫</span>
+                                <span class="total-line-name pull-left">
+                                    Tổng cộng
+                                </span>
+                                <span class="total-line-price pull-right">@{{ controller.totalPriceOrder | number }}₫</span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group clearfix">
-                        <input class="btn btn-primary col-md-12 mt10 btn-checkout" type="button" bind-event-click="paymentCheckout('AIzaSyDWReBlPxFt-i145Gsd502wOqRS0KXFHW4;AIzaSyAbtwApDToQWn7snVio3Y9PWFbcpdnOWdk;AIzaSyA5rJOu8wci0li24bnZ1WogMEH93p-DGlM')" value="ĐẶT HÀNG">
+                        <input class="btn btn-primary col-md-12 mt10 btn-checkout" type="submit" value="ĐẶT HÀNG" ng-click="controller.createOrder()">
                     </div>
                     <div class="form-group has-error">
                         <div class="help-block ">
@@ -284,6 +118,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -480,6 +315,10 @@
             padding: 8px 12px;
             font-size: 16px;
             font-weight: bold;
+        }
+
+        .list-type-variant .item-variant{
+            font-size: 9px;
         }
     </style>
 @endsection

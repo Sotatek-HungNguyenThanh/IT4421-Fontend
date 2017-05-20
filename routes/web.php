@@ -39,7 +39,7 @@ Route::post('cart/remove', 'CartController@remove');
 
 Route::post('cart/get-cart', 'CartController@getCart');
 
-Route::get('cart/create-order', 'CartController@createOrder');
+Route::post('cart/create-order', 'CartController@createOrder');
 
 Route::get('/product', function (){
     return view('app.product_details');

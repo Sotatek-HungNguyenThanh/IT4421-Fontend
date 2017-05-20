@@ -22,6 +22,7 @@
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
     <script type="text/javascript" src="/js/angular/CartBaseController.js"></script>
+    <script type="text/javascript" src="/js/angular/CheckoutController.js"></script>
     <script type="text/javascript" src="/js/angular/CartShortcutController.js"></script>
     <script type="text/javascript" src="/js/angular/CartModelController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>

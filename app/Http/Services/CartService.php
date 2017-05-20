@@ -64,27 +64,26 @@ class CartService
     }
 
     public function createOrder($params){
+        $order = $params["order"];
+
+        $variants = [];
+        foreach ($order["variants"] as $variant){
+            $variants[] = [
+                "variant_id" => $variant["variant_id"],
+                "quantity" => $variant["quantity"],
+                "unit_price" => $variant["price"]
+            ];
+        }
+
         try {
             $headers = [
                 'Content-Type' => 'application/json',
             ];
             $data = [
-                "customer" => [
-                    "fullname" => "Hung Nguyen",
-                    "email" => "hungnguyen.vp.1995@gmail.com",
-                    "address" => "Ha Noi",
-                    "phone_number" => "0973241196"
-                ],
-                "total_price" => 123456,
-                "variants" => [
-                    [
-                        "variant_id" => 80,
-                        "quantity" => 6,
-                        "unit_price" => 123456
-                    ]
-                ]
+                "customer" => $order["customer"],
+                "total_price" => $order["total"],
+                "variants" => $variants
             ];
-            Log::info(json_encode($data));
             $response = Units::sendWithDataJson('orders', $headers, $data, 'POST');
             Log::info(json_encode($response));
             return json_encode($response);

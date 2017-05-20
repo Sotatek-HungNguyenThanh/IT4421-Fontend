@@ -126,5 +126,17 @@ angular.module('BaseService', [])
                     data: $.param(data)
                 });
             },
+
+            createOrder: function (order) {
+                var data = {
+                    "order" : order
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/cart/create-order',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            }
         }
     });
