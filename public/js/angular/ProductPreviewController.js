@@ -1,4 +1,4 @@
-var ProductPreviewController = BaseController.extend({
+var ProductPreviewController = CartBaseController.extend({
 
     initialize : function($super,service, $scope, $rootScope) {
         $super(service);
@@ -32,7 +32,7 @@ var ProductPreviewController = BaseController.extend({
     },
 
     getVariantDefault: function (optionName) {
-        var value = "";;
+        var value = "";
         _.each(this.variants, function(variant){
             _.each(variant.properties, function (properties) {
                 if (properties.name == optionName && variant.inventory > 0){
@@ -67,6 +67,8 @@ var ProductPreviewController = BaseController.extend({
     },
 
     addCart: function () {
+        var self = this;
+
         var data = {
             product_id : this.product.id,
             product: this.product,
@@ -77,9 +79,9 @@ var ProductPreviewController = BaseController.extend({
             total: this.quantity * this.price,
             image: this.product.images[0]
         };
-        var self = this;
         this.service.addCart(data)
             .success(function (response) {
+                $("#productPreview").modal("hide");
                 self.$rootScope.$broadcast('loadingCart');
                 self.$rootScope.$broadcast('addVariant', {name: self.product.title});
                 window.location.href = "/cart";
@@ -87,7 +89,7 @@ var ProductPreviewController = BaseController.extend({
             .error(function (error) {
 
             });
-    }
+    },
 
 }, ['BaseService', "$scope", "$rootScope"]);
 myApp.controller('ProductPreviewController', ProductPreviewController);

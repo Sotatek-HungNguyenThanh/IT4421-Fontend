@@ -13,8 +13,7 @@
 
 											<li>
 												<img class="cloudzoom" id="zoom1"
-													 ng-src="@{{ controller.product.images[0] }}"
-													 alt="@{{ controller.product.title }}">
+													 ng-src="@{{ controller.product.images[0] }}">
 											</li>
 
 										</ul>
@@ -24,12 +23,8 @@
 							<div class="clear"></div>
 						</div>
 						<div class="product__view__content col-lg-7 col-md-7 col-sm-6 col-xs-12" itemprop="offers">
-
-							<meta itemprop="priceCurrency" content="VND">
-							<meta itemprop="price" content="4639000.0000">
-
 							<div class="product__view__name">
-								<h1><a href="/lenovo-s8">@{{ controller.product.title }}</a></h1>
+								<h1><a href="/product/@{{ controller.product.id }}">@{{ controller.product.title }}</a></h1>
 							</div>
 							<div class="product__view__price">
 								<div class="price-box">

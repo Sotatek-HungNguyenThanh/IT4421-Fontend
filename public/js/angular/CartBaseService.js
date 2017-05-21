@@ -42,7 +42,7 @@ angular.module('CartBaseService', [])
             getCart: function () {
                 return $http({
                     method: 'POST',
-                    url: 'cart/get-cart',
+                    url: '/cart/get-cart',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
             },
@@ -84,6 +84,14 @@ angular.module('CartBaseService', [])
             },
 
             search: function (url) {
+                return $http({
+                    method: 'POST',
+                    url: url,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
+            },
+
+            getProductByUrl: function (url) {
                 return $http({
                     method: 'POST',
                     url: url,

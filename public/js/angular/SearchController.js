@@ -14,8 +14,8 @@ var SearchController = CartBaseController.extend({
                 var data = response.data;
                 self.query = data.query;
                 self.listVariants = data.products;
-                _.each(self.listVariants, function (product) {
-                    product.images = product.images.split(",");
+                _.each(self.listVariants, function (item) {
+                    item.product.images = item.product.images.split(",");
                 });
             })
             .error(this.onError.bind(this));

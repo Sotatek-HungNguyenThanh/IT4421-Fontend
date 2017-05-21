@@ -41,33 +41,30 @@
                 <div class="category-products clearfix">
                     <div class="products-grid clearfix">
 
-                        <div class="item col-md-2 col-sm-3 col-xs-6" ng-repeat="product in controller.listVariants">
+                        <div class="item col-md-2 col-sm-3 col-xs-6" ng-repeat="item in controller.listVariants">
                             <div class="product-item__grid">
                                 <div class="product-item__thumb">
                                     <a href="javascript:void(0)">
-                                        <img ng-src="@{{product.images[0]}}">
+                                        <img ng-src="@{{item.product.images[0]}}">
                                     </a>
                                     <div class="product-item__actions hidden-xs">
                                         <button class="button quick-view"
                                                 data-toggle="modal"
                                                 data-target="#productPreview"
-                                                ng-click="controller.showProductPreview(product)">
+                                                ng-click="controller.showProductPreview(item.product)">
                                             Xem nhanh
                                         </button>
                                         <button class="button btn-cart"
-                                                type="button"
-                                                data-toggle="modal"
-                                                data-target="#CartModel"
-                                                ng-click="controller.chooseProduct(product)">
-                                            <span>Chọn</span>
+                                                type="button">
+                                            <a href="/product/@{{ item.product.id }}"><span>Chọn</span></a>
                                         </button>
 
                                     </div>
                                 </div>
                                 <div class="product-item__content">
-                                    <h3 class="product-item__title"><a href="javascript:void(0)">@{{ product.title }}</a></h3>
+                                    <h3 class="product-item__title"><a href="/product/@{{ item.product.id }}">@{{ item.product.title }}</a></h3>
                                     <div class="product-item__price">
-                                        <p class="product-item__price__special">17.790.000₫</p>
+                                        <p class="product-item__price__special">@{{ item.product.min_price | number }}₫</p>
                                     </div>
 
 

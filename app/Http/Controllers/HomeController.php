@@ -19,5 +19,17 @@ class HomeController extends Controller
         return view('app.home');
     }
 
+    public function showPageSearch(){
+        return view('app.search');
+    }
+
+    public function showPageCheckout(){
+        return view('app.checkout');
+    }
+
+    public function showPageCart(){
+        return view('app.cart');
+    }
+
 
 }

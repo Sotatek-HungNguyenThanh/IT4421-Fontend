@@ -162,23 +162,23 @@
                             <div class="owl-wrapper-outer">
                                 <div class="owl-wrapper"
                                      style="width: 3684px; left: 0px; display: inline">
-                                    <div class="owl-item" style="width: 307px;" ng-repeat="product in controller.fourNewProducts track by $index">
+                                    <div class="owl-item" style="width: 307px;" ng-repeat="item in controller.fourNewProducts track by $index">
                                         <div class="item">
                                             <div class="product-item__mini clearfix">
                                                 <div class="product-item__thumb">
                                                     <a href="javascript:void(0)">
-                                                        <img ng-src="@{{ product.images[0] }}"
-                                                             alt="@{{ product.title }}">
+                                                        <img ng-src="@{{ item.product.images[0] }}"
+                                                             alt="@{{ item.product.title }}">
                                                     </a>
                                                 </div>
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title"><a
-                                                                href="javascript:void(0)">@{{ product.title }}</a></h3>
+                                                                href="javascript:void(0)">@{{ item.product.title }}</a></h3>
 
 
                                                     <div class="product-item__price">
 
-                                                        <p class="product-item__price__special">17.790.000₫</p>
+                                                        <p class="product-item__price__special">@{{ item.product.min_price | number }}₫</p>
 
                                                     </div>
 
@@ -192,11 +192,11 @@
 
                                                             <button class="button btn-cart"
                                                                     title="Chọn sản phẩm"
-                                                                    type="button" aria-label="Chọn sản phẩm"
-                                                                    data-toggle="modal"
-                                                                    data-target="#CartModel"
-                                                                    ng-click="controller.chooseProduct(product)">
-                                                                <span>Mua hàng</span></button>
+                                                                    type="button" aria-label="Chọn sản phẩm">
+                                                                <a href="/product/@{{ item.product.id }}">
+                                                                <span>Mua hàng</span>
+                                                                </a>
+                                                            </button>
 
                                                         </form>
 

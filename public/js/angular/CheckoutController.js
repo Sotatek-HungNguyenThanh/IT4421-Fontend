@@ -17,9 +17,7 @@ var CheckoutController = CartBaseController.extend({
         if(!this.$scope.formCheckout.$valid){
             return;
         }
-        if(this.listVariants.length == 0){
-            return;
-        }
+
         var data = {
             customer : this.customer,
             variants : this.listVariants,
@@ -28,12 +26,15 @@ var CheckoutController = CartBaseController.extend({
 
         this.service.createOrder(data)
             .success(function (response) {
-                console.log(response);
-                self.$rootScope.$broadcast('loadingCart');
-                self.isCheckout = false;
+                if(!response.data) {
+                    self.notification(false, "Số hàng trong kho không đủ :((");
+                }else {
+                    self.$rootScope.$broadcast('loadingCart');
+                    self.isCheckout = false;
+                }
             })
             .error(this.onError.bind(this));
-    }
+    },
 
 }, ['CartBaseService', "$scope", "$rootScope"]);
 myApp.controller('CheckoutController', CheckoutController);

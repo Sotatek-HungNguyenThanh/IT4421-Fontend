@@ -283,4 +283,17 @@ class ProductService
         $response = Units::send('products', $headers, $data, 'GET');
         return ["query" => $param["query"], "products" => $response->products];
     }
+
+    function getProductByUrl($id){
+        try {
+            $headers = [
+                'Content-Type' => 'application/json',
+            ];
+            $response = Units::sendWithDataJson('products/' . $id, $headers, null, 'GET');
+            return ["product" => $response->product, "variants" =>  $response->variants];
+        }catch (Exception $e){
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
 }

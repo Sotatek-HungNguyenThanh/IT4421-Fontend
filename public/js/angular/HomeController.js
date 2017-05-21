@@ -29,8 +29,8 @@ var HomeController = BaseController.extend({
         this.service.getListNewProduct(quantity)
             .success(function (data) {
                 self.newProducts = data.data;
-                _.each(self.newProducts, function (product) {
-                    product.images = product.images.split(",");
+                _.each(self.newProducts, function (item) {
+                    item.product.images = item.product.images.split(",");
                 });
                 self.fourNewProducts = _.first(self.newProducts, 4);
             })

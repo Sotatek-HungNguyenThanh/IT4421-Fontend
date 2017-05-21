@@ -63,27 +63,24 @@
                         <div class="slider-product-list owl-carousel owl-theme" style="opacity: 1; display: block;">
                             <div class="owl-wrapper-outer">
                                 <div class="owl-wrapper" style="width: 100%; left: 0px; display: inline-block;">
-                                    <div class="owl-item" ng-repeat="product in controller.newProducts track by $index">
+                                    <div class="owl-item" ng-repeat="item in controller.newProducts track by $index">
                                         <div class="item">
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
                                                     <a href="javascript:void(0)">
-                                                        <img ng-src="@{{ product.images[0]}}"
-                                                             alt="@{{ product.title}}">
+                                                        <img ng-src="@{{ item.product.images[0]}}"
+                                                             alt="@{{ item.product.title}}">
                                                     </a>
                                                     <div class="product-item__actions hidden-xs">
                                                         <button class="button quick-view"
                                                                 data-toggle="modal"
                                                                 data-target="#productPreview"
-                                                                ng-click="controller.showProductPreview(product)">
+                                                                ng-click="controller.showProductPreview(item.product)">
                                                             Xem nhanh
                                                         </button>
                                                         <button class="button btn-cart"
-                                                                type="button"
-                                                                data-toggle="modal"
-                                                                data-target="#CartModel"
-                                                                ng-click="controller.chooseProduct(product)">
-                                                            <span>Chọn</span>
+                                                                type="button">
+                                                            <a href="/product/@{{ item.product }}"><span>Chọn</span></a>
                                                         </button>
 
                                                     </div>
@@ -91,12 +88,12 @@
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title">
                                                         <a href="javascript:void(0)">
-                                                            @{{ product.title}}
+                                                            @{{ item.product.title}}
                                                         </a>
                                                     </h3>
 
                                                     <div class="product-item__price">
-                                                        <p class="product-item__price__special">17.790.000₫</p>
+                                                        <p class="product-item__price__special">@{{ item.product.min_price | number }}₫</p>
 
                                                     </div>
                                                 </div>

@@ -76,4 +76,28 @@ class ProductController extends Controller
             ];
         }
     }
+
+    public function showProductDetailPage(){
+        return view('app.product_details');
+    }
+
+    public function getProductByUrl(Request $request, $id){
+        DB::beginTransaction();
+        try{
+            $result = $this->productService->getProductByUrl($id);
+            DB::commit();
+            return [
+                'status' => Consts::STATUS_OK,
+                'message'=> 'success',
+                'data' => $result
+            ];
+        }catch (Exception $e){
+            DB::rollback();
+            return[
+                'status' => Consts::STATUS_ERROR,
+                'message' => $e->getMessage(),
+                'data' => ''
+            ];
+        }
+    }
 }

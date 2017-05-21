@@ -43,25 +43,19 @@ Route::post('cart/create-order', 'CartController@createOrder');
 
 Route::post('/search', 'ProductController@search');
 
-Route::get('/product', function (){
-    return view('app.product_details');
-});
+Route::get('/product/{id}', 'ProductController@showProductDetailPage');
 
-Route::get('/search', function (){
-    return view('app.search');
-});
+Route::post('/product/{id}', 'ProductController@getProductByUrl');
+
+Route::get('/search', "HomeController@showPageSearch");
 
 Route::get('/list-product', function (){
     return view('app.list_product');
 });
 
-Route::get('/checkout', function (){
-    return view('app.checkout');
-});
+Route::get('/checkout', "HomeController@showPageCheckout");
 
-Route::get('/cart', function (){
-    return view('app.cart');
-});
+Route::get('/cart', "HomeController@showPageCart");
 
 Route::group(['middleware' => 'auth'], function () {
 

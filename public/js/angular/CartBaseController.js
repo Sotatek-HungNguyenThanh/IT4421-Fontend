@@ -69,6 +69,5 @@ var CartBaseController = BaseController.extend({
             })
             .error(this.onError.bind(this));
     },
-
 }, ['CartBaseService']);
 myApp.controller('CartBaseController', CartBaseController);
