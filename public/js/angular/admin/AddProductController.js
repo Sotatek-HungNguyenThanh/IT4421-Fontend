@@ -76,6 +76,7 @@ var AddProductController = BaseController.extend({
             this.isNull(this.description) ||
             listImages.length == 0 ||
             this.isNull(this.supplier) ||
+            this.isNull(this.category) ||
             this.isNull(this.originalPrice) ||
             this.isNull(this.sellingPrice) ||
             optionsValid.length == 0
@@ -90,6 +91,7 @@ var AddProductController = BaseController.extend({
             description: this.description,
             images: listImages,
             supplier: this.supplier,
+            category: this.category,
             listOption: _.pluck(optionsValid, 'name'),
             variants: JSON.stringify(this.variants),
             originalPrice: this.originalPrice.replace(/,/g, ""),

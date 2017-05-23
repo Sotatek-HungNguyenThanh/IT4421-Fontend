@@ -16,6 +16,7 @@ var ProductDetailsController = BaseController.extend({
                 self.product = data.product;
                 self.supplier = JSON.stringify(data.supplier);
                 self.variants = data.variants;
+                self.category = self.product.category;
                 self.listImages = self.product.images.split(",");
                 self.description = self.product.description;
                 self.title = self.product.title;
@@ -70,7 +71,8 @@ var ProductDetailsController = BaseController.extend({
             this.isNull(this.description) ||
             (this.listImages.length == 0 &&
             listImages.length == 0 ) ||
-            this.isNull(this.supplier)
+            this.isNull(this.supplier) ||
+            this.isNull(this.category)
         ){
             return;
         }
@@ -85,6 +87,7 @@ var ProductDetailsController = BaseController.extend({
             description: this.description,
             images: listImages,
             images_old: this.listImages,
+            category: this.category,
             supplier: this.supplier,
             variants: JSON.stringify(this.variants),
             imagesNewVariants: this.imagesNewVariants

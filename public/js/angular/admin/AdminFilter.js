@@ -15,5 +15,13 @@ angular.module('AdminFilter', [])
             return "Ngừng kinh doanh";
         };
     })
+    .filter('status_customer', function() {
+        return function(status) {
+            if(status == "Active") {
+                return 'Đang hoạt động';
+            }
+            return "Ngừng hoạt động";
+        };
+    })
 
 ;

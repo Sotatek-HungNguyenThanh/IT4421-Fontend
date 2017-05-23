@@ -147,6 +147,24 @@
                             </dd>
                         </dl>
                         <dl>
+                            <dt>Thể loại</dt>
+                            <span class="error" ng-show="controller.isNull(controller.category) && controller.statusCreateProduct">Please choose category</span>
+                            <dd>
+                                <select type="text"
+                                        class="form-control" name="supplier"
+                                        ng-model="controller.category" required>
+                                    <option value="" selected="selected" disabled>Choose Category</option>
+                                    <option value="dien-thoai">Điện thoại</option>
+                                    <option value="may-tinh-bang">Máy tính bảng</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="may-cu">Máy cũ</option>
+                                    <option value="phu-kien">Phụ kiện</option>
+                                    <option value="sac-du-phong">Sạc dự phòng</option>
+                                    <option value="khac">Khác</option>
+                                </select>
+                            </dd>
+                        </dl>
+                        <dl>
                             <dt>Nhà cung cấp</dt>
                             <span class="error" ng-show="controller.isNull(controller.supplier) && controller.statusCreateProduct">Please choose supplier</span>
                             <dd>

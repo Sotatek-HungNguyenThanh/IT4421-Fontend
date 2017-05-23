@@ -2,16 +2,18 @@
 
 
 @section('title')
-    Manage Suppliers
+    Manage Order
 @endsection
 
 @section('css')
-    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-suppliers.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/list-order.css"/>
+    <link href="/css/pikaday.css" rel="stylesheet">
+    <link href="/css/triangle.css" rel="stylesheet">
     <style>
         @media screen and (max-width: 950px) {
             .content-header-title{
                 width: 100%;
-                left: 0
+                left: 0 !important;
             }
         }
         .page-container-wide .content-header-title{
@@ -27,18 +29,19 @@
 @endsection
 
 @section('script')
-	<script type="text/javascript" src="/js/angular/admin/SupplierController.js"></script>
+    <script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/ManageOrderController.js"></script>
 @endsection
 
 @section('page_content')
-    <div class="row" ng-controller="SupplierController as controller">
+    <div class="row" ng-controller="ManageOrderController as controller" ng-cloak>
         <div class="col-md-12">
-            <div class="container-content">
+            <div class="manage-product">
                 <div class="container-header">
                     <div class="col-md-12">
-                        <div class="row content-header-title">
-                            <div class="col-md-12 title">
-                                Danh sách nhà cung cấp
+                        <div class="row content-header-title" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
+                            <div class="col-md-12" style="padding: 15px;font-size: 16px;">
+                                Danh sách đơn hàng
                             </div>
                         </div>
                     </div>
@@ -46,50 +49,62 @@
                 <div style="padding: 20px; margin-top: 40px;">
                     <div class="dataTables_filter">
                         <label>Search:
-                            <input type="search" class="form-control"
-                                   ng-model="controller.key_word"
-                                   ng-keypress="($event.which === 13)?controller.search():0"placeholder="">
+                            <div class="_range_time">
+                            <input type="text" pikaday="controller.startPicker"
+                                   default-date="@{{ controller.startDate }}"
+                                   on-select="controller.onPikadaySelect(pikaday, controller.isUpdateStartDate)"
+                                   id="hospital_date_from"
+                                   set-default-date="true">
+                            ~
+                            <input type="text" pikaday="controller.endPicker"
+                                   default-date="@{{  controller.endDate }}"
+                                   on-select="controller.onPikadaySelect(pikaday, controller.isUpdateEndDate)"
+                                   id="hospital_date_to"
+                                   set-default-date="true">
+                        </div>
                         </label>
                     </div>
-                    <table class="table-supplier">
+                    <table class="table-product" style="margin-top: 55px;">
                         <thead>
                         <tr>
                             <th class="first-column">No.</th>
-                            <th class="second-column">Tên nhà cung cấp</th>
-                            <th class="third-column">Mã nhà cung cấp</th>
-                            <th class="fourth-column">Địa chỉ</th>
-                            <th class="fifth-column">Số điện thoại</th>
-                            <th class="sixth-column">Ghi chú</th>
-                            <th class="seventh-column">Trạng thái</th>
-                            <th class="eighth-column"></th>
+                            <th class="second-column">Ngày</th>
+                            <th class="thirth-column">Tên</th>
+                            <th class="fourth-column">Email</th>
+                            <th class="fifth-column">Địa chỉ</th>
+                            <th class="sixth-column">Số điện thoại</th>
+                            <th class="seventh-column">Số lượng SP</th>
+                            <th class="eighth-column">Tổng tiền</th>
+                            <th class="ninth-column"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td class="first-column">@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
-                            <td class="second-column">@{{ row.name }}</td>
-                            <td class="third-column">@{{ "NCC" + row.id }}</td>
-                            <td class="fourth-column">@{{ row.address }}</td>
-                            <td class="fifht-column">@{{ row.phone_number }}</td>
-                            <td class="sixth-column">@{{ row.description }}</td>
-                            <td class="seventh-column">@{{ row.status | is_active}}</td>
-                            <td>
-                                <button type="button" class="button-supplier"
-                                        data-toggle="modal" data-target="#update-supplier"
-                                        data-backdrop="static" ng-click="controller.showPopupUpdateSupplier(row.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <button type="button" ng-show="controller.isActive(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
-                                <button type="button" ng-show="controller.isDestroy(row.status)" class="button-supplier" ng-click="controller.removeSupplier(row)"><i class="fa fa-lock" aria-hidden></i></button>
+                            <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
+                            <td class="second-column">@{{ row.customer.fullname }}</td>
+                            <td class="thirth-column">@{{ row.customer.fullname}}</td>
+                            <td class="fourth-column">@{{ row.customer.email }}</td>
+                            <td class="fifth-column">@{{ row.customer.address }}</td>
+                            <td class="sixth-column">@{{ row.customer.phone_number}}</td>
+                            <td class="seventh-column">@{{ row.order_variants.length}}</td>
+                            <td class="eighth-column">@{{ row.total_price | number}}</td>
+                            <td class="ninth-column">
+                                <select name="" id="" ng-model="row.status" class="status_order" ng-change="controller.updateStatusOrder(row)">
+                                    <option value="active">Active</option>
+                                    <option value="done">Done</option>
+                                    <option value="canceled">Canceled</option>
+                                </select>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
                             <td class="first-column"><div style="min-height: 34px"></div></td>
                             <td class="second-column"></td>
-                            <td class="third-column"></td>
+                            <td class="thirth-column"></td>
                             <td class="fourth-column"></td>
                             <td class="fifth-column"></td>
                             <td class="sixth-column"></td>
-                            <td class="seventh-column"></td>
-                            <td class="eight-column"></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
@@ -134,7 +149,5 @@
                 </div>
             </div>
         </div>
-        @include('admin.create_supplier')
-        @include('admin.update_supplier')
     </div>
 @endsection

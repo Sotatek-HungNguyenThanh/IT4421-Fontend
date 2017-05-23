@@ -121,6 +121,22 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('update-product', 'Admin\ProductController@updateProduct');
 
+    Route::post('get-list-customer', 'Admin\ManageCustomerController@getListCustomer');
+
+    Route::post('delete-customer', 'Admin\ManageCustomerController@deleteCustomer');
+
+    Route::post('get-all-order', 'Admin\ManageOrderController@getAllOrder');
+
+    Route::post('update-status-order', 'Admin\ManageOrderController@updateStatusOrder');
+
+    Route::get('list-customer', function (){
+        return view("admin.list_customer");
+    });
+
+    Route::get('list-order', function (){
+        return view("admin.list_order");
+    });
+
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginForm');
 

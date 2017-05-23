@@ -77,6 +77,7 @@ angular.module('AdminService', [])
                 var formData = new FormData();
                 formData.append('title', data.title);
                 formData.append('description', data.description);
+                formData.append('category', data.category);
                 _.each(data.images, function (images) {
                     formData.append('images[]',images.file);
                 });
@@ -132,6 +133,7 @@ angular.module('AdminService', [])
                 formData.append('id', data.id);
                 formData.append('title', data.title);
                 formData.append('description', data.description);
+                formData.append('category', data.category);
                 _.each(data.images, function (images) {
                     formData.append('images[]',images.file);
                 });
@@ -150,5 +152,45 @@ angular.module('AdminService', [])
                     data: formData,
                 });
             },
+
+            removeCustomer: function (customerID) {
+                var data = {
+                    "customerID" : customerID
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/admin/delete-customer',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            getAllOrder: function (pageNo, perPage, daterange, customer_id) {
+                var data = {
+                    "page_no" : pageNo,
+                    "per_page" : perPage,
+                    "daterange" : daterange,
+                    "customer_id" : customer_id,
+                };
+                return $http({
+                    method: 'POST',
+                    url: "/admin/get-all-order",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            },
+
+            updateStatusOrder: function (id, status) {
+                var data = {
+                    "id" : id,
+                    "status" : status,
+                };
+                return $http({
+                    method: 'POST',
+                    url: "/admin/update-status-order",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
+            }
         }
     });

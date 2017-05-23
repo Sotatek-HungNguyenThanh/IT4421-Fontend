@@ -31,7 +31,7 @@ class ProductService
                 'Tokenkey' => $token
             ];
             $data = $this->formatDataCreateProduct($params);
-
+            Log::info($data);
             $response = Units::sendWithDataJson('admins/products', $headers, $data, 'POST');
             return ["product" => $response->product, "variants" => $response->variants];
 
@@ -48,6 +48,7 @@ class ProductService
         $description = $params["description"];
         $supplier = json_decode($params["supplier"]);
         $listOption = $params["listOption"];
+        $category = $params["category"];
         $variants = json_decode($params["variants"], true);
         $originalPrice = $params["originalPrice"];
         $sellingPrice = $params["sellingPrice"];
@@ -77,6 +78,7 @@ class ProductService
             "description" => $description,
             "images" => $fileName ? implode("," , $fileName) : "",
             "supplier_id" => $supplier->id,
+            "category" => $category,
             "options" => $listOption,
             "variants_attributes" => $variants_attributes
         ];
@@ -194,6 +196,7 @@ class ProductService
         $id = $params["id"];
         $title = $params["title"];
         $description = $params["description"];
+        $category = $params["category"];
         $supplier = json_decode($params["supplier"]);
         $variants = json_decode($params["variants"], true);
         if (isset($params["images"])) {
@@ -236,6 +239,7 @@ class ProductService
             "id" => $id,
             "title" => $title,
             "description" => $description,
+            "category" => $category,
             "images" => $totalImage ? implode("," , $totalImage) : "",
             "supplier_id" => $supplier->id,
             "variants_attributes" => $variants_attributes

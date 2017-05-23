@@ -93,7 +93,8 @@
                                                     </h3>
 
                                                     <div class="product-item__price">
-                                                        <p class="product-item__price__special">@{{ item.product.min_price | number }}₫</p>
+                                                        <p class="product-item__price__special" ng-show="item.product.min_price == item.product.max_price">@{{ item.product.min_price | number }}₫</p>
+                                                        <p class="product-item__price__special" ng-show="item.product.min_price != item.product.max_price">@{{ item.product.min_price | number }}-@{{ item.product.max_price | number }}₫</p>
 
                                                     </div>
                                                 </div>

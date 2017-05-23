@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/layout.css"/>
     <!-- EOF CSS INCLUDE -->
     @yield("css")
+    <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
@@ -32,8 +33,14 @@
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
     <script type="text/javascript" src="/js/angular/admin/AdminService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
+
+    <script src="{{ url('/js/pikaday/moment.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
+    <script src="{{ url('/js/angular/pika_date.js') }}"></script>
+
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
-    <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
+
     <script type="text/javascript" src="/js/angular/admin/ManageProductController.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     @yield("script")

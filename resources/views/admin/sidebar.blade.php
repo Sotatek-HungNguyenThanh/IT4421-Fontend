@@ -26,9 +26,14 @@
         {{--<a href="#"><span class="glyphicon glyphicon-user"></span> <span class="xn-text">Account Information</span></a>--}}
         {{--<a href="#"><span class="glyphicon glyphicon-tag"></span><span class="xn-text">Change Password</span></a>--}}
     {{--</li>--}}
-    {{--<li>--}}
-        {{--<a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">List Customers</span></a>--}}
-    {{--</li>--}}
+    <li class="xn-title">Quản lý khách hàng</li>
+    <li>
+        <a href="/admin/list-customer"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách khách hàng</span></a>
+    </li>
+    <li class="xn-title">Quản lý đơn hàng</li>
+    <li>
+        <a href="/admin/list-order"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách đơn hàng</span></a>
+    </li>
     <li class="xn-title">Quản lý nhà cung cấp</li>
     <li>
         <a href="/admin/create-supplier"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm nhà cung cấp</span></a>

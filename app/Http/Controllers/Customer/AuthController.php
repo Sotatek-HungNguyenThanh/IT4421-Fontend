@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-use API;
 use App\User;
 use Log;
 
@@ -50,8 +50,10 @@ class AuthController extends Controller
             "phone_number" => $params['phone_number']
         ];
         try {
-            $headers = API::buildHeaders();
-            API::send('users', $headers, $data);
+            $headers = [
+                'Content-Type' => 'application/json',
+            ];
+            Units::sendWithDataJson('users', $headers, $data);
             $this->create($data);
             return redirect('/login');
         }catch (\Exception $e){
@@ -94,8 +96,10 @@ class AuthController extends Controller
         ];
 
         try {
-            $headers = API::buildHeaders();
-            $response = API::send('login', $headers, $data);
+            $headers = $headers = [
+                'Content-Type' => 'application/json',
+            ];
+            $response = Units::sendWithDataJson('login', $headers, $data);
             $user = $this->updateAccountInfo($params, $response->token_key);
             Auth::login($user);
             return redirect('/');
@@ -114,8 +118,12 @@ class AuthController extends Controller
         try {
             $token = Auth::user()->token;
             $email = Auth::user()->email;
-            $headers = API::buildHeaders($email, $token);
-            API::send('logout', $headers);
+            $headers = [
+                'Content-Type' => 'application/json',
+                'Authorization' => $email,
+                'Tokenkey' => $token
+            ];
+            Units::sendWithDataJson('logout', $headers);
             Auth::logout();
             return redirect('/');
         }catch (\Exception $e){
@@ -145,8 +153,12 @@ class AuthController extends Controller
 
     private function updateAccountInfo($params, $token)
     {
-        $headers = API::buildHeaders($params['email'], $token);
-        $response = API::send('users/current_user', $headers, null, 'GET');
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => $params['email'],
+            'Tokenkey' => $token
+        ];
+        $response = Units::sendWithDataJson('users/current_user', $headers, null, 'GET');
         $user = User::firstOrNew(['email' => $params['email']]);
         $user->password = bcrypt($params['password']);
         $user->fullname = $response->customer->fullname;
@@ -177,8 +189,10 @@ class AuthController extends Controller
         ];
 
         try {
-            $headers = API::buildHeaders();
-            API::send('feedback', $headers, $data);
+            $headers = [
+                'Content-Type' => 'application/json'
+            ];
+            Units::sendWithDataJson('feedback', $headers, $data);
             $request->session()->flash('alert-success', 'Send feedback success!');
             return redirect('/feedback');
         }catch (\Exception $e){

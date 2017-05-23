@@ -64,7 +64,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td class="first-column">@{{ controller.pageNo * controller.perPage + $index - 1}}</td>
+                            <td class="first-column">@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
                             <td class="second-column">@{{ row.product.title }}</td>
                             <td class="thirth-column">@{{ "SP" + row.product.id }}</td>
                             <td class="fourth-column">@{{ row.supplier.name }}</td>
