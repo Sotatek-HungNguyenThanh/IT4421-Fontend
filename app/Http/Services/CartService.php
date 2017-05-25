@@ -9,6 +9,7 @@
 namespace App\Http\Services;
 
 use App\Units;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Illuminate\Support\Facades\Session;
@@ -76,9 +77,19 @@ class CartService
         }
 
         try {
-            $headers = [
-                'Content-Type' => 'application/json',
-            ];
+            if(Auth::check()){
+                $token = $this->guard()->user()->token;
+                $email = $this->guard()->user()->email;
+                $headers = [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => $email,
+                    'Tokenkey' => $token
+                ];
+            }else {
+                $headers = [
+                    'Content-Type' => 'application/json',
+                ];
+            }
             $data = [
                 "customer" => $order["customer"],
                 "total_price" => $order["total"],
@@ -93,5 +104,10 @@ class CartService
             Log::error($e->getMessage());
             return null;
         }
+    }
+
+    protected function guard()
+    {
+        return Auth::guard();
     }
 }

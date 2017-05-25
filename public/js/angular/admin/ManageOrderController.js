@@ -10,7 +10,7 @@ var ManageOrderController = BaseController.extend({
         $super(service);
         this.rows = [];
         this.daterange = "";
-        this.customer_id = 0;
+        this.customer_id = null;
         this.$rootScope = $rootScope;
         this.setDurationMonths(1);
         this.list(this.pageNo);
@@ -94,10 +94,10 @@ var ManageOrderController = BaseController.extend({
             this.updateStartDate();
             this.updateEndDate();
         }
-        if(Date.parse(this.startDate) < Date.parse(this.endDate)){
-            var data = {from_date: this.startDate, to_date: this.endDate};
-
-        }
+        console.log(this.startDate);
+        console.log(moment(this.startDate, "DD/MM/YYYY"))
+        this.daterange = moment(this.startDate, "DD/MM/YYYY") + "-" + moment(this.endDate, "DD/MM/YYYY");
+        this.list(1);
     },
 
     updateStartDate: function() {
@@ -123,11 +123,10 @@ var ManageOrderController = BaseController.extend({
         // if (startDate.getDate() < endDate.getDate()) {
         //     startDate.setDate(0);
         // }
-        this.thisYear = endDate.getFullYear();
-        this.lastYear = this.thisYear - 1;
+
+        this.daterange = moment(this.startDate, "DD/MM/YYYY") + "-" + moment(this.endDate, "DD/MM/YYYY");
         this.startDate = this.formatDate(startDate);
         this.endDate = this.formatDate(endDate);
-        // this.daterange = this.startDate + "-" + this.endDate;
     },
 
     formatDate: function(date) {

@@ -6,6 +6,7 @@ var CheckoutController = CartBaseController.extend({
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         self.getCart();
+        self.getAccount();
         self.isCheckout = true;
         $scope.$on('loadingCart', function (event, args) {
             self.getCart();
@@ -35,6 +36,20 @@ var CheckoutController = CartBaseController.extend({
             })
             .error(this.onError.bind(this));
     },
+
+    getAccount: function () {
+        var self = this;
+        this.service.getAccountInfo()
+            .success(function (data) {
+                self.customer = {
+                    email: data.email,
+                    fullname: data.fullname,
+                    phone_number: data.phone_number,
+                    address: data.address
+                }
+            })
+            .error(this.onError.bind(this));
+    }
 
 }, ['CartBaseService', "$scope", "$rootScope"]);
 myApp.controller('CheckoutController', CheckoutController);

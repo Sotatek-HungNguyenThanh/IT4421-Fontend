@@ -97,6 +97,18 @@ angular.module('CartBaseService', [])
                     url: url,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 });
+            },
+
+            filterProduct: function (params) {
+                var data = {
+                    "params" : params
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/category/filter-product',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                });
             }
         };
         return angular.extend(BaseService, CartBaseService);

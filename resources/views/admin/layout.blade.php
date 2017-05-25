@@ -37,7 +37,7 @@
     <script src="{{ url('/js/pikaday/moment.js') }}"></script>
     <script src="{{ url('/js/pikaday/pikaday.js') }}"></script>
     <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
-    <script src="{{ url('/js/angular/pika_date.js') }}"></script>
+    <script src="{{ url('/js/angular/pika_date_admin.js') }}"></script>
 
     <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
 

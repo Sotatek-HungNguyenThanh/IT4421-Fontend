@@ -20,43 +20,43 @@
                     <ul class="menu-sub">
 
                         <li class="menu-sub__item">
-                            <a href="/dien-thoai" class="menu-sub__link">Điện thoại <i
+                            <a href="/category/dien-thoai" class="menu-sub__link">Điện thoại <i
                                         class="fa fa-angle-right"></i></a>
                             <ul class="menu--sub">
 
-                                <li class="menu--sub__item"><a href="/iphone" class="menu--sub__link">iPhone</a></li>
+                                <li class="menu--sub__item"><a href="/category/iphone" class="menu--sub__link">iPhone</a></li>
 
-                                <li class="menu--sub__item"><a href="/samsung" class="menu--sub__link">Samsung</a></li>
+                                <li class="menu--sub__item"><a href="/category/samsung" class="menu--sub__link">Samsung</a></li>
 
-                                <li class="menu--sub__item"><a href="/oppo" class="menu--sub__link">Oppo</a></li>
+                                <li class="menu--sub__item"><a href="/category/oppo" class="menu--sub__link">Oppo</a></li>
 
-                                <li class="menu--sub__item"><a href="/huawei" class="menu--sub__link">Huawei</a></li>
+                                <li class="menu--sub__item"><a href="/category/huawei" class="menu--sub__link">Huawei</a></li>
 
-                                <li class="menu--sub__item"><a href="/asus" class="menu--sub__link">Asus</a></li>
+                                <li class="menu--sub__item"><a href="/category/asus" class="menu--sub__link">Asus</a></li>
 
-                                <li class="menu--sub__item"><a href="/acer" class="menu--sub__link">Acer</a></li>
+                                <li class="menu--sub__item"><a href="/category/acer" class="menu--sub__link">Acer</a></li>
 
-                                <li class="menu--sub__item"><a href="/sony" class="menu--sub__link">Sony</a></li>
+                                <li class="menu--sub__item"><a href="/category/sony" class="menu--sub__link">Sony</a></li>
 
-                                <li class="menu--sub__item"><a href="/khac" class="menu--sub__link">Khác</a></li>
+                                <li class="menu--sub__item"><a href="/category/khac" class="menu--sub__link">Khác</a></li>
 
                             </ul>
                         </li>
 
 
-                        <li class="menu-sub__item"><a href="/may-tinh-bang" class="menu-sub__link">Máy tính bảng</a>
+                        <li class="menu-sub__item"><a href="/category/may-tinh-bang" class="menu-sub__link">Máy tính bảng</a>
                         </li>
 
 
-                        <li class="menu-sub__item"><a href="/laptop" class="menu-sub__link">Laptop</a></li>
+                        <li class="menu-sub__item"><a href="/category/laptop" class="menu-sub__link">Laptop</a></li>
 
 
-                        <li class="menu-sub__item"><a href="/may-cu" class="menu-sub__link">Máy cũ</a></li>
+                        <li class="menu-sub__item"><a href="/category/may-cu" class="menu-sub__link">Máy cũ</a></li>
 
 
-                        <li class="menu-sub__item"><a href="/phu-kien" class="menu-sub__link">Phụ kiện</a></li>
+                        <li class="menu-sub__item"><a href="/category/phu-kien" class="menu-sub__link">Phụ kiện</a></li>
 
-                        <li class="menu-sub__item"><a href="/phu-kien" class="menu-sub__link">Sạc dự phòng</a></li>
+                        <li class="menu-sub__item"><a href="/category/phu-kien" class="menu-sub__link">Sạc dự phòng</a></li>
 
                     </ul>
                 </li>

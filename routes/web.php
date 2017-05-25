@@ -47,6 +47,13 @@ Route::get('/product/{id}', 'ProductController@showProductDetailPage');
 
 Route::post('/product/{id}', 'ProductController@getProductByUrl');
 
+Route::get('/category/{name}', function (){
+    return view('app.list_product');
+});
+
+Route::post('/category/filter-product', 'ProductController@getListProduct');
+
+
 Route::get('/search', "HomeController@showPageSearch");
 
 Route::get('/list-product', function (){
@@ -72,6 +79,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update-account-info', 'Customer\HomeController@updateAccountInfo');
 
     Route::post('/change-password-account', 'Customer\HomeController@changePasswordAccount');
+
+    Route::post('/get-list-order', 'Customer\HomeController@getListOrder');
+
+    Route::get('/history-transaction', function (){
+       return view('customer.history_order');
+    });
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {

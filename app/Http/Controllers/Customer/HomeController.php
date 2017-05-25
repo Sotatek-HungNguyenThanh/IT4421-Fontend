@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Units;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Facades\API;
@@ -78,5 +79,33 @@ class HomeController extends Controller
         }catch (\Exception $e){
             Log::error($e->getMessage());
         }
+    }
+
+    public function getListOrder(Request $request){
+        $params = $request->all();
+        $token = $this->guard()->user()->token;
+        $email = $this->guard()->user()->email;
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => $email,
+            'Tokenkey' => $token
+        ];
+        $data = [];
+        if(isset($params["daterange"]) && $params["daterange"] != ""){
+            $data["daterange"] = "05/01/2017-05/18/2017";
+        }
+
+        if (isset($params["page_no"]) && $params["per_page"]){
+            $data["page_no"] = $params["page_no"];
+            $data["per_page"] = $params["per_page"];
+        }
+        Log::info($data);
+        $response = Units::sendWithDataJson('/orders', $headers, $data, 'GET');
+        return array("total" => $response->total_orders, "orders" => $response->orders);
+    }
+
+    protected function guard($guard = null)
+    {
+        return Auth::guard($guard);
     }
 }

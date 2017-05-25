@@ -27,18 +27,17 @@
                     </form>
                     <ul class="header__search--suggest hidden-sm hidden-xs">
 
-                        <li><a href="/dien-thoai" class="header__search--suggest--link">Điện thoại</a></li>
+                        <li><a href="/category/dien-thoai" class="header__search--suggest--link">Điện thoại</a></li>
 
-                        <li><a href="/may-tinh-bang" class="header__search--suggest--link">Máy tính bảng</a></li>
+                        <li><a href="/category/may-tinh-bang" class="header__search--suggest--link">Máy tính bảng</a></li>
 
-                        <li><a href="/laptop" class="header__search--suggest--link">Laptop</a></li>
+                        <li><a href="/category/laptop" class="header__search--suggest--link">Laptop</a></li>
 
-                        <li><a href="/may-cu" class="header__search--suggest--link">Máy cũ</a></li>
+                        <li><a href="/category/may-cu" class="header__search--suggest--link">Máy cũ</a></li>
 
-                        <li><a href="/phu-kien" class="header__search--suggest--link">Phụ kiện</a></li>
+                        <li><a href="/category/phu-kien" class="header__search--suggest--link">Phụ kiện</a></li>
 
-                        <li><a href="/phu-kien" class="header__search--suggest--link">Sạc dự phòng</a></li>
-
+                        <li><a href="/category/phu-kien" class="header__search--suggest--link">Sạc dự phòng</a></li>
                     </ul>
                 </div>
             </div>

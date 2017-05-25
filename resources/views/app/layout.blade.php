@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
@@ -29,6 +30,11 @@
     <script type="text/javascript" src="/js/angular/CartShortcutController.js"></script>
     <script type="text/javascript" src="/js/angular/CartModelController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
+
+    <script src="{{ url('/js/pikaday/moment.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
+    <script src="{{ url('/js/angular/pika_date_customer.js') }}"></script>
     @yield('script')
 </head>
 <body>
