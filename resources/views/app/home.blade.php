@@ -7,6 +7,7 @@
 @section('script')
     <script src="/js/angular/HomeController.js"></script>
     <script src="/js/angular/ProductPreviewController.js"></script>
+    <script src="/js/angular/CartModelController.js"></script>
     <script>
         $(document).scroll(function() {
             var y = $(this).scrollTop();
@@ -37,23 +38,27 @@
                         <ul class="cate-list hidden-xs">
 
                             <li class="cate-list__item">
-                                <a href="/dien-thoai" class="cate-list__link">Điện thoại</a>
+                                <a href="/products?category=dien-thoai" class="cate-list__link">Điện thoại</a>
                             </li>
 
                             <li class="cate-list__item">
-                                <a href="/may-tinh-bang" class="cate-list__link">Máy tính bảng</a>
+                                <a href="/products?category=may-tinh-bang" class="cate-list__link">Máy tính bảng</a>
                             </li>
 
                             <li class="cate-list__item">
-                                <a href="/laptop" class="cate-list__link">Laptop</a>
+                                <a href="/products?category=laptop" class="cate-list__link">Laptop</a>
                             </li>
 
                             <li class="cate-list__item">
-                                <a href="/may-cu" class="cate-list__link">Máy cũ</a>
+                                <a href="/products?category=may-cu" class="cate-list__link">Máy cũ</a>
                             </li>
 
                             <li class="cate-list__item">
-                                <a href="/phu-kien" class="cate-list__link">Phụ kiện</a>
+                                <a href="/products?category=phu-kien" class="cate-list__link">Phụ kiện</a>
+                            </li>
+
+                            <li class="cate-list__item">
+                                <a href="/products?category=sac-du-phong" class="cate-list__link">Sạc dự phòng</a>
                             </li>
 
                         </ul>
@@ -67,9 +72,8 @@
                                         <div class="item">
                                             <div class="product-item__grid">
                                                 <div class="product-item__thumb">
-                                                    <a href="javascript:void(0)">
-                                                        <img ng-src="@{{ item.product.images[0]}}"
-                                                             alt="@{{ item.product.title}}">
+                                                    <a href="/product/@{{ item.product.id }}">
+                                                        <img ng-src="@{{ item.product.images[0]}}">
                                                     </a>
                                                     <div class="product-item__actions hidden-xs">
                                                         <button class="button quick-view"
@@ -80,14 +84,14 @@
                                                         </button>
                                                         <button class="button btn-cart"
                                                                 type="button">
-                                                            <a href="/product/@{{ item.product }}"><span>Chọn</span></a>
+                                                            <a href="/product/@{{ item.product.id }}"><span>Chọn</span></a>
                                                         </button>
 
                                                     </div>
                                                 </div>
                                                 <div class="product-item__content">
                                                     <h3 class="product-item__title">
-                                                        <a href="javascript:void(0)">
+                                                        <a href="/product/@{{ item.product.id }}">
                                                             @{{ item.product.title}}
                                                         </a>
                                                     </h3>

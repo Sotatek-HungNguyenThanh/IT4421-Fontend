@@ -118,7 +118,7 @@
                                                 <button class="hotline detail-hotline"
                                                         data-dismiss="modal"
                                                         data-toggle="modal"
-                                                        data-target="#CartModel">
+                                                        data-target="#CartModel" ng-click="controller.showCartModel()">
 											<span>
 												<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 												Thêm vào giỏ hàng
@@ -136,5 +136,6 @@
                 </div>
             </div>
         </section>
+        @include('app.cart_model')
     </div>
 @endsection

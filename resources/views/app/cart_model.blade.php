@@ -1,4 +1,4 @@
-<div id="CartModel" class="modal fade cart-desktop-popup" role="dialog" ng-controller="CartModelController as controller">
+<div id="CartModel" class="modal fade cart-desktop-popup" role="dialog" ng-controller="CartModelController as controller" ng-click="controller.hideMessageJustUpdate()">
     <div class="modal-dialog">
         <div class="modal-header">
             <button class="button cart-desktop__close"
@@ -9,7 +9,7 @@
                     Giỏ hàng của bạn (<span class="cart-popup-count">@{{ controller.quantityProduct }}</span> sản phẩm)
                 </a>
             </p>
-            <p class="cart-desktop__status">
+            <p class="cart-desktop__status" ng-show="controller.isJustUpdate">
                 <i class="fa fa-check" aria-hidden="true"></i> Bạn vừa thêm
                 <a href="javascript:void(0)" class="cart-desktop__status_item">
                     @{{ controller.newVariant }}
@@ -51,20 +51,20 @@
                     <div class="cart-desktop__col-3">
                         <button class="reduced items-count btn-minus" type="button"
                                 ng-click="controller.minusVariant(variant)">–</button>
-                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar" name="Lines" size="2" value="1">
+                        <input type="text" maxlength="2" min="0" class="input-text number-sidebar" name="Lines" size="2" value="1" ng-model="variant.quantity">
                         <button class="increase items-count btn-plus" type="button"
                                 ng-click="controller.plusVariant(variant)">+</button>
                     </div>
                     <div class="cart-desktop__col-4">
                         <span class="cart-popup__item-price">
-                            <span class="cart-popup__item-price__price total-price-item">@{{ variant.total }}₫</span>
+                            <span class="cart-popup__item-price__price total-price-item">@{{ variant.total | number}}₫</span>
                         </span>
                     </div>
                 </div>
             </div>
             <div class="cart-desktop__tfooter">
                 <div class="cart-desktop__tfooter-info clearfix">
-                    <p class="cart-desktop__tfooter-total">Tổng tiền: <span class="total-price">@{{ controller.totalPriceOrder }}₫</span></p>
+                    <p class="cart-desktop__tfooter-total">Tổng tiền: <span class="total-price">@{{ controller.totalPriceOrder | number }}₫</span></p>
                 </div>
                 <div class="cart-desktop__tfooter-action clearfix">
                     <a class="button cart-desktop__tfooter-continue" title="Tiếp tục mua hàng" data-dismiss="modal"><i

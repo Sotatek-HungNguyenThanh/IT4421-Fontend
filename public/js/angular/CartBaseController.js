@@ -68,6 +68,6 @@ var CartBaseController = BaseController.extend({
                 self.$rootScope.$broadcast('loadingCart');
             })
             .error(this.onError.bind(this));
-    },
+    }
 }, ['CartBaseService']);
 myApp.controller('CartBaseController', CartBaseController);

@@ -48,10 +48,6 @@ var HomeController = BaseController.extend({
             .error(this.onError.bind(this));
     },
 
-    chooseProduct: function (product) {
-        console.log(product);
-    }
-
 
 }, ['CartBaseService', "$rootScope", "$scope"]);
 myApp.controller('HomeController', HomeController);

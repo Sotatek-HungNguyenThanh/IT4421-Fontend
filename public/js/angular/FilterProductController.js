@@ -10,6 +10,8 @@ var FilterProductController = CartBaseController.extend({
         var self = this;
         $super(service);
         self.getCategory();
+        self.getKeyWord();
+        self.getTitle();
         this.$rootScope = $rootScope;
         this.filterProduct();
         self.getCart();
@@ -36,7 +38,8 @@ var FilterProductController = CartBaseController.extend({
             key_word: this.key_word,
             page_no : this.pageNo,
             per_page: this.perPage,
-            category: this.category
+            category: this.category,
+            sort_name: this.sort
         };
         this.service.filterProduct(data)
             .success(function (data) {
@@ -51,8 +54,15 @@ var FilterProductController = CartBaseController.extend({
     },
 
     getCategory: function () {
-        var url = window.location.href.split("/");
-        this.category = url[url.length - 1];
+        var url = window.location.href;
+        if(url.includes('category'))
+            this.category = /category=([^&]+)/.exec(url)[1];
+    },
+
+    getKeyWord: function () {
+        var url = window.location.href;
+        if(url.includes('query'))
+            this.key_word = /query=([^&]+)/.exec(url)[1];
     },
 
     showProductPreview: function (product) {
@@ -65,6 +75,71 @@ var FilterProductController = CartBaseController.extend({
             })
             .error(this.onError.bind(this));
     },
+
+    isNull: function (data) {
+        return data == "" || data == null;
+    },
+
+    sortProducts: function () {
+        this.pageNo = 1;
+        this.filterProduct();
+    },
+
+    getTitle: function () {
+        if(!this.isNull(this.key_word)){
+            switch (this.key_word){
+                case "iphone":
+                    this._title = "Iphone";
+                    break;
+                case "samsung":
+                    this._title = "Samsung";
+                    break;
+                case "oppo":
+                    this._title = "Oppo";
+                    break;
+                case "huawei":
+                    this._title = "Huawei";
+                    break;
+                case "asus":
+                    this._title = "Asus";
+                    break;
+                case "acer":
+                    this._title = "Acer";
+                    break;
+                case "sony":
+                    this._title = "Sony";
+                    break;
+                case "khac":
+                    this._title = "Khác";
+                    break;
+            }
+        }else if(!this.isNull(this.category)) {
+            switch (this.category){
+                case "dien-thoai":
+                    this._title = "ĐIỆN THOẠI";
+                    break;
+                case "may-tinh-bang":
+                    this._title = "MÁY TÍNH BẢNG";
+                    break;
+                case "laptop":
+                    this._title = "LAPTOP";
+                    break;
+                case "may-cu":
+                    this._title = "MÁY CŨ";
+                    break;
+                case "phu-kien":
+                    this._title = "PHỤ KIỆN";
+                    break;
+                case "sac-du-phong":
+                    this._title = "SẠC DỰ PHÒNG";
+                    break;
+                default:
+                    this._title = "KHÁC"
+            }
+        }else {
+            this._title = "KHÁC"
+        }
+    }
 
 }, ['CartBaseService', "$scope", "$rootScope"]);
 myApp.controller('FilterProductController', FilterProductController);

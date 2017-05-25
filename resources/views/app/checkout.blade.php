@@ -14,6 +14,9 @@
 
 @section('content')
     <div class="main container" ng-controller="CheckoutController as controller">
+        @if(Auth::check())
+            <input hidden type="text" value="1" id="user-info">
+        @endif
         <div ng-show="controller.isCheckout">
             <div class="wrap clearfix">
             <div class="row">

@@ -45,6 +45,7 @@ var AccountController = BaseController.extend({
         this.pageCount = Math.ceil(data.total / this.perPage);
         this.row = [];
         this.rows = data.orders;
+        console.log(this.rows);
         this.rowNull = this.rows.length ? this.perPage - this.rows.length : this.perPage;
     },
 
@@ -135,9 +136,6 @@ var AccountController = BaseController.extend({
         // }
         this.startDate = this.formatDate(startDate);
         this.endDate = this.formatDate(endDate);
-        console.log(this.startDate)
-        console.log(this.endDate)
-        console.log(moment(this.startDate, "DD/MM/YYYY"));
         this.daterange = this._formatDate(this.startDate) + "-" + this._formatDate(this.endDate)
 
     },
@@ -147,8 +145,8 @@ var AccountController = BaseController.extend({
     },
 
     _formatDate: function(time) {
-        date = new Date(time)
-        return (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + "/"+ ((date.getMonth() + 1) < 10 ? "0" +(date.getMonth() + 1) : (date.getMonth() + 1)) + "/" + date.getFullYear();
+        var date = new Date(time)
+        return ((date.getMonth() + 1) < 10 ? "0" +(date.getMonth() + 1) : (date.getMonth() + 1)) + "/" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + "/"+  date.getFullYear();
     },
 
 

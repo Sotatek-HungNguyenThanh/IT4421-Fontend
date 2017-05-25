@@ -85,7 +85,6 @@
                             <td class="fifth-column"></td>
                             <td class="sixth-column"></td>
                             <td></td>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>

@@ -5,19 +5,6 @@
     <script type="text/javascript" src="{{url('js/angular/admin/ProductDetailsController.js')}}"></script>
     <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/add-product.css"/>
     <script>
-        $('#summernote').summernote({
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']]
-            ]
-        });
-    </script>
-    <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

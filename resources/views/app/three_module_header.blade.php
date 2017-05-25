@@ -13,7 +13,7 @@
                         <div class="catalog__bg">
                             <ul class="catalog__list">
                                 <li class="catalog__item">
-                                    <a href="/dien-thoai" title="Điện thoại">
+                                    <a href="/products?category=dien-thoai" title="Điện thoại">
                                         <span class="catalog__icon">
                                             <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-2.png?1493953410461"
                                                  alt="Điện thoại" class="icon-old">
@@ -28,42 +28,42 @@
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/iphone" class="catalog-sub__link">iPhone</a>
+                                            <a href="/products?category=dien-thoai&query=iphone" class="catalog-sub__link">iPhone</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/samsung" class="catalog-sub__link">Samsung</a>
+                                            <a href="/products?category=dien-thoai&query=samsung" class="catalog-sub__link">Samsung</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/oppo" class="catalog-sub__link">Oppo</a>
+                                            <a href="/products?category=dien-thoai&query=oppo" class="catalog-sub__link">Oppo</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/huawei" class="catalog-sub__link">Huawei</a>
+                                            <a href="/products?category=dien-thoai&query=huawei" class="catalog-sub__link">Huawei</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/asus" class="catalog-sub__link">Asus</a>
+                                            <a href="/products?category=dien-thoai&query=asus" class="catalog-sub__link">Asus</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/acer" class="catalog-sub__link">Acer</a>
+                                            <a href="/products?category=dien-thoai&query=acer" class="catalog-sub__link">Acer</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/sony" class="catalog-sub__link">Sony</a>
+                                            <a href="/products?category=dien-thoai&query=sony" class="catalog-sub__link">Sony</a>
                                         </li>
 
 
                                         <li class="catalog-sub__item">
-                                            <a href="/khac" class="catalog-sub__link">Khác</a>
+                                            <a href="/products?category=dien-thoai&query=khac" class="catalog-sub__link">Khác</a>
                                         </li>
 
 
@@ -72,7 +72,7 @@
 
 
                                 <li class="catalog__item">
-                                    <a href="/may-tinh-bang" title="Máy tính bảng">
+                                    <a href="/products?category=may-tinh-bang" title="Máy tính bảng">
 
 
                                         <span class="catalog__icon">
@@ -89,7 +89,7 @@
 
 
                                 <li class="catalog__item">
-                                    <a href="/laptop" title="Laptop">
+                                    <a href="/products?category=laptop" title="Laptop">
 
 
                                         <span class="catalog__icon">
@@ -106,7 +106,7 @@
 
 
                                 <li class="catalog__item">
-                                    <a href="/may-cu" title="Máy cũ">
+                                    <a href="/products?category=may-cu" title="Máy cũ">
 
                                         <span class="catalog__icon">
                                             <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-5.png?1493953410461"
@@ -122,7 +122,7 @@
 
 
                                 <li class="catalog__item">
-                                    <a href="/phu-kien" title="Phụ kiện">
+                                    <a href="/products?category=phu-kien" title="Phụ kiện">
 
                                         <span class="catalog__icon">
                                             <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-6.png?1493953410461"
@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                                 <li class="catalog__item">
-                                    <a href="/sac-du-phong" title="Sạc dự phòng">
+                                    <a href="/products?category=sac-du-phong" title="Sạc dự phòng">
 
                                         <span class="catalog__icon">
                                             <img src="//bizweb.dktcdn.net/100/141/731/themes/183776/assets/icon-cate-7.png?1494561186142" alt="Sạc dự phòng" class="icon-old">

@@ -4,14 +4,20 @@ var CartModelController = CartBaseController.extend({
         var self = this;
         $super(service);
         this.$rootScope = $rootScope;
+        this.isJustUpdate = false;
         $scope.$on('loadingCart', function (event, args) {
             self.getCart();
         });
-        $scope.$on('addVariant', function (event, args) {
+        $scope.$on('addNameVariant', function (event, args) {
             self.newVariant = args.name;
+            self.isJustUpdate = true;
         });
 
     },
+
+    hideMessageJustUpdate: function (time) {
+        this.isJustUpdate = false;
+    }
 
 }, ['CartBaseService', "$scope", "$rootScope"]);
 myApp.controller('CartModelController', CartModelController);

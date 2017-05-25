@@ -5,17 +5,17 @@
 
                 <li class="footer__menu--item"><a href="/" class="footer__menu--link">Trang chủ</a></li>
 
-                <li class="footer__menu--item"><a href="/dien-thoai" class="footer__menu--link">Điện thoại</a></li>
+                <li class="footer__menu--item"><a href="/products?category=dien-thoai" class="footer__menu--link">Điện thoại</a></li>
 
-                <li class="footer__menu--item"><a href="/may-tinh-bang" class="footer__menu--link">Máy tính bảng</a></li>
+                <li class="footer__menu--item"><a href="/products?category=may-tinh-bang" class="footer__menu--link">Máy tính bảng</a></li>
 
-                <li class="footer__menu--item"><a href="/laptop" class="footer__menu--link">Laptop</a></li>
+                <li class="footer__menu--item"><a href="/products?category=laptop" class="footer__menu--link">Laptop</a></li>
 
-                <li class="footer__menu--item"><a href="/may-cu" class="footer__menu--link">Máy cũ</a></li>
+                <li class="footer__menu--item"><a href="/products?category=may-cu" class="footer__menu--link">Máy cũ</a></li>
 
-                <li class="footer__menu--item"><a href="/phu-kien" class="footer__menu--link">Phụ kiện</a></li>
+                <li class="footer__menu--item"><a href="/products?category=phu-kien" class="footer__menu--link">Phụ kiện</a></li>
 
-                <li class="footer__menu--item"><a href="/sac-du-phong" class="footer__menu--link">Sạc dự phòng</a></li>
+                <li class="footer__menu--item"><a href="/products?category=sac-du-phong" class="footer__menu--link">Sạc dự phòng</a></li>
 
             </ul>
         </div>

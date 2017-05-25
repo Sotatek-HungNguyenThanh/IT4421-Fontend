@@ -12,7 +12,6 @@ angular.module('BaseService', [])
             },
 
             getListOrder: function (pageNo, perPage, daterange) {
-                console.log(daterange);
                 var data = {
                     "page_no" : pageNo,
                     "per_page" : perPage,

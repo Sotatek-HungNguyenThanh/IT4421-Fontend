@@ -6,7 +6,8 @@ var CheckoutController = CartBaseController.extend({
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         self.getCart();
-        self.getAccount();
+        if($("#user-info").val() == "1")
+            self.getAccount();
         self.isCheckout = true;
         $scope.$on('loadingCart', function (event, args) {
             self.getCart();

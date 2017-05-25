@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\Consts;
 use App\Http\Controllers\Controller;
 use App\Units;
 use Illuminate\Http\Request;
@@ -86,22 +87,26 @@ class HomeController extends Controller
         $token = $this->guard()->user()->token;
         $email = $this->guard()->user()->email;
         $headers = [
-            'Content-Type' => 'application/json',
+            'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
         $data = [];
         if(isset($params["daterange"]) && $params["daterange"] != ""){
-            $data["daterange"] = "05/01/2017-05/18/2017";
+            $data["daterange"] = $params["daterange"];
         }
 
         if (isset($params["page_no"]) && $params["per_page"]){
-            $data["page_no"] = $params["page_no"];
-            $data["per_page"] = $params["per_page"];
+            $data["page_no"] = intval($params["page_no"]);
+            $data["per_page"] = intval($params["per_page"]);
         }
-        Log::info($data);
-        $response = Units::sendWithDataJson('/orders', $headers, $data, 'GET');
-        return array("total" => $response->total_orders, "orders" => $response->orders);
+        $response = Units::send('orders', $headers, $data, 'GET');
+
+        return[
+            'status' => Consts::STATUS_OK,
+            'message' => "success",
+            'data' => array("total" => $response->total_orders, "orders" => $response->orders),
+        ];
     }
 
     protected function guard($guard = null)

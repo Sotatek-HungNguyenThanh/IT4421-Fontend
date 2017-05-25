@@ -61,6 +61,46 @@
             overflow: hidden;
         }
 
+        .page-container.page-navigation-toggled .page-content-admin {
+            margin-left: 50px;
+        }
+        .page-container .page-content .page-content-wrap {
+            float: left;
+            width: 100%;
+            background: white;
+        }
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: right;
+            padding: 4px 10px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        table tbody tr:nth-child(even) td {
+            background: #FFFFFF !important;
+        }
+
+        table tbody tr:nth-child(odd) td {
+            background: #f2f2f2 !important;
+        }
+
+        tbody{
+            border: 1px solid #f2f2f2;
+        }
+
     </style>
 @endsection
 
@@ -107,12 +147,12 @@
                                 <th class="fourth-column">Tổng tiền</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="display: inline-grid;">
                             <tr ng-repeat="row in controller.rows" ng-cloak>
                                 <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
-                                <td class="second-column">@{{ row.customer.fullname }}</td>
-                                <td class="thirth-column">@{{ row.customer.fullname}}</td>
-                                <td class="fourth-column">@{{ row.customer.email }}</td>
+                                <td class="second-column">@{{ row.date }}</td>
+                                <td class="thirth-column">@{{ row.order_variants.length}}</td>
+                                <td class="fourth-column">@{{ row.total_price | number }}</td>
                             </tr>
                             <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
                                 <td class="first-column"><div style="min-height: 34px"></div></td>

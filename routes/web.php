@@ -47,11 +47,11 @@ Route::get('/product/{id}', 'ProductController@showProductDetailPage');
 
 Route::post('/product/{id}', 'ProductController@getProductByUrl');
 
-Route::get('/category/{name}', function (){
+Route::get('/products/{name?}', function (){
     return view('app.list_product');
 });
 
-Route::post('/category/filter-product', 'ProductController@getListProduct');
+Route::post('/products/filter-category', 'ProductController@getListProduct');
 
 
 Route::get('/search', "HomeController@showPageSearch");

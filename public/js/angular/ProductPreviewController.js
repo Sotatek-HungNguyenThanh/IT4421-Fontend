@@ -91,5 +91,29 @@ var ProductPreviewController = CartBaseController.extend({
             });
     },
 
+    showCartModel: function () {
+        var self = this;
+
+        var data = {
+            product_id : this.product.id,
+            product: this.product,
+            properties: this.listOptions,
+            price: this.price,
+            quantity: this.quantity,
+            variant_id: this.variant_id,
+            total: this.quantity * this.price,
+            image: this.product.images[0]
+        };
+        this.service.addCart(data)
+            .success(function (response) {
+                self.$rootScope.$broadcast('addNameVariant', {name: self.product.title});
+                self.$rootScope.$broadcast('loadingCart');
+                $("#productPreview").modal("hide");
+            })
+            .error(function (error) {
+
+            });
+    }
+
 }, ['BaseService', "$scope", "$rootScope"]);
 myApp.controller('ProductPreviewController', ProductPreviewController);

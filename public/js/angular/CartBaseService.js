@@ -105,7 +105,7 @@ angular.module('CartBaseService', [])
                 };
                 return $http({
                     method: 'POST',
-                    url: '/category/filter-product',
+                    url: '/products/filter-category',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(data)
                 });

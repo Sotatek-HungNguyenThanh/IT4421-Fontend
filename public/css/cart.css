@@ -692,7 +692,7 @@ html .title-bl {
     min-width: 89px;
 }
 .product-item__actions .btn-cart:hover, .product-item__actions .quick-view:hover {
-    color: #fff;
+    color: #fff !important;
     background: #ff5c01;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;

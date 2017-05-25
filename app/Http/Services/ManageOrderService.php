@@ -34,14 +34,13 @@ class ManageOrderService
         }
 
         if(isset($params["customer_id"]) && $params["customer_id"] != 0){
-            $data["customer_id"] = $params["customer_id"];
+            $data["customer_id"] = intval($params["customer_id"]);
         }
 
         if (isset($params["page_no"]) && $params["per_page"]){
-            $data["page_no"] = $params["page_no"];
-            $data["per_page"] = $params["per_page"];
+            $data["page_no"] = intval($params["page_no"]);
+            $data["per_page"] = intval($params["per_page"]);
         }
-        Log::info($data);
         $response = Units::send('admins/orders', $headers, $data, 'GET');
         return array("total" => $response->total_orders, "orders" => $response->orders);
     }

@@ -68,6 +68,7 @@ class CartService
         $order = $params["order"];
 
         $variants = [];
+        $data = [];
         foreach ($order["variants"] as $variant){
             $variants[] = [
                 "variant_id" => $variant["variant_id"],
@@ -89,12 +90,10 @@ class CartService
                 $headers = [
                     'Content-Type' => 'application/json',
                 ];
+                $data["customer"] = $order["customer"];
             }
-            $data = [
-                "customer" => $order["customer"],
-                "total_price" => $order["total"],
-                "variants" => $variants
-            ];
+            $data["total_price"] = $order["total"];
+            $data["variants"] = $variants;
             $response = Units::sendWithDataJson('orders', $headers, $data, 'POST');
             if($response->success){
                 Session::forget("cart");

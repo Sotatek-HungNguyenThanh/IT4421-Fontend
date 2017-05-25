@@ -148,3 +148,15 @@ input.form-control, textarea.form-control, select.form-control {
     color: white;
     border: 1px solid #4CAF50;
 }
+
+table tbody tr:nth-child(even) td {
+    background: #FFFFFF !important;
+}
+
+table tbody tr:nth-child(odd) td {
+    background: #f2f2f2 !important;
+}
+
+tbody{
+    border: 1px solid #f2f2f2;
+}

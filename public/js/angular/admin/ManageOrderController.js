@@ -12,7 +12,7 @@ var ManageOrderController = BaseController.extend({
         this.daterange = "";
         this.customer_id = null;
         this.$rootScope = $rootScope;
-        this.setDurationMonths(1);
+        this.setDurationMonths();
         this.list(this.pageNo);
     },
 
@@ -94,9 +94,7 @@ var ManageOrderController = BaseController.extend({
             this.updateStartDate();
             this.updateEndDate();
         }
-        console.log(this.startDate);
-        console.log(moment(this.startDate, "DD/MM/YYYY"))
-        this.daterange = moment(this.startDate, "DD/MM/YYYY") + "-" + moment(this.endDate, "DD/MM/YYYY");
+        this.daterange = this._formatDate(this.startDate) + "-" + this._formatDate(this.endDate);
         this.list(1);
     },
 
@@ -113,7 +111,7 @@ var ManageOrderController = BaseController.extend({
         this.endPicker.setEndRange(endDateTmp);
     },
 
-    setDurationMonths: function(month) {
+    setDurationMonths: function() {
         var endDate = new Date();
         var startDate = new Date(endDate);
         startDate.setDate(1);
@@ -123,10 +121,9 @@ var ManageOrderController = BaseController.extend({
         // if (startDate.getDate() < endDate.getDate()) {
         //     startDate.setDate(0);
         // }
-
-        this.daterange = moment(this.startDate, "DD/MM/YYYY") + "-" + moment(this.endDate, "DD/MM/YYYY");
         this.startDate = this.formatDate(startDate);
         this.endDate = this.formatDate(endDate);
+        this.daterange = this._formatDate(this.startDate) + "-" + this._formatDate(this.endDate);
     },
 
     formatDate: function(date) {
@@ -142,6 +139,11 @@ var ManageOrderController = BaseController.extend({
             .error(function (err) {
                 
             })
-    }
+    },
+
+    _formatDate: function(time) {
+        var date = new Date(time);
+        return ((date.getMonth() + 1) < 10 ? "0" +(date.getMonth() + 1) : (date.getMonth() + 1)) + "/" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + "/"+  date.getFullYear();
+    },
 }, ['AdminService', "$rootScope", "$scope"]);
 adminApp.controller('ManageOrderController', ManageOrderController);

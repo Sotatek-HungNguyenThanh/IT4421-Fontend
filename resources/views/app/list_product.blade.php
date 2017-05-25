@@ -348,7 +348,7 @@
                                     <ul class="catalog__list" style="overflow: overlay;">
 
                                         <li class="catalog__item">
-                                            <a href="/category/dien-thoai" title="Điện thoại">
+                                            <a href="/products?category=dien-thoai" title="Điện thoại">
 
 
                                                     <span class="catalog__icon">
@@ -366,42 +366,42 @@
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/iphone" class="catalog-sub__link">iPhone</a>
+                                                    <a href="/products?category=dien-thoai&query=iphone" class="catalog-sub__link">iPhone</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/samsung" class="catalog-sub__link">Samsung</a>
+                                                    <a href="/products?category=dien-thoai&query=samsung" class="catalog-sub__link">Samsung</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/oppo" class="catalog-sub__link">Oppo</a>
+                                                    <a href="/products?category=dien-thoai&query=oppo" class="catalog-sub__link">Oppo</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/huawei" class="catalog-sub__link">Huawei</a>
+                                                    <a href="/products?category=dien-thoai&query=huawei" class="catalog-sub__link">Huawei</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/asus" class="catalog-sub__link">Asus</a>
+                                                    <a href="/products?category=dien-thoai&query=asus" class="catalog-sub__link">Asus</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/acer" class="catalog-sub__link">Acer</a>
+                                                    <a href="/products?category=dien-thoai&query=acer" class="catalog-sub__link">Acer</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/sony" class="catalog-sub__link">Sony</a>
+                                                    <a href="/products?category=dien-thoai&query=sony" class="catalog-sub__link">Sony</a>
                                                 </li>
 
 
                                                 <li class="catalog-sub__item">
-                                                    <a href="/category/khac" class="catalog-sub__link">Khác</a>
+                                                    <a href="/products?category=dien-thoai&query=khac" class="catalog-sub__link">Khác</a>
                                                 </li>
 
 
@@ -410,7 +410,7 @@
 
 
                                         <li class="catalog__item">
-                                            <a href="/category/may-tinh-bang" title="Máy tính bảng">
+                                            <a href="/products?category=may-tinh-bang" title="Máy tính bảng">
 
 
                                                 <span class="catalog__icon">
@@ -427,7 +427,7 @@
 
 
                                         <li class="catalog__item">
-                                            <a href="/category/laptop" title="Laptop">
+                                            <a href="/products?category=laptop" title="Laptop">
 
 
                                                 <span class="catalog__icon">
@@ -444,7 +444,7 @@
 
 
                                         <li class="catalog__item">
-                                            <a href="/category/may-cu" title="Máy cũ">
+                                            <a href="/products?category=may-cu" title="Máy cũ">
 
 
                                                 <span class="catalog__icon">
@@ -461,7 +461,7 @@
 
 
                                         <li class="catalog__item">
-                                            <a href="/category/phu-kien" title="Phụ kiện">
+                                            <a href="/products?category=phu-kien" title="Phụ kiện">
 
 
                                                 <span class="catalog__icon">
@@ -478,7 +478,7 @@
 
 
                                         <li class="catalog__item">
-                                            <a href="/category/sac-du-phong" title="Sạc dự phòng">
+                                            <a href="/products?category=sac-du-phong" title="Sạc dự phòng">
 
 
                                                 <span class="catalog__icon">
@@ -510,13 +510,13 @@
 
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                     <div class="collection__title">
-                        <h1><span>Điện thoại</span></h1>
+                        <h1><span>@{{ controller._title }}</span></h1>
                         <div id="sort-by" class="hidden-xs">
                             <label class="left hidden-xs" for="sort-select">Sắp xếp theo: </label>
                             <form class="form-inline form-viewpro">
                                 <div class="form-group">
-                                    <select class="sort-by-script" id="sort-select">
-                                        <option value="default">Mặc định</option>
+                                    <select class="sort-by-script" id="sort-select" ng-model="controller.sort" ng-change="controller.sortProducts()">
+                                        <option value="">Mặc định</option>
                                         <option value="asc">Từ A-Z</option>
                                         <option value="desc">Từ Z-A</option>
                                     </select>
@@ -530,7 +530,7 @@
                                 <div class="item col-md-3 col-sm-3 col-xs-6" ng-repeat="item in controller.rows track by $index">
                                     <div class="product-item__grid">
                                         <div class="product-item__thumb">
-                                            <a href="/dien-thoai-iphone-7-32gb">
+                                            <a href="javascript:void(0)">
                                                 <img ng-src="@{{ item.product.images[0]}}">
                                             </a>
                                             <div class="product-item__actions hidden-xs">
@@ -564,6 +564,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div ng-show="controller.isNull(controller.rows)" style="min-height: 300px; padding: 30px"><p>Không có sản phẩm nào</p></div>
                         </div>
 
                     </div>
