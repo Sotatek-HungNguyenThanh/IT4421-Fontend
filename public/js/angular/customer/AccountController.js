@@ -107,7 +107,7 @@ var AccountController = Controller.extend({
             this.updateStartDate();
             this.updateEndDate();
         }
-        this.daterange = moment(this.startDate, "DD/MM/YYYY") + "-" + moment(this.endDate, "DD/MM/YYYY");
+        this.daterange = this._formatDate(this.startDate) + "-" + this._formatDate(this.endDate);
         this.list(1);
     },
 
@@ -150,5 +150,5 @@ var AccountController = Controller.extend({
     },
 
 
-}, ['BaseService']);
+}, ['Service']);
 myApp.controller('AccountController', AccountController);

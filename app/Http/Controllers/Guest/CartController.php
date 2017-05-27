@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Http\Services\ProductService;
-use App\Utils;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+namespace App\Http\Controllers\Guest;
 use App\Consts;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Guest\CartService;
+use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class CartController extends Controller
 {
-    protected $productService;
+
+    protected $cartService;
     public function __construct()
     {
-        $this->productService = new ProductService();
+        $this->cartService = new CartService();
     }
 
-    public function getListNewProduct(Request $request){
+    public function add(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->productService->getListNewProduct($request->all());
+            $result = $this->cartService->add($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -38,10 +37,10 @@ class ProductController extends Controller
         }
     }
 
-    public function getProductByID(Request $request){
+    public function getCart(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->productService->getProductByID($request->all());
+            $result = $this->cartService->getCart($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -58,11 +57,10 @@ class ProductController extends Controller
         }
     }
 
-
-    public function search(Request $request){
+    public function createOrder(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->productService->search($request->all());
+            $result = $this->cartService->createOrder($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -79,14 +77,10 @@ class ProductController extends Controller
         }
     }
 
-    public function showProductDetailPage(){
-        return view('app.product');
-    }
-
-    public function getProductByUrl(Request $request, $id){
+    public function update(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->productService->getProductByUrl($id);
+            $result = $this->cartService->update($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -103,36 +97,10 @@ class ProductController extends Controller
         }
     }
 
-    public function getListProduct(Request $request){
+    public function remove(Request $request){
         DB::beginTransaction();
         try{
-            $params = $request->input("params");
-
-            $data = [];
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-            ];
-            if(isset($params["key_word"]) && $params["key_word"] != ""){
-                $data["key_word"] = $params["key_word"];
-            }
-
-            if(isset($params["page_no"]) && $params["page_no"] != ""){
-                $data["page_no"] = $params["page_no"];
-            }
-            if(isset($params["per_page"]) && $params["per_page"] != ""){
-                $data["per_page"] = $params["per_page"];
-            }
-
-            if(isset($params["category"]) && $params["category"] != ""){
-                $data["category"] = $params["category"];
-            }
-
-            if(isset($params["sort_name"]) && $params["sort_name"] != ""){
-                $data["sort_name"] = $params["sort_name"];
-            }
-            Log::info($data);
-            $response = Utils::send('products', $headers, $data, 'GET');
-            $result = array("total" => $response->total_products, "products" => $response->products);
+            $result = $this->cartService->remove($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,

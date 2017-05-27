@@ -6,7 +6,7 @@
     <link href="/css/triangle.css" rel="stylesheet">
     <style>
         .table-product {
-            width: 100%;
+            width: 1000px;
             min-width: 800px;
             overflow: hidden;
         }
@@ -38,26 +38,35 @@
         }
 
         .first-column {
-            width: 220px;
-            max-width: 220px;
+            width: 60px;
+            min-width: 60px;
+            max-width: 120px;
             overflow: hidden;
         }
 
         .second-column {
-            width: 450px;
-            max-width: 450px;
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
             overflow: hidden;
         }
 
         .thirth-column {
-            width: 450px;
-            max-width: 450px;
+            width: 100px;
+            min-width: 100px;
+            max-width: 100px;
             overflow: hidden;
         }
 
         .fourth-column {
-            width: 450px;
-            max-width: 450px;
+            width: 800px;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .fifth-column{
+            width: 250px;
+            max-width: 250px;
             overflow: hidden;
         }
 
@@ -122,7 +131,7 @@
                 <div class="row">
                     <div style="padding: 20px; margin-top: 40px;">
                         <div class="dataTables_filter">
-                            <label>Search:
+                            <label>Khoảng thời gian:
                                 <div class="_range_time">
                                     <input type="text" pikaday="controller.startPicker"
                                            default-date="@{{ controller.startDate }}"
@@ -144,7 +153,8 @@
                                 <th class="first-column">No.</th>
                                 <th class="second-column">Ngày</th>
                                 <th class="thirth-column">Số lượng SP</th>
-                                <th class="fourth-column">Tổng tiền</th>
+                                <th class="fourth-column">Đơn hàng</th>
+                                <th class="fifth-column">Tổng tiền</th>
                             </tr>
                             </thead>
                             <tbody style="display: inline-grid;">
@@ -152,7 +162,18 @@
                                 <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
                                 <td class="second-column">@{{ row.date }}</td>
                                 <td class="thirth-column">@{{ row.order_variants.length}}</td>
-                                <td class="fourth-column">@{{ row.total_price | number }}</td>
+                                <td class="fourth-column" style="text-align: left">
+                                    <div class="item" ng-repeat="variant in row.order_variants track by index">
+                                        <p>Tên sản phẩm : @{{ variant.product.title }}</p>
+                                        <p>Biến thể
+                                            <span ng-repeat="item in variant.properties">
+                                                    <span ng-if="!$last">@{{ item.name }} : @{{  item.value  }},</span>
+                                                    <span ng-if="$last">@{{ item.name}} : @{{  item.value  }}</span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="fifth-column">@{{ row.total_price | number }}</td>
                             </tr>
                             <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
                                 <td class="first-column"><div style="min-height: 34px"></div></td>
@@ -160,9 +181,6 @@
                                 <td class="thirth-column"></td>
                                 <td class="fourth-column"></td>
                                 <td class="fifth-column"></td>
-                                <td class="sixth-column"></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                             </tbody>
                         </table>

@@ -1,27 +1,38 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hungnguyen
+ * Date: 28/05/2017
+ * Time: 01:37
+ */
 
 namespace App\Http\Controllers\Admin;
-
 use App\Consts;
 use App\Http\Controllers\Controller;
-use App\Http\Services\ManageCustomerService;
+use App\Http\Services\Admin\CustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class ManageCustomerController extends Controller
+
+class CustomerController extends Controller
 {
-    protected $manageCustomerService;
+    protected $guard = 'admin';
+    protected $customerService;
+
     public function __construct()
     {
-        $this->manageCustomerService = new ManageCustomerService();
+        $this->customerService = new CustomerService();
     }
-    protected $guard = 'admin';
+
+    public function showListCustomerPage(){
+        return view("admin.list_customer");
+    }
 
     public function getListCustomer(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->manageCustomerService->getListCustomer($request->all());
+            $result = $this->customerService->getListCustomer($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -41,7 +52,7 @@ class ManageCustomerController extends Controller
     public function deleteCustomer(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->manageCustomerService->deleteCustomer($request->all());
+            $result = $this->customerService->deleteCustomer($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -57,4 +68,5 @@ class ManageCustomerController extends Controller
             ];
         }
     }
+
 }

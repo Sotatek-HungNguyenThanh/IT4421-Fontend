@@ -1,28 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hungnguyen
- * Date: 24/05/2017
- * Time: 02:20
- */
 
-namespace App\Http\Services;
+namespace App\Http\Services\Admin;
 
-use App\Units;
+use App\Utils;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class ManageOrderService
+class OrderService
 {
-    protected function guard($guard = null)
+    protected function guard()
     {
-        return Auth::guard($guard);
+        return Auth::guard("admin");
     }
 
     public function getAllOrder($params){
-        $token = $this->guard("admin")->user()->token;
-        $email = $this->guard("admin")->user()->email;
+        $token = $this->guard()->user()->token;
+        $email = $this->guard()->user()->email;
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => $email,
@@ -41,7 +35,7 @@ class ManageOrderService
             $data["page_no"] = intval($params["page_no"]);
             $data["per_page"] = intval($params["per_page"]);
         }
-        $response = Units::send('admins/orders', $headers, $data, 'GET');
+        $response = Utils::send('admins/orders', $headers, $data, 'GET');
         return array("total" => $response->total_orders, "orders" => $response->orders);
     }
 
@@ -49,8 +43,8 @@ class ManageOrderService
         try {
             $id = $params['id'];
             $status = $params['status'];
-            $token = $this->guard("admin")->user()->token;
-            $email = $this->guard("admin")->user()->email;
+            $token = $this->guard()->user()->token;
+            $email = $this->guard()->user()->email;
             $headers = [
                 'Content-Type' => 'application/json',
                 'Authorization' => $email,
@@ -61,7 +55,7 @@ class ManageOrderService
                 "status" => $status
             ];
 
-            $response = Units::sendWithDataJson('admins/orders/' . $id, $headers, $data, 'PATCH');
+            $response = Utils::sendWithDataJson('admins/orders/' . $id, $headers, $data, 'PATCH');
             return $response->message;
 
         }catch (Exception $e){

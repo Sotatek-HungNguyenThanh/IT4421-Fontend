@@ -1,17 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hungnguyen
- * Date: 10/05/2017
- * Time: 10:27
- */
 
-namespace App\Http\Services;
+namespace App\Http\Services\Admin;
 
-
-use App\Consts;
-use App\Units;
-use GuzzleHttp\Client;
+use App\Utils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
@@ -20,6 +11,11 @@ use Exception;
 
 class ProductService
 {
+    protected function guard()
+    {
+        return Auth::guard("admin");
+    }
+
     public function createProduct($params)
     {
         try {
@@ -31,8 +27,7 @@ class ProductService
                 'Tokenkey' => $token
             ];
             $data = $this->formatDataCreateProduct($params);
-            Log::info($data);
-            $response = Units::sendWithDataJson('admins/products', $headers, $data, 'POST');
+            $response = Utils::sendWithDataJson('admins/products', $headers, $data, 'POST');
             return ["product" => $response->product, "variants" => $response->variants];
 
         } catch (Exception $e) {
@@ -84,12 +79,6 @@ class ProductService
         ];
     }
 
-
-    protected function guard()
-    {
-        return Auth::guard("admin");
-    }
-
     public function getListProduct($params){
 
         $token = $this->guard()->user()->token;
@@ -110,7 +99,7 @@ class ProductService
             ];
         }
 
-        $response = Units::send('admins/products', $headers, $data, 'GET');
+        $response = Utils::send('admins/products', $headers, $data, 'GET');
         return array("total" => $response->total_products, "products" => $response->products);
     }
 
@@ -124,7 +113,7 @@ class ProductService
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'DELETE');
+            $response = Utils::sendWithDataJson('admins/products/' . $productID, $headers, null, 'DELETE');
             return $response->message;
 
         }catch (Exception $e){
@@ -142,7 +131,7 @@ class ProductService
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::sendWithDataJson('admins/products/' . $productID, $headers, null, 'GET');
+            $response = Utils::sendWithDataJson('admins/products/' . $productID, $headers, null, 'GET');
             return ["product" => $response->product, "supplier" => $response->supplier, "variants" => $response->variants];
         }catch (Exception $e){
             Log::error($e->getMessage());
@@ -160,7 +149,7 @@ class ProductService
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::sendWithDataJson('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
+            $response = Utils::sendWithDataJson('admins/products/' . $variant["product_id"] . '/variants/' . $variant["id"], $headers, null, 'DELETE');
             return $response->message;
         }catch (Exception $e){
             Log::error($e->getMessage());
@@ -179,7 +168,7 @@ class ProductService
             ];
             $data = $this->formatDataUpdateProduct($params);
 
-            $response = Units::sendWithDataJson('admins/products/' . $data["id"], $headers, $data, 'PATCH');
+            $response = Utils::sendWithDataJson('admins/products/' . $data["id"], $headers, $data, 'PATCH');
 
             return ["product" =>$response->product, "variants" => $response->variants];
 
@@ -246,58 +235,4 @@ class ProductService
         ];
     }
 
-    function getListNewProduct($params){
-        try {
-            $headers = [
-                'Content-Type' => 'application/json',
-            ];
-            $data = [
-                "page_no" => 1,
-                "per_page" => $params["quantity"],
-            ];
-            $response = Units::sendWithDataJson('products', $headers, $data, 'GET');
-            return $response->products;
-        }catch (Exception $e){
-            Log::error($e->getMessage());
-            return null;
-        }
-    }
-
-    function getProductByID($params){
-        try {
-            $headers = [
-                'Content-Type' => 'application/json',
-            ];
-            $response = Units::sendWithDataJson('products/' . $params["id"], $headers, null, 'GET');
-            return ["product" => $response->product, "variants" =>  $response->variants];
-        }catch (Exception $e){
-            Log::error($e->getMessage());
-            return null;
-        }
-    }
-
-    function search($param){
-        $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ];
-        $data = [
-            "key_word" => $param["query"]
-        ];
-
-        $response = Units::send('products', $headers, $data, 'GET');
-        return ["query" => $param["query"], "products" => $response->products];
-    }
-
-    function getProductByUrl($id){
-        try {
-            $headers = [
-                'Content-Type' => 'application/json',
-            ];
-            $response = Units::sendWithDataJson('products/' . $id, $headers, null, 'GET');
-            return ["product" => $response->product, "variants" =>  $response->variants];
-        }catch (Exception $e){
-            Log::error($e->getMessage());
-            return null;
-        }
-    }
 }

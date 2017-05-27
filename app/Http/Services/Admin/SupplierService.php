@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hungnguyen
- * Date: 10/05/2017
- * Time: 10:27
- */
 
-namespace App\Http\Services;
+namespace App\Http\Services\Admin;
 
-
-use App\Units;
+use App\Utils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +10,7 @@ class SupplierService
 {
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard("admin");
     }
 
     public function createSupplier($params){
@@ -35,7 +28,7 @@ class SupplierService
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
-        $response = Units::sendWithDataJson('admins/suppliers', $headers, $data);
+        $response = Utils::sendWithDataJson('admins/suppliers', $headers, $data);
 
         return $response->supplier;
     }
@@ -58,8 +51,7 @@ class SupplierService
                 "per_page" => $params["per_page"],
             ];
         }
-        Log::info($data);
-        $response = Units::send('admins/suppliers', $headers, $data, 'GET');
+        $response = Utils::send('admins/suppliers', $headers, $data, 'GET');
         Log::info(json_encode($response));
         return ["total" => $response->total_suppliers, "suppliers" => $response->suppliers];
     }
@@ -72,7 +64,7 @@ class SupplierService
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
-        $response = Units::sendWithDataJson('admins/suppliers/' . $params["supplierID"], $headers, null, 'GET');
+        $response = Utils::sendWithDataJson('admins/suppliers/' . $params["supplierID"], $headers, null, 'GET');
 
         return $response->supplier;
     }
@@ -92,7 +84,7 @@ class SupplierService
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
-        $response = Units::sendWithDataJson('admins/suppliers/' . $params['supplierID'], $headers, $data, 'PATCH');
+        $response = Utils::sendWithDataJson('admins/suppliers/' . $params['supplierID'], $headers, $data, 'PATCH');
 
         return $response->supplier;
     }
@@ -105,7 +97,7 @@ class SupplierService
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
-        $response = Units::sendWithDataJson('admins/suppliers/' . $params["supplierID"], $headers, null, 'DELETE');
+        $response = Utils::sendWithDataJson('admins/suppliers/' . $params["supplierID"], $headers, null, 'DELETE');
         return $response->message;
     }
 }

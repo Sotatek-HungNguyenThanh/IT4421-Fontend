@@ -1,21 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hungnguyen
- * Date: 18/05/2017
- * Time: 22:35
- */
 
-namespace App\Http\Services;
+namespace App\Http\Services\Guest;
 
-use App\Units;
+use App\Utils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Exception;
 use Illuminate\Support\Facades\Session;
+use Exception;
 
 class CartService
 {
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
     public function add($params){
         if(!session()->has('cart')){
             Session::put('cart', []);
@@ -61,7 +60,9 @@ class CartService
     }
 
     public function getCart(){
+
         return Session::get('cart');
+
     }
 
     public function createOrder($params){
@@ -94,7 +95,7 @@ class CartService
             }
             $data["total_price"] = $order["total"];
             $data["variants"] = $variants;
-            $response = Units::sendWithDataJson('orders', $headers, $data, 'POST');
+            $response = Utils::sendWithDataJson('orders', $headers, $data, 'POST');
             if($response->success){
                 Session::forget("cart");
             }
@@ -103,10 +104,5 @@ class CartService
             Log::error($e->getMessage());
             return null;
         }
-    }
-
-    protected function guard()
-    {
-        return Auth::guard();
     }
 }

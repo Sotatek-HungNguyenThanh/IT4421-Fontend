@@ -43,7 +43,7 @@
     </li>
     <li class="xn-title">Quản lý sản phẩm</li>
     <li>
-        <a href="/admin/add-product"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm sản phẩm</span></a>
+        <a href="/admin/create-product"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm sản phẩm</span></a>
     </li>
     <li>
         <a href="/admin/list-products"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách sản phẩm</span></a>

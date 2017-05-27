@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Http\Services\ProductService;
+namespace App\Http\Controllers\Guest;
+use App\Consts;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Guest\ProductService;
 use App\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Consts;
-use Exception;
 use Illuminate\Support\Facades\Log;
+use Exception;
 
 class ProductController extends Controller
 {
@@ -16,6 +16,10 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->productService = new ProductService();
+    }
+
+    public function showProductFilterPage(){
+        return view('app.product_filter');
     }
 
     public function getListNewProduct(Request $request){

@@ -6,7 +6,7 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="/js/angular/AccountController.js"></script>
+    <script type="text/javascript" src="/js/angular/customer/AccountController.js"></script>
 @endsection
 
 @section('content')

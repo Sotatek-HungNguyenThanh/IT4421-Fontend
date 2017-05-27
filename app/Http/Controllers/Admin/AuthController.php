@@ -4,28 +4,33 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
-use App\Units;
+use App\Http\Services\Admin\AuthService;
+use App\Utils;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Validator;
-use API;
+use Illuminate\Support\Facades\Validator;
+use Exception;
 
 class AuthController extends Controller
 {
     use AuthenticatesUsers;
     protected $redirectTo = 'admin/home';
     protected $guard = 'admin';
+    protected $authService;
 
-    public function showLoginForm()
+
+    public function __construct()
+    {
+        $this->authService = new AuthService();
+    }
+
+    public function showLoginPage()
     {
         return view('admin.login');
     }
 
-    public function showChangePasswordPage(){
-        return view('admin.change_password');
-    }
 
     public function login(Request $request)
     {
@@ -37,24 +42,14 @@ class AuthController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        $data = [
-            "email" => $params['email'],
-            "password" => $params['password']
-        ];
+
         try {
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-            ];
-            $response = Units::send('admins/login', $headers, $data);
-            $user = $response->admin;
-            $admin = Admin::firstOrNew(['email' => $user->email]);
-            $admin->token = $response->token_key;
-            $admin->status = $user->status;
-            $admin->password = bcrypt($params['password']);
-            $admin->save();
+
+            $admin = $this->authService->login($params);
             $this->guard()->login($admin);
+
             return redirect($this->redirectTo);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
             $messageError = json_decode($e->getResponse()->getBody(true));
             $validator->errors()->add('message', $messageError->message);
@@ -67,20 +62,13 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-            $token = $this->guard()->user()->token;
-            $email = $this->guard()->user()->email;
-            $headers = [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Authorization' => $email,
-                'Tokenkey' => $token
-            ];
-            Units::send('admins/logout', $headers);
+            $this->authService->logout();
 
-            $this->guard()->logout();
             $request->session()->flush();
             $request->session()->regenerate();
+
             return redirect('admin/login');
-        }catch (\Exception $e){
+        }catch (Exception $e){
             Log::error($e->getMessage());
         }
     }
@@ -93,28 +81,8 @@ class AuthController extends Controller
         ]);
     }
 
-    private function updateAccountInfo($params, $token)
-    {
-        $headers = API::buildHeaders($params['email'], $token);
-        $response = API::send('users/current_user', $headers, null, 'GET');
-        $admin = Admin::firstOrNew(['email' => $params['email']]);
-        $admin->password = bcrypt($params['password']);
-        $admin->fullname = $response->customer->fullname;
-        $admin->address = $response->customer->address;
-        $admin->phone_number = $response->customer->phone_number;
-        $admin->status = $response->customer->status;
-        $admin->token = $token;
-        $admin->save();
-        return $admin;
-    }
-
     protected function guard()
     {
         return Auth::guard($this->guard);
-    }
-
-    public function index()
-    {
-        return view('admin.change_password');
     }
 }

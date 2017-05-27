@@ -5,8 +5,8 @@
 @endsection
 
 @section('script')
-    <script src="/js/angular/SearchController.js"></script>
-    <script src="/js/angular/ProductPreviewController.js"></script>
+    <script src="/js/angular/guest/SearchController.js"></script>
+    <script src="/js/angular/guest/ProductModelController.js"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/cart.css">

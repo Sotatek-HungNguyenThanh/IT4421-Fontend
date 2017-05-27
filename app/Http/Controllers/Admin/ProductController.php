@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Consts;
-use App\Http\Services\ProductService;
+use App\Http\Services\Admin\ProductService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -17,12 +17,16 @@ class ProductController extends Controller
         $this->productService = new ProductService();
     }
 
-    public function showManageProductsPage(){
+    public function showListProductsPage(){
     	return view('admin.list_products');
     }
 
     public function showCreateProductPage(){
         return view('admin.create_product');
+    }
+
+    public function showUpdateProductPage(){
+        return view('admin.update_product');
     }
 
     public function createProduct(Request $request){

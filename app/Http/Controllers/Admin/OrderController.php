@@ -1,26 +1,35 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hungnguyen
+ * Date: 28/05/2017
+ * Time: 01:37
+ */
 
 namespace App\Http\Controllers\Admin;
-
 use App\Consts;
 use App\Http\Controllers\Controller;
-use App\Http\Services\ManageOrderService;
+use App\Http\Services\Admin\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class ManageOrderController extends Controller
+class OrderController extends Controller
 {
-    protected $manageOrderService;
+    protected $orderService;
     public function __construct()
     {
-        $this->manageOrderService = new ManageOrderService();
+        $this->orderService = new OrderService();
+    }
+
+    public function showListOrderPage(){
+        return view('admin.list_order');
     }
 
     public function getAllOrder(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->manageOrderService->getAllOrder($request->all());
+            $result = $this->orderService->getAllOrder($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,
@@ -40,7 +49,7 @@ class ManageOrderController extends Controller
     public function updateStatusOrder(Request $request){
         DB::beginTransaction();
         try{
-            $result = $this->manageOrderService->updateStatusOrder($request->all());
+            $result = $this->orderService->updateStatusOrder($request->all());
             DB::commit();
             return [
                 'status' => Consts::STATUS_OK,

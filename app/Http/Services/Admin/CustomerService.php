@@ -2,19 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: hungnguyen
- * Date: 24/05/2017
- * Time: 01:49
+ * Date: 28/05/2017
+ * Time: 03:08
  */
 
-namespace App\Http\Services;
+namespace App\Http\Services\Admin;
 
 
-use App\Units;
+use App\Utils;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
-class ManageCustomerService
+class CustomerService
 {
     protected function guard()
     {
@@ -40,7 +40,7 @@ class ManageCustomerService
             ];
         }
 
-        $response = Units::send('admins/customers', $headers, $data, 'GET');
+        $response = Utils::send('admins/customers', $headers, $data, 'GET');
         return array("total" => $response->total_customers, "customers" => $response->customers);
     }
 
@@ -54,7 +54,7 @@ class ManageCustomerService
                 'Authorization' => $email,
                 'Tokenkey' => $token
             ];
-            $response = Units::sendWithDataJson('admins/customers' . $customerID, $headers, null, 'DELETE');
+            $response = Utils::sendWithDataJson('admins/customers' . $customerID, $headers, null, 'DELETE');
             return $response->message;
 
         }catch (Exception $e){

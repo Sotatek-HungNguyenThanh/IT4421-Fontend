@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Consts;
+namespace App\Http\Controllers\Guest;
+use App\Http\Controllers\Controller;
 use App\Http\Services\Guest\HomeService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Exception;
 
 class HomeController extends Controller
 {
@@ -15,21 +12,19 @@ class HomeController extends Controller
     {
         $this->homeService = new HomeService();
     }
-    public function index(){
+    public function showHomePage(){
         return view('app.home');
     }
 
-    public function showPageSearch(){
+    public function showSearchPage(){
         return view('app.search');
     }
 
-    public function showPageCheckout(){
+    public function showCheckoutPage(){
         return view('app.checkout');
     }
 
-    public function showPageCart(){
+    public function showCartPage(){
         return view('app.cart');
     }
-
-
 }

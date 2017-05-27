@@ -11,7 +11,7 @@ namespace App;
 
 use GuzzleHttp\Client;
 
-class Units
+class Utils
 {
     public static function send($path, $headers, $params = null, $method = 'POST'){
         $client = new Client(['base_uri' => Consts::HOST]);

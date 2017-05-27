@@ -3,26 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Consts;
-use App\Facades\API;
-use App\Http\Services\SupplierService;
-use App\Units;
+use App\Http\Services\Admin\SupplierService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Validator;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
+    protected $guard = 'admin';
     protected $supplierService;
+
     public function __construct()
     {
         $this->supplierService = new SupplierService();
     }
-    protected $guard = 'admin';
 
-    public function showManageSuppliersPage()
+    public function showListSupplierPage()
     {
         return view('admin.list_suppliers');
     }
