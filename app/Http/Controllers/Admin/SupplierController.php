@@ -24,12 +24,12 @@ class SupplierController extends Controller
 
     public function showManageSuppliersPage()
     {
-        return view('admin.manage_suppliers');
+        return view('admin.list_suppliers');
     }
 
     public function showCreateSupplierPage()
     {
-        return view('admin.add_suppliers');
+        return view('admin.create_supplier');
     }
 
     public function createSupplier(Request $request){

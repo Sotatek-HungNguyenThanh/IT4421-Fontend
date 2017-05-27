@@ -18,11 +18,11 @@ class ProductController extends Controller
     }
 
     public function showManageProductsPage(){
-    	return view('admin.manage_products');
+    	return view('admin.list_products');
     }
 
     public function showCreateProductPage(){
-        return view('admin.add_product');
+        return view('admin.create_product');
     }
 
     public function createProduct(Request $request){

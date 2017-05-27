@@ -20,21 +20,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
-    <script type="text/javascript" src="/js/angular/core/BaseFilter.js"></script>
-    <script type="text/javascript" src="/js/angular/core/BaseService.js"></script>
-    <script type="text/javascript" src="/js/angular/CartBaseService.js"></script>
+    <script type="text/javascript" src="/js/angular/core/Filter.js"></script>
+    <script type="text/javascript" src="/js/angular/core/Service.js"></script>
+    <script type="text/javascript" src="/js/angular/guest/CartService.js"></script>
     <script type="text/javascript" src="/js/angular/core/component.js"></script>
-    <script type="text/javascript" src="/js/angular/core/BaseController.js"></script>
-    <script type="text/javascript" src="/js/angular/CartBaseController.js"></script>
-    <script type="text/javascript" src="/js/angular/CheckoutController.js"></script>
-    <script type="text/javascript" src="/js/angular/CartShortcutController.js"></script>
-    <script type="text/javascript" src="/js/angular/CartModelController.js"></script>
+    <script type="text/javascript" src="/js/angular/core/Controller.js"></script>
+    <script type="text/javascript" src="/js/angular/guest/LogicCartController.js"></script>
+    <script type="text/javascript" src="/js/angular/guest/CheckoutController.js"></script>
+    <script type="text/javascript" src="/js/angular/guest/CartShortcutController.js"></script>
+    <script type="text/javascript" src="/js/angular/guest/CartModelController.js"></script>
     <script type="text/javascript" src="/js/angular/core/underscore-min.js"></script>
 
     <script src="{{ url('/js/pikaday/moment.js') }}"></script>
     <script src="{{ url('/js/pikaday/pikaday.js') }}"></script>
     <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
-    <script src="{{ url('/js/angular/pika_date_customer.js') }}"></script>
+    <script src="{{ url('/js/angular/pika_date/pika_date_customer.js') }}"></script>
     @yield('script')
 </head>
 <body>

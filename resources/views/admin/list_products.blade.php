@@ -2,11 +2,11 @@
 
 
 @section('title')
-    Danh sách khách hàng
+    Manage Products
 @endsection
 
 @section('css')
-    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/list-customer.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/admin/manage-product.css"/>
     <style>
         @media screen and (max-width: 950px) {
             .content-header-title{
@@ -28,18 +28,17 @@
 
 @section('script')
     <script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/js/angular/admin/CustomerController.js"></script>
 @endsection
 
 @section('page_content')
-    <div class="row" ng-controller="CustomerController as controller" ng-cloak>
+    <div class="row" ng-controller="ProductController as controller">
         <div class="col-md-12">
             <div class="manage-product">
                 <div class="container-header">
                     <div class="col-md-12">
                         <div class="row content-header-title" style="position: fixed;z-index: 2; width: calc(100% - 240px); height: 70px; border-bottom: 1px solid #dfe6e8; background-color: white; top: 51px; left: 230px">
                             <div class="col-md-12" style="padding: 15px;font-size: 16px;">
-                                Danh sách khách hàng
+                               Danh sách sản phẩm
                             </div>
                         </div>
                     </div>
@@ -57,24 +56,27 @@
                         <tr>
                             <th class="first-column">No.</th>
                             <th class="second-column">Tên</th>
-                            <th class="thirth-column">Email</th>
-                            <th class="fourth-column">Địa chỉ</th>
-                            <th class="fifth-column">Số điện thoại</th>
-                            <th class="sixth-column">Trạng thái</th>
-                            <th class="seventh-column"></th>
+                            <th class="thirth-column">Mã sản phẩm</th>
+                            <th class="fourth-column">Nhà cung cấp</th>
+                            <th class="fifth-column">Trạng thái</th>
+                            <th class="sixth-column"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
-                            <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
-                            <td class="second-column">@{{ row.fullname }}</td>
-                            <td class="thirth-column">@{{ row.email}}</td>
-                            <td class="fourth-column">@{{ row.address }}</td>
-                            <td class="fifth-column">@{{ row.phone_number }}</td>
-                            <td class="sixth-column">@{{ row.status | status_customer }}</td>
-                            <td class="seventh-column">
-                                <button type="button" ng-show="controller.isActive(row.status)" class="button-product" ng-click="controller.removeCustomer(row)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
-                                <button type="button" class="button-product" ng-show="controller.isDestroy(row.status)" ng-click="controller.removeCustomer(row)"><i class="fa fa-lock" aria-hidden="true"></i></button>
+                            <td class="first-column">@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
+                            <td class="second-column">@{{ row.product.title }}</td>
+                            <td class="thirth-column">@{{ "SP" + row.product.id }}</td>
+                            <td class="fourth-column">@{{ row.supplier.name }}</td>
+                            <td class="fifth-column">@{{ row.product.status | is_active }}</td>
+                            <td class="sixth-column">
+                                <a href="/admin/product/@{{ row.product.id }}" style="text-decoration: none; color: black">
+                                    <button type="button" class="button-product">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+                                <button type="button" ng-show="controller.isActive(row.product.status)" class="button-product" ng-click="controller.removeProduct(row.product)"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="button-product" ng-show="controller.isDestroy(row.product.status)" ng-click="controller.removeProduct(row.product)"><i class="fa fa-lock" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                         <tr ng-if="controller.rowNull > 0" ng-repeat="n in controller.rowNull | range">
@@ -84,7 +86,6 @@
                             <td class="fourth-column"></td>
                             <td class="fifth-column"></td>
                             <td class="sixth-column"></td>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>

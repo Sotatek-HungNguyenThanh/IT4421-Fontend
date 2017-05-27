@@ -30,11 +30,11 @@
 
 @section('script')
     <script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/js/angular/admin/ManageOrderController.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/OrderController.js"></script>
 @endsection
 
 @section('page_content')
-    <div class="row" ng-controller="ManageOrderController as controller" ng-cloak>
+    <div class="row" ng-controller="OrderController as controller" ng-cloak>
         <div class="col-md-12">
             <div class="manage-product">
                 <div class="container-header">

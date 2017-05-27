@@ -76,6 +76,6 @@
             </div>
         </section>
     </div>
-    @include('app.preview')
+    @include('app.product_model')
     @include('app.cart_model')
 @endsection

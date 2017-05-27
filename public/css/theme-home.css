@@ -2052,3 +2052,9 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 .product-item__actions .btn-cart:hover a{
     color: white!important;
 }
+ul.bxslider1 li{
+    text-align: center;
+}
+ul.bxslider1{
+    list-style-type: none;
+}

@@ -48,7 +48,7 @@ Route::get('/product/{id}', 'ProductController@showProductDetailPage');
 Route::post('/product/{id}', 'ProductController@getProductByUrl');
 
 Route::get('/products/{name?}', function (){
-    return view('app.list_product');
+    return view('app.product_filter');
 });
 
 Route::post('/products/filter-category', 'ProductController@getListProduct');
@@ -97,11 +97,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::get('/logout', 'Admin\AuthController@logout');
 
-    Route::get('/change-password', 'Admin\AuthController@showChangePasswordPage');
+    Route::get('/list-suppliers', 'Admin\SupplierController@showManageSuppliersPage');
 
-    Route::get('/manage-suppliers', 'Admin\SupplierController@showManageSuppliersPage');
-
-    Route::get('/manage-products', 'Admin\ProductController@showManageProductsPage');
+    Route::get('/list-products', 'Admin\ProductController@showManageProductsPage');
 
     Route::get('/create-supplier', 'Admin\SupplierController@showCreateSupplierPage');
 
@@ -124,7 +122,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::post('/delete-product', 'Admin\ProductController@deleteProduct');
 
     Route::get('product/{id}', function (){
-        return view('admin.product_preview');
+        return view('admin.update_product');
     });
 
 

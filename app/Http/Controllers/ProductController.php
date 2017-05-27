@@ -80,7 +80,7 @@ class ProductController extends Controller
     }
 
     public function showProductDetailPage(){
-        return view('app.product_details');
+        return view('app.product');
     }
 
     public function getProductByUrl(Request $request, $id){
