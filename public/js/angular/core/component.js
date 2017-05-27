@@ -1,5 +1,5 @@
-var myApp = angular.module('myApp', ['BaseService','BaseFilter', 'pikaday','CartBaseService']);
-var adminApp = angular.module('adminApp', ['BaseService','pikaday', 'AdminService', 'AdminFilter','BaseFilter']);
+var myApp = angular.module('myApp', ['Service','Filter', 'pikaday','CartService']);
+var adminApp = angular.module('adminApp', ['Service','pikaday', 'AdminService', 'AdminFilter','Filter']);
 adminApp.directive('inputNumber', ['$filter', function ($filter) {
     return {
         require: 'ngModel',

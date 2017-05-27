@@ -5,9 +5,9 @@
 @endsection
 
 @section('script')
-    <script src="/js/angular/HomeController.js"></script>
-    <script src="/js/angular/ProductPreviewController.js"></script>
-    <script src="/js/angular/CartModelController.js"></script>
+    <script src="/js/angular/guest/HomeController.js"></script>
+    <script src="/js/angular/guest/ProductModelController.js"></script>
+    <script src="/js/angular/guest/CartModelController.js"></script>
     <script>
         $(document).scroll(function() {
             var y = $(this).scrollTop();
@@ -129,7 +129,7 @@
         </div>
 
         {{--@include('app.news')--}}
-        @include('app.preview')
+        @include('app.product_model')
         @include('app.cart_model')
         <div class="bottomCart" style="">
             <div class="menu__cart">

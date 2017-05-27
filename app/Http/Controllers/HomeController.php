@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Consts;
-use App\Http\Services\HomeService;
+use App\Http\Services\Guest\HomeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;

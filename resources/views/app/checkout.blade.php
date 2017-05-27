@@ -5,7 +5,7 @@
 @endsection
 
 @section('script')
-    <script src="/js/angular/CheckoutController.js"></script>
+    <script src="/js/angular/guest/CheckoutController.js"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/product_details.css">

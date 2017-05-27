@@ -5,7 +5,7 @@
 @endsection
 
 @section('script')
-    <script src="/js/angular/CartController.js"></script>
+    <script src="/js/angular/guest/CartController.js"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/cart.css">

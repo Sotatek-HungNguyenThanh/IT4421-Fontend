@@ -10,98 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'HomeController@index');
-
-Route::get('/login', 'Customer\AuthController@showLogin')->name('login');
-
-Route::get('/register', 'Customer\AuthController@showRegister');
-
-Route::get('/account', 'Customer\HomeController@index');
-
-Route::post('/register', 'Customer\AuthController@register');
-
-Route::post('/login', 'Customer\AuthController@login');
-
-Route::get('/feedback', 'Customer\AuthController@feedback');
-
-Route::post('/feedback', 'Customer\AuthController@addFeedback');
-
-Route::post('get-list-new-product', 'ProductController@getListNewProduct');
-
-Route::post('get-product-by-id', 'ProductController@getProductByID');
-
-Route::post('cart/add', 'CartController@add');
-
-Route::post('cart/update', 'CartController@update');
-
-Route::post('cart/remove', 'CartController@remove');
-
-Route::post('cart/get-cart', 'CartController@getCart');
-
-Route::post('cart/create-order', 'CartController@createOrder');
-
-Route::post('/search', 'ProductController@search');
-
-Route::get('/product/{id}', 'ProductController@showProductDetailPage');
-
-Route::post('/product/{id}', 'ProductController@getProductByUrl');
-
-Route::get('/products/{name?}', function (){
-    return view('app.list_product');
-});
-
-Route::post('/products/filter-category', 'ProductController@getListProduct');
-
-
-Route::get('/search', "HomeController@showPageSearch");
-
-Route::get('/list-product', function (){
-    return view('app.list_product');
-});
-
-Route::get('/checkout', "HomeController@showPageCheckout");
-
-Route::get('/cart', "HomeController@showPageCart");
-
-Route::group(['middleware' => 'auth'], function () {
-
-    Route::get('/account', 'Customer\HomeController@index');
-
-    Route::get('/change-password', 'Customer\HomeController@showChangePassword');
-
-    Route::get('/account-address', 'Customer\HomeController@getAddress');
-
-    Route::get('/logout', 'Customer\AuthController@logout');
-
-    Route::post('/get-account-info', 'Customer\HomeController@getAccountInfo');
-
-    Route::post('/update-account-info', 'Customer\HomeController@updateAccountInfo');
-
-    Route::post('/change-password-account', 'Customer\HomeController@changePasswordAccount');
-
-    Route::post('/get-list-order', 'Customer\HomeController@getListOrder');
-
-    Route::get('/history-transaction', function (){
-       return view('customer.history_order');
-    });
-});
+//Admin
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
-    Route::get('/', 'Admin\AuthController@index');
+    Route::get('/', 'Admin\HomeController@showHomePage');
 
-    Route::get('/home', function (){
-        return view('admin.home');
-    });
+    Route::get('/home', 'Admin\HomeController@showHomePage');
 
     Route::get('/logout', 'Admin\AuthController@logout');
 
-    Route::get('/change-password', 'Admin\AuthController@showChangePasswordPage');
+    Route::get('/list-suppliers', 'Admin\SupplierController@showListSupplierPage');
 
-    Route::get('/manage-suppliers', 'Admin\SupplierController@showManageSuppliersPage');
-
-    Route::get('/manage-products', 'Admin\ProductController@showManageProductsPage');
+    Route::get('/list-products', 'Admin\ProductController@showListProductsPage');
 
     Route::get('/create-supplier', 'Admin\SupplierController@showCreateSupplierPage');
 
@@ -113,7 +34,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-supplier', 'Admin\SupplierController@deleteSupplier');
 
-    Route::get('/add-product', 'Admin\ProductController@showCreateProductPage');
+    Route::get('/create-product', 'Admin\ProductController@showCreateProductPage');
 
     Route::post('/get-list-suppliers', 'Admin\SupplierController@getListSuppliers');
 
@@ -123,10 +44,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('/delete-product', 'Admin\ProductController@deleteProduct');
 
-    Route::get('product/{id}', function (){
-        return view('admin.product_preview');
-    });
-
+    Route::get('product/{id}', 'Admin\ProductController@showUpdateProductPage');
 
     Route::post('product/{id}', 'Admin\ProductController@getProduct');
 
@@ -134,24 +52,94 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::post('update-product', 'Admin\ProductController@updateProduct');
 
-    Route::post('get-list-customer', 'Admin\ManageCustomerController@getListCustomer');
+    Route::post('get-list-customer', 'Admin\CustomerController@getListCustomer');
 
-    Route::post('delete-customer', 'Admin\ManageCustomerController@deleteCustomer');
+    Route::post('delete-customer', 'Admin\CustomerController@deleteCustomer');
 
-    Route::post('get-all-order', 'Admin\ManageOrderController@getAllOrder');
+    Route::post('get-all-order', 'Admin\OrderController@getAllOrder');
 
-    Route::post('update-status-order', 'Admin\ManageOrderController@updateStatusOrder');
+    Route::post('update-status-order', 'Admin\OrderController@updateStatusOrder');
 
-    Route::get('list-customer', function (){
-        return view("admin.list_customer");
-    });
+    Route::get('list-customer', 'Admin\CustomerController@showListCustomerPage');
 
-    Route::get('list-order', function (){
-        return view("admin.list_order");
-    });
+    Route::get('list-order', 'Admin\OrderController@showListOrderPage');
 
 });
-Route::get('admin/login', 'Admin\AuthController@showLoginForm');
+Route::get('admin/login', 'Admin\AuthController@showLoginPage');
 
 Route::post('admin/login', 'Admin\AuthController@login');
+
+
+//Customer
+
+
+Route::get('/login', 'Customer\AuthController@showLoginPage')->name('login');
+
+Route::get('/register', 'Customer\AuthController@showRegisterPage');
+
+Route::post('/register', 'Customer\AuthController@register');
+
+Route::post('/login', 'Customer\AuthController@login');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/account', 'Customer\AccountController@showAccountPage');
+
+    Route::get('/change-password', 'Customer\AccountController@showChangePasswordPage');
+
+    Route::get('/account-address', 'Customer\AccountController@showAccountAddressPage');
+
+    Route::get('/logout', 'Customer\AuthController@logout');
+
+    Route::post('/get-account-info', 'Customer\AccountController@getAccountInfo');
+
+    Route::post('/update-account-info', 'Customer\AccountController@updateAccountInfo');
+
+    Route::post('/change-password-account', 'Customer\AccountController@changePassword');
+
+    Route::post('/get-list-order', 'Customer\OrderController@getListOrder');
+
+    Route::get('/history-transaction', 'Customer\OrderController@showHistoryTransactionPage');
+});
+
+//Guest
+
+Route::get('/feedback', 'Guest\FeedbackController@showFeedbackPage');
+
+Route::post('/feedback', 'Guest\FeedbackController@createFeedback');
+
+Route::get('/', 'Guest\HomeController@showHomePage');
+
+Route::get('/home', 'Guest\HomeController@showHomePage');
+
+Route::post('get-list-new-product', 'Guest\ProductController@getListNewProduct');
+
+Route::post('get-product-by-id', 'Guest\ProductController@getProductByID');
+
+Route::post('cart/add', 'Guest\CartController@add');
+
+Route::post('cart/update', 'Guest\CartController@update');
+
+Route::post('cart/remove', 'Guest\CartController@remove');
+
+Route::post('cart/get-cart', 'Guest\CartController@getCart');
+
+Route::post('cart/create-order', 'Guest\CartController@createOrder');
+
+Route::post('/search', 'Guest\ProductController@search');
+
+Route::get('/product/{id}', 'Guest\ProductController@showProductDetailPage');
+
+Route::post('/product/{id}', 'Guest\ProductController@getProductByUrl');
+
+Route::get('/products/{name?}', 'Guest\ProductController@showProductFilterPage');
+
+Route::post('/products/filter-category', 'Guest\ProductController@getListProduct');
+
+Route::get('/search', "Guest\HomeController@showSearchPage");
+
+Route::get('/checkout', "Guest\HomeController@showCheckoutPage");
+
+Route::get('/cart', "Guest\HomeController@showCartPage");
+
 

@@ -5,8 +5,8 @@
 @endsection
 
 @section('script')
-    <script src="/js/angular/SearchController.js"></script>
-    <script src="/js/angular/ProductPreviewController.js"></script>
+    <script src="/js/angular/guest/SearchController.js"></script>
+    <script src="/js/angular/guest/ProductModelController.js"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" href="/css/cart.css">
@@ -76,6 +76,6 @@
             </div>
         </section>
     </div>
-    @include('app.preview')
+    @include('app.product_model')
     @include('app.cart_model')
 @endsection

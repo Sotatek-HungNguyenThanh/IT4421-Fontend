@@ -1,4 +1,4 @@
-var SupplierController = BaseController.extend({
+var SupplierController = Controller.extend({
     url: '/admin/get-list-suppliers',
     pageNo: 1,
     perPage: 10,
@@ -68,7 +68,7 @@ var SupplierController = BaseController.extend({
         this.loading(true);
         this.service.createSupplier(params)
             .success(function (data) {
-                window.location.href = "/admin/manage-suppliers";
+                window.location.href = "/admin/list-suppliers";
             })
             .error(this.onError.bind(this));
     },

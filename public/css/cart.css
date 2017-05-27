@@ -2646,11 +2646,6 @@ html .title-bl {
     text-align: center;
     font-size: 0;
 }
-.cart-desktop-popup:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%}
 .cart-desktop-popup .cart-desktop__bg {
     background: #fff;
     width: 750px;
@@ -2765,6 +2760,7 @@ html .title-bl {
 .cart-desktop-popup .cart-desktop__tbody .cart-popup__item>div:first-child {
     border-left: none;
 }
+
 .cart-desktop-popup .cart-desktop__tbody .cart-popup__item-image {
     padding: 10px;
     float: left;

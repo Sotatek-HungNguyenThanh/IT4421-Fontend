@@ -1,7 +1,7 @@
 <ul class="x-navigation">
     <li class="xn-logo">
-        <a href="#">Admin</a>
-        <a href="#" class="x-navigation-control"></a>
+        <a href="/admin/">Admin</a>
+        <a href="/admin/" class="x-navigation-control"></a>
     </li>
     <li class="xn-profile">
         <a href="#" class="profile-mini">
@@ -39,14 +39,14 @@
         <a href="/admin/create-supplier"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm nhà cung cấp</span></a>
     </li>
     <li>
-        <a href="/admin/manage-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách nhà cung cấp</span></a>
+        <a href="/admin/list-suppliers"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách nhà cung cấp</span></a>
     </li>
     <li class="xn-title">Quản lý sản phẩm</li>
     <li>
-        <a href="/admin/add-product"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm sản phẩm</span></a>
+        <a href="/admin/create-product"><span class="glyphicon glyphicon-plus"></span><span class="xn-text">Thêm sản phẩm</span></a>
     </li>
     <li>
-        <a href="/admin/manage-products"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách sản phẩm</span></a>
+        <a href="/admin/list-products"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Danh sách sản phẩm</span></a>
     </li>
     {{--<li>--}}
         {{--<a href="#"><span class="glyphicon glyphicon-list-alt"></span><span class="xn-text">Manage Orders</span></a>--}}

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Manage Products
+    Danh sách khách hàng
 @endsection
 
 @section('css')
@@ -28,11 +28,11 @@
 
 @section('script')
     <script type="text/javascript" src="/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/js/angular/admin/ManageCustomerController.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/CustomerController.js"></script>
 @endsection
 
 @section('page_content')
-    <div class="row" ng-controller="ManageCustomerController as controller" ng-cloak>
+    <div class="row" ng-controller="CustomerController as controller" ng-cloak>
         <div class="col-md-12">
             <div class="manage-product">
                 <div class="container-header">

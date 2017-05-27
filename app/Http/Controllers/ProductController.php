@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\ProductService;
-use App\Units;
+use App\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Consts;
@@ -80,7 +80,7 @@ class ProductController extends Controller
     }
 
     public function showProductDetailPage(){
-        return view('app.product_details');
+        return view('app.product');
     }
 
     public function getProductByUrl(Request $request, $id){
@@ -131,7 +131,7 @@ class ProductController extends Controller
                 $data["sort_name"] = $params["sort_name"];
             }
             Log::info($data);
-            $response = Units::send('products', $headers, $data, 'GET');
+            $response = Utils::send('products', $headers, $data, 'GET');
             $result = array("total" => $response->total_products, "products" => $response->products);
             DB::commit();
             return [
