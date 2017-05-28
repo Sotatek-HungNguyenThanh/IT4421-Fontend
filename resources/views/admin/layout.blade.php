@@ -48,30 +48,29 @@
 </head>
 <body>
 <div class="page-container" ng-app="adminApp" ng-cloak>
-    <p>ok</p>
-    {{--<div class="page-sidebar">--}}
-        {{--<!-- START X-NAVIGATION -->--}}
-    {{--@include('admin.sidebar')--}}
-    {{--<!-- END X-NAVIGATION -->--}}
-    {{--</div>--}}
-    {{--<div class="page-content">--}}
-        {{--<!-- START X-NAVIGATION VERTICAL -->--}}
-    {{--@include('admin.header')--}}
-    {{--<!-- END BREADCRUMB -->--}}
+    <div class="page-sidebar">
+        <!-- START X-NAVIGATION -->
+    @include('admin.sidebar')
+    <!-- END X-NAVIGATION -->
+    </div>
+    <div class="page-content">
+        <!-- START X-NAVIGATION VERTICAL -->
+    @include('admin.header')
+    <!-- END BREADCRUMB -->
 
-        {{--<div class="page-title">--}}
-            {{--@yield('page_title')--}}
-        {{--</div>--}}
+        <div class="page-title">
+            @yield('page_title')
+        </div>
 
-        {{--<div class="page-content-wrap">--}}
+        <div class="page-content-wrap">
 
-            {{--@yield('page_content')--}}
+            @yield('page_content')
 
-        {{--</div>--}}
-        {{--<audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>--}}
-        {{--<audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>--}}
-    {{--</div>--}}
-    {{--@include('admin.loading')--}}
-    {{--@include('admin.logout')--}}
+        </div>
+        <audio id="audio-alert" src="/audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="/audio/fail.mp3" preload="auto"></audio>
+    </div>
+    @include('admin.loading')
+    @include('admin.logout')
 </div>
 </body>
