@@ -62,39 +62,39 @@
                 </li>
             </ul>
             <div class="collapse navbar-collapse menu-mobile" id="example-navbar-moblie">
-                <ul class="nav navbar-nav menu__list">
-                    <li class="menu__item"><a href="/" class="menu_item_mobile">Trang chủ</a></li>
-                    <li class="dropdown menu__item">
-                        <li class="menu__item">
+                <ul class="nav navbar-nav _menu__list">
+                    <li class="_menu__item"><a href="/" class="menu_item_mobile">Trang chủ</a></li>
+                    <li class="dropdown _menu__item">
+                        <li class="_menu__item">
                         <a href="/products?category=dien-thoai" class="dropdown-toggle menu_item_mobile" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             Danh mục sản phẩm <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu _has_sub_menu">
-                            <li class="menu--sub__item">
+                            <li class="">
                                 <a href="#" class="sub_menu_item_mobile">Điện thoại<span class="caret"></span></a>
                                 <ul class="__menu_sub_mobile">
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=iphone" class="sub_menu_item_mobile">IPhone</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=iphone" class="sub_menu_item_mobile">IPhone</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=/samsung" class="sub_menu_item_mobile">Samsung</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=/samsung" class="sub_menu_item_mobile">Samsung</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=oppo" class="sub_menu_item_mobile">Oppo</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=oppo" class="sub_menu_item_mobile">Oppo</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=huawei" class="sub_menu_item_mobile">Huawei</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=huawei" class="sub_menu_item_mobile">Huawei</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=asus" class="sub_menu_item_mobile">Asus</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=asus" class="sub_menu_item_mobile">Asus</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=acer" class="sub_menu_item_mobile">Acer</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=acer" class="sub_menu_item_mobile">Acer</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=sony" class="sub_menu_item_mobile">Sony</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=sony" class="sub_menu_item_mobile">Sony</a></li>
 
-                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=khac" class="sub_menu_item_mobile">Khác</a></li>
+                                    <li class="_menu__sub__item"><a href="/products?category=dien-thoai&query=khac" class="sub_menu_item_mobile">Khác</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-sub__item"><a href="/products?category=may-tinh-bang" class="sub_menu_item_mobile">Máy tính bảng</a></li>
-                            <li class="menu-sub__item"><a href="/products?category=laptop" class="sub_menu_item_mobile">Laptop</a></li>
-                            <li class="menu-sub__item"><a href="/products?category=may-cu" class="sub_menu_item_mobile">Máy cũ</a></li>
-                            <li class="menu-sub__item"><a href="/products?category=phu-kien" class="sub_menu_item_mobile">Phụ kiện</a></li>
+                            <li class="_menu__sub__item"><a href="/products?category=may-tinh-bang" class="sub_menu_item_mobile">Máy tính bảng</a></li>
+                            <li class="_menu__sub__item"><a href="/products?category=laptop" class="sub_menu_item_mobile">Laptop</a></li>
+                            <li class="_menu__sub__item"><a href="/products?category=may-cu" class="sub_menu_item_mobile">Máy cũ</a></li>
+                            <li class="_menu__sub__item"><a href="/products?category=phu-kien" class="sub_menu_item_mobile">Phụ kiện</a></li>
                         </ul>
                     </li>
                 </ul>

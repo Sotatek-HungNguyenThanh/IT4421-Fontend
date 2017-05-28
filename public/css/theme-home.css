@@ -1206,7 +1206,7 @@ footer .copyright a {
     position: absolute;
     max-height: 50px;
     top: 0px;
-    right: 200px;
+    right: 15px;
 }
 #nav .menu__cart>a {
     display: block;
@@ -2060,4 +2060,7 @@ ul.bxslider1 li{
 }
 ul.bxslider1{
     list-style-type: none;
+}
+.container{
+    position: relative;
 }
