@@ -21,22 +21,28 @@
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/actions.js"></script>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="/js/angular/core/BaseClass.js"></script>
+    <script type="text/javascript" src="/js/angular/core/Filter.js"></script>
     <script type="text/javascript" src="/js/angular/admin/AdminFilter.js"></script>
+    <script type="text/javascript" src="/js/angular/core/Service.js"></script>
     <script type="text/javascript" src="/js/angular/admin/AdminService.js"></script>
-    <script type="text/javascript" src="/js/angular/core/component.js"></script>
+    <script type="text/javascript" src="/js/angular/core/component_admin.js"></script>
 
-    {{--<script src="{{ url('/js/pikaday/moment.js') }}"></script>--}}
-    {{--<script src="{{ url('/js/pikaday/pikaday.js') }}"></script>--}}
-    {{--<script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>--}}
-    {{--<script src="{{ url('/js/angular/pika_date/pika_date_admin.js') }}"></script>--}}
+    <script src="{{ url('/js/pikaday/moment.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday.js') }}"></script>
+    <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
+    <script src="{{ url('/js/angular/pika_date/pika_date_admin.js') }}"></script>
 
-    {{--<script type="text/javascript" src="/js/angular/core/Controller.js"></script>--}}
+    <script type="text/javascript" src="/js/angular/core/Controller.js"></script>
 
-    {{--<script type="text/javascript" src="/js/angular/core/PaginationController.js"></script>--}}
-    {{--<script type="text/javascript" src="/js/angular/admin/ProductController.js"></script>--}}
+    <script type="text/javascript" src="/js/angular/core/PaginationController.js"></script>
+    <script type="text/javascript" src="/js/angular/admin/ProductController.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     @yield("script")
 </head>

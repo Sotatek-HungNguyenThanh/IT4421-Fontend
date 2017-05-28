@@ -23,7 +23,7 @@
     <script type="text/javascript" src="/js/angular/core/Filter.js"></script>
     <script type="text/javascript" src="/js/angular/core/Service.js"></script>
     <script type="text/javascript" src="/js/angular/guest/CartService.js"></script>
-    <script type="text/javascript" src="/js/angular/core/component.js"></script>
+    <script type="text/javascript" src="/js/angular/core/component_guest.js"></script>
     <script type="text/javascript" src="/js/angular/core/Controller.js"></script>
     <script type="text/javascript" src="/js/angular/guest/LogicCartController.js"></script>
     <script type="text/javascript" src="/js/angular/guest/CheckoutController.js"></script>
