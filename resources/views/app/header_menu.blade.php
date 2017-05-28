@@ -1,8 +1,10 @@
 <div>
-    <nav id="nav" class="menu">
-        <div class="container">
-            <span class="hidden-lg hidden-md hidden-sm header__btn">
-                <a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <nav id="nav"  class="menu nav-collapse" role="navigation">
+        <div class="container container-fluid">
+            <span class=" header__btn">
+                <a href="#" id="btn-navbar" data-toggle="collapse" data-target="#example-navbar-moblie">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
             </span>
             <form action="/search" method="get" class="hidden-lg hidden-md hidden-sm">
                 <label class="hidden" for="search-mobile">Tìm kiếm</label>
@@ -15,7 +17,7 @@
                 <li class="menu__item"><a href="/" class="menu__link">Trang chủ</a></li>
 
                 <li class="menu__item menu_parent">
-                    <a href="/collections/all" class="menu__link">Danh mục sản phẩm <i class="fa fa-angle-down"
+                    <a href="#" class="menu__link">Danh mục sản phẩm <i class="fa fa-angle-down"
                                                                                        aria-hidden="true"></i></a>
                     <ul class="menu-sub">
 
@@ -24,7 +26,7 @@
                                         class="fa fa-angle-right"></i></a>
                             <ul class="menu--sub">
 
-                                <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=iphone" class="menu--sub__link">iPhone</a></li>
+                                <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=iphone" class="menu--sub__link">IPhone</a></li>
 
                                 <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=/samsung" class="menu--sub__link">Samsung</a></li>
 
@@ -58,12 +60,72 @@
 
                     </ul>
                 </li>
-
-
-                {{--<li class="menu__item"><a href="/tin-tuc" class="menu__link">Tin tức</a></li>--}}
-
             </ul>
+            <div class="collapse navbar-collapse menu-mobile" id="example-navbar-moblie">
+                <ul class="nav navbar-nav menu__list">
+                    <li class="menu__item"><a href="/" class="menu_item_mobile">Trang chủ</a></li>
+                    <li class="dropdown menu__item">
+                        <li class="menu__item">
+                        <a href="/products?category=dien-thoai" class="dropdown-toggle menu_item_mobile" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Danh mục sản phẩm <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu _has_sub_menu">
+                            <li class="menu--sub__item">
+                                <a href="#" class="sub_menu_item_mobile">Điện thoại<span class="caret"></span></a>
+                                <ul class="__menu_sub_mobile">
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=iphone" class="sub_menu_item_mobile">IPhone</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=/samsung" class="sub_menu_item_mobile">Samsung</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=oppo" class="sub_menu_item_mobile">Oppo</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=huawei" class="sub_menu_item_mobile">Huawei</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=asus" class="sub_menu_item_mobile">Asus</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=acer" class="sub_menu_item_mobile">Acer</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=sony" class="sub_menu_item_mobile">Sony</a></li>
+
+                                    <li class="menu--sub__item"><a href="/products?category=dien-thoai&query=khac" class="sub_menu_item_mobile">Khác</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-sub__item"><a href="/products?category=may-tinh-bang" class="sub_menu_item_mobile">Máy tính bảng</a></li>
+                            <li class="menu-sub__item"><a href="/products?category=laptop" class="sub_menu_item_mobile">Laptop</a></li>
+                            <li class="menu-sub__item"><a href="/products?category=may-cu" class="sub_menu_item_mobile">Máy cũ</a></li>
+                            <li class="menu-sub__item"><a href="/products?category=phu-kien" class="sub_menu_item_mobile">Phụ kiện</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
             @include('app.menu_cart')
         </div>
     </nav>
 </div>
+<style>
+    .menu_item_mobile{
+        padding: 15px 20px 16px;
+        max-height: 50px;
+        font-size: 14px;
+        display: block;
+        color: #fff;
+        transition: none;
+    }
+    .sub_menu_item_mobile{
+        color: white !important;
+    }
+
+    ._has_sub_menu .__menu_sub_mobile{
+        list-style-type: none;
+    }
+
+    .menu-mobile .nav>li>a{
+        display: none !important;
+    }
+    @media (max-width: 767px)  {
+        .menu-mobile .nav>li>a{
+            display: block !important;
+        }
+    }
+</style>

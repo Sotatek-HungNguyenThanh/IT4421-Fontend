@@ -230,6 +230,7 @@ html a {
 #nav {
     background: #ff5c01;
     height: 50px;
+    position: relative;
 }
 
 #nav .menu__list {
@@ -1202,8 +1203,10 @@ footer .copyright a {
 }
 #nav .menu__cart {
     float: right;
-    position: relative;
+    position: absolute;
     max-height: 50px;
+    top: 0px;
+    right: 200px;
 }
 #nav .menu__cart>a {
     display: block;
