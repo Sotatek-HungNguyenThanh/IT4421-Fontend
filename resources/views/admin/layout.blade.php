@@ -37,10 +37,10 @@
     <script src="{{ url('/js/pikaday/pikaday-angular.js') }}"></script>
     <script src="{{ url('/js/angular/pika_date/pika_date_admin.js') }}"></script>
 
-    <script type="text/javascript" src="/js/angular/core/Controller.js"></script>
+    {{--<script type="text/javascript" src="/js/angular/core/Controller.js"></script>--}}
 
-    <script type="text/javascript" src="/js/angular/core/PaginationController.js"></script>
-    <script type="text/javascript" src="/js/angular/admin/ProductController.js"></script>
+    {{--<script type="text/javascript" src="/js/angular/core/PaginationController.js"></script>--}}
+    {{--<script type="text/javascript" src="/js/angular/admin/ProductController.js"></script>--}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     @yield("script")
 </head>
