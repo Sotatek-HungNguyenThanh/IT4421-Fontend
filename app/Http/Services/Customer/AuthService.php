@@ -76,7 +76,7 @@ class AuthService
 
     public function logout(){
         $token = $this->guard()->user()->token;
-        $email = $this->guard()->email;
+        $email = $this->guard()->user()->email;
         $headers = [
             'Content-Type' => 'application/json',
             'Authorization' => $email,
