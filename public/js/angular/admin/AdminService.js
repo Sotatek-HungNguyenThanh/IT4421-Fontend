@@ -191,6 +191,14 @@ angular.module('AdminService', [])
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(data)
                 });
+            },
+
+            getDataDashboard: function () {
+                return $http({
+                    method: 'POST',
+                    url: "/admin/get-data-dashboard",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                });
             }
         }
     });

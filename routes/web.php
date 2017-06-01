@@ -64,6 +64,10 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 
     Route::get('list-order', 'Admin\OrderController@showListOrderPage');
 
+    Route::get('dashboard', 'Admin\HomeController@showDashboardPage');
+
+    Route::post('get-data-dashboard', 'Admin\HomeController@getDataDashBoard');
+
 });
 Route::get('admin/login', 'Admin\AuthController@showLoginPage');
 

@@ -75,7 +75,7 @@
 						<dd>
 							<textarea name="description" rows="5" class="form-control" ng-model="controller.description" required></textarea>
 						</dd>
-						<div style="margin: 10px 0px">
+						<div style="padding: 10px 0px;">
 							<button class="btn btn-primary pull-right"
 									ng-click="controller.createSupplier()">Submit
 							</button>

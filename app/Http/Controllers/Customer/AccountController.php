@@ -91,11 +91,7 @@ class AccountController extends Controller
         }catch (Exception $e){
             DB::rollback();
             Log::error($e->getMessage());
-            return[
-                'status' => Consts::STATUS_ERROR,
-                'message' => $e->getMessage(),
-                'data' => ''
-            ];
+            return redirect()->back()->withErrors(["Password invalid!"]);
         }
     }
 }
