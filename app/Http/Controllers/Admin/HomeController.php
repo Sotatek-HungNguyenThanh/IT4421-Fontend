@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        return view('admin.home');
+        return view('admin.dashboard');
     }
 
     public function showDashboardPage(){
