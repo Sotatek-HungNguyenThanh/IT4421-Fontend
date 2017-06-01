@@ -122,6 +122,7 @@ var UpdateProductController = Controller.extend({
             };
             reader.readAsDataURL(input.files[0]);
             this.imagesNewVariants.push({id: this._variantID, file: input.files[0]});
+            $(input).val("");
         }
     }
 
