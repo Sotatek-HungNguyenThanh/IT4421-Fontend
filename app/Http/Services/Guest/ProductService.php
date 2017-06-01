@@ -17,13 +17,13 @@ class ProductService
     function getListNewProduct($params){
         try {
             $headers = [
-                'Content-Type' => 'application/json',
+                'Content-Type' => 'application/x-www-form-urlencoded',
             ];
             $data = [
                 "page_no" => 1,
                 "per_page" => $params["quantity"],
             ];
-            $response = Utils::sendWithDataJson('products', $headers, $data, 'GET');
+            $response = Utils::send('products', $headers, $data, 'GET');
             return $response->products;
         }catch (Exception $e){
             Log::error($e->getMessage());
