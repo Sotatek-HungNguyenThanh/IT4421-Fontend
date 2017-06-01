@@ -1,5 +1,5 @@
 var HomeController = Controller.extend({
-    quantityNewProduct: 20,
+    quantityNewProduct: 12,
 
     initialize : function($super,service, $rootScope, $scope) {
         var self = this;
