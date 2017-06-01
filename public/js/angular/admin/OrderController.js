@@ -75,7 +75,7 @@ var OrderController = PaginationController.extend({
     setDurationMonths: function() {
         var endDate = new Date();
         var startDate = new Date(endDate);
-        startDate.setDate(1);
+        startDate.setMonth(endDate.getMonth() - 1);
         // eg: duration 6 months, 2016/08/30 -> 2016/02/30
         // js will convert 2016/02/30 to 2016/03/01
         // correct date is the end of Feb 2016/02/29
