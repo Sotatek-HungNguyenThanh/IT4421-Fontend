@@ -4,20 +4,6 @@
         <a href="/admin/" class="x-navigation-control"></a>
     </li>
     <li class="xn-profile">
-        {{--<a href="#" class="profile-mini">--}}
-            {{--<img src="/images/no-image.jpg"/>--}}
-        {{--</a>--}}
-        <div class="profile">
-            {{--<div class="profile-image">--}}
-                {{--<img src="/images/no-image.jpg"/>--}}
-            {{--</div>--}}
-            {{--<div class="profile-data">--}}
-                {{--<div class="profile-data-name">Admin</div>--}}
-            {{--</div>--}}
-            <div class="profile-controls">
-
-            </div>
-        </div>
     </li>
     <li>
         <a href="/admin/dashboard"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
