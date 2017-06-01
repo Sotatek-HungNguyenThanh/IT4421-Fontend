@@ -21,7 +21,7 @@
         </div>
         <div class="copyright">
             <div class="container text-center">
-                © Bản quyền thuộc về <a href="javascript:;" rel="nofollow">TT Team</a> - Cung cấp bởi <a href="https://www.bizweb.vn/?utm_source=site-khach-hang&amp;utm_campaign=referral_bizweb&amp;utm_medium=footer&amp;utm_content=cung-cap-boi-bizweb">Bizweb</a>
+                Shopify <a href="javascript:void(0);" rel="nofollow"></a> - Cung cấp bởi <a href="javascript:void(0)">HUST</a>
             </div>
         </div>
     </footer>
