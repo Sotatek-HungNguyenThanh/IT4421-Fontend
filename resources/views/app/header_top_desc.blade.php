@@ -1,5 +1,5 @@
 <div>
-    <section class="topbar theme--bg--sliver hidden-xs">
+    <section class="topbar theme--bg--sliver">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 topbar__left hidden-xs">
