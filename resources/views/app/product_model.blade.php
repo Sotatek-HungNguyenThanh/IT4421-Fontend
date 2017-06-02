@@ -70,7 +70,7 @@
 											   maxlength="12" id="qtyDetail" name="quantity">
 										<div>
 										<button class="button btn-cart detail-button add_to_cart_detail_quick_view"
-												data-dismiss="modal" ng-click="controller.addCart()">
+											 ng-click="controller.addCart()">
 											<span>
 												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 												Mua ngay

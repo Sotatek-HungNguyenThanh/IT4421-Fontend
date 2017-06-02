@@ -95,6 +95,7 @@ class CartService
             }
             $data["total_price"] = $order["total"];
             $data["variants"] = $variants;
+            Log::info($data);
             $response = Utils::sendWithDataJson('orders', $headers, $data, 'POST');
             if($response->success){
                 Session::forget("cart");

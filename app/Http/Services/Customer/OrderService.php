@@ -11,6 +11,7 @@ namespace App\Http\Services\Customer;
 
 use App\Utils;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class OrderService
 {
@@ -25,7 +26,7 @@ class OrderService
         $email = $this->guard()->user()->email;
 
         $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Content-Type' => 'application/json',
             'Authorization' => $email,
             'Tokenkey' => $token
         ];
@@ -38,7 +39,8 @@ class OrderService
             $data["page_no"] = intval($params["page_no"]);
             $data["per_page"] = intval($params["per_page"]);
         }
-        $response = Utils::send('orders', $headers, $data, 'GET');
+        Log::info($data);
+        $response = Utils::sendWithDataJson('orders', $headers, $data, 'GET');
 
         return array("total" => $response->total_orders, "orders" => $response->orders);
     }
