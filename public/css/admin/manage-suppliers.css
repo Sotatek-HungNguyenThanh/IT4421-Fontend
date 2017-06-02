@@ -1,0 +1,113 @@
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: right;
+    padding: 4px 10px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+.modal-content{
+    border-width: 0px;
+    height: 460px;
+}
+.table-supplier{
+    width: 100%;
+    min-width: 1015px;
+    overflow: hidden;
+}
+.table-supplier th, 
+.table-supplier tbody{
+    text-align: center;
+}
+
+.table-supplier th{
+    background: #00b0f0;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    height: 40px;
+    border: 1px solid white;
+}
+.table-supplier td{
+    height: 40px;
+    text-align: center;
+    background-color: #fff;
+    border: 0px solid #c4c4c4;
+    color: black;
+    font-size: 13px;
+}
+
+.first-column {
+    width: 70px;
+    max-width: 70px;
+    overflow: hidden;
+}
+.second-column {
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+}
+.thirth-column {
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+}
+.fourth-column {
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+}
+.fifth-column {
+    width: 160px;
+    max-width: 160px;
+    overflow: hidden;
+}
+.six-column {
+    width: 140px;
+    max-width: 140px;
+    overflow: hidden;
+}
+.seventh-column{
+    width: 155px;
+    max-width: 155px;
+    overflow: hidden;
+}
+.eight-column {
+    width: 90px;
+    max-width: 90px;
+    overflow: hidden;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+.button-supplier{
+    background: transparent;
+    border: none;
+}
+.content-header-title{
+    position: fixed;
+    z-index: 2; 
+    width: calc(100% - 240px); 
+    height: 70px; 
+    border-bottom: 1px solid #dfe6e8; 
+    background-color: white; 
+    top: 51px; 
+    left: 230px
+}
+.content-header-title .title{
+    padding: 15px;
+    font-size: 16px;
+}
+
+.content-header-title .btn-add{
+    margin-bottom: 0px;
+}

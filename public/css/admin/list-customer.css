@@ -1,0 +1,84 @@
+.modal-content {
+    border-width: 0px;
+    border-radius: 5px;
+    height: 460px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.table-product {
+    width: 100%;
+    min-width: 1015px;
+    overflow: hidden;
+}
+
+.table-product th,
+.table-product tbody {
+    text-align: center;
+}
+
+.table-product th {
+    background: #00b0f0;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    height: 40px;
+    border: 1px solid white;
+}
+
+.table-product td {
+    height: 40px;
+    text-align: center;
+    background-color: #fff;
+    border: 0px solid #c4c4c4;
+    color: black;
+    font-size: 13px;
+}
+
+.first-column {
+    width: 90px;
+    max-width: 90px;
+    overflow: hidden;
+}
+
+.second-column {
+    width: 170px;
+    max-width: 195px;
+    overflow: hidden;
+}
+
+.thirth-column {
+    width: 300px;
+    max-width: 190px;
+    overflow: hidden;
+}
+
+.fourth-column {
+    width: 185px;
+    max-width: 195px;
+    overflow: hidden;
+}
+
+.fifth-column {
+    width: 235px;
+    max-width: 245px;
+    overflow: hidden;
+}
+
+.sixth-column {
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+}
+.seventh-column {
+    width: 120px;
+    max-width: 100px;
+    overflow: hidden;
+}
+
+.button-product {
+    background: transparent;
+    border: none;
+}
