@@ -6,7 +6,7 @@
     <link href="/css/triangle.css" rel="stylesheet">
     <style>
         .table-product {
-            width: 1000px;
+            width: 900px;
             min-width: 800px;
             overflow: hidden;
         }
@@ -151,7 +151,7 @@
                             <thead>
                             <tr>
                                 <th class="first-column">No.</th>
-                                <th class="second-column">Ngày</th>
+                                {{--<th class="second-column">Ngày</th>--}}
                                 <th class="thirth-column">Số lượng SP</th>
                                 <th class="fourth-column">Đơn hàng</th>
                                 <th class="fifth-column">Tổng tiền</th>
@@ -160,7 +160,7 @@
                             <tbody style="display: inline-grid;">
                             <tr ng-repeat="row in controller.rows" ng-cloak>
                                 <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
-                                <td class="second-column">@{{ row.date }}</td>
+                                {{--<td class="second-column">@{{ row.date }}</td>--}}
                                 <td class="thirth-column">@{{ row.order_variants.length}}</td>
                                 <td class="fourth-column" style="text-align: left">
                                     <div class="item" ng-repeat="variant in row.order_variants track by index">

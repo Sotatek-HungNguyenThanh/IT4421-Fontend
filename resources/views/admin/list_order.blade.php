@@ -68,7 +68,7 @@
                         <thead>
                         <tr>
                             <th class="first-column">No.</th>
-                            <th class="second-column">Ngày</th>
+                            {{--<th class="second-column">Ngày</th>--}}
                             <th class="thirth-column">Tên</th>
                             <th class="fourth-column">Email</th>
                             <th class="fifth-column">Địa chỉ</th>
@@ -81,7 +81,7 @@
                         <tbody>
                         <tr ng-repeat="row in controller.rows" ng-cloak>
                             <td class="first-column" ng-cloak>@{{ (controller.pageNo - 1) * controller.perPage + $index + 1}}</td>
-                            <td class="second-column">@{{ row.customer.fullname }}</td>
+                            {{--<td class="second-column">@{{ row.customer.fullname }}</td>--}}
                             <td class="thirth-column">@{{ row.customer.fullname}}</td>
                             <td class="fourth-column">@{{ row.customer.email }}</td>
                             <td class="fifth-column">@{{ row.customer.address }}</td>

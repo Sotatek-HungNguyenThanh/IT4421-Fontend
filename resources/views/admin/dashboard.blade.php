@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-    Thêm nhà cung cấp mới
+    Home
 @endsection
 
 @section('script')
